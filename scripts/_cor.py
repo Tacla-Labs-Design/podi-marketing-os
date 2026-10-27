@@ -1,6 +1,6 @@
 """Cor e PNG — funções comuns aos scripts de paleta do Marketing OS.
 
-Usado por scripts/paleta-empreendimento.py e scripts/aplicar-marca.py. Nenhuma regra de
+Usado por scripts/paleta-empreendimento.py. Nenhuma regra de
 marca mora aqui: só a conta (sRGB <-> OKLab, contraste WCAG) e a leitura/gravação de PNG.
 
 Só biblioteca padrão do Python: nada para instalar.

@@ -1,17 +1,7 @@
 # Variáveis de envio — o que o servidor aceita
 
-**A regra de variáveis é do sistema que dispara, e cada marca tem o seu** — o valor oficial
-está em `envio` de `brand/<marca>/marca.json`:
-
-| Marca | Sistema | Variáveis permitidas |
-|---|---|---|
-| Podi | Servidor do Podi (AWS) | `{{email}}`, `{{topicId}}`, `{{campaignId}}` — este arquivo inteiro |
-| Optimall | Outro sistema — **regras pendentes** | **nenhuma**, até as regras chegarem: a peça sai sem `{{...}}`, nem `{{email}}` no rodapé, e o relatório avisa |
-
-`python3 scripts/aplicar-marca.py conferir <marca> <arquivo>` acusa qualquer `{{...}}` fora da
-lista da marca.
-
-O resto deste arquivo é a regra do **servidor do Podi**.
+**A regra de variáveis é do sistema que dispara.** O valor oficial também está em `envio` de
+`brand/marca.json`, e é dali que `scripts/conferir.py` tira a lista que acusa.
 
 Os e-mails do Podi saem por um servidor próprio na **AWS**. Ele resolve apenas três
 variáveis. Qualquer outra **derruba o envio inteiro** — não é um e-mail com um campo
@@ -56,7 +46,7 @@ O servidor não gera URL de descadastro, e não existe variável para ela. Entã
 - **Nenhuma peça leva link de descadastro** — nem cliente final, nem interno.
 - Nunca inventar `{{URL_DESCADASTRO}}`, `{{unsubscribe}}` ou equivalente: cai na
   regra acima e o envio não sai.
-- O rodapé continua obrigatório com `© <ano> - <assinatura da marca>`, o **motivo do recebimento**,
+- O rodapé continua obrigatório com `© <ano> - Podi App`, o **motivo do recebimento**,
   Política de Privacidade e Termos de Uso. É o que informa o destinatário.
 - A saída do descadastro é tratada **fora do HTML**, por quem opera o envio.
 
@@ -75,9 +65,15 @@ A regra fica legível na hora do QA:
 Antes de entregar, conferir que só sobraram as três permitidas:
 
 ```bash
-grep -o "{{[^}]*}}" saida/<slug>/index.html | sort -u
+python3 -I scripts/conferir.py saida/<slug>/index.html
 ```
 
-A lista tem que conter apenas `{{email}}`, `{{topicId}}` ou `{{campaignId}}` — ou nada.
-Em disparo por outro sistema, pode conter também os campos listados no briefing, e nenhum
-outro: campo que não está no briefing é erro de montagem do mesmo jeito.
+Ele lê a peça sem os comentários — onde os blocos citam placeholders de exemplo — e acusa
+qualquer `{{...}}` que não seja `{{email}}`, `{{topicId}}` ou `{{campaignId}}`. Em disparo
+por outro sistema, os campos do briefing entram com `--campos`, e nenhum outro passa:
+
+```bash
+python3 -I scripts/conferir.py --campos nome,economia_total saida/<slug>/index.html
+```
+
+Campo que não está no briefing é erro de montagem do mesmo jeito.

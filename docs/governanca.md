@@ -65,7 +65,7 @@ sair com um padrão que ninguém mais tem — e nada no arquivo denuncia isso.
 ## Como incorporar uma mudança (maintainer)
 
 1. Colocar na camada certa:
-   - identidade, cor de marca, tom, link fixo → `brand/<marca>/` (regra que vale para as duas marcas → `brand/README.md`)
+   - identidade, cor de marca, tom, link fixo, fotografia → `brand/`
    - regra visual, token, componente, guideline, QA → `design-system/<material>/`
    - shell em branco → `templates/<material>/`
    - procedimento que a IA segue → `.claude/skills/<skill>/SKILL.md`

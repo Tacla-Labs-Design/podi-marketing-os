@@ -1,20 +1,11 @@
 # Fotografia
 
-Direção fotográfica oficial das marcas. Faz parte de `brand/`: é a camada mais alta, e
+Direção fotográfica oficial do Podi. Faz parte de `brand/`: é a camada mais alta, e
 **nada abaixo dela pode contradizê-la** — nem design system, nem template, nem skill,
 nem pedido de campanha. Ver `docs/governanca.md`.
 
-Cada marca tem **um** Style Lock, e ele é a fonte única da direção fotográfica dela:
-
-| Marca | Style Lock |
-|---|---|
-| Podi | [`podi/photography/STYLE-LOCK-PODI.md`](../podi/photography/STYLE-LOCK-PODI.md) |
-| Optimall | `optimall/photography/STYLE-LOCK-OPTIMALL.md` — derivado do Podi (mesma luz, lente e composição), roxo em três valores e cenas B2B |
-
-**A direção é a mesma entre as marcas** — luz, lente, cenário, composição, humor. O que
-muda é **só a paleta**: as seções de cor, o figurino e as frases de cor dentro dos blocos
-travados. Um Style Lock novo nasce como cópia do do Podi, com essas partes reescritas pelo
-método da §8 ("uma matiz em três valores"). Este arquivo só diz como ler um Style Lock.
+O [Style Lock](STYLE-LOCK-PODI.md) é a fonte única da direção fotográfica. Este arquivo só
+diz como lê-lo.
 
 ---
 
@@ -36,8 +27,8 @@ método da §8 ("uma matiz em três valores"). Este arquivo só diz como ler um 
 
 ## A cor da marca dentro da foto
 
-A cor de marca está resolvida dentro de cada Style Lock. No Podi, o verde **`#48DB84`**
-(`brand/podi/README.md`) vira `vivid emerald green` / `deep pine green` / `soft mint green` —
+A cor de marca está resolvida dentro do Style Lock. O verde **`#48DB84`**
+(`brand/README.md`) vira `vivid emerald green` / `deep pine green` / `soft mint green` —
 a tradução dele para o vocabulário que os geradores entendem. Não são hexadecimais
 alternativos e não se trocam por campanha.
 
@@ -46,8 +37,7 @@ como texto. Aqui, ela é figurino, objeto e props dentro da foto — outro eixo,
 
 ## `refs/`
 
-Cada marca pode ter `photography/refs/`. As do Podi (`podi/photography/refs/`) são as
-referências originais que deram origem ao Style Lock. São **leitura e insumo**, não
+As imagens de `refs/` são as referências originais que deram origem ao Style Lock. São **leitura e insumo**, não
 ativos de peça: entram como imagem de entrada em Gemini / Nano Banana (§2.10) e servem de
 gabarito para julgar uma geração. Nunca sobrescrever, nunca usar direto numa peça.
 
@@ -55,8 +45,7 @@ gabarito para julgar uma geração. Nunca sobrescrever, nunca usar direto numa p
 
 O procedimento — enquadrar o pedido, montar o prompt, escolher parâmetros por gerador,
 arquivar o que foi entregue — está na skill **`/foto-podi`**
-([`.claude/skills/foto-podi/SKILL.md`](../../.claude/skills/foto-podi/SKILL.md)). O
-`/foto-optimall` segue o mesmo procedimento, com o Style Lock do Optimall.
+([`.claude/skills/foto-podi/SKILL.md`](../../.claude/skills/foto-podi/SKILL.md)).
 
 A divisão é a de sempre: este arquivo define **o que é permitido visualmente**, a skill
 ensina **como executar**. A skill referencia o Style Lock; nunca copia trechos dele.

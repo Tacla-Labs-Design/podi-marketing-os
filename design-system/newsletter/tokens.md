@@ -1,25 +1,24 @@
 # Tokens — newsletter
 
-> Os valores abaixo são os do **Podi**, e é com eles que os componentes estão escritos.
-> Cada marca tem os mesmos papéis com outros valores, em `brand/<marca>/marca.json` — peça do
-> Optimall é montada com estes e recolorida no fim por `scripts/aplicar-marca.py`
-> ([`guidelines/marcas.md`](guidelines/marcas.md)). A estrutura HTML não muda.
+> Os valores abaixo são os do Podi, e é com eles que os componentes estão escritos. A mesma
+> paleta está em `brand/marca.json`, para máquina: é contra ela que `scripts/conferir.py`
+> confere a peça.
 
-## Token × papel da marca
+## Token × papel no `marca.json`
 
 O nome do token é o do e-mail; o papel é a chave em `cores` do `marca.json`.
 
-| Token (e-mail) | Papel (`marca.json`) | Podi | Optimall |
-|---|---|---|---|
-| cor de marca (CTA, régua) | `brand` | `#48DB84` | *pendente* |
-| texto em cima da cor de marca | `ink-on-brand` | `#101010` | *pendente* |
-| `accent-ink` | `accent-ink` | `#0C6E3B` | *pendente* |
-| `page` / `canvas` | `page-light` | `#EDF7F1` | *pendente* |
-| `accent-soft` | `accent-soft` | `#D4F0DF` | *pendente* |
-| `hairline` | `hairline` | `#D2E7DA` | *pendente* |
-| `accent-dark` | `accent-on-dark` | `#6FE9A2` | *pendente* |
-| `accent-soft-dark` | `accent-soft-dark` | `#16281E` | *pendente* |
-| `ink`, `body`, `muted`, `surface` e os neutros do dark mode | mesmo nome (`page-dark`, `surface-dark`…) | abaixo | iguais ao Podi |
+| Token (e-mail) | Papel (`marca.json`) | Valor |
+|---|---|---|
+| cor de marca (CTA, régua) | `brand` | `#48DB84` |
+| texto em cima da cor de marca | `ink-on-brand` | `#101010` |
+| `accent-ink` | `accent-ink` | `#0C6E3B` |
+| `page` / `canvas` | `page-light` | `#EDF7F1` |
+| `accent-soft` | `accent-soft` | `#D4F0DF` |
+| `hairline` | `hairline` | `#D2E7DA` |
+| `accent-dark` | `accent-on-dark` | `#6FE9A2` |
+| `accent-soft-dark` | `accent-soft-dark` | `#16281E` |
+| `ink`, `body`, `muted`, `surface` e os neutros do dark mode | mesmo nome (`page-dark`, `surface-dark`…) | abaixo |
 
 ## Cor de marca
 
@@ -35,7 +34,7 @@ Contraste sobre branco: **1,79:1** — reprova em qualquer texto. Isso governa t
 
 O `#48DB84` só entra como **fundo** — botão, tag, régua de destaque. Nunca como cor de texto.
 
-Os **ícones sociais do rodapé usam a variante verde** `#48DB84` (`brand/podi/assets/icones/*-green.png`) —
+Os **ícones sociais do rodapé usam a variante verde** `#48DB84` (`brand/assets/icones/*-green.png`) —
 decisão de marca. Vale saber o que ela custa: 1,63:1 sobre a página clara `#EDF7F1` e
 9,73:1 sobre o dark `#1A1A1A`. No modo claro o ícone é **decorativo**, não um alvo de leitura;
 quem sustenta o link ali é o `alt` com o nome da rede e a área de toque, não a forma.
@@ -92,7 +91,7 @@ sempre claro.
 Os valores **nunca** se calculam à mão:
 
 ```bash
-python3 scripts/paleta-empreendimento.py "<cor base>" <slug>
+python3 -I scripts/paleta-empreendimento.py "<cor base>" <slug>
 ```
 
 O script imprime os tokens, confere os contrastes obrigatórios (sai com erro se algum

@@ -1,9 +1,9 @@
 ---
 name: apresentacao-podi
-description: Monta uma apresentação, deck ou slide do Podi em 16:9 a partir de um briefing em projects/_inbox/<slug>/, seguindo o design system de apresentação. É também o procedimento do /apresentacao-optimall. Use quando pedirem para gerar, montar ou criar uma apresentação, um deck, um pitch, um slide ou um PowerPoint do Podi.
+description: Monta uma apresentação, deck ou slide do Podi em 16:9 a partir de um briefing em projects/_inbox/<slug>/, seguindo o design system de apresentação. Use quando pedirem para gerar, montar ou criar uma apresentação, um deck, um pitch, um slide ou um PowerPoint do Podi.
 ---
 
-# Montar uma apresentação Podi (ou Optimall)
+# Montar uma apresentação Podi
 
 Argumento: o slug da pasta em `projects/_inbox/`. Sem argumento, listar as pastas
 disponíveis e perguntar qual. Se não houver briefing em pasta nenhuma, o assunto pode vir
@@ -14,13 +14,10 @@ integralmente:
 
 | Camada | Onde | O que manda |
 |---|---|---|
-| Brand | `brand/README.md` | Regras comuns às marcas, e qual marca é a peça |
-| Brand | `brand/<marca>/README.md`, `links-oficiais.md`, `marca.json` | Identidade, contraste, secundária de detalhe, CTA e textos fixos |
-| Brand | `brand/<marca>/photography/STYLE-LOCK-<MARCA>.md` | Direção fotográfica — só quando a peça pedir **foto nova** |
-| Brand | `brand/optimall/mensagens.md` | *(Optimall)* O que dizer: números oficiais, módulos, voz, frases aprovadas |
-| Design System | `design-system/apresentacao/` | Canvas, ritmo, QA — comuns às duas marcas |
-| Design System | Podi: `tokens.md` + `slides/` · Optimall: `optimall/tokens.md` + `optimall/slides/` | A biblioteca de slides **da marca** |
-| Template | Podi: `templates/apresentacao/base.html` · Optimall: `templates/apresentacao/base-optimall.html` | O shell |
+| Brand | `brand/README.md`, `brand/links-oficiais.md`, `brand/marca.json` | Identidade, contraste, o roxo de detalhe, CTA e textos fixos |
+| Brand | `brand/photography/STYLE-LOCK-PODI.md` | Direção fotográfica — só quando a peça pedir **foto nova** |
+| Design System | `design-system/apresentacao/` | Tokens, os 16 tipos de slide, canvas, roxo, ritmo, QA |
+| Template | `templates/apresentacao/base.html` | O shell |
 
 Em caso de conflito, a camada mais alta prevalece. Ver `docs/governanca.md`.
 
@@ -40,43 +37,6 @@ o script já traz a versão nova sozinho.
   Se não atualizou nada, não comente.
 - **Saída 1** → houve alteração local conflitante. **Parar.** Dizer que esta cópia do
   padrão está diferente da oficial e que é preciso avisar quem cuida do repositório.
-
-## 0b. Qual marca
-
-O procedimento é um só e serve a duas marcas — Podi e Optimall (`brand/README.md`). Cada
-marca tem a **própria biblioteca de slides**:
-
-| | Podi | Optimall |
-|---|---|---|
-| Slides | `design-system/apresentacao/slides/` (16 tipos) | `design-system/apresentacao/optimall/slides/` (14 tipos) |
-| Tokens | `design-system/apresentacao/tokens.md` | `design-system/apresentacao/optimall/tokens.md` |
-| Template | `templates/apresentacao/base.html` | `templates/apresentacao/base-optimall.html` |
-| Recolorir no fim | — | **Não.** O deck já nasce na paleta do Optimall |
-
-Nunca misturar: slide do Podi não entra em deck do Optimall, nem o contrário.
-
-- Chamado por **`/apresentacao-optimall`**, ou briefing com `Marca: Optimall` → **Optimall**.
-- Qualquer outro caso → **Podi**. Se o deck fala de venda B2B para shopping e não diz a
-  marca, perguntar.
-
-Daqui em diante, `<marca>` é `podi` ou `optimall`, e **tudo que é de marca sai de
-`brand/<marca>/`**: identidade (`README.md`), CTA e textos fixos (`links-oficiais.md`,
-`marca.json`), Style Lock.
-
-**Optimall**, antes de seguir:
-
-```bash
-python3 scripts/aplicar-marca.py validar optimall
-```
-
-Saída diferente de 0 → **parar** e dizer, em português comum: *"a identidade do Optimall
-ainda não está completa no padrão — avise quem cuida do repositório"*. Não montar com as
-cores do Podi "por enquanto". Deck do Optimall **não cita o Podi nem a Tacla Labs**.
-
-O deck do Optimall é **sempre B2B**: fala com quem decide no shopping. O texto sai de
-`brand/optimall/mensagens.md` — números só os oficiais de lá, CTA *Fale com um consultor*,
-sempre "o Optimall". Os slides da biblioteca já vêm com o texto aprovado do deck comercial:
-num deck comercial padrão, boa parte fica como está.
 
 ## 1. Ler tudo antes de decidir qualquer coisa
 
@@ -110,9 +70,7 @@ Escreva o roteiro como uma lista: **número, tipo de slide, o que ele diz em uma
 ```
 
 O tipo se escolhe pelo **formato da informação**, não pela vontade de variar — a tabela de
-decisão está em `design-system/apresentacao/slides/README.md` (Podi) ou
-`design-system/apresentacao/optimall/README.md` (Optimall). No Optimall o fecho é o
-`11-encerramento`.
+decisão está em `design-system/apresentacao/slides/README.md`.
 
 **Mostre o roteiro e espere a pessoa confirmar antes de montar.** Deck errado é caro:
 refazer 18 slides depois de prontos é o dobro do trabalho de discordar de uma lista.
@@ -122,32 +80,26 @@ Respeite os limites de `guidelines/layout-ritmo.md` — 20 slides, ~60 palavras 
 
 ## 3. Montar
 
-1. Copiar o template da marca (`base.html` ou `base-optimall.html`) para
-   **`saida/<slug>/index.html`**.
-2. Copiar os slides escolhidos da biblioteca da marca para dentro do `<div class="deck">`, na
-   ordem do roteiro, e preencher os `{{PLACEHOLDER}}` (no Optimall, trocar o texto aprovado pelo
-   do roteiro onde ele mudar, mantendo o formato).
-   Os fixos por marca saem de `brand/<marca>/marca.json`: `{{TAGLINE}}` ← `textos.tagline`,
+1. Copiar `templates/apresentacao/base.html` para **`saida/<slug>/index.html`** e trocar o
+   `{{TITULO_DA_APRESENTACAO}}` do `<title>`.
+2. Copiar os slides escolhidos de `design-system/apresentacao/slides/` para dentro do
+   `<div class="deck">`, na ordem do roteiro, e preencher os `{{PLACEHOLDER}}`.
+   Os fixos saem de `brand/marca.json`: `{{TAGLINE}}` ← `textos.tagline`,
    `{{CTA_URL}}` ← `links.cta`, `{{CTA_TEXTO}}` ← `textos.cta_deck`, `{{REDE}}` ← `textos.rede_deck`.
-   `{{SEM_MARCA}}`/`{{COM_MARCA}}` do `11-comparativo` levam o nome da marca.
+   `{{SEM_MARCA}}`/`{{COM_MARCA}}` do `11-comparativo` levam "Podi".
    Nunca gravar em `examples/` — aquilo é acervo curado.
 3. Criar `saida/<slug>/assets/` e colocar ali **todas** as imagens, inclusive as fixas
-   copiadas de `brand/<marca>/assets/`. O deck precisa abrir sozinho se alguém mandar a pasta.
+   copiadas de `brand/assets/`. O deck precisa abrir sozinho se alguém mandar a pasta.
 4. Trocar os `<svg>` genéricos dos chips pelo glifo certo do assunto, mantendo
    `fill="currentColor"`.
-   O **logo não é imagem**: é o `<symbol>` que já vem no template. No Podi,
-   `<use href="#logo-marca">`, e a cor sai do CSS — branco sobre a cor de marca e sobre o
-   preto, `logo--marca` sobre fundo claro. No Optimall, o logo é tricolor: `#logo-optimall-negativo`
-   sobre roxo, `#logo-optimall` sobre claro. Nunca trocar por PNG, nunca recolorir por `filter`.
-5. **Nunca escrever cor solta.** Toda cor sai do `tokens.md` da marca, por `var(--token)`.
-6. **Podi: o roxo é só detalhe** — `guidelines/uso-do-roxo.md`. No máximo 3 por slide, nunca em
-   texto, nunca sobre o verde. **Optimall:** o roxo é a marca; texto sobre ele é sempre branco,
-   e roxo como texto sobre claro é `--roxo-texto` (`optimall/tokens.md`).
-7. Numerar os slides no rodapé e conferir se o CTA é o `links.cta` da marca.
-8. **Optimall:** não recolorir — o deck já nasceu na paleta dele, e o `aplicar` recusa deck do
-   Optimall. As imagens fixas saem de `brand/optimall/assets/` (`produto/`, `clientes/`,
-   `parceiros/`, `grafismos/`, `fotos/`) e vão **achatadas** para `saida/<slug>/assets/`, com o
-   nome que o slide usa. A fonte é a Halyard Text, instalada na máquina.
+   O **logo Podi não é imagem**: é o `<symbol>` que já vem no template, usado por
+   `<use href="#logo-marca">`. A cor sai do CSS — branco sobre o verde e sobre o preto,
+   `logo--marca` sobre fundo claro. Nunca trocar por PNG, nunca recolorir por `filter`.
+5. **Nunca escrever cor solta.** Toda cor sai de `design-system/apresentacao/tokens.md`,
+   por `var(--token)`.
+6. **O roxo é só detalhe** — `guidelines/uso-do-roxo.md`. No máximo 3 por slide, nunca em
+   texto, nunca sobre o verde.
+7. Numerar os slides no rodapé e conferir se o link do app é o oficial (`links.cta`).
 
 Proporção de imagem fora do esperado: **não distorça e não corte por conta própria.**
 Monte o resto e relate no fim — qual arquivo, qual proporção veio, qual era esperada.
@@ -160,14 +112,12 @@ conteúdo vai para o comando `/design` do Claude, como artboards de **1920 × 10
 O que não pode escapar: **o `/design` não decide nada de identidade.** Ele recebe as
 decisões prontas. Ao chamar, passe no briefing do canvas, explicitamente:
 
-- Os tokens do `tokens.md` da marca **com os hex** — Podi em `design-system/apresentacao/tokens.md`,
-  Optimall em `design-system/apresentacao/optimall/tokens.md`. Os hex, não os nomes.
-- Canvas 1920 × 1080, margem de segurança de 96px (Podi) ou 64px (Optimall).
-- A fonte e a escala tipográfica inteira: Inter em dois pesos (Podi); Halyard Text (Optimall).
-- As duas regras de contraste: texto sobre a cor de marca é o `ink-on-brand` da marca (no
-  Podi, `#101010` — **nunca branco** sobre o verde); a secundária (no Podi, o roxo `#9934FF`)
-  é **só detalhe gráfico**, nunca texto, nunca sobre a cor de marca.
-- O logo da marca, em SVG (`brand/<marca>/assets/header/`).
+- Os tokens de `design-system/apresentacao/tokens.md` — os hex, não os nomes.
+- Canvas 1920 × 1080, margem de segurança de 96px.
+- Inter, dois pesos, e a escala tipográfica inteira.
+- As duas regras de contraste: texto sobre o verde é `#101010`, **nunca branco**; o roxo
+  `#9934FF` é **só detalhe gráfico**, nunca texto, nunca sobre o verde.
+- O logo do Podi, em SVG (`brand/assets/header/logo-podi.svg`).
 - O roteiro do §2, com o tipo de slide de cada artboard.
 
 Se o canvas voltar com cor, fonte ou uso de roxo fora do sistema, **é o canvas que se
@@ -187,8 +137,8 @@ Se o conteúdo pede um tipo de slide, uma cor ou um layout que não existe:
 4. Proposta não vira padrão sozinha. Quem decide é o maintainer (`docs/governanca.md`).
 
 Se o briefing pedir uma **fotografia que ainda não existe**, a direção visual não se
-inventa: ela está no Style Lock da marca (`brand/<marca>/photography/`). Relate o que falta e
-aponte o Style Lock — ou monte o prompt com `/foto-podi` (`/foto-optimall`).
+inventa: ela está em `brand/photography/STYLE-LOCK-PODI.md`. Relate o que falta e aponte o
+Style Lock — ou monte o prompt com `/foto-podi`.
 
 Se o pedido conflita com o brand — outra cor, texto branco sobre o verde, título roxo,
 outro logo — **sinalize o conflito** em vez de alterar a identidade. Explique a regra em
@@ -202,33 +152,28 @@ está pronto. Os itens verificáveis por comando:
 
 ```bash
 f=saida/<slug>/index.html
-grep -c '{{' $f                                     # 0 — nenhum placeholder
-grep -n 'color:[^;"]*\(9934FF\|48DB84\|--accent)\)' $f   # Podi: só a regra .logo--marca
+python3 -I scripts/conferir.py $f                   # saída 0, e "N slides" = o roteiro
 grep -c 'color:var(--accent-2)' $f                  # só chip de ícone e aspas do 10
-grep -o '<img[^>]*>' $f | grep -cv 'alt='           # 0
-grep -o 'src="[^"]*"' $f | grep -v '^src="assets/'  # nada
-grep -c 'podi.com.br/app' $f                        # 0
-grep -c 'class="slide' $f                           # = número de slides do roteiro
-python3 scripts/aplicar-marca.py conferir <marca> $f   # saída 0
+grep -c 'podi.com.br/app' $f                        # 0 — endereço não existe
 ```
 
-Os greps com `9934FF`/`48DB84`/`--accent-2` são do deck do Podi; no do Optimall quem confere a
-paleta é o `conferir`, que também acusa qualquer sobra do Podi. No Optimall, também:
-`grep -ci 'podi\|tacla' $f` → 0 e nenhum "a Optimall".
+O `conferir` lê a peça sem os comentários e confere: nenhum `{{...}}`, toda imagem com `alt`
+e dentro de `assets/`, cor só da paleta do Podi, nada de verde ou `var(--accent)` como cor de
+texto (fora do `.logo--marca`), nenhum "a Podi" — e diz quantos slides há.
 
 Gerar o PDF:
 
 ```bash
-python3 scripts/exportar.py pdf saida/<slug>/index.html   # → saida/<slug>/<slug>.pdf
+python3 -I scripts/exportar.py pdf saida/<slug>/index.html   # → saida/<slug>/<slug>.pdf
 ```
 
-Se ele disser que a fonte não está instalada, dizer em português comum: *"a fonte do Optimall
-(Halyard Text) não está ativada neste computador — ative pelo Creative Cloud, em Fontes, e me
-avise para gerar de novo"*.
+Se ele disser que a fonte não carregou, dizer em português comum: *"a fonte do deck (Inter)
+não carregou — ela vem da internet; confira a conexão e me avise para gerar de novo"*. Não
+gerar com outra fonte.
 
-Depois **abrir no navegador** (`open $f`) e conferir de olho: nenhum slide cortado, nada
+Depois abrir o PDF (ou a peça no navegador) e conferir de olho: nenhum slide cortado, nada
 fora da margem, o PDF sai em paisagem com um slide por página.
 
-Relatar sempre: caminho do arquivo, **a marca**, **quantos slides e quais tipos**, imagens a hospedar
+Relatar sempre: caminho do arquivo, **quantos slides e quais tipos**, imagens a hospedar
 ou a substituir com a dimensão final, onde está o PDF, e **o que do briefing não coube no
 padrão** — dizendo explicitamente o que ficou de fora e por quê.

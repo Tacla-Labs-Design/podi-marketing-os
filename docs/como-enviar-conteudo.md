@@ -39,17 +39,12 @@ Não precisa formatar bonito. O que o Claude precisa achar:
 **No começo, o cabeçalho do envio:**
 
 ```
-Marca: Podi                  ← ou: Optimall
 Frente: cliente
 Data de envio: 15/09/2026
 Objetivo: divulgar os eventos de setembro nos shoppings
 Chamada da edição: Setembro chegou com novidades
 Texto de apoio: Veja o que preparamos para você neste mês.
 ```
-
-A linha **`Marca:`** diz de quem é o e-mail. Sem ela, é **Podi**. Se você usar o comando do
-Optimall (`/newsletter-optimall`), ela nem é preciso. No Optimall a `Frente:` não se aplica: o
-público é sempre o gestor de shopping.
 
 **Depois, uma notícia por bloco, numerada na ordem em que deve aparecer:**
 
@@ -132,8 +127,6 @@ leitor vê um quadrado vazio. Se saiu do iPhone em HEIC, exporte como JPG antes.
 
 ## E-mail com a marca do empreendimento
 
-*Só no Podi.* E-mail do Optimall é sempre assinado pelo Optimall.
-
 Quando **quem assina o e-mail é o shopping ou o outlet** — uma campanha dele, com o logo e as
 cores dele —, o e-mail sai com a marca do empreendimento no lugar da do Podi. O rodapé legal
 continua sendo do Podi.
@@ -172,37 +165,13 @@ isso; o app do Gmail e algumas versões do Outlook podem escurecer por conta pr�
 
 ---
 
-## Post ou carrossel (Optimall)
+## Post ou carrossel
 
-Mesma pasta em `projects/_inbox/`, com um documento curto. Um bloco por card:
-
-```
-Marca: Optimall
-Onde sai: Instagram e LinkedIn
-Formato: carrossel
-Objetivo: gestor de marketing pedir uma conversa com o comercial
-
-## 01 — capa
-Sistema de gestão para ações promocionais
-
-## 02
-3 modalidades de campanha: Compre e Ganhe, Compre e Concorra, Roleta de Prêmios
-
-## 03 — fecho
-Seja cliente Optimall
-```
-
-- **Uma ideia por card.** O que não cabe vira outro card; o texto longo vai para a legenda,
-  que o Claude escreve.
-- **Número só se estiver no guia do Optimall** (`brand/optimall/mensagens.md`). Número novo:
-  mande a fonte e avise quem cuida do repositório.
-- **Imagem:** telas do painel e do app já estão no padrão; mande só foto nova ou print
-  específico, nomeado com o número do card (`02-painel-campanha.png`). Foto de pessoa em
-  proporção 4:5 (em pé) ou 1:1.
-- **Depoimento só real**, com nome, cargo e empreendimento, e com autorização.
-
-Você recebe de volta os PNGs de cada card (`saida/<slug>/png/`) e a legenda pronta para
-Instagram e LinkedIn (`saida/<slug>/legenda.txt`).
+**Os modelos de post do Podi ainda não foram carregados no padrão.** Até chegarem, o
+`/post-podi` avisa e não monta — e não monta com modelo de outra marca nem com layout
+improvisado. Quando os modelos chegarem, o briefing segue a mesma lógica do e-mail: uma pasta
+em `projects/_inbox/`, um bloco numerado por card, uma ideia por card; o texto longo vai para
+a legenda, que o Claude escreve.
 
 ---
 

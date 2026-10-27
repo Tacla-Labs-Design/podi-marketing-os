@@ -10,6 +10,43 @@ entra sozinho no próximo e-mail.
 
 ---
 
+## 2026-10-27 — O padrão volta a ser só do Podi
+
+O Optimall passou a ter o próprio padrão, mantido à parte. Manter as duas marcas no mesmo
+lugar exigia um passo de escolha de marca em toda skill, uma troca de cor no fim do e-mail e
+regras que o time do Podi lia sem precisar. Com o Optimall fora, tudo isso sai daqui.
+
+### Removido
+
+- Tudo o que era só do Optimall: identidade, mensagens e assets, as bibliotecas de slides e
+  de posts dele, os templates `base-optimall.html` e os comandos `/newsletter-optimall`,
+  `/apresentacao-optimall`, `/post-optimall` e `/foto-optimall`.
+- O que existia só por causa das duas marcas: a escolha de marca nas skills (e a linha
+  `Marca:` no briefing), `scripts/aplicar-marca.py` (`validar`, `derivar`, `aplicar`) e
+  `design-system/newsletter/guidelines/marcas.md`.
+
+### Mudado
+
+- **`brand/podi/` volta a ser `brand/`**: `README.md`, `links-oficiais.md`, `marca.json`,
+  `assets/` e `photography/` (Style Lock e refs) sobem um nível. O `marca.json` perde o
+  `status`, que só servia para bloquear marca pendente.
+- **`scripts/conferir.py`** substitui o `aplicar-marca.py` e é só do Podi. Lê a peça sem os
+  comentários do HTML — os `grep` soltos contavam texto de comentário — e confere paleta, o
+  verde como cor de texto, as três variáveis do servidor (`--campos` para disparo por outro
+  sistema), `alt`, e, no e-mail, peso, CSS proibido, tabela sem `role`, link sem `target` e
+  botão sem a metade de fora do Outlook. `--marca` confere o `marca.json` (maintainer).
+- **`scripts/paleta-empreendimento.py`** passa a rodar com `python3 -I`, que não punha a pasta
+  do script no caminho e quebrava o `import` do `_cor.py`.
+- **`projects/` inteiro fica fora do Git**, menos o `README.md` e o `_inbox/`: projeto de
+  cliente fora do `_inbox/` estava sendo versionado.
+- CLAUDE.md, README, guias, índice de skills e as skills voltam a falar de uma marca só.
+
+**Ação necessária:** peça já montada em `saida/` que aponta para `../../brand/podi/...`
+perde as imagens no preview. Troque esses caminhos por `../../brand/...` antes de abrir de
+novo — ou monte a peça outra vez.
+
+---
+
 ## 2026-10-23 — Foto do Podi: a pessoa não precisa estar olhando o celular
 
 A regra de olhar do Style Lock do Podi dizia que o sujeito **sempre** olha para a tela do

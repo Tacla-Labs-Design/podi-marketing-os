@@ -11,7 +11,7 @@ Exemplo curado: [`examples/newsletter/2026-09-empreendimento-save-win/`](../../.
 — dois dos sete e-mails, remontados com os componentes deste modo.
 
 Autoridade: a permissão para tirar o verde Podi nasce em
-[`brand/podi/README.md`](../../../brand/podi/README.md#peças-com-marca-do-empreendimento). Este arquivo
+[`brand/README.md`](../../../brand/README.md#peças-com-marca-do-empreendimento). Este arquivo
 só diz como aplicar.
 
 ---
@@ -33,7 +33,7 @@ modo já decide.
 | Cabeçalho | `01-header` (Podi + Tacla Labs) | `01b-header-empreendimento` |
 | Rodapé social | `90-social` ou `90b` variante A | `90b-social-logo` **variante B** |
 | Grupo verde da paleta | tokens do Podi | derivado da cor base (abaixo) |
-| Ícones sociais | `brand/podi/assets/icones/*-green.png` | recoloridos para a cor base, em `saida/<slug>/imagens/icones/` |
+| Ícones sociais | `brand/assets/icones/*-green.png` | recoloridos para a cor base, em `saida/<slug>/imagens/icones/` |
 | Dark mode | bloco `prefers-color-scheme` + classes `dm-*` | **sempre claro**, sem bloco e sem `dm-*` |
 | Roxo de detalhe `#9934FF` | permitido como detalhe | não entra — é cor da Tacla Labs |
 
@@ -138,7 +138,7 @@ maintainer.
 ### O script — a conta nunca é refeita à mão
 
 ```bash
-python3 scripts/paleta-empreendimento.py "#173B2A" <slug>
+python3 -I scripts/paleta-empreendimento.py "#173B2A" <slug>
 ```
 
 Imprime os tokens, os contrastes e a tabela de troca; sai com erro se algum contraste
@@ -148,7 +148,7 @@ reprovar; gera os ícones em `saida/<slug>/imagens/icones/<rede>-campanha.png`. 
 Depois de montar, a conferência (só leitura):
 
 ```bash
-python3 scripts/paleta-empreendimento.py "#173B2A" --conferir saida/<slug>/*.html
+python3 -I scripts/paleta-empreendimento.py "#173B2A" --conferir saida/<slug>/*.html
 ```
 
 Ela acusa cor do Podi sobrando, cor fora da paleta derivada, falta do `light only`, bloco de

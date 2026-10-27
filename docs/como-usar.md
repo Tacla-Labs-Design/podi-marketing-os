@@ -19,10 +19,8 @@ o passo 1 instala o padrão no seu computador, e o passo 4 monta o primeiro e-ma
 >    é uma pessoa técnica. Nunca peça comando de Git a ela.
 > 3. **Reconheça as skills.** Elas já vêm no repositório, em `.claude/skills/`. Não é
 >    preciso instalar nada: basta abrir o Claude Code dentro da pasta que
->    `/newsletter-podi`, `/apresentacao-podi`, `/post-podi` e `/foto-podi` — e os do Optimall,
->    `/newsletter-optimall`, `/apresentacao-optimall`, `/post-optimall` e `/foto-optimall` —
->    ficam disponíveis.
->    Confirme que os seis aparecem e diga isso em português.
+>    `/newsletter-podi`, `/apresentacao-podi`, `/post-podi` e `/foto-podi` ficam disponíveis.
+>    Confirme que os quatro aparecem e diga isso em português.
 > 4. **Confirme em uma frase** que está pronto e pergunte qual material ela quer montar.
 >
 > Não altere `brand/`, `design-system/`, `templates/`, `.claude/skills/`, `examples/`,
@@ -108,9 +106,8 @@ primeiro envio de verdade.
 
 ## 2. Um comando por material
 
-Todos terminam com o nome da marca — **`-podi`** ou **`-optimall`**. O sufixo existe porque a
-ferramenta tem dezenas de comandos próprios, e você precisa saber, na hora de digitar, qual é
-o da marca — e de qual marca.
+Todos terminam com o nome da marca — **`-podi`**. O sufixo existe porque a ferramenta tem
+dezenas de comandos próprios, e você precisa saber, na hora de digitar, qual é o da marca.
 
 | Comando | O que faz |
 |---|---|
@@ -118,15 +115,6 @@ o da marca — e de qual marca.
 | **`/apresentacao-podi`** | Monta um deck 16:9 como o desta apresentação, pronto para virar PDF. Confirma o roteiro com você antes. |
 | **`/post-podi`** | Monta um post ou carrossel 1080×1350, entrega os PNGs e a legenda. *No Podi, os modelos ainda não foram carregados — ele avisa.* |
 | **`/foto-podi`** | Escreve o prompt de uma foto de marca seguindo a direção fotográfica oficial. |
-
-Para o **Optimall** — a plataforma B2B dos shoppings, que fala com gestor, nunca com
-consumidor — os mesmos quatro, com `-optimall`: `/newsletter-optimall`,
-`/apresentacao-optimall`, `/post-optimall`, `/foto-optimall`. O deck e o post dele têm modelos
-próprios, tirados do Figma do Optimall; o texto sai do guia de mensagens dele
-(`brand/optimall/mensagens.md`), com os números oficiais. A peça do Optimall não cita o Podi.
-
-> Para exportar deck e post do Optimall, a fonte **Halyard Text** precisa estar ativada no
-> computador (Creative Cloud → Fontes). Se não estiver, a IA avisa antes de gerar.
 
 ### O que ele resolve sozinho, e o que ele pergunta
 
@@ -191,8 +179,7 @@ impede o padrão de virar uma coleção de exceções.
 - Nenhuma cor escrita fora dos tokens
 - Imagem fora da proporção ele relata, nunca corta sozinho
 - Assinatura Podi + Tacla Labs no topo de toda peça do Podi
-- Peça de uma marca nunca leva logo, cor ou link da outra
-- As duas marcas são masculinas: **o Podi**, **o Optimall** — nunca "a"
+- O Podi é masculino: **o Podi**, **do Podi** — nunca "a Podi"
 
 Duas delas valem a explicação: as **variáveis** não são preciosismo — o servidor de envio
 resolve só aquelas três, e qualquer outra derruba a campanha inteira (é por isso que não
@@ -238,7 +225,7 @@ afeta ninguém.
 ## Para continuar
 
 - **Como enviar conteúdo:** [`docs/como-enviar-conteudo.md`](como-enviar-conteudo.md)
-- **As marcas:** [`brand/README.md`](../brand/README.md) · [Podi](../brand/podi/README.md) · [Optimall](../brand/optimall/README.md)
+- **A marca:** [`brand/README.md`](../brand/README.md)
 - **Índice das skills:** [`skills/README.md`](../skills/README.md)
 - **O que mudou no padrão:** [`CHANGELOG.md`](../CHANGELOG.md)
 

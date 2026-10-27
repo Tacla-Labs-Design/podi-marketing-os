@@ -16,7 +16,8 @@ NN  fecho     o pedido: um CTA só, com a marca
 - A **capa** decide se a pessoa arrasta: título grande, sem parágrafo. Pode dizer que tem
   mais ("5 motivos…", "Como funciona →").
 - **Um ponto por card no miolo.** Se o card precisa de dois parágrafos, são dois cards.
-- O **fecho** repete a marca e leva o CTA da marca (`textos.cta_deck` e o site ou "link na bio").
+- O **fecho** repete a marca e leva o CTA do Podi (`textos.cta_deck` do `brand/marca.json` e o
+  site ou "link na bio").
 - Mesmo modelo em cards seguidos é aceitável e até desejável no miolo (dá ritmo de lista).
   Capa e fecho se distinguem do miolo.
 - Numerar o card (`2/6`) só quando a sequência importa — passo a passo, ranking.

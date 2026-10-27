@@ -1,8 +1,6 @@
 # Design System — Newsletter
 
-O sistema visual das newsletters e e-mails das marcas do Marketing OS — Podi e Optimall.
-Os componentes são escritos com os valores do Podi; peça do Optimall é montada igual e
-recolorida no fim (`guidelines/marcas.md`).
+O sistema visual das newsletters e e-mails do Podi.
 
 ```
 tokens.md        Cor, tipografia, espaçamento, dark mode, tamanhos de imagem
@@ -10,8 +8,7 @@ components/      Os 23 blocos de HTML de e-mail + o botão VML
 guidelines/
   ├── email-compat.md   Regras técnicas de HTML de e-mail (não negociáveis)
   ├── layout-ritmo.md   Hierarquia, ritmo da peça, limites de CTA e de seções
-  ├── variaveis-envio.md As variáveis que cada sistema de envio aceita e por que não há descadastro
-  ├── marcas.md         Podi ou Optimall: que componente cada marca usa e como recolorir
+  ├── variaveis-envio.md As variáveis que o servidor de envio aceita e por que não há descadastro
   ├── marca-empreendimento.md  Modo empreendimento: logo, cor e redes do shopping; sempre claro
   ├── qa-checklist.md   Checklist obrigatório antes de entregar
   └── refs/             Referências visuais de design (leitura humana)
@@ -20,8 +17,8 @@ guidelines/
 ## Autoridade
 
 Este design system **obedece** ao [`brand/`](../../brand/README.md) e não pode contradizê-lo.
-A regra de contraste da cor de marca nasce lá (no Podi, o verde `#48DB84`: `brand/podi/README.md`);
-aqui ela só é aplicada.
+A regra de contraste da cor de marca nasce lá (o verde `#48DB84`: `brand/README.md`); aqui ela
+só é aplicada.
 
 ## O que é específico de e-mail
 
@@ -34,7 +31,7 @@ princípio "cards brancos estruturam, fundo não se destaca".
 
 Quando surgir um segundo tipo de material, nasce `design-system/<material>/` e o que for
 comum sobe para `brand/`. **Essa promoção não se faz por antecipação** — só com um segundo
-caso de uso real para validar.
+caso de uso real que a confirme.
 
 ## Alterar isto
 

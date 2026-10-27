@@ -3,7 +3,7 @@
 
 > **Diretriz oficial de Brand do Marketing OS, marca Podi.** Nenhuma camada abaixo de `brand/`
 > — design system, template, skill ou pedido de campanha — redefine o que está aqui.
-> Contexto e o que é normativo: [`brand/photography/README.md`](../../photography/README.md).
+> Contexto e o que é normativo: [`brand/photography/README.md`](README.md).
 >
 > Documento gerado com a skill `brand-consistent-photography`.
 > Fonte: 5 referências em `refs/` (Motorola-like, PicPay-like, Apple-like lifestyle mobile).
@@ -50,7 +50,7 @@ As 5 refs compartilham um mesmo sistema. Isto é o que precisa ser replicado:
 - **Saturação:** média-alta nos accents, **baixa no resto**. Não é um look "vibrance no talo" — é seletivo.
 - **Curva:** **blacks levantados com viés ciano/azul** (nunca preto puro), highlights com rolloff suave, sem estouro.
 - **Pele:** tons naturais. Nunca laranja, nunca amarelada.
-- **Leitura de referência:** `a0658801` mostra o caso extremo e é o mais próximo do que a PODI precisa — **monocromia verde em camadas** (verde-escuro, verde-médio, verde-mint) contra concreto claro e céu azul.
+- **Leitura de referência:** `a0658801` mostra o caso extremo e é o mais próximo do que o Podi precisa — **monocromia verde em camadas** (verde-escuro, verde-médio, verde-mint) contra concreto claro e céu azul.
 
 ### 1.6 Mood & Sensação
 Jovem, solar, otimista, acessível, urbano. **Genuíno, não corporativo** — micro-expressões reais (sorriso contido, olho semicerrado pelo sol, boca fazendo bico de selfie). Diversidade real de idade, etnia, corpo e gênero é parte do sistema, não uma cota: as refs vão de mulher 25 a homem 65+.
@@ -121,7 +121,7 @@ Para peças de outlet. Usar o STYLE LOCK **§4.B**.
 
 ### 2.6 Paleta PODI
 
-O verde oficial do Podi é **`#48DB84`** (`brand/podi/README.md`). Os nomes em inglês abaixo são a tradução
+O verde oficial do Podi é **`#48DB84`** (`brand/README.md`). Os nomes em inglês abaixo são a tradução
 desse verde para o vocabulário que os geradores entendem — **não** hexadecimais alternativos.
 
 ```

@@ -25,8 +25,7 @@ Isto abre num navegador, não no Outlook. São permitidos e recomendados:
 O que continua proibido:
 
 - **Cor escrita direto** fora do `:root` do template. Toda cor sai de `../tokens.md`.
-- **Fonte que não seja a da marca**: Inter do Google Fonts no Podi; Halyard Text, instalada
-  na máquina (Adobe Fonts), no Optimall.
+- **Fonte externa que não seja a Inter** do Google Fonts.
 - `<script>` que mude conteúdo. O único JS do template é o que escala o canvas na tela.
 - Imagem carregada de URL externa. Tudo em `assets/` da própria pasta.
 
@@ -41,11 +40,12 @@ open saida/<slug>/index.html
 
 ## Export em PDF
 
-O caminho padrão é o script, que usa o Chrome da máquina, confere antes se a fonte da marca
-está instalada e confere depois se saiu uma página por slide:
+O caminho padrão é o script, que usa o Chrome da máquina, confere antes se a Inter
+carregou (ela vem do Google Fonts: precisa de internet) e confere depois se saiu uma página
+por slide:
 
 ```bash
-python3 scripts/exportar.py pdf saida/<slug>/index.html     # → saida/<slug>/<slug>.pdf
+python3 -I scripts/exportar.py pdf saida/<slug>/index.html     # → saida/<slug>/<slug>.pdf
 ```
 
 À mão, pelo navegador, também funciona:

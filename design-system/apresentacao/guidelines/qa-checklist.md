@@ -28,7 +28,7 @@
 - [ ] Todas com `alt` descrevendo o que a imagem mostra
 - [ ] Exportadas em 2x da exibição (ver `../tokens.md`)
 - [ ] Nenhuma distorcida ou cortada para caber
-- [ ] Logo da marca pelo `<use href="#logo-marca">`, nunca por PNG nem `filter`
+- [ ] Logo do Podi pelo `<use href="#logo-marca">`, nunca por PNG nem `filter`
 - [ ] Logo branco sobre a cor de marca e sobre o preto; `logo--marca` sobre fundo claro
 - [ ] Rodapé assinado pelo logo, nunca pelo nome da marca escrito
 - [ ] Logo de cliente na versão light mode
@@ -37,8 +37,7 @@
 
 - [ ] Nenhum `{{PLACEHOLDER}}` sobrou
 - [ ] Todo número tem label e fonte do dado
-- [ ] O CTA do encerramento é o `links.cta` da marca (Podi: `https://podi.podiapp.com.br/podi-e931a`)
-- [ ] Deck de outra marca: `aplicar-marca.py aplicar <marca>` rodado, e nada do Podi sobrou
+- [ ] O CTA do encerramento é o link do app, `https://podi.podiapp.com.br/podi-e931a` (`links.cta`)
 - [ ] Uma ideia por slide, nenhum slide acima de ~60 palavras
 
 ## Export
@@ -51,30 +50,11 @@
 
 ```bash
 f=saida/<slug>/index.html
-grep -c '{{' $f                                     # 0 — placeholders
-grep -n 'color:[^;"]*\(9934FF\|48DB84\|--accent)\)' $f   # só a regra .logo--marca
+python3 -I scripts/conferir.py $f                   # saída 0 — placeholders, alt, assets/, paleta, verde como texto; "N slides"
 grep -c 'color:var(--accent-2)' $f                  # só chip de ícone e aspas do 10
-grep -o '<img[^>]*>' $f | grep -cv 'alt='           # 0
-grep -o 'src="[^"]*"' $f | grep -v '^src="assets/'  # nada
 grep -c 'podi.com.br/app' $f                        # 0 — endereço não existe
-python3 scripts/aplicar-marca.py conferir <marca> $f   # saída 0 — paleta, sobras de outra marca, placeholders
+python3 -I scripts/exportar.py pdf $f               # saída 0 — uma página por slide
 ```
 
-Os greps com hex (`9934FF`, `48DB84`) são do deck do **Podi**. No deck de outra marca eles
-não acham nada — quem confere ali é o `conferir`, que lê a paleta da marca.
-
-## No deck do Optimall
-
-Os itens de cor, tipografia e logo acima são os do Podi. No Optimall valem estes no lugar deles:
-
-- [ ] Todos os slides são da biblioteca `design-system/apresentacao/optimall/slides/` — nenhum do Podi
-- [ ] Nenhuma cor escrita direto — tudo por `var(--token)` de `optimall/tokens.md`
-- [ ] Texto sobre o roxo é branco; roxo como texto sobre claro é `--roxo-texto`
-- [ ] Só Halyard Text; nenhum texto de leitura abaixo de 24px
-- [ ] Texto dentro da margem de segurança de 64px
-- [ ] Logo pelos `<symbol>` do template: negativo sobre roxo, positivo sobre claro
-- [ ] Números só os de `brand/optimall/mensagens.md`; sempre "o Optimall"
-- [ ] O último slide é o `11-encerramento`, com os contatos comerciais
-- [ ] Nada do Podi nem da Tacla Labs (texto, `alt`, imagem)
-- [ ] `python3 scripts/aplicar-marca.py conferir optimall saida/<slug>/index.html` → saída 0
-- [ ] `python3 scripts/exportar.py pdf saida/<slug>/index.html` → uma página por slide
+O `conferir` lê a peça sem os comentários e acusa o verde ou `var(--accent)` como cor de texto
+(fora da regra `.logo--marca`), cor fora da paleta e "a Podi".

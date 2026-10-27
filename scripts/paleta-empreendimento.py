@@ -26,6 +26,8 @@ import os
 import re
 import sys
 
+# _cor.py mora ao lado; com `python3 -I` a pasta do script não entra sozinha no caminho.
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from _cor import contraste, de_lch, hex_rgb, lch, recolorir_png, rgb_hex, rgb_oklab
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -110,7 +112,7 @@ def gerar_icones(base, slug, redes):
     for rede in redes:
         origem = os.path.join(ICONES_BRAND, f"{rede}-green.png")
         if not os.path.exists(origem):
-            print(f"  ✗ não existe ícone oficial para '{rede}' em brand/podi/assets/icones/ — não gerado")
+            print(f"  ✗ não existe ícone oficial para '{rede}' em brand/assets/icones/ — não gerado")
             continue
         arq = os.path.join(destino, f"{rede}-campanha.png")
         w, h = recolorir_png(origem, arq, base)
@@ -139,7 +141,7 @@ def conferir(caminho, t):
     dm = sorted(set(re.findall(r"\bdm-[a-z]+", html)))
     if dm:
         pend.append("sobraram classes de dark mode: " + ", ".join(dm))
-    if re.search(r"-green\.png|brand/podi/assets/icones", html):
+    if re.search(r"-green\.png|brand/assets/icones", html):
         pend.append("ícone social ainda aponta para o verde do Podi em brand/")
     if re.search(r"podibr|company/podiapp|open\.spotify\.com/user/31ipy", html):
         pend.append("rede social do Podi numa peça do empreendimento")

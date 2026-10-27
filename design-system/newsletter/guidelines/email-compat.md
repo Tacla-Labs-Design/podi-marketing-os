@@ -106,7 +106,7 @@ Tamanhos e papéis exatos: [`../tokens.md`](../tokens.md).
 ## Conteúdo e entregabilidade
 
 - Rodapé sempre com: `© <ano> - Podi App`, motivo do recebimento, Política de Privacidade
-  e Termos de Uso — os dois últimos com as URLs oficiais de `brand/podi/links-oficiais.md`.
+  e Termos de Uso — os dois últimos com as URLs oficiais de `brand/links-oficiais.md`.
   **Sem link de descadastro** (ver `variaveis-envio.md`).
 - Só três variáveis existem no envio: `{{email}}`, `{{topicId}}`, `{{campaignId}}`.
   Qualquer outra derruba a campanha — regra completa em `variaveis-envio.md`.

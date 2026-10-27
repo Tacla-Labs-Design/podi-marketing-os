@@ -1,9 +1,9 @@
 ---
 name: foto-podi
-description: Escreve o prompt de uma foto de marca do Podi a partir de um pedido em português — hero de site, banner, imagem de campanha, detalhe de app. Use quando pedirem uma foto, uma imagem de marca, um prompt de imagem ou uma geração de foto para peça do Podi. É também o procedimento do /foto-optimall.
+description: Escreve o prompt de uma foto de marca do Podi a partir de um pedido em português — hero de site, banner, imagem de campanha, detalhe de app. Use quando pedirem uma foto, uma imagem de marca, um prompt de imagem ou uma geração de foto para peça do Podi.
 ---
 
-# Escrever o prompt de uma foto Podi (ou Optimall)
+# Escrever o prompt de uma foto Podi
 
 O pedido chega solto, em português: *"quero uma foto de alguém resgatando cupom"*,
 *"preciso de um hero pro site"*. Esta skill transforma isso num prompt pronto para colar
@@ -13,16 +13,9 @@ Esta skill é o **procedimento**. A direção visual está em outro lugar e mand
 
 | Camada | Onde | O que manda |
 |---|---|---|
-| Brand | `brand/<marca>/photography/STYLE-LOCK-<MARCA>.md` | DNA fotográfico, cenários, luz, paleta, checklist |
+| Brand | `brand/photography/STYLE-LOCK-PODI.md` | DNA fotográfico, cenários, luz, paleta, checklist |
 | Brand | `brand/photography/README.md` | O que ali é normativo e o que é ferramenta |
-| Brand | `brand/<marca>/README.md` | Cor de marca, público |
-
-**Qual marca:** chamado por `/foto-optimall`, ou pedido para peça do Optimall → `optimall`;
-qualquer outro caso → `podi`. A direção fotográfica é **a mesma** nas duas marcas — luz,
-lente, cenário, composição. Muda **só a paleta**, e ela já está resolvida dentro do Style Lock
-de cada uma. Se `brand/optimall/photography/STYLE-LOCK-OPTIMALL.md` ainda não existir,
-**parar** e dizer: *"a direção fotográfica do Optimall ainda não foi carregada no padrão —
-avise quem cuida do repositório"*. Nunca usar o Style Lock do Podi trocando a cor na hora.
+| Brand | `brand/README.md` | Cor de marca, as duas frentes |
 
 Em caso de conflito, a camada mais alta prevalece. Ver `docs/governanca.md`.
 
@@ -41,8 +34,7 @@ Antes de qualquer coisa, e **sem perguntar nada ao usuário**:
 
 ## 1. Regra zero — ler o Style Lock
 
-**Abra o Style Lock da marca inteiro antes de escrever qualquer prompt** —
-`brand/podi/photography/STYLE-LOCK-PODI.md` ou `brand/optimall/photography/STYLE-LOCK-OPTIMALL.md`.
+**Abra `brand/photography/STYLE-LOCK-PODI.md` inteiro antes de escrever qualquer prompt.**
 
 Não escreva de memória, nem numa conversa longa em que o arquivo já "passou" antes — ele é
 a fonte da verdade e pode ter mudado desde então.
@@ -62,12 +54,12 @@ Todo prompt precisa destas decisões fechadas:
 |---|---|
 | **Tipo de shot** | close-up · plano médio · três-quartos · wide editorial · detalhe/macro |
 | **Sujeito** | idade, etnia, cabelo, corpo — **sempre específico**, nunca "uma pessoa". Varie entre pedidos: as refs vão de 25 a 65+ (§1.6) |
-| **Ação no app** | campanha/sorteio · resgate de cupom · consulta de informação · wayfinding · navegação genérica · ou um momento sem o app em uso (ler, conversar, descansar), com o celular apoiado no quadro. **No Optimall o slot é "Ação no trabalho"** (§3 do Style Lock dele): gestão, reunião, análise, operação — nunca consumidor fazendo compra como assunto |
+| **Ação no app** | campanha/sorteio · resgate de cupom · consulta de informação · wayfinding · navegação genérica · ou um momento sem o app em uso (ler, conversar, descansar), com o celular apoiado no quadro |
 | **Cenário** | um dos **8 cenários de interior** da §2.4 (padrão). A §2.5 (outlet, 9–12) só se o pedido for explicitamente de outlet. **Não inventar cenário fora da lista** |
 | **Posição na luz** | **obrigatório no interior** — onde o sujeito está em relação à claraboia ou ao vidro. Sem isso o gerador põe luz de loja na pele e a foto sai fora do padrão |
-| **Props na cor da marca** | roupa em 1–2 valores da cor de marca + case ou sacola no valor claro (§2.6). No interior a cor precisa de **volume** — peça inteira, não detalhe. No Podi: verde, case mint. No Optimall: roxo em volume (blazer, tricô, camisa), capa lavanda, figurino business-casual |
+| **Props verdes** | roupa em 1–2 valores de verde + case mint ou sacola (§2.6). No interior o verde precisa de **volume** — peça inteira, não detalhe |
 | **Formato** | 4:5 feed · 9:16 story · 16:9 banner/OOH · 1:1 thumbnail |
-| **Óptica** | `85mm f/2.0` é o padrão de interior. `35mm f/3.2` só quando a arquitetura é o assunto — cenários 1, 3, 5 — ou em grupo (Podi 5.8; Optimall 5.2) |
+| **Óptica** | `85mm f/2.0` é o padrão de interior. `35mm f/3.2` só quando a arquitetura é o assunto — cenários 1, 3, 5 — ou em grupo (5.8) |
 
 **Não pergunte se puder inferir.** "Foto pro Instagram" → 4:5. "Banner do site" → 16:9.
 Pergunte só quando a resposta muda materialmente a imagem (ex.: campanha sem dizer se é uma
@@ -81,20 +73,19 @@ dele** e ajuste sujeito e cenário — não escreva do zero. Diga de qual varia�
 ## 4. Montar
 
 ```
-[TIPO DE SHOT] + [SUJEITO + AÇÃO NO APP (Optimall: AÇÃO NO TRABALHO)] + [CENÁRIO §2.4 da marca] + [POSIÇÃO NA LUZ NATURAL]
-+ [PROPS NA COR DA MARCA] + ⟪STYLE LOCK §4.A verbatim⟫ + [PARÂMETROS]
+[TIPO DE SHOT] + [SUJEITO + AÇÃO NO APP] + [CENÁRIO §2.4] + [POSIÇÃO NA LUZ NATURAL]
++ [PROPS VERDES] + ⟪STYLE LOCK §4.A verbatim⟫ + [PARÂMETROS]
 ```
 
 O prompt sai **em inglês** — os geradores respondem muito melhor. A conversa é em português.
 
-A cor de marca já está traduzida no Style Lock em três valores — no Podi, o `#48DB84` vira
-`vivid emerald green` / `deep pine green` / `soft mint green`; no Optimall, os termos da §2.6
-dele. **Não invente outro termo de cor e não escreva o hex dentro do prompt** — gerador não
-entende hexadecimal.
+O verde do Podi é `#48DB84` e já está traduzido no Style Lock como `vivid emerald green` /
+`deep pine green` / `soft mint green`. **Não invente outro termo de cor e não escreva o hex
+dentro do prompt** — gerador não entende hexadecimal.
 
 ## 5. Rodar o checklist da §6
 
-Antes de entregar, confira que o texto do prompt satisfaz os 11 itens. Os que mais escapam
+Antes de entregar, confira que o texto do prompt satisfaz todos os itens. Os que mais escapam
 na hora de escrever:
 
 - **Regra da Luz do Dia** — o sujeito precisa estar *dentro* da luz de claraboia ou vidro.
@@ -105,11 +96,9 @@ na hora de escrever:
 - **Espaço negativo** — no interior é o vazio claro do átrio, o teto branco, a claraboia.
   É o substituto do céu; sem ele a foto não parece da marca.
 - **Contra-plongée** — câmera abaixo da linha dos olhos. É a assinatura mais reconhecível.
-- **Tela de produto não se gera.** Painel, dashboard, app do Optimall: a foto sai com a tela
-  ilegível (glow) e a tela real de `brand/optimall/assets/produto/` entra na montagem.
 - **Nunca olhar para a câmera.** Por padrão o olhar vai para a tela; em cena de outra atividade
   (livro, conversa), vai para ela — e o celular continua no quadro, com o glow verde (§1.4).
-- **Um único accent, e ele é a cor da marca**, em 2–3 valores no mesmo quadro.
+- **Um único accent, e ele é verde**, em 2–3 valores no mesmo quadro.
 
 ## 6. Entregar neste formato
 
@@ -143,7 +132,7 @@ de explicação: quem lê é designer e vai ler a imagem melhor que a prosa.
 
 ## 7. Guardar
 
-Gravar o bloco entregue em **`saida/fotos/NNN-slug.md`** (no Optimall, `saida/fotos/optimall-NNN-slug.md`) — `001-hero-mezanino.md`,
+Gravar o bloco entregue em **`saida/fotos/NNN-slug.md`** — `001-hero-mezanino.md`,
 `002-cupom-boutique.md` —, numeração sequencial e contínua. É o histórico do ensaio: dá para
 repetir uma foto meses depois e reaproveitar a seed.
 
@@ -153,9 +142,6 @@ Como `saida/` é pasta local, **nunca gravar em `brand/`** — nem prompt, nem i
 
 Prompt de texto sozinho **não** sustenta um sistema visual longo. Sempre que o usuário já
 tiver imagens aprovadas, lembre:
-
-*No Optimall, as refs do Podi **nunca** entram como `--sref` — elas carregam o verde. Enquanto
-o Optimall não tiver refs próprias, use `--sref` só com imagens roxas já aprovadas dele, ou nada.*
 
 1. **`--sref`** — 3 a 5 imagens aprovadas como Style Reference (`--sref <urls> --sw 100`)
    travam o look melhor que qualquer descrição. É a alavanca mais forte, e no interior vale
@@ -172,8 +158,7 @@ reference oficial — isso é **proposta de evolução do padrão**, decidida pe
 
 Se o pedido precisa de cenário, cor ou tratamento que o Style Lock não tem:
 
-1. **Não invente.** Nada de cenário fora da §2.4/§2.5 **do Style Lock da marca** (os do
-   Optimall não são os do Podi), nada de segundo accent, nada de termo
+1. **Não invente.** Nada de cenário fora da §2.4/§2.5, nada de segundo accent, nada de termo
    de cor novo.
 2. Verifique se um cenário aprovado resolve com outro enquadramento.
 3. Se realmente não resolve, entregue o que dá para entregar e **relate a ausência no fim**,

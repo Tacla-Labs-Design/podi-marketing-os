@@ -1,11 +1,12 @@
 ---
 name: post-podi
-description: Monta um post ou carrossel de rede social (Instagram, LinkedIn) do Podi em 1080×1350 a partir de um briefing em projects/_inbox/<slug>/, exporta em PNG e escreve a legenda. É também o procedimento do /post-optimall. Use quando pedirem para gerar, montar ou criar um post, um carrossel, um card de Instagram ou LinkedIn do Podi.
+description: Monta um post ou carrossel de rede social (Instagram, LinkedIn) do Podi em 1080×1350 a partir de um briefing em projects/_inbox/<slug>/, exporta em PNG e escreve a legenda. Use quando pedirem para gerar, montar ou criar um post, um carrossel, um card de Instagram ou LinkedIn do Podi.
 ---
 
-# Montar um post ou carrossel (Podi ou Optimall)
+# Montar um post ou carrossel do Podi
 
-Argumento: o slug da pasta em `projects/_inbox/`. Sem argumento, listar as pastas
+Argumento: o slug da pasta em `projects/_inbox/`. Antes de pedir ou ler o briefing, rodar o
+§0 e o §0b — sem modelos de post, não há o que perguntar. Sem argumento, listar as pastas
 disponíveis e perguntar qual. Se não houver briefing em pasta nenhuma, o assunto pode vir
 direto da conversa — mas o roteiro (§2) continua obrigatório.
 
@@ -14,13 +15,10 @@ integralmente:
 
 | Camada | Onde | O que manda |
 |---|---|---|
-| Brand | `brand/README.md` | Regras comuns às marcas, e qual marca é a peça |
-| Brand | `brand/<marca>/README.md`, `links-oficiais.md`, `marca.json` | Identidade, contraste, logo, CTA, redes |
-| Brand | `brand/optimall/mensagens.md` | *(Optimall)* O que dizer: números oficiais, módulos, voz, frases aprovadas |
-| Brand | `brand/<marca>/photography/STYLE-LOCK-<MARCA>.md` | Direção fotográfica — só quando o post pedir **foto nova** |
-| Design System | `design-system/post/` | Canvas, carrossel, legenda, QA |
-| Design System | `design-system/post/<marca>/` | Tokens e modelos de post da marca |
-| Template | `templates/post/base-<marca>.html` | O shell |
+| Brand | `brand/README.md`, `brand/links-oficiais.md`, `brand/marca.json` | Identidade, contraste, logo, CTA, redes |
+| Brand | `brand/photography/STYLE-LOCK-PODI.md` | Direção fotográfica — só quando o post pedir **foto nova** |
+| Design System | `design-system/post/` | Canvas, carrossel, legenda, QA — e os tokens e modelos de post |
+| Template | `templates/post/base.html` | O shell |
 
 Em caso de conflito, a camada mais alta prevalece. Ver `docs/governanca.md`.
 
@@ -39,29 +37,16 @@ Quem usa este comando não é pessoa técnica (`CLAUDE.md`). Não peça para ela
 - **Saída 1** → **parar**. Dizer que esta cópia do padrão está diferente da oficial e que é
   preciso avisar quem cuida do repositório.
 
-## 0b. Qual marca
-
-- Chamado por **`/post-optimall`**, ou briefing com `Marca: Optimall` → **Optimall**.
-- Qualquer outro caso → **Podi**. Se o post fala com gestor de shopping (B2B) e não diz a
-  marca, perguntar.
-
-Daqui em diante, `<marca>` é `podi` ou `optimall`, e **tudo que é de marca sai de
-`brand/<marca>/`**.
+## 0b. Os modelos existem?
 
 ```bash
-python3 scripts/aplicar-marca.py validar <marca>
-ls design-system/post/<marca>/posts/ templates/post/base-<marca>.html
+ls design-system/post/posts/ design-system/post/tokens.md templates/post/base.html
 ```
 
-- `validar` com saída diferente de 0 → **parar**: *"a identidade do <Marca> ainda não está
-  completa no padrão — avise quem cuida do repositório"*.
-- **Sem modelos de post da marca** (hoje é o caso do **Podi**) → **parar**: *"os modelos de
-  post do Podi ainda não foram carregados no padrão — avise quem cuida do repositório"*.
-  Nunca montar post do Podi com os modelos de outra marca, nem improvisar um layout.
-
-**Optimall:** o post é **B2B** — fala com quem decide no shopping, nunca com o consumidor
-final. Todo texto sai de `brand/optimall/mensagens.md`. Não cita o Podi nem a Tacla Labs —
-nem no texto, nem no `alt`, nem na legenda. Sempre "o Optimall", nunca "a Optimall".
+- **Faltando qualquer um** → **parar** e dizer, em português comum: *"os modelos de post do Podi ainda não
+  foram carregados no padrão — avise quem cuida do repositório"*. Nunca improvisar um layout,
+  nem montar com modelo de deck ou de outra marca.
+- Tudo presente → seguir.
 
 ## 1. Ler tudo antes de decidir qualquer coisa
 
@@ -84,34 +69,33 @@ Antes de montar, saber três coisas. Se o briefing não disser, **perguntar**:
 Uma lista: **número do card, modelo, o que ele diz em uma frase.**
 
 ```
-01  01-foto-titulo        capa: Sistema de gestão para ações promocionais
-02  02-grade-recursos     3 modalidades de campanha
-03  03-mockup-painel      o painel: tudo em tempo real
-04  06-foto-faixa-cta     fecho: Seja cliente Optimall
+01  <modelo da capa>   capa: a promessa, em uma frase
+02  <modelo do miolo>  um ponto por card
+03  <modelo do miolo>  …
+04  <modelo do fecho>  fecho: o pedido, com o CTA do Podi
 ```
 
-O modelo se escolhe pelo **formato da informação** — tabela em
-`design-system/post/<marca>/README.md`. Estrutura de carrossel em
-`design-system/post/guidelines/carrossel.md`: 3 a 10 cards, capa, miolo com um ponto por card,
-fecho com o CTA.
+O modelo se escolhe pelo **formato da informação** — o catálogo dos modelos fica no
+`README.md` de `design-system/post/` quando eles forem carregados. Estrutura de carrossel em `design-system/post/guidelines/carrossel.md`:
+3 a 10 cards, capa, miolo com um ponto por card, fecho com o CTA.
 
 **Mostre o roteiro com o texto de cada card e espere a pessoa confirmar antes de montar.**
 
 ## 3. Montar
 
-1. Copiar `templates/post/base-<marca>.html` para **`saida/<slug>/index.html`**.
-2. Copiar os modelos escolhidos de `design-system/post/<marca>/posts/` para dentro do
+1. Copiar `templates/post/base.html` para **`saida/<slug>/index.html`** e trocar o título do
+   `<title>`.
+2. Copiar os modelos escolhidos de `design-system/post/posts/` para dentro do
    `<div class="grade">`, na ordem do roteiro, e preencher os `{{PLACEHOLDER}}`.
    Nunca gravar em `examples/`.
 3. Criar `saida/<slug>/assets/` e colocar ali **todas** as imagens — as do briefing e as fixas
-   copiadas de `brand/<marca>/assets/` (produto, clientes, grafismos). O post precisa abrir
-   sozinho se alguém mandar a pasta.
+   copiadas de `brand/assets/`. O post precisa abrir sozinho se alguém mandar a pasta.
 4. Trocar os ícones genéricos dos chips pelo glifo certo do assunto, mantendo
    `fill="currentColor"` ou `stroke="currentColor"`.
-5. O **logo não é imagem**: é o `<symbol>` que vem no template, usado por `<use href="#…">`,
-   na versão certa para o fundo (`tokens.md` da marca). Nunca PNG, nunca `filter`.
-6. **Nunca escrever cor solta.** Toda cor sai de `design-system/post/<marca>/tokens.md`, por
-   `var(--token)`.
+5. O **logo não é imagem**: é o `<symbol>` que vem no template, usado por `<use href="#…">`.
+   A cor sai do CSS; nunca PNG, nunca `filter`.
+6. **Nunca escrever cor solta.** Toda cor sai de `design-system/post/tokens.md`, por
+   `var(--token)`. O verde `#48DB84` é só fundo — texto em cima dele é `#101010`, nunca branco.
 7. **O que não cabe vira outro card** — nunca fonte menor que o mínimo do `tokens.md`.
 8. Escrever `saida/<slug>/legenda.txt` conforme `design-system/post/guidelines/legenda.md`
    (Instagram, LinkedIn e ALT de cada card).
@@ -119,20 +103,19 @@ fecho com o CTA.
 Imagem com proporção fora do slot: **não distorça e não corte por conta própria.** Monte o
 resto e relate no fim — qual arquivo, qual proporção veio, qual era esperada.
 
-Foto que não existe: a direção visual não se inventa — está no Style Lock da marca. Monte com
-a imagem de produto mais próxima de `brand/<marca>/assets/produto/`, relate, e ofereça o
-prompt com `/foto-<marca>`.
+Foto que não existe: a direção visual não se inventa — está no Style Lock do Podi. Relate o
+que falta e ofereça o prompt com `/foto-podi`.
 
 ## 4. Exportar
 
 ```bash
-python3 scripts/exportar.py png saida/<slug>/index.html
+python3 -I scripts/exportar.py png saida/<slug>/index.html
 ```
 
 - Saída 0 → um PNG por card em `saida/<slug>/png/`, na ordem do roteiro.
-- *"A fonte … não está instalada"* → dizer em português comum: *"a fonte do <Marca> (Halyard
-  Text) não está ativada neste computador — ative pelo Creative Cloud, em Fontes, e me avise
-  para exportar de novo"*. Não exportar com outra fonte.
+- *"A fonte … não carregou"* → dizer em português comum que a fonte do Podi não carregou
+  neste computador e que é preciso avisar quem cuida do repositório. Não exportar com outra
+  fonte.
 
 ## 5. Quando falta algo no sistema
 
@@ -145,31 +128,25 @@ um layout novo):
    explicitamente como **proposta**.
 4. Proposta não vira padrão sozinha. Quem decide é o maintainer (`docs/governanca.md`).
 
-Se o pedido conflita com o brand — outra cor, texto escuro sobre o roxo do Optimall, logo
-recolorido, falar com o consumidor num post do Optimall — **sinalize o conflito** em uma frase
-e ofereça a alternativa que respeita o sistema. Se a pessoa reafirmar, é decisão dela: diga
-que a peça sai fora do padrão e siga.
+Se o pedido conflita com o brand — outra cor, texto branco sobre o verde, título roxo, logo
+recolorido — **sinalize o conflito** em uma frase e ofereça a alternativa que respeita o
+sistema. Se a pessoa reafirmar, é decisão dela: diga que a peça sai fora do padrão e siga.
 
 ## 6. QA e entrega
 
-Rodar `design-system/post/guidelines/qa-checklist.md` inteiro. Os itens verificáveis por comando:
+Rodar `design-system/post/guidelines/qa-checklist.md` inteiro. O verificável por comando:
 
 ```bash
-f=saida/<slug>/index.html
-grep -c '{{' $f                                     # 0 — nenhum placeholder
-grep -o '<img[^>]*>' $f | grep -cv 'alt='           # 0
-grep -o 'src="[^"]*"' $f | grep -v '^src="assets/'  # nada
-grep -c 'class="post' $f                            # = número de cards do roteiro
-python3 scripts/aplicar-marca.py conferir <marca> $f   # saída 0
-python3 scripts/exportar.py png $f                     # saída 0
+python3 -I scripts/conferir.py saida/<slug>/index.html saida/<slug>/legenda.txt   # saída 0, "N cards" = o roteiro
 ```
 
-No Optimall, também: `grep -ci 'podi\|tacla' $f saida/<slug>/legenda.txt` → 0, e nenhum "a
-Optimall".
+Ele lê a peça sem os comentários e confere: nenhum `{{...}}`, toda imagem com `alt` e dentro
+de `assets/`, cor só da paleta, o verde nunca como cor de texto, nenhum "a Podi" — na arte e
+na legenda — e diz quantos cards há. Os PNGs já saíram no §4.
 
 Depois **abrir cada PNG** com a tool Read e conferir de olho: texto cortado, imagem que não
 carregou, fonte trocada, nada fora da margem.
 
-Relatar sempre, em português comum: onde estão os PNGs e a legenda, **a marca**, **quantos
-cards e quais modelos**, imagens que precisam ser trocadas por versão final (com a dimensão),
-e **o que do briefing não coube no padrão** — dizendo explicitamente o que ficou de fora e por quê.
+Relatar sempre, em português comum: onde estão os PNGs e a legenda, **quantos cards e quais
+modelos**, imagens que precisam ser trocadas por versão final (com a dimensão), e **o que do
+briefing não coube no padrão** — dizendo explicitamente o que ficou de fora e por quê.

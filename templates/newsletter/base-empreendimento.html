@@ -78,7 +78,7 @@
              MODO EMPREENDIMENTO — shell sempre claro.
              Regras: design-system/newsletter/guidelines/marca-empreendimento.md
 
-             ANTES DE MONTAR: python3 scripts/paleta-empreendimento.py "<cor base>" <slug>
+             ANTES DE MONTAR: python3 -I scripts/paleta-empreendimento.py "<cor base>" <slug>
              Ele confere os contrastes, gera os ícones sociais e imprime a troca de cores.
 
              COLE OS BLOCOS DE design-system/newsletter/components/ AQUI, NESTA ORDEM:
@@ -96,7 +96,7 @@
                  (esta página já vem com #EDF7F1 no fundo: ele também troca);
                - tirar todas as classes dm-* dos blocos colados;
                - ícones sociais: imagens/icones/<rede>-campanha.png, nunca os -green de brand/;
-               - conferir: python3 scripts/paleta-empreendimento.py "<cor base>" --conferir <arquivo>
+               - conferir: python3 -I scripts/paleta-empreendimento.py "<cor base>" --conferir <arquivo>
 
              VARIÁVEIS: no envio pelo servidor do Podi só existem {{email}}, {{topicId}}
              e {{campaignId}}. Campos do briefing ({{nome}} e afins) só ficam se o disparo

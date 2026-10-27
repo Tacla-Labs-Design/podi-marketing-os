@@ -1,29 +1,26 @@
 # Podi Marketing OS
 
-O lugar onde ficam guardados os **padrões oficiais do Podi e do Optimall** para criação de
+O lugar onde ficam guardados os **padrões oficiais do Podi** para criação de
 materiais de Marketing, Design e Publicidade — cores, componentes, modelos e as instruções
 que a IA segue para montar tudo isso.
 
 A ideia é simples: você traz o conteúdo, a IA monta o material já dentro do padrão da
 marca. Ninguém precisa lembrar de cor, tamanho de fonte ou regra de rodapé.
 
-## Qual marca?
+## Comandos
 
-| Marca | Para quem fala | Comandos |
-|---|---|---|
-| **Podi** — o app dos shoppings | Consumidor final e time | `/newsletter-podi`, `/apresentacao-podi`, `/foto-podi` |
-| **Optimall** — a plataforma B2B dos shoppings | Gestores de shopping (B2B), sempre | `/newsletter-optimall`, `/apresentacao-optimall`, `/post-optimall`, `/foto-optimall` |
-
-As duas seguem **o mesmo sistema** — mesmos passos, mesmas regras de qualidade. O e-mail usa
-os mesmos blocos nas duas marcas; o deck e o post do Optimall têm modelos próprios, tirados do
-Figma dele (roxo, vidro, fonte Halyard). Você escolhe a marca pelo comando, ou escrevendo
-`Marca: Optimall` no briefing; sem isso, é Podi.
+| Material | Comando |
+|---|---|
+| Newsletter / e-mail | `/newsletter-podi` |
+| Apresentação / deck | `/apresentacao-podi` |
+| Post / carrossel | `/post-podi` *(modelos pendentes)* |
+| Foto de marca | `/foto-podi` |
 
 ---
 
 ## Para quem é
 
-Para o time de Marketing, Design e Publicidade do Podi e do Optimall.
+Para o time de Marketing, Design e Publicidade do Podi.
 
 **Não é preciso saber programar.** Você escreve o conteúdo e organiza as imagens; a IA faz
 o resto. Se em algum momento uma resposta pedir que você mexa no repositório, algo saiu do
@@ -36,9 +33,9 @@ lugar — avise quem cuida do padrão.
 | Material | Situação |
 |---|---|
 | **Newsletter / e-mail** | Completo — design system, 23 componentes, modelos, exemplos e skill pronta |
-| **Apresentação / deck** | Completo — Podi com 16 tipos de slide; Optimall com 14, dos modelos do Figma. Exporta PDF |
-| **Post / carrossel** | Completo no Optimall — 7 modelos 1080×1350, PNG e legenda prontos. Podi: modelos pendentes |
-| **Foto de marca** | Completo nas duas marcas — direção fotográfica (Style Lock) e skill que escreve o prompt |
+| **Apresentação / deck** | Completo — 16 tipos de slide, exporta PDF |
+| **Post / carrossel** | Canvas 1080×1350, regras e skill prontos. **Modelos do Podi pendentes** — até chegarem, o comando avisa e não monta |
+| **Foto de marca** | Completo — direção fotográfica (Style Lock) e skill que escreve o prompt |
 | Outros materiais | Ainda não. A estrutura já está preparada para receber |
 
 ---
@@ -85,7 +82,7 @@ teste pela própria ferramenta de envio.
 ## Como o projeto está organizado
 
 ```
-brand/               A identidade das marcas: podi/ e optimall/ — logo, cores, tom de voz, links
+brand/               A identidade do Podi — logo, cores, tom de voz, links, fotografia
 design-system/       Como cada tipo de material se constrói: cores, componentes, regras
 templates/           Os modelos em branco
 examples/            Materiais prontos, para ver como fica
@@ -102,7 +99,7 @@ Mapa detalhado: [`docs/estrutura.md`](docs/estrutura.md).
 ## O que é oficial
 
 Tudo em **`brand/`, `design-system/`, `templates/`, `examples/`, `docs/` e as skills** é
-recurso oficial. É o padrão das marcas.
+recurso oficial. É o padrão da marca.
 
 **`projects/_inbox/` e `saida/` são seus.** Ficam no seu computador, não vão para lugar
 nenhum e não afetam ninguém.
@@ -144,7 +141,7 @@ Se for aprovado, o recurso entra no padrão e no
 
 ## Como adicionar um recurso novo (maintainer)
 
-1. Colocar o recurso na camada certa: identidade → `brand/` (comum) ou `brand/<marca>/`; regra visual ou componente →
+1. Colocar o recurso na camada certa: identidade → `brand/`; regra visual ou componente →
    `design-system/<material>/`; modelo em branco → `templates/<material>/`; procedimento
    que a IA segue → `.claude/skills/<skill>/SKILL.md`.
 2. Documentar no README da própria pasta.
@@ -166,7 +163,7 @@ aponte para o `CLAUDE.md` e para o `SKILL.md` do material.
 
 ## Referência rápida
 
-- **As marcas:** [`brand/README.md`](brand/README.md) · [Podi](brand/podi/README.md) · [Optimall](brand/optimall/README.md)
+- **A marca:** [`brand/README.md`](brand/README.md)
 - **Design system da newsletter:** [`design-system/newsletter/README.md`](design-system/newsletter/README.md)
 - **Componentes:** [`design-system/newsletter/components/README.md`](design-system/newsletter/components/README.md)
 - **Checklist de QA:** [`design-system/newsletter/guidelines/qa-checklist.md`](design-system/newsletter/guidelines/qa-checklist.md)

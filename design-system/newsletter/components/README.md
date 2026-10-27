@@ -10,7 +10,7 @@ A numeração é a ordem em que os blocos costumam aparecer na peça.
 |---|---|
 | `00-hero-podi-news.html` | Header completo das edições do Podi News (ver abaixo) |
 | `01-header.html` | Header padrão: logos Podi + Tacla Labs |
-| `01b-header-empreendimento.html` | Header de **logo único**, centralizado numa placa branca: logo do shopping (modo empreendimento) ou do Optimall |
+| `01b-header-empreendimento.html` | Header de **logo único**, centralizado numa placa branca: logo do shopping (modo empreendimento) |
 | `02-hero-title.html` | Headline de abertura |
 | `02a-eyebrow.html` | Tag / eyebrow acima de um título |
 | `02b-titulo-secao.html` | Título de seção |
@@ -28,15 +28,14 @@ A numeração é a ordem em que os blocos costumam aparecer na peça.
 | `13a-card-galeria-2col.html` | Item do `13`: galeria de 2 colunas 1:1 com texto e etiqueta opcional |
 | `13b-card-extrato.html` | Item do `13`: extrato de dados, rótulo à esquerda e valor à direita |
 | `90-social.html` | Ícones sociais do rodapé, centralizados — URLs já fixas |
-| `90b-social-logo.html` | Rodapé social com logo à esquerda e ícones à direita. Variante A Podi, B logo e redes de outra assinatura (empreendimento ou Optimall) |
+| `90b-social-logo.html` | Rodapé social com logo à esquerda e ícones à direita. Variante A Podi, B logo e redes do empreendimento |
 | `91-footer-legal.html` | Rodapé legal completo |
 | `99-spacer.html` | Espaçador vertical |
 | `_button.html` | CTA no padrão VML (`<v:roundrect>` + `<a>`). Variante A verde, B neutra escura |
 
 Obrigatórios em toda peça: `01-header` (ou `00-hero-podi-news`), `90-social` (ou `90b-social-logo`),
 `91-footer-legal`. No modo empreendimento: `01b-header-empreendimento`, `90b-social-logo`
-variante B e `91-footer-legal`. Peça do Optimall: os mesmos três do modo empreendimento
-(ver [Peças do Optimall](#peças-do-optimall)).
+variante B e `91-footer-legal`.
 Entre blocos, usar `99-spacer`.
 
 ---
@@ -121,30 +120,8 @@ no limite de quatro. Dentro dele:
 
 ---
 
-## Peças do Optimall
-
-O catálogo é o mesmo — **qualquer bloco de conteúdo serve** (`02` a `13b`). Mudam só as
-pontas, porque a peça do Optimall tem um logo só e não cita o Podi:
-
-| No lugar de | Usar | Preenchido com |
-|---|---|---|
-| `00-hero-podi-news` / `01-header` | `01b-header-empreendimento` | logo PNG e nome do Optimall (`brand/optimall/marca.json` → `logo.png`) |
-| `90-social` / `90b` variante A | `90b-social-logo` variante B | logo e redes do Optimall; os ícones o script troca |
-| `91-footer-legal` | `91-footer-legal` | igual — o script troca a assinatura e os links legais |
-
-A peça é montada com os valores do Podi e recolorida no fim — nunca à mão:
-
-```bash
-python3 scripts/aplicar-marca.py aplicar optimall saida/<slug>/index.html
-```
-
-Diferente do modo empreendimento, **o dark mode fica**: o Optimall tem os tokens de escuro
-aprovados. Regra completa: [`guidelines/marcas.md`](../guidelines/marcas.md).
-
----
-
 ## Caminhos de imagem
 
-Os `src` dos componentes apontam para `../../brand/podi/assets/…`, que é o caminho correto a
+Os `src` dos componentes apontam para `../../brand/assets/…`, que é o caminho correto a
 partir de `saida/<slug>/index.html`. Se o arquivo montado for para outro lugar, ajustar.
 Antes de enviar, esses caminhos relativos viram URLs absolutas `https://`.

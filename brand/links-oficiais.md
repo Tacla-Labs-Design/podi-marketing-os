@@ -43,12 +43,12 @@ O `&` do Spotify vai escapado como `&amp;` no HTML.
 
 ## Imagem do fecho "Podi e você, sempre uma parceria perfeita"
 
-Sempre `brand/podi/assets/end-news-img.jpg`. Nunca uma arte nova, nunca uma cópia dentro da
+Sempre `brand/assets/end-news-img.jpg`. Nunca uma arte nova, nunca uma cópia dentro da
 pasta do envio.
 
 ## Ícones sociais
 
-Variante **verde** (`brand/podi/assets/icones/*-green.png`, `#48DB84`), por decisão de marca.
+Variante **verde** (`brand/assets/icones/*-green.png`, `#48DB84`), por decisão de marca.
 
 No modo claro dá 1,63:1 sobre a página — é **ornamento, não alvo de leitura**. Por isso
 o `alt` com o nome da rede é obrigatório em cada ícone, e a área de toque é o que

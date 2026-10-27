@@ -8,17 +8,17 @@ de legenda do Instagram e do LinkedIn. A arte chama; a legenda explica.
 ```
 linha 1   o gancho — é o que aparece antes do "mais". Até ~125 caracteres
           (corpo)  2 a 5 frases curtas, uma ideia por parágrafo
-          CTA      um só, o da marca
+          CTA      um só, o do Podi
           hashtags (Instagram) no fim, separadas por uma linha em branco
 ```
 
 - **A primeira linha se lê sozinha.** Não começa com "Você sabia", nem com emoji, nem com o
   nome da marca.
-- **Um CTA.** O da marca (`brand/<marca>/links-oficiais.md`). Instagram não tem link clicável
+- **Um CTA.** O do Podi (`brand/links-oficiais.md`). Instagram não tem link clicável
   na legenda: "link na bio" ou o site escrito. LinkedIn aceita a URL.
-- **Número só com fonte.** Os números que a marca pode usar estão na documentação dela (no
-  Optimall, `brand/optimall/mensagens.md`).
-- **Emoji:** no máximo um por parágrafo, nunca no lugar de palavra. No Optimall (B2B), de
+- **Número só com fonte** — o briefing ou a documentação oficial do Podi. Número sem origem
+  não entra.
+- **Emoji:** no máximo um por parágrafo, nunca no lugar de palavra. Na frente `interno`, de
   preferência nenhum.
 - **Hashtags:** de 3 a 5, específicas do assunto. Nada de hashtag genérica (#marketing,
   #sucesso). No LinkedIn, no máximo 3.

@@ -31,7 +31,7 @@ imagens/      Quatro imagens nos nomes e proporções certos
 
 As imagens são **placas coloridas de teste**, não fotografia — existem para você ver o
 encaixe e a proporção funcionando. Foto de marca de verdade segue
-[`brand/podi/photography/STYLE-LOCK-PODI.md`](../../brand/podi/photography/STYLE-LOCK-PODI.md).
+[`brand/photography/STYLE-LOCK-PODI.md`](../../brand/photography/STYLE-LOCK-PODI.md).
 
 ## Para reparar no resultado
 

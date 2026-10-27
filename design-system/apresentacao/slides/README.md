@@ -55,7 +55,7 @@ Todas as imagens do deck ficam em `saida/<slug>/assets/`, referenciadas relativa
 `src="assets/nome.jpg"`. Nunca caminho absoluto da máquina, nunca `../`.
 
 Os ativos fixos da marca — logo, imagem do fecho, ícones — **se copiam** de
-`brand/podi/assets/` para `assets/` do deck no momento da montagem. O deck precisa abrir
+`brand/assets/` para `assets/` do deck no momento da montagem. O deck precisa abrir
 sozinho quando alguém mandar a pasta por e-mail.
 
 Dimensões e proporção de cada slot: [`../tokens.md`](../tokens.md) → "Imagens".
@@ -89,19 +89,14 @@ A cor vem do CSS, não do arquivo:
 | Fundo | Classe |
 |---|---|
 | Cor de marca ou preto | `logo` — branco |
-| Claro | `logo logo--marca` — a cor de marca original (Podi: `#48DB84`), em qualquer tamanho |
+| Claro | `logo logo--marca` — o verde de marca `#48DB84`, em qualquer tamanho |
 
 **O rodapé de todo slide é assinado pelo logo**, nunca pelo nome da marca escrito —
 `.slide__foot` já dimensiona em 72px. Em fundo claro ele é a cor de marca, discreto de propósito.
 
 Nunca trocar por um PNG, nunca aplicar `filter` para mudar a cor, e nunca colar o `<path>`
 de novo dentro de um slide: existe uma cópia só, e é a do template. Fonte do desenho:
-`brand/podi/assets/header/logo-podi.svg`.
-
-**Deck de outra marca:** os slides ficam como estão — `viewBox="0 0 263 128"`,
-`aria-label="Podi"` e `<title>Podi</title>` incluídos. `scripts/aplicar-marca.py aplicar
-<marca>` troca o `<symbol>` pelo SVG da marca e ajusta `viewBox`, `aria-label` e `<title>` de
-cada uso. Nunca editar esses atributos à mão.
+`brand/assets/header/logo-podi.svg`.
 
 Tamanhos em uso: **520px** na capa, **360px** no encerramento, **280px** no mockup.
 

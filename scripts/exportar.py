@@ -10,10 +10,10 @@ Uso:
   python3 scripts/exportar.py pdf saida/<slug>/index.html
         o deck inteiro em saida/<slug>/<slug>.pdf, um slide por página, em paisagem
   python3 scripts/exportar.py fontes saida/<slug>/index.html
-        só confere se a fonte da peça está instalada nesta máquina
+        só confere se a fonte da peça carregou
 
-Antes de exportar, confere se a primeira fonte de `--font` do :root está instalada. Se não
-estiver, o Chrome trocaria por outra em silêncio e a peça sairia fora do padrão — então para.
+Antes de exportar, confere se a primeira fonte de `--font` do :root carregou. Se não
+carregou, o Chrome trocaria por outra em silêncio e a peça sairia fora do padrão — então para.
 
 Saída 0 = ok. Saída 1 = não exportou (fonte ausente, Chrome ausente, nada para exportar).
 Saída 2 = uso errado.
@@ -114,11 +114,11 @@ def exigir_fontes(arquivo):
         print("✗ Não consegui abrir a peça no Chrome para conferir a fonte.")
         return False
     if not ok:
-        print(f"✗ A fonte {familia} não está instalada neste computador. Sem ela a peça sai com "
-              "outra letra.\n  Ative a fonte (no Optimall: Halyard Text, pelo Adobe Fonts / Creative "
-              "Cloud) e rode de novo.")
+        print(f"✗ A fonte {familia} não carregou. Sem ela a peça sai com outra letra.\n"
+              "  A Inter vem do Google Fonts (link no <head> do template): confira a internet e se "
+              "o link está na peça, e rode de novo.")
         return False
-    print(f"✓ fonte {familia} instalada")
+    print(f"✓ fonte {familia} carregada")
     return True
 
 

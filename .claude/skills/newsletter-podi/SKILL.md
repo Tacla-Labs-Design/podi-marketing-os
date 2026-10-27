@@ -1,9 +1,9 @@
 ---
 name: newsletter-podi
-description: Monta uma newsletter, Podi News, informativo interno ou e-mail marketing do Podi a partir de um briefing em projects/_inbox/<slug>/. É também o procedimento do /newsletter-optimall. Use quando pedirem para gerar, montar ou criar uma newsletter, um Podi News, um informativo interno ou um e-mail marketing a partir de um documento e uma pasta de imagens.
+description: Monta uma newsletter, Podi News, informativo interno ou e-mail marketing do Podi a partir de um briefing em projects/_inbox/<slug>/. Use quando pedirem para gerar, montar ou criar uma newsletter, um Podi News, um informativo interno ou um e-mail marketing a partir de um documento e uma pasta de imagens.
 ---
 
-# Montar uma newsletter Podi (ou Optimall)
+# Montar uma newsletter Podi
 
 Argumento: o slug da pasta em `projects/_inbox/`. Sem argumento, listar as pastas
 disponíveis e perguntar qual.
@@ -13,12 +13,10 @@ valem integralmente:
 
 | Camada | Onde | O que manda |
 |---|---|---|
-| Brand | `brand/README.md` | Regras comuns às marcas, e qual marca é a peça |
-| Brand | `brand/<marca>/README.md`, `links-oficiais.md`, `marca.json` | Identidade, contraste, frentes, links fixos, regra de envio |
-| Brand | `brand/<marca>/photography/STYLE-LOCK-<MARCA>.md` | Direção fotográfica — só quando a peça pedir **foto nova** |
+| Brand | `brand/README.md`, `brand/links-oficiais.md`, `brand/marca.json` | Identidade, contraste, frentes, links fixos, regra de envio |
+| Brand | `brand/photography/STYLE-LOCK-PODI.md` | Direção fotográfica — só quando a peça pedir **foto nova** |
 | Design System | `design-system/newsletter/` | Tokens, componentes, compatibilidade, ritmo, variáveis de envio, QA |
-| Design System | `design-system/newsletter/guidelines/marcas.md` | Peça do Optimall: blocos, recolorir, conferir |
-| Design System | `design-system/newsletter/guidelines/marca-empreendimento.md` | Modo empreendimento — só quando o remetente é o shopping (peça Podi) |
+| Design System | `design-system/newsletter/guidelines/marca-empreendimento.md` | Modo empreendimento — só quando o remetente é o shopping |
 | Template | `templates/newsletter/base.html` | O shell |
 | Template | `templates/newsletter/base-empreendimento.html` | O shell do modo empreendimento, sempre claro |
 
@@ -57,33 +55,7 @@ ls -R projects/_inbox/<slug>/
 - Imagens → **abrir de fato** com a tool Read. Nome de arquivo não é prova de conteúdo,
   e você precisa da proporção real para escolher o bloco.
 
-## 1a. Qual marca
-
-O e-mail é um design system só e serve a duas marcas — Podi e Optimall (`brand/README.md`).
-
-- Chamado por **`/newsletter-optimall`**, ou briefing com `Marca: Optimall` → **Optimall**.
-- Qualquer outro caso → **Podi**. Se o briefing fala de gestor de shopping, venda B2B ou do
-  Optimall e não diz a marca, perguntar.
-
-Daqui em diante, `<marca>` é `podi` ou `optimall`, e **tudo que é de marca sai de
-`brand/<marca>/`**: identidade, links e rodapé legal, redes, logo, regra de envio (`envio` no
-`marca.json`).
-
-**Optimall** — regra completa em `design-system/newsletter/guidelines/marcas.md`. Antes de
-seguir:
-
-```bash
-python3 scripts/aplicar-marca.py validar optimall
-```
-
-Saída diferente de 0 → **parar** e dizer, em português comum: *"a identidade do Optimall
-ainda não está completa no padrão — avise quem cuida do repositório"*. Não montar com as
-cores do Podi "por enquanto".
-
-Na peça do Optimall o §1b não se aplica (modo empreendimento é só do Podi), e o §4 muda
-conforme o item "No Optimall" de lá.
-
-## 1b. Detectar o modo: quem é o remetente
+## 1a. Detectar o modo: quem é o remetente
 
 Se o briefing diz que o **remetente é o empreendimento** (shopping, outlet, campanha dele)
 — `Remetente: City Center Outlet Premium`, por exemplo —, a peça é do **modo
@@ -109,7 +81,7 @@ escuro para outra cor, e seguir.
 Com a cor base em mãos, **antes de montar**:
 
 ```bash
-python3 scripts/paleta-empreendimento.py "<cor base>" <slug>
+python3 -I scripts/paleta-empreendimento.py "<cor base>" <slug>
 ```
 
 - **Saída 0** → seguir. Guardar a tabela de troca e o texto do CTA que ele imprimiu. Os
@@ -153,17 +125,18 @@ Formato fora de JPG/PNG (WebP, AVIF, HEIC, SVG) é bloqueio: converter com
 
 ## 4. Montar
 
-1. Frente `cliente` ou `interno` (`brand/podi/README.md`) — decide rodapé e tom. No
-   Optimall, público e tom estão em `brand/optimall/README.md`.
+1. Frente `cliente` ou `interno` (`brand/README.md`) — decide rodapé e tom.
    **Nenhuma peça leva link de descadastro:** o servidor de envio não suporta a variável e
    ela derruba a campanha (`design-system/newsletter/guidelines/variaveis-envio.md`).
 2. Edição do **Podi News** → header obrigatório `00-hero-podi-news.html`
    (`design-system/newsletter/components/README.md`).
 3. Copiar `templates/newsletter/base.html` para **`saida/<slug>/index.html`** e colar os
-   blocos de `design-system/newsletter/components/` no lugar marcado.
+   blocos de `design-system/newsletter/components/` no lugar marcado. Os comentários dos
+   blocos podem ficar — o `conferir` não os lê. **Nunca apagar** os condicionais do Outlook
+   (`<!--[if mso]>`, `<!--[if !mso]><!-->`, `<!--<![endif]-->`): sem eles o botão some.
    Nunca gravar em `examples/` — aquilo é acervo curado, gravado só por quem cuida do padrão.
 4. Máximo de **4 blocos de conteúdo**. Passou disso, cortar ou propor dois envios.
-5. Ativos e links fixos de `brand/<marca>/links-oficiais.md` — imagem do fecho, URLs sociais,
+5. Ativos e links fixos de `brand/links-oficiais.md` — imagem do fecho, URLs sociais,
    CTA fixo — **não se inventa**.
 6. **Nunca escrever cor solta.** Toda cor sai de `design-system/newsletter/tokens.md`.
 7. **Campos personalizados** (`{{nome}}`, `{{economia_total}}`…): só ficam se o briefing
@@ -171,25 +144,6 @@ Formato fora de JPG/PNG (WebP, AVIF, HEIC, SVG) é bloqueio: converter com
    define. Se o briefing traz os campos e não diz por onde sai, **perguntar antes de
    montar**. Sem essa confirmação, só as três variáveis
    (`design-system/newsletter/guidelines/variaveis-envio.md`).
-
-**No Optimall** (`design-system/newsletter/guidelines/marcas.md`):
-
-- Mesmo `base.html`, **com** dark mode. Não existe Podi News do Optimall: o header é o
-  `01b-header-empreendimento` com logo e nome do Optimall, e o rodapé social é o `90b`
-  variante B com as redes dele (`marca.json`). Os blocos de conteúdo são os mesmos.
-- Nada do Podi nem da Tacla Labs: nem no texto, nem no `alt`, nem a imagem do fecho.
-- **Texto B2B**, de `brand/optimall/mensagens.md`: fala com o gestor do shopping, números só
-  os oficiais de lá, CTA *Fale com um consultor* (`links.cta`). Nunca "a Optimall".
-- Enquanto `envio.variaveis` do `marca.json` estiver vazio, **nenhuma variável `{{...}}`**:
-  o rodapé perde o "em {{email}}" ("Você recebeu este e-mail porque …").
-- Montada a peça — ainda com as cores do Podi que vêm dos blocos —, recolorir. Nunca trocar
-  cor à mão:
-
-  ```bash
-  python3 scripts/aplicar-marca.py aplicar optimall saida/<slug>/index.html
-  ```
-
-  Saída 1 → corrigir o que ele apontou antes de seguir.
 
 **No modo empreendimento**, os passos 2 e 3 mudam:
 
@@ -215,7 +169,7 @@ Se o conteúdo pede um bloco, uma cor ou um layout que não existe:
 4. Proposta não vira padrão sozinha. Quem decide é o maintainer (`docs/governanca.md`).
 
 Se o briefing pedir uma **fotografia que ainda não existe**, a direção visual não se
-inventa: ela está no Style Lock da marca (`brand/<marca>/photography/`). Relate o que falta e
+inventa: ela está no Style Lock (`brand/photography/STYLE-LOCK-PODI.md`). Relate o que falta e
 aponte o Style Lock como referência para quem for produzir a imagem.
 
 Isso vale **só para fotografia**. As imagens que chegam em `_inbox/` não passam por
@@ -232,37 +186,35 @@ Rodar `design-system/newsletter/guidelines/qa-checklist.md` inteiro antes de diz
 está pronto. Os itens verificáveis por comando:
 
 ```bash
-f=saida/<slug>/index.html
-wc -c < $f                                                         # < 100 KB
-grep -cE '<script|<form|<iframe|display:flex|calc\(|var\(--' $f    # 0
-grep -o '<table[^>]*>' $f | grep -cv 'role="presentation"'         # 0
-grep -o '<img[^>]*>' $f | grep -cv 'alt='                          # 0
-grep -o '<a [^>]*href="http[^>]*>' $f | grep -cv 'target="_blank"' # 0
-grep -o '{{[^}]*}}' $f | sort -u                                   # só {{email}}, {{topicId}}, {{campaignId}}
+python3 -I scripts/conferir.py saida/<slug>/index.html   # saída 0
 ```
 
-O último é o mais caro de errar: `{{MAIUSCULA}}` que sobrou é placeholder não preenchido,
-e qualquer variável fora das três permitidas **derruba o envio inteiro**
-(`design-system/newsletter/guidelines/variaveis-envio.md`). Em disparo por outro sistema, a
-lista pode ter também os campos do briefing — e nenhum outro.
+Ele lê a peça sem os comentários e confere, de uma vez: peso abaixo de 100 KB, nada de
+`<script>`, `<form>`, `<iframe>`, flex, `calc()` ou `var(--)`, toda tabela com
+`role="presentation"`, toda imagem com `alt`, todo link com `target="_blank"`, botão VML
+inteiro, cor só da paleta, o verde nunca como cor de texto, nenhum "a Podi" — e as
+variáveis.
 
-Na peça do Optimall, além disso — a lista de variáveis permitidas é a do `marca.json`, não
-as três do Podi:
+As variáveis são o mais caro de errar: `{{MAIUSCULA}}` que sobrou é placeholder não
+preenchido, e qualquer variável fora das três permitidas **derruba o envio inteiro**
+(`design-system/newsletter/guidelines/variaveis-envio.md`). Em disparo por outro sistema,
+passar os campos do briefing — e nenhum outro:
 
 ```bash
-python3 scripts/aplicar-marca.py conferir optimall saida/<slug>/index.html   # saída 0
+python3 -I scripts/conferir.py --campos nome,economia_total saida/<slug>/index.html
 ```
 
-No modo empreendimento, além disso:
+**No modo empreendimento**, o `conferir.py` não se aplica (a paleta é derivada da cor do
+shopping). No lugar dele:
 
 ```bash
-python3 scripts/paleta-empreendimento.py "<cor base>" --conferir saida/<slug>/*.html   # saída 0
+python3 -I scripts/paleta-empreendimento.py "<cor base>" --conferir saida/<slug>/*.html   # saída 0
 ```
 
 Ele acusa cor do Podi sobrando, classe `dm-*`, falta do `light only`, ícone ou rede do Podi
 e texto do CTA errado. Pendência aqui é correção antes de entregar, não item de relatório.
 
-Relatar sempre: caminho do arquivo, **a marca**, **subject** (≤45 caracteres), **preheader** (60–90),
+Relatar sempre: caminho do arquivo, **subject** (≤45 caracteres), **preheader** (60–90),
 peso do HTML, componentes usados, imagens a hospedar com dimensão final, e o que ficou
 de fora e por quê.
 
@@ -270,9 +222,6 @@ No modo empreendimento, relatar também: a cor base e os tokens que o script ger
 ícones recoloridos a hospedar e o aviso de que o modo é sempre claro (o app do Gmail e parte
 do Outlook podem escurecer a peça por conta própria).
 
-No Optimall, enquanto a regra de envio estiver pendente, a entrega diz, em destaque: **a
-regra de envio do Optimall ainda não foi definida** — a peça saiu sem nenhuma variável e não
-pode sair pelo servidor do Podi.
 
 Se a peça tem campos personalizados, a entrega diz, em destaque: **esta peça não pode sair
 pelo servidor do Podi** — lá, esses campos derrubam o envio inteiro.

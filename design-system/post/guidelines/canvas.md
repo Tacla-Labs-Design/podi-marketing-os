@@ -31,8 +31,8 @@ nem cortar um modelo 4:5 para outro formato.
 Flex, grid, `var(--token)`, degradê, `backdrop-filter`, `mask-image`, SVG inline. Continua
 proibido:
 
-- **Cor escrita direto** fora do `:root` do template. Toda cor sai do `tokens.md` da marca.
-- **Fonte que não seja a da marca.**
+- **Cor escrita direto** fora do `:root` do template. Toda cor sai de `../tokens.md`.
+- **Fonte que não seja a do Podi.**
 - `<script>` que mude conteúdo. O único JS do template é o da prévia.
 - Imagem de URL externa. Tudo em `assets/` da própria pasta.
 
@@ -40,11 +40,11 @@ proibido:
 
 ```bash
 open saida/<slug>/index.html                              # prévia: os posts lado a lado
-python3 scripts/exportar.py png saida/<slug>/index.html   # → saida/<slug>/png/01.png, 02.png…
+python3 -I scripts/exportar.py png saida/<slug>/index.html   # → saida/<slug>/png/01.png, 02.png…
 ```
 
-O `exportar.py` abre a peça no Chrome da máquina, confere se a fonte da marca está instalada
-(para se não estiver — sem ela o post sai com outra letra), e fotografa cada `<section
+O `exportar.py` abre a peça no Chrome da máquina, confere se a fonte da peça carregou
+(para se não carregou — sem ela o post sai com outra letra), e fotografa cada `<section
 class="post">` no tamanho real, na ordem do arquivo. Carrossel de 6 cards = 6 PNGs numerados,
 na ordem em que sobem.
 

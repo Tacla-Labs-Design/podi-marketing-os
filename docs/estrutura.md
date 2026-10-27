@@ -83,6 +83,9 @@ docs/
 └── estrutura.md                         Este arquivo
 
 scripts/check-atualizacao.sh             Verifica/atualiza a cópia local do padrão
+scripts/publicar                         Publica a marca no hub de marcas (só maintainer)
+
+hub/BRAND.md, hub/guias/, hub/modelos/   A marca no hub: regras curtas, um guia por peça, modelos com data-slot
 scripts/conferir.py                      Confere a peça montada: paleta, verde como texto, variáveis, alt, e-mail
 scripts/exportar.py                      PDF do deck (e PNG de post) pelo Chrome; confere a fonte antes
 scripts/paleta-empreendimento.py         Paleta derivada da cor base, contrastes, ícones e conferência
@@ -137,3 +140,12 @@ sufixo, na hora de digitar não dá para saber qual comando é o padrão da marc
 
 **Skills em `.claude/skills/`.** É a pasta que o Claude Code descobre sozinho. Uma segunda
 cópia em `skills/` criaria duas versões divergindo — por isso `skills/` é só o índice.
+
+**`hub/` e `scripts/publicar`.** O time também usa a marca fora deste repositório, pelo hub de
+marcas (`https://marcas.taclalabs.workers.dev/podi/manifest.json`), que qualquer ferramenta lê sem
+clonar nada. O hub tem uma versão curta do padrão: `BRAND.md`, um guia por peça e modelos HTML com
+`data-slot`, que puxam logos e imagens pelo endereço do hub. A fonte dessa versão é a pasta
+`hub/`; o `scripts/publicar` monta a pasta da marca, confere que todo endereço citado existe e
+envia ao bucket, com o manifesto por último. Mudou uma regra aqui que o hub repete? Mude também em
+`hub/` e publique de novo.
+

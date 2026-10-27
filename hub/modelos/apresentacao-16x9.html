@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>[Título da apresentação] · Podi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ---------------------------------------------------------------------------
+   TOKENS — design-system/apresentacao/tokens.md
+   Valores do Podi. Nunca escrever cor solta nos slides.
+   --------------------------------------------------------------------------- */
+:root{
+  /* marca */
+  --accent:#48DB84;          /* só fundo — nunca color: */
+  --accent-ink:#0C6E3B;      /* marca em texto, sobre fundo claro */
+  --accent-on-dark:#6FE9A2;  /* marca em texto, sobre o fundo preto */
+
+  /* secundária — só detalhe gráfico */
+  --accent-2:#9934FF;
+  --accent-2-mid:#C58CFF;
+  --accent-2-soft:#E9DBFF;
+  --accent-2-line:#E0CCFA;
+
+  /* fundos */
+  --page:#48DB84;
+  --page-light:#EDF7F1;
+  --surface:#FFFFFF;
+  --surface-alt:#F6FAF7;
+  --hairline:#D2E7DA;
+  --ink-field:#101010;
+
+  /* texto */
+  --ink:#101010;
+  --body:#4A4A4A;
+  --muted:#6E6E6E;
+  --ink-inverse:#FFFFFF;
+
+  /* forma */
+  --r-card:32px;
+  --r-card-sm:24px;
+  --r-img:24px;
+  --r-chip:20px;
+  --r-pill:100px;
+  --safe:96px;
+
+  --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+/* Item de grid/flex tem min-width:auto por padrão: um texto grande empurra a
+   coluna para fora do canvas em vez de quebrar. Num canvas fixo isso é corte. */
+.slide *{min-width:0}
+html,body{background:#2A2A2A;font-family:var(--font);-webkit-font-smoothing:antialiased}
+
+/* --- o canvas fixo ------------------------------------------------------- */
+.stage{margin:0 auto}
+.deck{width:1920px;transform-origin:top left}
+.slide{
+  position:relative;width:1920px;height:1080px;overflow:hidden;
+  background:var(--page);color:var(--ink);
+  display:flex;flex-direction:column;
+  margin:0 0 40px;
+}
+.slide:last-child{margin-bottom:0}
+.slide__pad{flex:1;display:flex;flex-direction:column;padding:var(--safe)}
+
+/* --- tipografia ---------------------------------------------------------- */
+.t-capa{font-size:96px;line-height:104px;font-weight:700;letter-spacing:-2px}
+.t-slide{font-size:64px;line-height:72px;font-weight:700;letter-spacing:-1px}
+.t-sub{font-size:32px;line-height:44px;font-weight:400;color:var(--body)}
+.t-card{font-size:40px;line-height:48px;font-weight:700}
+.t-card-sm{font-size:32px;line-height:40px;font-weight:700}
+.t-body{font-size:28px;line-height:40px;font-weight:400;color:var(--body)}
+.t-body-sm{font-size:24px;line-height:34px;font-weight:400;color:var(--body)}
+.t-num{font-size:88px;line-height:96px;font-weight:700;letter-spacing:-2px}
+.t-num-label{font-size:24px;line-height:32px;font-weight:400;color:var(--body)}
+.t-eyebrow{font-size:20px;line-height:26px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+.t-legenda{font-size:20px;line-height:28px;font-weight:400;color:var(--muted)}
+
+/* --- detalhes roxos ------------------------------------------------------ */
+.regua{width:120px;height:6px;border-radius:3px;
+  background:linear-gradient(90deg,var(--accent-2) 0%,var(--accent-2-mid) 100%)}
+.chip{width:88px;height:88px;border-radius:var(--r-chip);background:var(--accent-2-soft);
+  display:flex;align-items:center;justify-content:center;color:var(--accent-2)}
+.chip svg{width:40px;height:40px;display:block}
+
+/* --- superfícies --------------------------------------------------------- */
+.card{background:var(--surface);border-radius:var(--r-card);padding:48px}
+.card--lg{padding:64px}
+
+/* --- logo ----------------------------------------------------------------
+   O logo vem de brand/assets/header/logo-podi.svg (monocromático): a cor sai do
+   CSS por `currentColor`. Sobre a cor de marca e sobre o preto ele vai branco;
+   sobre fundo branco vai na cor de marca. Nunca recolorir o arquivo, nunca filter. */
+.logo{display:block;height:auto;fill:currentColor;color:var(--ink-inverse);flex:none}
+.logo--marca{color:var(--accent)}      /* qualquer fundo claro, em qualquer tamanho */
+
+/* --- rodapé do slide -----------------------------------------------------
+   A assinatura do rodapé é o logo, não o nome da marca escrito. A opacidade fica nos
+   spans, nunca no container: logo apagado não assina nada. */
+.slide__foot{display:flex;justify-content:space-between;align-items:center;gap:32px;
+  font-size:20px;line-height:20px;color:var(--muted);padding-top:32px}
+.slide__foot span{opacity:.75}
+.slide__foot .logo{width:72px}
+
+/* --- variantes de fundo -------------------------------------------------- */
+.slide--light{background:var(--page-light)}
+.slide--white{background:var(--surface)}
+.slide--dark{background:var(--ink-field);color:var(--ink-inverse)}
+.slide--dark .t-sub,.slide--dark .t-body,.slide--dark .t-legenda{color:#C9C9C9}
+
+/* --- preview na tela e export em PDF ------------------------------------- */
+@media screen{ body{padding:40px 0} }
+@page{size:1920px 1080px;margin:0}
+@media print{
+  html,body{background:#fff;padding:0;display:block}
+  .deck{transform:none !important}
+  .stage{width:auto !important;height:auto !important;margin:0}
+  .slide{margin:0;break-after:page;page-break-after:always}
+  .slide:last-child{break-after:auto;page-break-after:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- Modelo Podi · apresentação 16:9 (1920 × 1080, uma página do PDF por slide).
+     Copie a <section> de cada tipo na ordem do roteiro e troque só os data-slot (texto de
+     exemplo entre colchetes). Apague o que não usar. Um divisor a cada 4 a 6 slides; nunca
+     dois slides de cards seguidos. Logo pelo hub: branco sobre o verde, verde sobre claro,
+     preto pequeno no rodapé de slide verde. PDF: Chrome headless (guias/apresentacao.md). -->
+
+<div class="stage" id="stage">
+<div class="deck" id="deck">
+
+<!-- 00-capa — abertura do deck. Cor de marca cheia, logo grande, tagline.
+     Texto sobre a cor de marca é sempre var(--ink) — branco sobre o verde é proibido.
+     O logo é forma, não texto: sobre a cor de marca ele vai branco, pela classe .logo.
+     A tagline é fixa e já está no título: não troque. -->
+<style>
+.capa{justify-content:center;align-items:flex-start;gap:48px}
+.capa__tag{max-width:1100px}
+.capa__meta{display:flex;gap:32px;align-items:center;color:var(--ink);opacity:.7;
+  font-size:24px;line-height:32px}
+</style>
+<section class="slide">
+  <div class="slide__pad capa">
+    <img class="logo" style="width:520px" src="https://marcas.taclalabs.workers.dev/podi/logos/podi-logo-branco.svg" alt="Podi">
+    <h1 class="t-capa capa__tag">Pensou em Shopping<br>ou Outlet? <strong>Pensou Podi!</strong></h1>
+    <div class="regua"></div>
+    <div class="capa__meta">
+      <span data-slot="para-quem">[Para quem: shopping, parceiro ou time]</span><span>·</span><span data-slot="data">[Mês de ano]</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- 03-titulo-texto — uma ideia só, sem apoio visual. Coluna única, medida curta.
+     Se precisar de mais de dois parágrafos, o assunto vira dois slides. -->
+<style>
+.tt{justify-content:center;align-items:flex-start;gap:40px}
+.tt__box{background:var(--surface);border-radius:var(--r-card);padding:80px 96px;max-width:1400px}
+</style>
+<section class="slide">
+  <div class="slide__pad tt">
+    <div class="tt__box">
+      <span class="t-eyebrow" style="color:var(--accent-ink)" data-slot="eyebrow">[Assunto]</span>
+      <h2 class="t-slide" style="margin-top:24px" data-slot="titulo">[Uma ideia, em uma frase]</h2>
+      <div class="regua" style="margin-top:32px"></div>
+      <p class="t-body" style="margin-top:40px;max-width:1100px" data-slot="texto">[Um ou dois parágrafos curtos, até ~60 palavras.]</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- 05-cards-grid — 3 ou 4 cards de peso igual, cada um com chip de ícone roxo.
+     Troque o glifo do chip pelo do assunto (fill="currentColor"). Para 4 itens, repita o card
+     e troque grid-template-columns para repeat(4,1fr) — em 2 × 2 o rodapé passa da margem. -->
+<style>
+.grid3{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:64px}
+.grid3 .card{display:flex;flex-direction:column;gap:32px}
+</style>
+<section class="slide">
+  <div class="slide__pad">
+    <h2 class="t-slide" data-slot="titulo">[Título do slide]</h2>
+    <div class="regua" style="margin-top:24px"></div>
+    <div class="grid3">
+      <div class="card">
+        <div class="chip"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg></div>
+        <h3 class="t-card" data-slot="card-1-titulo">[Item]</h3>
+        <p class="t-body-sm" data-slot="card-1-texto">[Uma ou duas linhas.]</p>
+      </div>
+      <div class="card">
+        <div class="chip"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="5" width="18" height="14" rx="3"/></svg></div>
+        <h3 class="t-card" data-slot="card-2-titulo">[Item]</h3>
+        <p class="t-body-sm" data-slot="card-2-texto">[Uma ou duas linhas.]</p>
+      </div>
+      <div class="card">
+        <div class="chip"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg></div>
+        <h3 class="t-card" data-slot="card-3-titulo">[Item]</h3>
+        <p class="t-body-sm" data-slot="card-3-texto">[Uma ou duas linhas.]</p>
+      </div>
+    </div>
+    <div class="slide__foot" style="color:var(--ink)"><img class="logo" src="https://marcas.taclalabs.workers.dev/podi/logos/podi-logo-preto.svg" alt="Podi"><span data-slot="numero">[03]</span></div>
+  </div>
+</section>
+
+
+<!-- 02-divisor-secao — marca a virada de assunto. Fundo preto: é o oposto do corpo
+     do deck de propósito, para a plateia sentir a troca. -->
+<style>
+.divisor{justify-content:center;gap:40px}
+.divisor__n{font-size:24px;line-height:24px;font-weight:700;letter-spacing:4px;color:var(--accent-on-dark)}
+</style>
+<section class="slide slide--dark">
+  <div class="slide__pad divisor">
+    <span class="divisor__n" data-slot="secao">[SEÇÃO 02]</span>
+    <h2 class="t-capa" style="max-width:1400px" data-slot="titulo">[Nome da seção]</h2>
+    <div class="regua"></div>
+    <p class="t-sub" style="max-width:1000px" data-slot="apoio">[Uma frase do que vem.]</p>
+  </div>
+</section>
+
+
+<!-- 08-numeros — 2 a 4 números grandes. Mais que 4 e nenhum é lembrado.
+     Todo número tem label; a fonte do dado vai na legenda, nunca escondida. -->
+<style>
+.nums{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:64px;align-items:stretch}
+.nums .card{display:flex;flex-direction:column;justify-content:center;gap:16px}
+.nums .t-num{color:var(--ink)}
+.nums .regua{margin:8px 0}
+</style>
+<section class="slide">
+  <div class="slide__pad">
+    <h2 class="t-slide" data-slot="titulo">[Título do slide]</h2>
+    <div class="regua" style="margin-top:24px"></div>
+    <div class="nums">
+      <div class="card"><span class="t-num" data-slot="numero-1">[105 mil]</span><div class="regua"></div>
+        <span class="t-num-label" data-slot="numero-1-legenda">[O que ele mede]</span></div>
+      <div class="card"><span class="t-num" data-slot="numero-2">[105 mil]</span><div class="regua"></div>
+        <span class="t-num-label" data-slot="numero-2-legenda">[O que ele mede]</span></div>
+      <div class="card"><span class="t-num" data-slot="numero-3">[105 mil]</span><div class="regua"></div>
+        <span class="t-num-label" data-slot="numero-3-legenda">[O que ele mede]</span></div>
+    </div>
+    <div class="slide__foot" style="color:var(--ink)"><img class="logo" src="https://marcas.taclalabs.workers.dev/podi/logos/podi-logo-preto.svg" alt="Podi">
+      <span data-slot="fonte">[Fonte: de onde vem o dado · período]</span><span data-slot="numero">[05]</span></div>
+  </div>
+</section>
+
+
+<!-- 12-timeline — trilho horizontal de marcos. 3 a 5 marcos; mais que isso não se lê
+     de longe. O ponto do marco é roxo; o trilho é neutro. -->
+<style>
+.tl{flex:1;display:flex;flex-direction:column;justify-content:center;margin-top:48px}
+.tl__trilho{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.tl__trilho::before{content:'';position:absolute;left:0;right:0;top:19px;height:2px;background:var(--hairline)}
+.tl__marco{position:relative;display:flex;flex-direction:column;gap:24px}
+.tl__pt{width:40px;height:40px;border-radius:50%;background:var(--accent-2-soft);
+  border:8px solid var(--accent-2);box-sizing:border-box;position:relative;z-index:1}
+.tl__card{background:var(--surface);border-radius:var(--r-card-sm);padding:40px}
+</style>
+<section class="slide slide--light">
+  <div class="slide__pad">
+    <h2 class="t-slide" data-slot="titulo">[Título do slide]</h2>
+    <div class="regua" style="margin-top:24px"></div>
+    <div class="tl">
+      <div class="tl__trilho">
+        <div class="tl__marco"><span class="tl__pt"></span>
+          <div class="tl__card"><strong class="t-card-sm" data-slot="marco-1-quando">[Quando]</strong>
+            <p class="t-body-sm" style="margin-top:16px" data-slot="marco-1-texto">[O que acontece.]</p></div></div>
+        <div class="tl__marco"><span class="tl__pt"></span>
+          <div class="tl__card"><strong class="t-card-sm" data-slot="marco-2-quando">[Quando]</strong>
+            <p class="t-body-sm" style="margin-top:16px" data-slot="marco-2-texto">[O que acontece.]</p></div></div>
+        <div class="tl__marco"><span class="tl__pt"></span>
+          <div class="tl__card"><strong class="t-card-sm" data-slot="marco-3-quando">[Quando]</strong>
+            <p class="t-body-sm" style="margin-top:16px" data-slot="marco-3-texto">[O que acontece.]</p></div></div>
+        <div class="tl__marco"><span class="tl__pt"></span>
+          <div class="tl__card"><strong class="t-card-sm" data-slot="marco-4-quando">[Quando]</strong>
+            <p class="t-body-sm" style="margin-top:16px" data-slot="marco-4-texto">[O que acontece.]</p></div></div>
+      </div>
+    </div>
+    <div class="slide__foot"><img class="logo" src="https://marcas.taclalabs.workers.dev/podi/logos/podi-logo-verde.svg" alt="Podi"><span data-slot="numero">[06]</span></div>
+  </div>
+</section>
+
+
+<!-- 15-encerramento — último slide. Um pedido só, e o jeito de responder a ele.
+     Botão, link do app e @podibr são fixos. Não existe outro endereço. -->
+<style>
+.fim{justify-content:center;align-items:center;text-align:center;gap:40px}
+.fim__cta{display:inline-flex;align-items:center;gap:16px;background:var(--ink);color:var(--ink-inverse);
+  border-radius:var(--r-pill);padding:28px 56px;font-size:28px;line-height:28px;
+  font-weight:700;text-decoration:none}
+.fim__contatos{display:flex;gap:48px;color:var(--ink);opacity:.75;font-size:24px;line-height:32px}
+</style>
+<section class="slide">
+  <div class="slide__pad fim">
+    <img class="logo" style="width:360px" src="https://marcas.taclalabs.workers.dev/podi/logos/podi-logo-branco.svg" alt="Podi">
+    <h2 class="t-slide" style="max-width:1200px" data-slot="fecho">[O pedido, em uma frase]</h2>
+    <div class="regua"></div>
+    <a class="fim__cta" href="https://podi.podiapp.com.br/podi-e931a">Baixar o app Podi</a>
+    <div class="fim__contatos">
+      <span>podi.podiapp.com.br/podi-e931a</span><span data-slot="contato">[e-mail ou telefone de contato — apague se não houver]</span><span>@podibr</span>
+    </div>
+  </div>
+</section>
+
+
+</div>
+</div>
+
+<script>
+/* Escala o canvas de 1920px para caber na janela. Não roda na impressão. */
+(function(){
+  var deck=document.getElementById('deck'),stage=document.getElementById('stage');
+  function ajustar(){
+    var s=Math.min(1,(window.innerWidth-80)/1920);
+    deck.style.transform='scale('+s+')';
+    stage.style.width=(1920*s)+'px';
+    stage.style.height=(deck.scrollHeight*s)+'px';
+  }
+  window.addEventListener('resize',ajustar);
+  window.addEventListener('load',ajustar);
+  ajustar();
+})();
+</script>
+</body>
+</html>

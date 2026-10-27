@@ -35,6 +35,9 @@ CONTRASTE_GRAFICO = 3.0       # detalhe gráfico (ícone, régua, borda): WCAG 1
 # Cores técnicas do shell do deck que não são token (fundo da prévia na tela).
 TOLERADAS = {"#2A2A2A"}
 
+# Endereço das versões publicadas no hub de marcas: o deck pode citar imagem de lá.
+HUB_PODI = "https://marcas.taclalabs.workers.dev/podi/"
+
 # Pares obrigatórios: (rótulo, texto, fundo, mínimo)
 PARES = [
     ("texto sobre a cor de marca", "ink-on-brand", "brand", CONTRASTE_MIN),
@@ -171,8 +174,12 @@ def conferir(html, m, campos=()):
     secoes = re.findall(r'<section[^>]*class="[^"]*\b(slide|post)\b', limpo)
     peca_de_tela = bool(secoes)
     if peca_de_tela:
-        fora = sorted({s for s in re.findall(r'\bsrc="([^"]*)"', limpo)
-                       if not s.startswith(("assets/", "data:"))})
+        # Vale: assets/ da peça, data:, a versão publicada no hub de marcas e, no modelo do
+        # hub, a imagem vazia marcada com data-slot (quem usa o modelo preenche).
+        fora = sorted({s for tag in re.findall(r"<img\b[^>]*>", limpo, re.I)
+                       for s in re.findall(r'\bsrc="([^"]*)"', tag)
+                       if not s.startswith(("assets/", "data:", HUB_PODI))
+                       and not (s == "" and "data-slot=" in tag)})
         if fora:
             pend.append("imagem fora de assets/ (a peça não abre sozinha): " + ", ".join(fora))
     else:
@@ -185,9 +192,9 @@ def conferir(html, m, campos=()):
         sem_role = [t for t in re.findall(r"<table\b[^>]*>", limpo, re.I) if 'role="presentation"' not in t]
         if sem_role:
             pend.append(f'{len(sem_role)} tabela(s) sem role="presentation"')
-        abre = len(re.findall(r"<!--\[if !mso\]>", html))
-        if abre != len(re.findall(r"<!--\[if !mso\]><!-->", html)) or \
-                abre != len(re.findall(r"<!--<!\[endif\]-->", html)):
+        abre = len(re.findall(r"<!--\[if !mso\]>", limpo))
+        if abre != len(re.findall(r"<!--\[if !mso\]><!-->", limpo)) or \
+                abre != len(re.findall(r"<!--<!\[endif\]-->", limpo)):
             pend.append("condicional do Outlook quebrado (<!--[if !mso]><!--> … <!--<![endif]-->): "
                         "o botão ou o trecho some fora do Outlook")
         botoes = len(re.findall(r"<v:roundrect\b", limpo))

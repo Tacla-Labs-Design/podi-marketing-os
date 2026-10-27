@@ -37,3 +37,6 @@ config.json
 
 # Ferramentas locais do maintainer — não fazem parte do padrão
 local/
+
+# Cache do wrangler (scripts/publicar)
+.wrangler/

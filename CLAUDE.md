@@ -58,6 +58,7 @@ examples/<material>/         Acervo curado de referência. Só o maintainer grav
 projects/_inbox/<slug>/      ENTRADA: briefing + imagens do time. Local, fora do Git.
 saida/<slug>/                SAÍDA: o material montado. Local, fora do Git.
 docs/                        Guias para humanos: governança, estrutura, como enviar conteúdo.
+hub/                         O que vai para o hub de marcas: BRAND.md, guias e modelos (scripts/publicar).
 scripts/                     Utilitários: cópia desatualizada, conferência da peça, paleta, export.
 CHANGELOG.md                 Mudanças no padrão. Atualizar ao mexer em recurso oficial.
 ```

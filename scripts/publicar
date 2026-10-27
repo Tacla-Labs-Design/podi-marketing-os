@@ -1,0 +1,205 @@
+#!/usr/bin/env -S python3 -I
+"""Publica o Podi no hub de marcas: https://marcas.taclalabs.workers.dev/podi/
+
+Monta a pasta da marca e envia cada arquivo ao bucket R2 `tacla-labs-marcas`, na chave
+`podi/<caminho>`, com o manifest.json por último. Formato do hub: repositório
+Tacla-Labs-Design/marcas, docs/formato.md.
+
+O que vai:
+  hub/BRAND.md, hub/guias/*.md, hub/modelos/*.html   escritos à mão, neste repositório
+  podi/logos/     o logo monocromático (brand/assets/header/logo-podi.svg) pintado nas três
+                  cores oficiais — verde, branco, preto —, em SVG e PNG de 1024 px
+  podi/email/     os PNGs e JPGs que os blocos de e-mail usam: logo PNG, Tacla Labs, ícones
+                  sociais, imagem do fecho e arte do hero do Podi News
+  podi/arquivos/  qualquer outra imagem que os modelos citem, por nome, de brand/assets/
+
+Nunca vão: brand/photography/refs/ (referências fotográficas, não são ativo de peça) e
+examples/. Modelo que citar endereço do hub ausente da pasta montada para a publicação.
+
+Uso:
+  ./scripts/publicar          monta, confere e envia
+  ./scripts/publicar --seco   só monta e confere; diz onde ficou a pasta e não envia nada
+
+Envia com `pnpm dlx wrangler@4.152.0 r2 object put … --remote`, na conta em que o wrangler está
+logado. O ID da conta não fica aqui. Chave renomeada ou removida não é apagada do bucket: apague à
+mão com `wrangler r2 object delete`. PNGs saem do Google Chrome da máquina.
+"""
+
+import json
+import re
+import shutil
+import subprocess
+import sys
+import tempfile
+from concurrent.futures import ThreadPoolExecutor
+from datetime import date
+from pathlib import Path
+
+RAIZ = Path(__file__).resolve().parent.parent
+MARCA = "podi"
+HUB = "https://marcas.taclalabs.workers.dev"
+BUCKET = "tacla-labs-marcas"
+WRANGLER = "wrangler@4.152.0"
+CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+
+TIPOS = {".md": "text/markdown; charset=utf-8", ".json": "application/json; charset=utf-8",
+         ".html": "text/html; charset=utf-8", ".svg": "image/svg+xml", ".png": "image/png",
+         ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".zip": "application/zip"}
+
+# O logo do Podi é uma forma só, pintada por currentColor: cada versão é o mesmo SVG com a cor gravada.
+LOGO_FONTE = "brand/assets/header/logo-podi.svg"
+LOGOS = {
+    "podi-logo-verde": ("#48DB84", "Verde: fundo branco, claro ou preto"),
+    "podi-logo-branco": ("#FFFFFF", "Branco: sobre o verde de marca ou o preto"),
+    "podi-logo-preto": ("#101010", "Preto: uma cor, impressão"),
+}
+EMAIL = ["header/logo-podi-transparente.png", "header/logo-tacla-labs.png",
+         "end-news-img.jpg", "hero-podi-news.png"]
+PECAS = {
+    "email": ("Newsletter, Podi News ou e-mail marketing do Podi, para o consumidor ou o time",
+              ["podi/modelos/email.html"]),
+    "apresentacao": ("Apresentação 16:9 em PDF: deck para shopping, parceiro ou time",
+                     ["podi/modelos/apresentacao-16x9.html"]),
+    "foto": ("Prompt de foto de marca: hero, banner, campanha, detalhe de app", []),
+}
+PROIBIDAS = ("photography/refs",)     # partes de caminho que nunca vão ao hub
+
+
+def svg_tamanho(svg):
+    m = re.search(r'viewBox="[\d.\-]+ [\d.\-]+ ([\d.]+) ([\d.]+)"', svg.read_text())
+    return float(m.group(1)), float(m.group(2))
+
+
+def png(svg, destino, largura):
+    """Rasteriza o SVG no Chrome, fundo transparente, na largura pedida."""
+    w, h = svg_tamanho(svg)
+    altura = round(largura * h / w)
+    with tempfile.TemporaryDirectory() as tmp:
+        pagina = Path(tmp) / "r.html"
+        pagina.write_text(f"<html><body style='margin:0'><img src='file://{svg}' "
+                          f"style='display:block;width:{largura}px;height:{altura}px'></body></html>")
+        subprocess.run([CHROME, "--headless", "--hide-scrollbars", "--default-background-color=00000000",
+                        "--force-device-scale-factor=1", f"--window-size={largura},{altura}",
+                        f"--screenshot={destino}", f"file://{pagina}"], capture_output=True, check=True)
+
+
+def montar(saida):
+    def copiar(origem, chave):
+        destino = saida / chave
+        destino.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy(origem, destino)
+        return chave
+
+    hub = RAIZ / "hub"
+    copiar(hub / "BRAND.md", f"{MARCA}/BRAND.md")
+    for f in sorted((hub / "guias").glob("*.md")) + sorted((hub / "modelos").glob("*.html")):
+        copiar(f, f"{MARCA}/{f.parent.name}/{f.name}")
+
+    fonte = (RAIZ / LOGO_FONTE).read_text()
+    if fonte.count('fill="currentColor"') != 1:
+        raise SystemExit(f"{LOGO_FONTE}: esperava um único fill=\"currentColor\" para pintar.")
+    logos = {}
+    (saida / f"{MARCA}/logos").mkdir(parents=True, exist_ok=True)
+    for nome, (cor, uso) in LOGOS.items():
+        svg = saida / f"{MARCA}/logos/{nome}.svg"
+        svg.write_text(fonte.replace('fill="currentColor"', f'fill="{cor}"'))
+        png(svg, saida / f"{MARCA}/logos/{nome}-1024.png", 1024)
+        logos[nome] = {"uso": uso, "svg": f"{MARCA}/logos/{nome}.svg", "png_1024": f"{MARCA}/logos/{nome}-1024.png"}
+
+    for arquivo in EMAIL:
+        copiar(RAIZ / "brand/assets" / arquivo, f"{MARCA}/email/{Path(arquivo).name}")
+    for f in sorted((RAIZ / "brand/assets/icones").glob("*.png")):
+        copiar(f, f"{MARCA}/email/{f.name}")
+
+    # Imagens que os modelos citam em podi/arquivos/<nome>: procuradas em brand/assets/.
+    textos = [p for p in saida.rglob("*") if p.suffix in (".md", ".html")]
+    pedidos = set()
+    for p in textos:
+        pedidos |= set(re.findall(rf"{re.escape(HUB)}/{MARCA}/arquivos/([^\"')\s]+)", p.read_text()))
+    erros = []
+    for nome in sorted(pedidos):
+        achados = [f for f in (RAIZ / "brand/assets").rglob(nome) if f.is_file()]
+        if not achados:
+            erros.append(f"arquivo citado e não encontrado em brand/assets/: {nome}")
+        else:
+            copiar(achados[0], f"{MARCA}/arquivos/{nome}")
+
+    pecas = {}
+    for peca, (descricao, modelos) in PECAS.items():
+        guia = f"{MARCA}/guias/{peca}.md"
+        if not (saida / guia).exists():
+            erros.append(f"falta hub/guias/{peca}.md")
+        pecas[peca] = {"descricao": descricao, "guia": guia, "modelos": modelos}
+
+    manifesto = {
+        "marca": MARCA,
+        "nome": "Podi",
+        "versao": date.today().isoformat(),
+        "status": "ativa",
+        "fonte": "podi-marketing-os (brunovpinheiro/podi-marketing-os), scripts/publicar",
+        "regras": f"{MARCA}/BRAND.md",
+        "pecas": pecas,
+        "arquivos": {"logos": logos},
+    }
+    (saida / MARCA / "manifest.json").write_text(json.dumps(manifesto, indent=2, ensure_ascii=False) + "\n")
+
+    # Todo endereço do hub citado nos textos precisa estar na pasta montada.
+    chaves = {p.relative_to(saida).as_posix() for p in saida.rglob("*") if p.is_file()}
+    citados = set()
+    for p in textos + [saida / MARCA / "manifest.json"]:
+        conteudo = p.read_text()
+        citados |= set(re.findall(rf"{re.escape(HUB)}/({MARCA}/[^\"')\s<>`]+)", conteudo))
+        if p.name == "manifest.json":
+            citados |= set(re.findall(rf'"({MARCA}/[^"]+\.\w+)"', conteudo))
+    for chave in sorted(citados - chaves):
+        erros.append(f"endereço citado e ausente da publicação: {chave}")
+    for chave in chaves:
+        if any(p in chave for p in PROIBIDAS):
+            erros.append(f"arquivo que não vai ao hub na publicação: {chave}")
+    return sorted(chaves), erros
+
+
+def enviar(saida, chave):
+    tipo = TIPOS.get(Path(chave).suffix.lower(), "application/octet-stream")
+    r = subprocess.run(["pnpm", "dlx", WRANGLER, "r2", "object", "put", f"{BUCKET}/{chave}",
+                        "--file", str(saida / chave), "--content-type", tipo, "--remote"],
+                       capture_output=True, text=True)
+    return chave, r.returncode, (r.stderr or r.stdout).strip().splitlines()[-1:] if r.returncode else []
+
+
+def main(argv):
+    seco = "--seco" in argv
+    saida = Path(tempfile.mkdtemp(prefix=f"hub-{MARCA}-"))
+    chaves, erros = montar(saida)
+    print(f"{len(chaves)} arquivos montados em {saida}")
+    if erros:
+        for e in erros:
+            print(f"  ✗ {e}")
+        print("Nada foi enviado.")
+        return 1
+    if seco:
+        for c in chaves:
+            print(f"  {c}")
+        print("Modo seco: nada foi enviado.")
+        return 0
+    arquivos = [c for c in chaves if not c.endswith("manifest.json")]
+    manifestos = [c for c in chaves if c.endswith("manifest.json")]
+    falhas = []
+    for lote in (arquivos, manifestos):   # manifesto por último: ele só cita o que já está lá
+        with ThreadPoolExecutor(max_workers=6) as pool:
+            for chave, codigo, msg in pool.map(lambda c: enviar(saida, c), lote):
+                print(("ok    " if codigo == 0 else "FALHA ") + chave + (f"  {msg}" if msg else ""))
+                if codigo:
+                    falhas.append(chave)
+        if falhas:
+            break
+    if falhas:
+        print(f"✗ {len(falhas)} arquivo(s) não foram enviados. O manifesto não foi trocado.")
+        return 1
+    shutil.rmtree(saida, ignore_errors=True)
+    print(f"✓ Publicado: {HUB}/{MARCA}/manifest.json")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv[1:]))

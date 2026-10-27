@@ -10,6 +10,32 @@ entra sozinho no próximo e-mail.
 
 ---
 
+## 2026-10-27 — O Podi no hub de marcas
+
+O time passa a usar a marca também pelo hub (`https://marcas.taclalabs.workers.dev/podi/`), que
+qualquer ferramenta lê sem clonar o repositório.
+
+### Novo
+
+- **`hub/`**: `BRAND.md`, guias de e-mail, apresentação e foto, e modelos HTML com `data-slot`
+  (Podi News e deck). Post fica fora até os modelos chegarem; o modo empreendimento continua só
+  no repositório.
+- **`scripts/publicar`**: monta a pasta da marca — com o logo em verde, branco e preto, gerados do
+  SVG monocromático —, confere que todo endereço citado existe e envia ao bucket, com o manifesto
+  por último.
+
+### Mudado
+
+- `scripts/conferir.py` aceita imagem pelo endereço do hub e campo de imagem vazio com
+  `data-slot`, e conta os condicionais do Outlook só fora dos comentários.
+
+### Removido
+
+- `examples/newsletter/2026-09-empreendimento-save-win/brief.md`: era o briefing do cliente, e o
+  repositório é público. O exemplo continua com as duas peças e o README que explica o modo.
+
+---
+
 ## 2026-10-27 — O padrão volta a ser só do Podi
 
 O Optimall passou a ter o próprio padrão, mantido à parte. Manter as duas marcas no mesmo

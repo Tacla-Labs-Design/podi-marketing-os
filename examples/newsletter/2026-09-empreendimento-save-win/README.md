@@ -9,7 +9,6 @@ de gatilho. Daqui ficam dois, que juntos usam todos os blocos do modo.
 |---|---|
 | [`01-boas-vindas.html`](01-boas-vindas.html) | O card único completo: texto, título de grupo, galeria 1:1 sem etiqueta, nota, lista, extrato de uma linha e CTA |
 | [`07-balanco-final.html`](07-balanco-final.html) | O extrato longo (quatro linhas) e texto de fechamento depois dele |
-| [`brief.md`](brief.md) | O briefing, com o cabeçalho que o modo precisa (remetente, disparo, cor base, redes) |
 
 Montados do zero com o `base-empreendimento.html` e os componentes oficiais
 (`01b`, `03`, `08` B, `13`, `13a`, `13b`, `90b` B, `91`), paleta de

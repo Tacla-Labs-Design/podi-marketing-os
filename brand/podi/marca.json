@@ -1,0 +1,64 @@
+{
+  "_nota": "Fonte de máquina da marca Podi, lida por scripts/aplicar-marca.py. Os valores são os de design-system/newsletter/tokens.md e design-system/apresentacao/tokens.md — os componentes e slides são escritos com eles. Mudar um valor aqui não recolore nada sozinho: mudar a paleta do Podi é mudar os tokens, os componentes e este arquivo na mesma leva (CHANGELOG).",
+  "nome": "Podi",
+  "artigo": "o",
+  "status": "aprovado",
+  "cores": {
+    "brand": "#48DB84",
+    "ink-on-brand": "#101010",
+    "accent-ink": "#0C6E3B",
+    "accent-on-dark": "#6FE9A2",
+    "page-light": "#EDF7F1",
+    "accent-soft": "#D4F0DF",
+    "hairline": "#D2E7DA",
+    "surface-alt": "#F6FAF7",
+    "accent-soft-dark": "#16281E",
+    "accent-2": "#9934FF",
+    "accent-2-mid": "#C58CFF",
+    "accent-2-soft": "#E9DBFF",
+    "accent-2-line": "#E0CCFA",
+    "ink": "#101010",
+    "body": "#4A4A4A",
+    "muted": "#6E6E6E",
+    "surface": "#FFFFFF",
+    "page-dark": "#1A1A1A",
+    "surface-dark": "#242424",
+    "ink-dark": "#F5F5F5",
+    "body-dark": "#C9C9C9",
+    "muted-dark": "#8F8F8F",
+    "hairline-dark": "#333333"
+  },
+  "logo": {
+    "svg": "brand/podi/assets/header/logo-podi.svg",
+    "png": "brand/podi/assets/header/logo-podi-transparente.png"
+  },
+  "icones": "brand/podi/assets/icones/{rede}-green.png",
+  "links": {
+    "cta": "https://podi.podiapp.com.br/podi-e931a",
+    "privacidade": "https://www.podiapp.com.br/politica-privacidade/",
+    "termos": "https://www.podiapp.com.br/termos-de-uso.html"
+  },
+  "rodape": {
+    "assinatura": "Podi App"
+  },
+  "textos": {
+    "tagline": "Pensou em Shopping<br>ou Outlet? <strong>Pensou Podi!</strong>",
+    "cta_deck": "Baixar o app Podi",
+    "rede_deck": "@podibr"
+  },
+  "redes": {
+    "instagram": "https://www.instagram.com/podibr",
+    "facebook": "https://www.facebook.com/podibr",
+    "linkedin": "https://www.linkedin.com/company/podiapp",
+    "spotify": "https://open.spotify.com/user/31ipyesxy6gxagkbhw3ugdac6fka?si=a0d1d28c642a4abb&amp;nd=1&amp;dlsi=3f8e7ed87ede4cb9"
+  },
+  "envio": {
+    "sistema": "servidor do Podi",
+    "variaveis": [
+      "email",
+      "topicId",
+      "campaignId"
+    ]
+  },
+  "nao_pode_conter": []
+}

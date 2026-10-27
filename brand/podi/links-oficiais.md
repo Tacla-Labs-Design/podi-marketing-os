@@ -1,4 +1,4 @@
-# Links e ativos oficiais
+# Links e ativos oficiais — Podi
 
 Fixos em todo envio, independentemente da frente. **Copiar do componente, nunca
 reescrever à mão.**
@@ -28,7 +28,9 @@ Linha de copyright, sem razão social e sem endereço:
 
 ## Redes sociais
 
-Já fixas em `design-system/newsletter/components/90-social.html`.
+Já fixas em `design-system/newsletter/components/90-social.html` e na variante A do
+`90b-social-logo.html`. A variante B do `90b` é a única que troca as redes: ela é do
+empreendimento, e as URLs vêm do briefing dele.
 
 | Rede | URL |
 |---|---|
@@ -41,15 +43,32 @@ O `&` do Spotify vai escapado como `&amp;` no HTML.
 
 ## Imagem do fecho "Podi e você, sempre uma parceria perfeita"
 
-Sempre `brand/assets/end-news-img.jpg`. Nunca uma arte nova, nunca uma cópia dentro da
+Sempre `brand/podi/assets/end-news-img.jpg`. Nunca uma arte nova, nunca uma cópia dentro da
 pasta do envio.
 
 ## Ícones sociais
 
-Variante **verde** (`brand/assets/icones/*-green.png`, `#48DB84`), por decisão de marca.
+Variante **verde** (`brand/podi/assets/icones/*-green.png`, `#48DB84`), por decisão de marca.
 
 No modo claro dá 1,63:1 sobre a página — é **ornamento, não alvo de leitura**. Por isso
 o `alt` com o nome da rede é obrigatório em cada ícone, e a área de toque é o que
 sustenta o link. Nunca usar o verde para um ícone que precise carregar informação sozinho.
 
 As outras variantes no repositório: `-black` some no dark (1,1:1), `-white` some no claro.
+
+**Exceção — peça com marca do empreendimento:** os ícones são a mesma forma dos `-green`,
+recoloridos para a cor base da campanha por `scripts/paleta-empreendimento.py`. Eles ficam
+em `saida/<slug>/imagens/icones/` e nunca são gravados em `brand/`
+(`design-system/newsletter/guidelines/marca-empreendimento.md`).
+
+## Textos fixos do deck
+
+Entram nos placeholders dos slides `00-capa` e `15-encerramento`
+(`design-system/apresentacao/slides/`). Os mesmos valores estão em `marca.json` → `textos`.
+
+| Placeholder | Texto |
+|---|---|
+| `{{TAGLINE}}` (capa) | `Pensou em Shopping<br>ou Outlet? <strong>Pensou Podi!</strong>` |
+| `{{CTA_URL}}` (encerramento) | `https://podi.podiapp.com.br/podi-e931a` |
+| `{{CTA_TEXTO}}` (encerramento) | `Baixar o app Podi` |
+| `{{REDE}}` (encerramento) | `@podibr` |

@@ -30,16 +30,53 @@
 - [ ] Com a media query desativada, o layout ainda é legível
 - [ ] Imagens não estouram o container em 320px de largura
 
-## Dark mode
+## Dark mode (peça Podi — no modo empreendimento, ver a seção própria abaixo)
 - [ ] Testado em Apple Mail dark e Outlook.com dark
 - [ ] Logo legível sobre fundo escuro
 - [ ] Nenhum texto escuro sobre fundo escuro
 
 ## Conteúdo e envio
 - [ ] Subject ≤ 45 caracteres, sem emoji duplicado, sem CAPS
-- [ ] Rodapé com `© <ano> - Podi App`, motivo do recebimento e descadastro
-- [ ] Links de Política de Privacidade e Termos de Uso conforme `brand/links-oficiais.md`
+- [ ] Rodapé com `© <ano> - <assinatura da marca>` (Podi: `Podi App`) e motivo do recebimento
+- [ ] **Nenhum link de descadastro** na peça (o servidor não suporta a variável)
+- [ ] `grep -o "{{[^}]*}}" arquivo.html | sort -u` devolve só `{{email}}`, `{{topicId}}`
+      ou `{{campaignId}}` — nada de `{{MAIUSCULA}}` sobrando (`variaveis-envio.md`).
+      Disparo por outro sistema: também os campos do briefing, exatamente como ele os
+      escreve, e a entrega avisa que a peça não pode sair pelo servidor do Podi
+- [ ] Links de Política de Privacidade e Termos de Uso conforme `brand/<marca>/links-oficiais.md`
 - [ ] Todos os links testados e com `target="_blank"`
 - [ ] HTML final < 100 KB (`wc -c`)
 - [ ] Sem `<script>`, `<form>`, `<iframe>`, `<video>`
 - [ ] Versão texto puro gerada (se a ferramenta de envio não gerar sozinha)
+
+## Peça do Optimall (`marcas.md`)
+- [ ] `python3 scripts/aplicar-marca.py validar optimall` saiu 0 **antes** de montar
+- [ ] Header `01b` e rodapé social `90b` variante B com logo e redes do Optimall
+- [ ] `python3 scripts/aplicar-marca.py aplicar optimall <arquivo>` rodado, saída 0 — é ele que
+      garante: nenhuma cor do Podi, nenhuma menção a Podi ou Tacla Labs, nenhum asset de
+      `brand/podi/`, nenhuma variável fora das aceitas pelo sistema de envio do Optimall
+- [ ] Dark mode conferido no escuro também (o Optimall mantém o dark mode)
+- [ ] Enquanto a regra de envio estiver pendente: peça sem nenhum `{{...}}` e aviso na entrega
+
+## Modo empreendimento (`marca-empreendimento.md`)
+Substitui a seção "Dark mode" acima. Todo o resto do checklist continua valendo.
+
+- [ ] `python3 scripts/paleta-empreendimento.py "<cor base>"` aprovou os quatro contrastes
+      (muted/page, accent-ink/page, accent-ink/accent-soft, texto do CTA/base)
+- [ ] `python3 scripts/paleta-empreendimento.py "<cor base>" --conferir <arquivo>` sem
+      pendência — é ele que garante os itens abaixo marcados com ⚙
+- [ ] ⚙ Nenhuma cor do Podi sobrando: grupo verde, tokens de dark mode e o roxo `#9934FF`
+- [ ] ⚙ Texto do CTA é o que o contraste decidiu, nas duas metades do botão
+- [ ] ⚙ Modo claro forçado: `color-scheme: light only`, sem bloco `prefers-color-scheme`
+      ou `[data-ogsc]`, sem nenhuma classe `dm-*`
+- [ ] ⚙ Logo e redes do empreendimento, **nunca misturados** com os do Podi: nada de
+      `logo-podi`, `logo-tacla-labs` ou URL social do Podi
+- [ ] ⚙ Ícones sociais apontam para `imagens/icones/<rede>-campanha.png`, não para `brand/`
+- [ ] Ícones recoloridos incluídos na lista de imagens a hospedar
+- [ ] Logo do empreendimento em PNG colorido para fundo claro, 24px de altura, até 150px de
+      largura, arquivo em 2x — o mesmo no cabeçalho e no rodapé social
+- [ ] Estrutura na ordem do modo: `01b` → `03` → `08` B → `13` → `90b` B → `91`
+- [ ] Linha fina antes do CTA e um CTA só no card
+- [ ] Imagens da galeria 1:1 com no mínimo 448 × 448
+- [ ] Texto legal da promoção antes do `©`, em 12/18 `muted`; `© <ano> - Podi App`, motivo
+      do recebimento, Privacidade e Termos logo depois

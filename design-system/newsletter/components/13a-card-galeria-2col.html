@@ -1,0 +1,62 @@
+<!-- ============================================================================
+     13a · GALERIA 2 COLUNAS DENTRO DO CARD — ITEM do 13-card-conteudo.
+     Colar dentro da tabela interna do card, como qualquer outro item.
+
+     Duas colunas de 224px + 24px de respiro = 472px, a largura útil do card.
+     Imagem 1:1 exibida a 224×224 — arquivo mínimo 448×448 (2x), JPG ou PNG, raio 14px.
+     Embaixo da imagem: etiqueta opcional + texto body small 15/23.
+
+     Empilha no mobile (.stack): cada coluna vira largura inteira, imagem em cima.
+     A primeira coluna leva 28px de padding embaixo, que vira o respiro entre as duas
+     quando empilham.
+
+     Etiqueta opcional ("Opção 1"): fundo accent-soft, texto accent-ink, 12/16 uppercase.
+     Sem etiqueta, apagar a tabela da etiqueta e trocar o margin do <p> de 12px para 16px.
+     Destaque dentro do texto: <span class="dm-ink" style="font-weight:600;color:#101010;">…</span>
+
+     Diferente do 09-galeria-2col: aquele é solto na página (256px, 4:3, sem texto);
+     este vive dentro do card e carrega texto.
+     ============================================================================ -->
+            <tr>
+              <td style="padding:0;">
+                <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;">
+                  <tr>
+                    <td class="stack" width="224" valign="top" style="width:224px;padding:0 0 28px 0;">
+                      <img src="{{URL_IMG_1}}" width="224" alt="{{ALT_1}}" style="display:block;border:0;outline:none;text-decoration:none;width:100%;max-width:224px;height:auto;border-radius:14px;" />
+                      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;">
+                        <tr>
+                          <td style="padding:16px 0 0 0;">
+                            <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="left">
+                              <tr>
+                                <td align="center" bgcolor="#D4F0DF" class="dm-tag" style="border-radius:100px;padding:6px 12px;">
+                                  <span class="dm-accent" style="font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:12px;line-height:16px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#0C6E3B;">{{ETIQUETA_1}}</span>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                      <p class="dm-body" style="margin:12px 0 0 0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:15px;line-height:23px;font-weight:400;color:#4A4A4A;">{{TEXTO_1}}</p>
+                    </td>
+                    <td class="hide-mobile" width="24" style="width:24px;font-size:0;line-height:0;">&nbsp;</td>
+                    <td class="stack" width="224" valign="top" style="width:224px;padding:0;">
+                      <img src="{{URL_IMG_2}}" width="224" alt="{{ALT_2}}" style="display:block;border:0;outline:none;text-decoration:none;width:100%;max-width:224px;height:auto;border-radius:14px;" />
+                      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;">
+                        <tr>
+                          <td style="padding:16px 0 0 0;">
+                            <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="left">
+                              <tr>
+                                <td align="center" bgcolor="#D4F0DF" class="dm-tag" style="border-radius:100px;padding:6px 12px;">
+                                  <span class="dm-accent" style="font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:12px;line-height:16px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#0C6E3B;">{{ETIQUETA_2}}</span>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                      <p class="dm-body" style="margin:12px 0 0 0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:15px;line-height:23px;font-weight:400;color:#4A4A4A;">{{TEXTO_2}}</p>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>

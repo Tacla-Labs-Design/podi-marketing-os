@@ -1,109 +1,91 @@
-# Brand — Podi
+# Brand
 
-Camada mais alta do Podi Marketing OS. **Nada abaixo pode contradizer este arquivo.**
+Camada mais alta do Marketing OS. **Nada abaixo pode contradizer esta pasta.**
 
 Se um pedido conflita com o que está aqui, a IA sinaliza o conflito em vez de alterar
 a identidade. Ver `docs/governanca.md`.
 
 ---
 
-## Marca
+## As marcas
 
-**Podi** — app e comunicação dos shoppings. Assinatura conjunta com **Tacla Labs** no
-topo de toda peça (logo Podi à esquerda, Tacla Labs à direita).
+O Marketing OS atende duas marcas irmãs. **O sistema é um só** — a mesma estrutura, os
+mesmos procedimentos (skills), o mesmo canvas, o mesmo QA, a mesma governança, a mesma
+direção fotográfica. O que muda de uma marca para outra:
 
-**A marca é masculina.** Escreva sempre **o Podi**, **do Podi**, **no Podi**, **pelo Podi**.
-Nunca "a Podi", "da Podi", "na Podi". Vale em qualquer material — newsletter, apresentação,
-copy de campanha — e na conversa com o time.
-
-Logos oficiais em `brand/assets/header/`. Na **assinatura conjunta**, sempre a versão light
-mode (arte escura sobre fundo claro): o "Tacla" do logo é preto, então em fundo escuro a
-assinatura vai dentro de uma placa branca — nunca se troca o arquivo por CSS.
-
-O logo Podi **sozinho** tem uma versão vetorial monocromática: `logo-podi.svg`. Ela é uma
-forma só, sem cor gravada — a cor vem de fora, por `currentColor`. É o arquivo a usar
-sempre que o logo aparecer sem a Tacla Labs:
-
-| Fundo | Cor do logo |
-|---|---|
-| Verde de marca `#48DB84` | Branco `#FFFFFF` |
-| Preto `#101010` | Branco `#FFFFFF` |
-| Branco ou claro | Verde de marca `#48DB84` |
-
-Sobre fundo claro é **sempre o verde original `#48DB84`**, em qualquer tamanho — inclusive
-na assinatura pequena do rodapé. Ele dá 1,63:1 ali, e é uma marca discreta de propósito:
-como o ícone social verde do rodapé do e-mail, é ornamento, não alvo de leitura. O que
-identifica a peça é a forma do logo, não o contraste dele.
-
-**Logo não é texto.** A regra de contraste do verde governa palavras; o logo é uma marca
-gráfica, e branco sobre o verde é como o Podi assina desde sempre. O que continua proibido
-é **recolorir por filtro ou por efeito** — trocar a cor é trocar o `color` do SVG, e ponto.
-
-## Cor de marca — e a regra que ela impõe
-
-**`#48DB84`** (verde Podi). Contraste sobre branco: **1,79:1** — reprova em qualquer texto.
-
-| Situação | Cor certa | Contraste |
+| Material | Podi | Optimall |
 |---|---|---|
-| Texto **em cima** do verde | `#101010` | 10,6:1 — texto branco sobre o verde é **proibido** |
-| Texto/link de marca **sobre branco** | `#0C6E3B` | 6,4:1 |
-| Texto/link de marca no **dark mode** | `#6FE9A2` | 11,5:1 sobre `#1A1A1A` |
+| E-mail | Blocos de `design-system/newsletter/` | **Os mesmos blocos**, recoloridos por `scripts/aplicar-marca.py` |
+| Deck | `design-system/apresentacao/slides/` | **Biblioteca própria**: `design-system/apresentacao/optimall/` |
+| Post | *(modelos pendentes)* | **Biblioteca própria**: `design-system/post/optimall/` |
+| Foto | Style Lock do Podi | Style Lock do Optimall — mesma direção, outra paleta e outras cenas |
 
-O `#48DB84` só entra como **fundo** — botão, tag, régua de destaque. **Nunca como cor
-de texto.** Esta regra não é negociável em nenhum material, de e-mail a impresso.
+O Optimall tem biblioteca própria de deck e post porque a linguagem dele — degradê roxo,
+vidro, pattern de pontos, fonte Halyard, logo tricolor — não sai de pintar os slides do Podi
+de outra cor. Os modelos vêm dos arquivos do Figma aprovados pelo time do Optimall. Em todo
+o resto, as duas marcas seguem as mesmas regras: **a paleta, o logo, os links e a voz** são o
+que muda.
 
-Paleta completa e tokens derivados: `design-system/newsletter/tokens.md` (e-mail) e
-`design-system/apresentacao/tokens.md` (apresentação).
+| Marca | Pasta | O que é | Comandos |
+|---|---|---|---|
+| **Podi** | [`podi/`](podi/README.md) | O app dos shoppings — fala com o consumidor e com o time | `/newsletter-podi`, `/apresentacao-podi`, `/post-podi`, `/foto-podi` |
+| **Optimall** | [`optimall/`](optimall/README.md) | A plataforma B2B dos shoppings — fala **só** com gestores | `/newsletter-optimall`, `/apresentacao-optimall`, `/post-optimall`, `/foto-optimall` |
 
-## Cor secundária — roxo de detalhe
+As duas são **masculinas**: "o Podi", "do Podi"; "o Optimall", "do Optimall". Nunca "a".
 
-**`#9934FF`** (roxo Tacla Labs). Entra como **detalhe gráfico**, nunca como conteúdo.
+Cada pasta de marca tem:
 
-| Onde pode | Onde não pode |
+| Arquivo | O que guarda |
 |---|---|
-| Ícone, glifo dentro de chip claro | Texto corrido |
-| Régua ou gradiente fino sob um título | Título, subtítulo, número de destaque |
-| Bullet de lista, ponto de linha do tempo | Fundo de área grande — esse papel é do verde |
-| Borda fina de container | Qualquer coisa **em cima do verde** (2,4:1) |
+| `README.md` | Voz, público, logo, cor de marca e as regras que só valem para ela |
+| `links-oficiais.md` | CTA fixo, rodapé legal, redes, textos fixos do deck |
+| `marca.json` | Os mesmos valores, para máquina — lido por `scripts/aplicar-marca.py` |
+| `mensagens.md` | *(Optimall)* O que dizer: posicionamento, módulos, números oficiais, frases aprovadas |
+| `assets/` | Logo (SVG + PNG para e-mail) e ícones sociais; no Optimall, também clientes, produto e grafismos |
+| `photography/STYLE-LOCK-<MARCA>.md` | Direção fotográfica — igual entre as marcas, menos a paleta |
 
-Contraste sobre branco: **4,9:1** — passaria em texto. A regra é mais restritiva de
-propósito: **o verde é a marca, o roxo é tempero.** Se o roxo virar cor de texto, a peça
-deixa de parecer Podi em duas ou três seções.
+**Qual marca é a peça:** decide o comando (`-podi` ou `-optimall`) ou a linha `Marca:` do
+briefing. Sem nenhum dos dois, é Podi. Peça de uma marca **não mistura** logo, cor, rede ou
+link da outra.
 
-Como o ícone social verde, **um detalhe roxo nunca carrega informação sozinho**: ele
-acompanha um rótulo, não substitui um.
+## Regras que valem para as duas marcas
 
-Tokens derivados e as versões claras do roxo: `design-system/apresentacao/tokens.md`.
+**Nunca escreva cor solta.** Toda cor sai dos tokens do material
+(`design-system/<material>/tokens.md`), e o valor de cada papel por marca está em
+`brand/<marca>/marca.json`. Os blocos de e-mail são escritos com os valores do Podi; e-mail de
+outra marca é montado igual e recolorido no fim por `scripts/aplicar-marca.py` — nunca à mão.
+Deck e post de marca com biblioteca própria já nascem na paleta dela e só passam pelo
+`aplicar-marca.py conferir`.
 
-## As duas frentes
+**Nenhum texto abaixo de 4,5:1.** Vale para qualquer material. Onde a cor de marca não passa
+disso sobre branco, ela só entra como **fundo** — é o caso do verde do Podi.
 
-Mesma marca, mesma paleta. O que muda é público, tom e obrigação legal.
+**Texto em cima da cor de marca** é o papel `ink-on-brand` da marca: `#101010` no Podi,
+**branco** no Optimall. Nunca se escolhe no olho — sai do `marca.json`, medido.
 
-| | Cliente final | Endomarketing |
-|---|---|---|
-| Público | Consumidor dos shoppings, usuário do app | Colaboradores Podi |
-| Objetivo | Promoções, eventos, novidades do app, aniversariantes | Cases de uso, resultados, bastidores |
-| Tom | Direto, aspiracional, 1 CTA por bloco | Próximo, celebratório, foco em pessoas |
-| Rodapé | Completo: `© <ano> - Podi App`, motivo do recebimento, **descadastro**, privacidade e termos | Contato de comunicação interna / RH; sem descadastro |
+**Cor secundária é detalhe gráfico**, nunca conteúdo: ícone, régua sob título, bullet, borda
+fina. Nunca texto, nunca título, nunca fundo de área grande, nunca em cima da cor de marca.
+Regra completa: `design-system/apresentacao/guidelines/uso-do-roxo.md`.
 
-**A diferença que não pode errar:** material para cliente final sem link de descadastro
-é problema de entregabilidade e de LGPD.
+**Logo não é texto.** Ele é marca gráfica, e a regra de contraste governa palavras. O que é
+proibido é **recolorir por filtro ou por efeito**. No Podi o SVG é monocromático e a cor vem
+de `currentColor`; no Optimall o logo é tricolor e tem duas versões oficiais (positivo e
+negativo) — usa-se a versão certa para o fundo, nunca uma cor nova.
 
-## Fotografia
+**Fotografia** segue o Style Lock da marca, e o bloco `STYLE LOCK` se copia sem editar uma
+palavra. Ver [`photography/README.md`](photography/README.md).
 
-Direção fotográfica oficial: [`photography/STYLE-LOCK-PODI.md`](photography/STYLE-LOCK-PODI.md).
-Vale para qualquer foto de marca, em qualquer material. O bloco `STYLE LOCK` se copia sem
-editar uma palavra — é ele que faz as imagens parecerem do mesmo ensaio.
+**Não se inventa URL nem arte** para o que já existe em `links-oficiais.md` da marca.
 
-Lá o verde é figurino e objeto dentro da foto, não texto: a regra de contraste acima
-continua valendo integralmente.
+## Marca nova ou mudança de paleta
 
-## Ativos e links fixos
+É trabalho do maintainer, nunca de campanha:
 
-Ver `brand/links-oficiais.md`. Não se inventa URL, não se cria arte nova para o que já tem.
+```bash
+python3 scripts/aplicar-marca.py derivar <marca> "<cor principal>" ["<secundária>"]            # propõe
+python3 scripts/aplicar-marca.py derivar <marca> "<cor principal>" ["<secundária>"] --gravar   # grava e gera ícones
+python3 scripts/aplicar-marca.py validar <marca>                                               # confere tudo
+```
 
-## Sobre a duplicação para Optimall
-
-Este repositório está configurado **só para a marca Podi**. Quando o design estiver
-fechado, ele será duplicado e a paleta trocada para Optimall — a estrutura e as regras
-continuam idênticas. Por isso: **nunca escreva cor solta.** Toda cor sai dos tokens.
+Depois de validar, o maintainer marca `"status": "aprovado"` no `marca.json` e registra no
+`CHANGELOG.md`. Enquanto o status for `pendente`, o script recusa montar peça da marca.

@@ -31,11 +31,12 @@ imagens/      Quatro imagens nos nomes e proporções certos
 
 As imagens são **placas coloridas de teste**, não fotografia — existem para você ver o
 encaixe e a proporção funcionando. Foto de marca de verdade segue
-[`brand/photography/STYLE-LOCK-PODI.md`](../../brand/photography/STYLE-LOCK-PODI.md).
+[`brand/podi/photography/STYLE-LOCK-PODI.md`](../../brand/podi/photography/STYLE-LOCK-PODI.md).
 
 ## Para reparar no resultado
 
-- A edição é da frente **cliente**, então o rodapé sai **com link de descadastro**
+- A edição é da frente **cliente**, então o rodapé sai com o motivo do recebimento em
+  `{{email}}` — e **sem** link de descadastro, que o servidor de envio não suporta
 - O bloco 03 usa imagem quadrada e ganha layout lateral, sem você pedir
 - O bloco 01 tem CTA; os outros dois não — e o e-mail não fica torto por isso
 

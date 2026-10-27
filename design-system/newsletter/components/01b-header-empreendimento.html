@@ -1,0 +1,31 @@
+<!-- ============================================================================
+     01b · HEADER DO EMPREENDIMENTO — só no modo empreendimento
+     (guidelines/marca-empreendimento.md). Substitui o 01-header (Podi + Tacla Labs)
+     quando o remetente da peça é o shopping/outlet.
+
+     Placa branca de raio 20px, logo centralizado. Padding interno 32px 28px.
+     Logo: versão colorida para fundo claro, altura 24px, largura até 150px, exportado
+     em 2x (150x24 → arquivo 300x48). {{LARGURA_LOGO}} = largura exibida, proporcional
+     à altura de 24. Mesmo arquivo e mesma largura do 90b variante B.
+
+     Sem link no logo: a URL do empreendimento não é padrão e não se inventa.
+     Sem classe de dark mode: o modo empreendimento é sempre claro.
+     ============================================================================ -->
+<tr>
+  <td class="p-mobile" style="padding:28px 32px 24px 32px;">
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#FFFFFF" style="width:100%;background-color:#FFFFFF;border-radius:20px;">
+      <tr>
+        <td align="center" valign="middle" style="padding:32px 28px;">
+          <!-- Tabela interna centralizada: <img> com display:block não obedece ao align do <td>. -->
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center">
+            <tr>
+              <td align="center">
+                <img src="{{URL_LOGO_EMPREENDIMENTO}}" width="{{LARGURA_LOGO}}" height="24" alt="{{NOME_EMPREENDIMENTO}}" style="display:block;border:0;outline:none;text-decoration:none;width:{{LARGURA_LOGO}}px;height:24px;" />
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>

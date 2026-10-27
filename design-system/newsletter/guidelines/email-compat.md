@@ -79,6 +79,11 @@ Tamanhos e papéis exatos: [`../tokens.md`](../tokens.md).
 
 ## Dark mode
 
+> **Exceção — modo empreendimento.** Peça com a marca do empreendimento é sempre clara:
+> `color-scheme: light only`, sem bloco de dark mode e sem classes `dm-*`. O shell já vem
+> assim (`templates/newsletter/base-empreendimento.html`). Motivo e limitação em
+> [`marca-empreendimento.md`](marca-empreendimento.md). O resto deste arquivo vale igual.
+
 - `<meta name="color-scheme" content="light dark">` e
   `<meta name="supported-color-schemes" content="light dark">`.
 - Fornecer bloco `@media (prefers-color-scheme: dark)` ajustando fundo, texto e o fundo
@@ -100,10 +105,16 @@ Tamanhos e papéis exatos: [`../tokens.md`](../tokens.md).
 
 ## Conteúdo e entregabilidade
 
-- Rodapé sempre com: `© <ano> - Podi App`, motivo do recebimento, link de descadastro
-  (frente cliente), Política de Privacidade e Termos de Uso — os dois últimos com as URLs
-  oficiais de `brand/links-oficiais.md`.
+- Rodapé sempre com: `© <ano> - Podi App`, motivo do recebimento, Política de Privacidade
+  e Termos de Uso — os dois últimos com as URLs oficiais de `brand/podi/links-oficiais.md`.
+  **Sem link de descadastro** (ver `variaveis-envio.md`).
+- Só três variáveis existem no envio: `{{email}}`, `{{topicId}}`, `{{campaignId}}`.
+  Qualquer outra derruba a campanha — regra completa em `variaveis-envio.md`.
 - Sem `<form>`, `<script>`, `<iframe>`, `<video>`, `<embed>`, `<object>`.
+- **Nenhum JavaScript em nenhuma forma.** Sem `<script>`, sem atributos `on*`
+  (`onclick`, `onload`, `onmouseover` etc.), sem `href="javascript:..."`. Clientes de
+  e-mail removem ou bloqueiam o e-mail inteiro ao detectar JS — não é degradação
+  graciosa, é risco de a mensagem não entregar.
 - Sem tracking pixel inventado — usar só o que a ferramenta de envio injeta.
 - Peso do HTML final < **100 KB** (o Gmail corta acima disso e mostra "[Mensagem truncada]").
 - Todos os links absolutos com `https://`, e `target="_blank"`.

@@ -1,0 +1,126 @@
+<!-- ============================================================================
+     13 · CARD DE CONTEÚDO ÚNICO — um card branco só, com todo o conteúdo da peça
+     dentro dele: abertura, grupos com título, listas, galeria, extrato e UM CTA no fim.
+
+     Para e-mail curto de uma mensagem só (transacional, gatilho de campanha), em que
+     vários cards soltos quebrariam a leitura. Conta como UMA seção de conteúdo no
+     limite de layout-ritmo.md. Validado no SAVE & WIN (modo empreendimento,
+     guidelines/marca-empreendimento.md), mas vale em qualquer peça.
+
+     Como montar:
+       1. Copiar o CARD abaixo.
+       2. No lugar marcado, colar os ITENS deste arquivo, do 13a e do 13b, na ordem do
+          conteúdo. Cada item é uma <tr> da tabela interna do card.
+       3. Entre grupos, o ITEM · LINHA FINA. Ela é obrigatória antes do CTA — por isso
+          o ITEM · CTA já vem com a linha embutida.
+       4. Um CTA só, sempre o último item.
+
+     Largura útil dentro do card: 536 − 2×32 = 472px desktop.
+     Mobile: .card-mobile reduz o padding para 24px 20px.
+     ============================================================================ -->
+
+
+<!-- CARD · o contêiner. -->
+<tr>
+  <td class="p-mobile" style="padding:0 32px;">
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#FFFFFF" class="dm-surface" style="width:100%;background-color:#FFFFFF;border-radius:20px;">
+      <tr>
+        <td class="card-mobile" style="padding:32px 32px 36px 32px;">
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;">
+
+            <!-- COLE OS ITENS AQUI -->
+
+          </table>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+
+
+<!-- ITEM · TEXTO — abertura ou parágrafo solto. Body 16/25.
+     Vários parágrafos: um <p> por parágrafo, margin 0 0 16px 0; o último com margin 0.
+     Destaque dentro do texto: <span class="dm-ink" style="font-weight:600;color:#101010;">…</span> -->
+            <tr>
+              <td style="padding:0;">
+                <p class="dm-body" style="margin:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:25px;font-weight:400;color:#4A4A4A;">{{TEXTO}}</p>
+              </td>
+            </tr>
+
+
+<!-- ITEM · TÍTULO DE GRUPO — card title 20/26. Abre um grupo depois de uma LINHA FINA. -->
+            <tr>
+              <td style="padding:0 0 14px 0;">
+                <h3 class="t-h3 dm-ink" style="margin:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:20px;line-height:26px;font-weight:600;color:#101010;letter-spacing:-0.2px;">{{TITULO_GRUPO}}</h3>
+              </td>
+            </tr>
+
+
+<!-- ITEM · LISTA — marcador &bull; na cor accent-ink, texto body small 15/23.
+     Uma <tr> por item. Entre itens, padding-bottom 10px; o último item leva 0. -->
+            <tr>
+              <td style="padding:0;">
+                <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;">
+                  <tr>
+                    <td width="20" valign="top" class="dm-accent" style="width:20px;padding:0 0 10px 0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:15px;line-height:23px;font-weight:600;color:#0C6E3B;">&bull;</td>
+                    <td valign="top" class="dm-body" style="padding:0 0 10px 0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:15px;line-height:23px;font-weight:400;color:#4A4A4A;">{{ITEM_1}}</td>
+                  </tr>
+                  <tr>
+                    <td width="20" valign="top" class="dm-accent" style="width:20px;padding:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:15px;line-height:23px;font-weight:600;color:#0C6E3B;">&bull;</td>
+                    <td valign="top" class="dm-body" style="padding:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:15px;line-height:23px;font-weight:400;color:#4A4A4A;">{{ITEM_2}}</td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+
+<!-- ITEM · NOTA — observação curta logo abaixo de uma galeria ou lista. Body small 15/23. -->
+            <tr>
+              <td style="padding:16px 0 0 0;">
+                <p class="dm-body" style="margin:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:15px;line-height:23px;font-weight:400;color:#4A4A4A;">{{NOTA}}</p>
+              </td>
+            </tr>
+
+
+<!-- ITEM · LINHA FINA — separa grupos dentro do card. 28px de respiro em cima e embaixo.
+     Linha em <td> com background, não border (Outlook). -->
+            <tr>
+              <td style="padding:28px 0;">
+                <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;">
+                  <tr><td height="1" class="dm-hair" style="height:1px;line-height:1px;font-size:0;background-color:#D2E7DA;">&nbsp;</td></tr>
+                </table>
+              </td>
+            </tr>
+
+
+<!-- ITEM · CTA — sempre o último item, e sempre com a linha fina antes (já embutida aqui).
+     Botão = _button.html variante A. {{URL}} nos DOIS lugares; largura do roundrect
+     ≈ nº de caracteres do {{LABEL}} × 9 + 56.
+     Modo empreendimento: o texto do botão é o cta-texto que o script da paleta decidir
+     (#FFFFFF ou #101010), nas duas metades. -->
+            <tr>
+              <td style="padding:28px 0;">
+                <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;">
+                  <tr><td height="1" class="dm-hair" style="height:1px;line-height:1px;font-size:0;background-color:#D2E7DA;">&nbsp;</td></tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td align="center" style="padding:0;">
+                <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center">
+                  <tr>
+                    <td align="center" bgcolor="#48DB84" style="border-radius:100px;">
+                      <!--[if mso]>
+                      <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{URL}}" style="height:46px;v-text-anchor:middle;width:240px;" arcsize="50%" stroke="f" fillcolor="#48DB84">
+                        <w:anchorlock/>
+                        <center style="color:#101010;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:bold;">{{LABEL}}</center>
+                      </v:roundrect>
+                      <![endif]-->
+                      <!--[if !mso]><!-->
+                      <a href="{{URL}}" target="_blank" style="display:inline-block;padding:15px 30px;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:15px;line-height:16px;font-weight:600;color:#101010;text-decoration:none;border-radius:100px;background-color:#48DB84;mso-hide:all;">{{LABEL}}</a>
+                      <!--<![endif]-->
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>

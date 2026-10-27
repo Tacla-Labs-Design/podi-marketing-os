@@ -1,0 +1,66 @@
+<!-- ============================================================================
+     90b · REDES SOCIAIS COM LOGO — logo à esquerda, ícones à direita, numa linha só.
+     Alternativa ao 90-social (ícones centralizados). Usar UMA das duas variantes
+     abaixo, no lugar do 90-social, logo antes do 91-footer-legal.
+
+     Não empilha no mobile, de propósito: logo de até 150px + 3 ícones com gap de 16px
+     dá 270px, e cabe nos 280px úteis de uma tela de 320px. Com 4 ícones, o logo do
+     empreendimento precisa ter no máximo 110px de largura.
+
+     Ícones: variante `-green` de brand/podi/assets/icones/, 24x24 (arquivo 44x44), com o
+     nome da rede no `alt` — mesmas regras do 90-social. Remover a <td> da rede que
+     não for usada.
+     ============================================================================ -->
+
+
+<!-- VARIANTE A · PODI — logo Podi verde + redes oficiais do Podi (URLs fixas).
+     Logo sozinho sobre fundo claro é sempre o verde #48DB84 (brand/podi/README.md).
+     Usa o PNG porque SVG não renderiza em e-mail: 48x24 exibido (arquivo 136x68). -->
+<tr>
+  <td class="p-mobile" style="padding:0 32px 24px 32px;">
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;">
+      <tr>
+        <td align="left" valign="middle">
+          <img src="../../brand/podi/assets/header/logo-podi-transparente.png" width="48" height="24" alt="Podi" style="display:block;border:0;outline:none;text-decoration:none;width:48px;height:24px;" />
+        </td>
+        <td align="right" valign="middle">
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="right">
+            <tr>
+              <td style="padding:0 0 0 16px;"><a href="https://www.instagram.com/podibr" target="_blank"><img src="../../brand/podi/assets/icones/instagram-green.png" width="24" height="24" alt="Instagram" style="display:block;border:0;width:24px;height:24px;" /></a></td>
+              <td style="padding:0 0 0 16px;"><a href="https://www.facebook.com/podibr" target="_blank"><img src="../../brand/podi/assets/icones/facebook-green.png" width="24" height="24" alt="Facebook" style="display:block;border:0;width:24px;height:24px;" /></a></td>
+              <td style="padding:0 0 0 16px;"><a href="https://www.linkedin.com/company/podiapp" target="_blank"><img src="../../brand/podi/assets/icones/linkedin-green.png" width="24" height="24" alt="LinkedIn" style="display:block;border:0;width:24px;height:24px;" /></a></td>
+              <td style="padding:0 0 0 16px;"><a href="https://open.spotify.com/user/31ipyesxy6gxagkbhw3ugdac6fka?si=a0d1d28c642a4abb&amp;nd=1&amp;dlsi=3f8e7ed87ede4cb9" target="_blank"><img src="../../brand/podi/assets/icones/spotify-green.png" width="24" height="24" alt="Spotify" style="display:block;border:0;width:24px;height:24px;" /></a></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+
+
+<!-- VARIANTE B · EMPREENDIMENTO — logo do shopping/outlet + redes do empreendimento.
+     Para quando o remetente da peça é o empreendimento (campanha de cliente).
+     Logo: versão colorida para fundo claro, altura 24px, largura até 150px
+     (exportar em 2x). {{LARGURA_LOGO}} = largura exibida, proporcional à altura de 24.
+     As URLs das redes vêm do briefing do empreendimento — não se inventam. -->
+<tr>
+  <td class="p-mobile" style="padding:0 32px 24px 32px;">
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;">
+      <tr>
+        <td align="left" valign="middle">
+          <img src="{{URL_LOGO_EMPREENDIMENTO}}" width="{{LARGURA_LOGO}}" height="24" alt="{{NOME_EMPREENDIMENTO}}" style="display:block;border:0;outline:none;text-decoration:none;width:{{LARGURA_LOGO}}px;height:24px;" />
+        </td>
+        <td align="right" valign="middle">
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="right">
+            <tr>
+              <td style="padding:0 0 0 16px;"><a href="{{URL_INSTAGRAM}}" target="_blank"><img src="../../brand/podi/assets/icones/instagram-green.png" width="24" height="24" alt="Instagram" style="display:block;border:0;width:24px;height:24px;" /></a></td>
+              <td style="padding:0 0 0 16px;"><a href="{{URL_FACEBOOK}}" target="_blank"><img src="../../brand/podi/assets/icones/facebook-green.png" width="24" height="24" alt="Facebook" style="display:block;border:0;width:24px;height:24px;" /></a></td>
+              <td style="padding:0 0 0 16px;"><a href="{{URL_LINKEDIN}}" target="_blank"><img src="../../brand/podi/assets/icones/linkedin-green.png" width="24" height="24" alt="LinkedIn" style="display:block;border:0;width:24px;height:24px;" /></a></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>

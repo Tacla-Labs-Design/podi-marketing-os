@@ -1,0 +1,26 @@
+<!-- 00-capa — capa roxa do deck do Optimall: logo negativo, frase de abertura em até 3 linhas
+     curtas e um subtítulo de até 2 linhas. Pontos lilás nos cantos e o símbolo gigante como
+     marca d'água à direita. Troca-se só a frase e o subtítulo (a frase padrão é a assinatura
+     aprovada em brand/optimall/mensagens.md). Sem número de slide. -->
+<style>
+.capa .capa-logo{left:112px;top:112px;width:443px}
+.capa .capa-frase{left:112px;top:364px;width:1300px;color:var(--branco);z-index:1}
+.capa .capa-sub{left:112px;bottom:112px;width:680px;color:var(--branco-80);font-weight:var(--w-normal);z-index:1}
+.capa .capa-simbolo{left:661px;top:64px;width:1669px;height:1106px}
+/* Pontos da capa: a máscara do Figma é maior e centrada mais à direita que a padrão. */
+.capa .capa-pontos{left:-800px;top:0;
+  -webkit-mask-image:radial-gradient(751px 1440px at 50% 0,var(--branco) 0%,var(--branco-0) 95.3%);
+          mask-image:radial-gradient(751px 1440px at 50% 0,var(--branco) 0%,var(--branco-0) 95.3%);
+  -webkit-mask-position:240px 0;mask-position:240px 0}
+.capa .capa-pontos--baixo{left:1120px;top:-120px;
+  -webkit-mask-image:radial-gradient(751px 1440px at 50% 100%,var(--branco) 0%,var(--branco-0) 95.8%);
+          mask-image:radial-gradient(751px 1440px at 50% 100%,var(--branco) 0%,var(--branco-0) 95.8%)}
+</style>
+<section class="slide slide--roxo capa">
+  <div class="pontos pontos--sobre-roxo capa-pontos" aria-hidden="true"></div>
+  <div class="pontos pontos--sobre-roxo capa-pontos capa-pontos--baixo" aria-hidden="true"></div>
+  <img class="marca-dagua capa-simbolo" src="assets/simbolo-gigante.svg" alt="" aria-hidden="true">
+  <svg class="logo capa-logo" viewBox="0 0 143 24" role="img" aria-label="Optimall"><title>Optimall</title><use href="#logo-optimall-negativo"/></svg>
+  <h1 class="t-capa capa-frase">Mais clientes.<br>Mais engajamento.<br>Melhor relacionamento.</h1>
+  <p class="t-sub capa-sub">Campanhas, Aplicativo, Clube de Benefícios e CRM, tudo em uma plataforma White Label.</p>
+</section>

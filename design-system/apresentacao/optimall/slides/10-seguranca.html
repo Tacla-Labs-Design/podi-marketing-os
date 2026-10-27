@@ -1,0 +1,38 @@
+<!-- 10-seguranca — slide de garantia (LGPD, segurança, conformidade): título centralizado de até
+     2 linhas, régua, anéis concêntricos grandes, o trio de escudos de vidro no centro e 2 cards
+     brancos com chip de ícone e uma frase curta (até 2 linhas).
+     Trocar: título, e por card o ícone e a frase. Os escudos são grafismo fixo (assets/vidro-*.svg). -->
+<style>
+.sg-aneis{left:-147px;top:-543px;width:2214px;height:2214px;z-index:0}
+.sg-aneis i{position:absolute;border-radius:50%;background:linear-gradient(to bottom,var(--branco-10),var(--roxo-07))}
+.sg-titulo{left:420px;width:1080px;top:115px;text-align:center;z-index:2}
+.sg-regua{left:760px;top:330px;z-index:2}
+.sg-escudos{left:771px;top:488px;width:378px;height:200px;z-index:2}
+.sg-escudos img{position:absolute;display:block}
+.sg-card{top:440px;width:420px;height:296px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;
+  padding:40px;border-radius:var(--r-card-md);z-index:2}
+.sg-card .chip svg{width:56px;height:56px}
+.sg-card .t-card-corpo{text-align:center}
+</style>
+<section class="slide slide--branco">
+  <div class="sg-aneis"><i style="inset:0"></i><i style="inset:7.245%"></i><i style="inset:14.83%"></i><i style="inset:22.41%"></i><i style="inset:29.99%"></i><i style="inset:37.01%"></i></div>
+
+  <h2 class="t-titulo sg-titulo">A plataforma foi construída em conformidade com a LGPD.</h2>
+  <div class="regua regua--centro sg-regua"></div>
+
+  <div class="sg-escudos" aria-hidden="true">
+    <img src="assets/vidro-security-check.svg" alt="" style="left:1px;top:24px;width:153px;height:153px">
+    <img src="assets/vidro-security-lock.svg" alt="" style="left:224px;top:24px;width:153px;height:153px">
+    <img src="assets/vidro-shield-user.svg" alt="" style="left:89px;top:0;width:200px;height:200px">
+  </div>
+
+  <div class="card card--sombra sg-card" style="left:298px">
+    <span class="chip chip--xl"><!-- ícone: user-shield-01 --><svg aria-hidden="true" viewBox="0 0 56 56" fill="none"><path d="M39.0168 31.0466C39.672 30.7844 40.6824 30.2374 41.0321 30.0468C41.6437 29.6408 42.4177 29.6697 42.9889 30.0603C43.3386 30.2512 44.3277 30.7844 44.9829 31.0466C46.302 31.5742 48.1182 32.088 50.1664 32.088C51.1329 32.088 51.9164 32.8715 51.9164 33.838V39.6713C51.9164 44.4334 49.5028 47.5225 47.1644 49.36C46.0059 50.2703 44.8555 50.8853 43.9971 51.2736C43.6518 51.4299 43.0556 51.6479 42.697 51.7767C42.48 51.8712 42.2429 51.922 41.9998 51.9218C41.8187 51.922 41.6395 51.8933 41.4708 51.8399C41.2083 51.7461 40.4341 51.4689 40.0027 51.2736C39.1442 50.8853 37.9939 50.2703 36.8354 49.36C34.4969 47.5225 32.0833 44.4334 32.0833 39.6713V33.838C32.0833 32.8715 32.8669 32.088 33.8333 32.088C35.8815 32.088 37.6978 31.5742 39.0168 31.0466Z" fill="currentColor"/><path opacity="0.4" d="M31.1593 47.25C29.981 45.2326 29.1667 42.7245 29.1667 39.6716V33.8382C29.1667 32.1846 30.0265 30.7321 31.3236 29.9031C29.7698 28.9889 28.0674 28.3003 26.2614 27.8822C31.0133 26.1973 34.4167 21.6628 34.4167 16.3333C34.4167 9.56786 28.9322 4.08333 22.1667 4.08333C15.4012 4.08333 9.91667 9.56786 9.91667 16.3333C9.91667 21.6628 13.32 26.1973 18.0719 27.8822C10.0572 29.7376 4.08333 36.9213 4.08333 45.5C4.08333 46.4665 4.86684 47.25 5.83333 47.25H31.1593Z" fill="currentColor"/></svg></span>
+    <p class="t-card-corpo">Coleta, uso e exclusão de dados com transparência.</p>
+  </div>
+  <div class="card card--sombra sg-card" style="left:1202px">
+    <span class="chip chip--xl"><!-- ícone: encrypt --><svg aria-hidden="true" viewBox="0 0 56 56" fill="none"><path d="M7.00228 20.4167V8.75004C7.00228 7.46138 8.04696 6.4167 9.33561 6.4167C10.6243 6.4167 11.6689 7.46138 11.6689 8.75004V20.4167C11.6689 21.7054 10.6243 22.75 9.33561 22.75C8.04696 22.75 7.00228 21.7054 7.00228 20.4167ZM25.6689 13.4167C25.6689 12.128 24.6243 11.0834 23.3356 11.0834C22.047 11.0834 21.0023 12.128 21.0023 13.4167V15.75C21.0023 17.0387 22.047 18.0834 23.3356 18.0834C24.6243 18.0834 25.6689 17.0387 25.6689 15.75V13.4167ZM35.0023 20.4167V8.75004C35.0023 7.46138 36.0469 6.4167 37.3356 6.4167C38.6243 6.4167 39.6689 7.46138 39.6689 8.75004V20.4167C39.6689 21.7054 38.6243 22.75 37.3356 22.75C36.0469 22.75 35.0023 21.7054 35.0023 20.4167ZM44.3356 20.4167V8.75004C44.3356 7.46138 45.3802 6.4167 46.6689 6.4167C47.9576 6.4167 49.0023 7.46138 49.0023 8.75004V20.4167C49.0023 21.7054 47.9576 22.75 46.6689 22.75C45.3802 22.75 44.3356 21.7054 44.3356 20.4167ZM30.3356 15.75C30.3356 19.616 27.2017 22.75 23.3356 22.75C19.4696 22.75 16.3356 19.616 16.3356 15.75V13.4167C16.3356 9.55072 19.4696 6.4167 23.3356 6.4167C27.2017 6.4167 30.3356 9.55072 30.3356 13.4167V15.75Z" fill="currentColor"/><path opacity="0.4" fill-rule="evenodd" clip-rule="evenodd" d="M14 27.4167C18.4536 27.4167 22.2917 30.0445 24.0534 33.8333H47.4504C48.4041 33.8333 48.8812 33.8336 49.3099 34.0111C49.7385 34.1887 50.0759 34.5263 50.75 35.2004C52.3054 36.7558 53.0833 37.5335 53.0833 38.5C53.0833 39.4665 52.3054 40.2442 50.75 41.7996L49.262 43.2875C48.5247 44.0249 48.1556 44.3949 47.7309 44.5725C47.2607 44.7687 46.7381 44.8051 46.245 44.6775C45.7991 44.5618 45.3822 44.2484 44.5475 43.6224C43.8174 43.0747 43.4513 42.8006 43.0549 42.6813C42.6167 42.5495 42.1489 42.5495 41.7107 42.6813C41.3142 42.8006 40.9484 43.0747 40.218 43.6224L39.9812 43.8002C39.0731 44.4813 38.6195 44.8226 38.108 44.9281C37.8404 44.9832 37.5648 44.9909 37.2946 44.9507C36.778 44.874 36.3046 44.5597 35.36 43.9299L35.2644 43.8662C34.8075 43.5617 34.5786 43.4093 34.3254 43.3148C34.2333 43.2803 34.1388 43.2507 34.0429 43.2283C33.7801 43.1664 33.5053 43.1667 32.956 43.1667H24.0534C22.2917 46.9555 18.4536 49.5833 14 49.5833C7.87885 49.5833 2.91667 44.6213 2.91667 38.5C2.91667 32.3787 7.87885 27.4167 14 27.4167ZM14 35C12.067 35 10.5 36.5671 10.5 38.5C10.5 40.4329 12.067 42 14 42C15.933 42 17.5 40.4329 17.5 38.5C17.5 36.5671 15.933 35 14 35Z" fill="currentColor"/></svg></span>
+    <p class="t-card-corpo">Criptografia em todas<br>as camadas.</p>
+  </div>
+  <span class="num-slide">10</span>
+</section>

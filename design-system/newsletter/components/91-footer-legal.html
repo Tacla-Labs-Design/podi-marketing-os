@@ -1,4 +1,6 @@
-<!-- 91 · RODAPÉ LEGAL — obrigatório em todo envio. Ajustar texto por frente (cliente/interno). -->
+<!-- 91 · RODAPÉ LEGAL — obrigatório em todo envio. Ajustar {{MOTIVO_RECEBIMENTO}} por frente (cliente/interno).
+     SEM link de descadastro: o servidor de envio não suporta a variável e ela derruba a campanha.
+     Variáveis permitidas: só {{email}}, {{topicId}} e {{campaignId}} (guidelines/variaveis-envio.md). -->
 <tr>
   <td class="p-mobile" style="padding:0 32px;">
     <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;">
@@ -8,8 +10,12 @@
 </tr>
 <tr>
   <td align="center" class="p-mobile" style="padding:24px 32px 40px 32px;">
+    <!-- Modo empreendimento (guidelines/marca-empreendimento.md): o texto legal da promoção
+         entra AQUI, antes do ©, um <p> por parágrafo, texto do briefing sem editar:
+         <p style="margin:0 0 10px 0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:12px;line-height:18px;font-weight:400;color:#6E6E6E;text-align:center;">(parágrafo do briefing)</p>
+         Link dentro dele: style="color:#6E6E6E;text-decoration:underline;". Apagar este comentário na peça. -->
     <p class="dm-muted" style="margin:0 0 10px 0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:12px;line-height:18px;font-weight:600;color:#6E6E6E;text-align:center;">&copy; {{ANO}} - Podi App</p>
-    <p class="dm-muted" style="margin:0 0 10px 0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:12px;line-height:18px;font-weight:400;color:#6E6E6E;text-align:center;">Você recebeu este e-mail em <a href="mailto:{{EMAIL_DESTINATARIO}}" style="color:#6E6E6E;text-decoration:underline;">{{EMAIL_DESTINATARIO}}</a> porque {{MOTIVO_RECEBIMENTO}}. Se preferir não receber mais, <a href="{{URL_DESCADASTRO}}" target="_blank" style="color:#6E6E6E;text-decoration:underline;">clique aqui para se descadastrar</a>.</p>
+    <p class="dm-muted" style="margin:0 0 10px 0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:12px;line-height:18px;font-weight:400;color:#6E6E6E;text-align:center;">Você recebeu este e-mail em <a href="mailto:{{email}}" style="color:#6E6E6E;text-decoration:underline;">{{email}}</a> porque {{MOTIVO_RECEBIMENTO}}.</p>
     <p class="dm-muted" style="margin:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:12px;line-height:18px;font-weight:400;color:#6E6E6E;text-align:center;"><a href="https://www.podiapp.com.br/politica-privacidade/" target="_blank" style="color:#6E6E6E;text-decoration:underline;">Política de Privacidade</a> &nbsp;|&nbsp; <a href="https://www.podiapp.com.br/termos-de-uso.html" target="_blank" style="color:#6E6E6E;text-decoration:underline;">Termos de Uso</a></p>
   </td>
 </tr>

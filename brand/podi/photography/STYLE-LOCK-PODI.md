@@ -1,9 +1,9 @@
 # PODI — Photography Style Lock
 ### Direção de fotografia de marca · App de shopping centers · Accent verde
 
-> **Diretriz oficial de Brand do Podi Marketing OS.** Nenhuma camada abaixo de `brand/`
+> **Diretriz oficial de Brand do Marketing OS, marca Podi.** Nenhuma camada abaixo de `brand/`
 > — design system, template, skill ou pedido de campanha — redefine o que está aqui.
-> Contexto e o que é normativo: [`README.md`](README.md).
+> Contexto e o que é normativo: [`brand/photography/README.md`](../../photography/README.md).
 >
 > Documento gerado com a skill `brand-consistent-photography`.
 > Fonte: 5 referências em `refs/` (Motorola-like, PicPay-like, Apple-like lifestyle mobile).
@@ -43,7 +43,7 @@ As 5 refs compartilham um mesmo sistema. Isto é o que precisa ser replicado:
 - **Crop decidido e confiante:** braços, ombros e topo da cabeça são cortados pela borda sem cerimônia. O celular entra pela lateral.
 - **Diagonais fortes** de arquitetura atravessando o quadro (viga inclinada em `a0658801`, cabos/guarda-corpo em `5dbdff`).
 - Linha do horizonte **baixa ou inexistente**.
-- **Regra de olhar (invariável):** o sujeito **olha para a tela do celular, nunca para a câmera**. Cabeça levemente inclinada para baixo, expressão de reação genuína ao que vê.
+- **Regra de olhar (invariável):** o sujeito **nunca olha para a câmera**. Por padrão o olhar vai para a **tela do celular**, com a cabeça levemente inclinada para baixo e expressão de reação genuína ao que vê. Quando a cena é sobre outra atividade (ler um livro, conversar, observar o shopping), o olhar vai para essa atividade — mas o **celular continua no quadro**, na mão ou apoiado perto, com o glow verde. É o celular que amarra a foto ao app; a pessoa está vivendo o momento, não posando.
 
 ### 1.5 Colorimetria & Paleta
 - **Fórmula:** ambiente dessaturado (azul-céu pálido + concreto bege-cinza) **+ um único accent saturado** no vestuário/objeto. Nas refs esse accent é verde, mint, oliva ou laranja.
@@ -121,7 +121,7 @@ Para peças de outlet. Usar o STYLE LOCK **§4.B**.
 
 ### 2.6 Paleta PODI
 
-O verde oficial do Podi é **`#48DB84`** (`brand/README.md`). Os nomes em inglês abaixo são a tradução
+O verde oficial do Podi é **`#48DB84`** (`brand/podi/README.md`). Os nomes em inglês abaixo são a tradução
 desse verde para o vocabulário que os geradores entendem — **não** hexadecimais alternativos.
 
 ```
@@ -150,8 +150,8 @@ FUNDO PERMITIDO   Luz de loja     "small warm out-of-focus highlights, deep back
 | **Óptica** | 85mm f/1.8–2.2 padrão; 35mm f/2.8–4 só quando a arquitetura é o assunto | Grande-angular com fundo todo nítido e legível |
 | **Cor** | Verde em 3 valores + ambiente dessaturado | Segundo accent forte (vermelho/roxo/laranja), teal-and-orange, pele laranja |
 | **Sombra** | Borda semi-nítida, base levantada e azulada | Preto puro esmagado, sombra dupla de flash, sombra borrada de softbox |
-| **Sujeito** | Olhando a tela, expressão real, pele com textura | Olhando para a câmera, sorriso forçado de banco de imagem, pele plastificada, pose corporativa |
-| **Celular** | Segurado naturalmente, nítido, case mint ou preto; tela com **glow verde suave e ilegível** | UI inventada e legível, texto/ícone falso, marca de celular reconhecível |
+| **Sujeito** | Olhando a tela ou a atividade da cena, expressão real, pele com textura | Olhando para a câmera, sorriso forçado de banco de imagem, pele plastificada, pose corporativa |
+| **Celular** | Sempre no quadro — segurado naturalmente ou apoiado perto —, nítido, case mint ou preto; tela com **glow verde suave e ilegível** | UI inventada e legível, texto/ícone falso, marca de celular reconhecível |
 | **Enquadramento** | Espaço negativo generoso, crop confiante nas bordas | Sujeito centralizado com margem igual, quadro apertado sem respiro |
 
 ### 2.8 Negative prompt — modelos COM campo separado
@@ -193,8 +193,9 @@ featureless shapes. Storefronts are unbranded and dissolve into smooth creamy bl
 contains no writing of any kind: no signage, no banners, no screens with interfaces, no
 watermark, no caption. The phone is a plain rectangular slab with an unbranded body, and its
 screen is a single soft green glow with no shapes or icons in it. Hands are anatomically
-correct with five fingers each. The subject's eyes stay on the phone screen throughout, and
-the posture is relaxed and caught mid-moment rather than held for the camera.
+correct with five fingers each. The subject's eyes stay on the phone screen or on what they are
+doing in the scene, never on the camera; the phone is always somewhere in the frame, and the
+posture is relaxed and caught mid-moment rather than held for the camera.
 ```
 
 **Backstop opcional (só GPT Image).** Modelos instruction-tuned obedecem negação explícita em prosa, mas a obediência **cai conforme a lista cresce**. Se algo escapar, acrescente **uma** linha curta com no máximo 4 itens — os que falharam, não a lista toda:
@@ -258,9 +259,11 @@ white environment carrying a single dominant saturated green accent layered acro
 values — deep pine, vivid emerald, soft mint. Natural skin tones, never orange. Natural
 unretouched skin texture with visible pores and loose strands of hair. Storefronts, signage
 and passers-by dissolved into clean creamy out-of-focus shapes with no readable text or logos.
-Subject looks down at their phone screen, never at the camera, head slightly tilted, genuine
-unposed micro-expression reacting to what they see; phone screen emits a soft green glow,
-screen content indistinct and unreadable. Clean high-resolution digital capture, no film
+Subject is absorbed in the moment — eyes on their phone screen, or on what they are doing in
+the scene such as a book, a companion or the mall itself — never on the camera, head slightly
+tilted, genuine unposed micro-expression; the phone is always in frame, held in hand or resting
+close by, its screen emitting a soft green glow, screen content indistinct and unreadable.
+Clean high-resolution digital capture, no film
 grain, no vignette, no chromatic aberration. Shot on Sony A7R V, 85mm lens at f/2.0, focus
 locked on face and phone, background strongly compressed and separated. Editorial commercial
 advertising photography, optimistic, youthful, sunlit, unpolished-real.
@@ -287,9 +290,11 @@ cyan-leaning shadows, gentle highlight rolloff, no clipping. Selective saturatio
 desaturated pale sky-blue and warm light-concrete environment carrying a single dominant
 saturated green accent layered across three values — deep pine, vivid emerald, soft mint.
 Natural skin tones, never orange. Natural unretouched skin texture with visible pores and
-loose strands of hair. Subject looks down at their phone screen, never at the camera, head
-slightly tilted, genuine unposed micro-expression reacting to what they see; phone screen
-emits a soft green glow, screen content indistinct and unreadable. Clean high-resolution
+loose strands of hair. Subject is absorbed in the moment — eyes on their phone screen, or on what they are doing in
+the scene such as a book, a companion or the mall itself — never on the camera, head slightly
+tilted, genuine unposed micro-expression; the phone is always in frame, held in hand or resting
+close by, its screen emitting a soft green glow, screen content indistinct and unreadable.
+Clean high-resolution
 digital capture, no film grain, no vignette, no chromatic aberration. Shot on Sony A7R V,
 50mm lens at f/2.2, focus locked on face and phone. Editorial commercial advertising
 photography, optimistic, youthful, sunlit, unpolished-real.
@@ -433,7 +438,7 @@ Rejeite a imagem se qualquer item falhar.
 
 **Invariantes de marca**
 - [ ] A câmera está **abaixo** da linha dos olhos do sujeito?
-- [ ] O sujeito está olhando **a tela**, e não a câmera?
+- [ ] O sujeito está olhando **a tela ou a atividade da cena**, e não a câmera? O **celular está no quadro**?
 - [ ] As sombras têm **borda definida** e **base azulada não-preta**?
 - [ ] Existe **um único accent**, e ele é **verde**?
 - [ ] O verde aparece em **mais de um valor** (escuro/médio/claro)?
@@ -485,9 +490,11 @@ white environment carrying a single dominant saturated green accent layered acro
 values — deep pine, vivid emerald, soft mint. Natural skin tones, never orange. Natural
 unretouched skin texture with visible pores and loose strands of hair. Storefronts, signage
 and passers-by dissolved into clean creamy out-of-focus shapes with no readable text or logos.
-Subject looks down at their phone screen, never at the camera, head slightly tilted, genuine
-unposed micro-expression reacting to what they see; phone screen emits a soft green glow,
-screen content indistinct and unreadable. Clean high-resolution digital capture, no film
+Subject is absorbed in the moment — eyes on their phone screen, or on what they are doing in
+the scene such as a book, a companion or the mall itself — never on the camera, head slightly
+tilted, genuine unposed micro-expression; the phone is always in frame, held in hand or resting
+close by, its screen emitting a soft green glow, screen content indistinct and unreadable.
+Clean high-resolution digital capture, no film
 grain, no vignette, no chromatic aberration. Shot on Sony A7R V, 85mm lens at f/2.0, focus
 locked on face and phone, background strongly compressed and separated. Editorial commercial
 advertising photography, optimistic, youthful, sunlit, unpolished-real.
@@ -526,9 +533,11 @@ white environment carrying a single dominant saturated green accent layered acro
 values — deep pine, vivid emerald, soft mint. Natural skin tones, never orange. Natural
 unretouched skin texture with visible pores and loose strands of hair. Storefronts, signage
 and passers-by dissolved into clean creamy out-of-focus shapes with no readable text or logos.
-Subject looks down at their phone screen, never at the camera, head slightly tilted, genuine
-unposed micro-expression reacting to what they see; phone screen emits a soft green glow,
-screen content indistinct and unreadable. Clean high-resolution digital capture, no film
+Subject is absorbed in the moment — eyes on their phone screen, or on what they are doing in
+the scene such as a book, a companion or the mall itself — never on the camera, head slightly
+tilted, genuine unposed micro-expression; the phone is always in frame, held in hand or resting
+close by, its screen emitting a soft green glow, screen content indistinct and unreadable.
+Clean high-resolution digital capture, no film
 grain, no vignette, no chromatic aberration. Shot on Sony A7R V, 85mm lens at f/2.0, focus
 locked on face and phone, background strongly compressed and separated. Editorial commercial
 advertising photography, optimistic, youthful, sunlit, unpolished-real.
@@ -543,8 +552,9 @@ featureless shapes. Storefronts are unbranded and dissolve into smooth creamy bl
 contains no writing of any kind: no signage, no banners, no screens with interfaces, no
 watermark, no caption. The phone is a plain rectangular slab with an unbranded body, and its
 screen is a single soft green glow with no shapes or icons in it. Hands are anatomically
-correct with five fingers each. The subject's eyes stay on the phone screen throughout, and
-the posture is relaxed and caught mid-moment rather than held for the camera.
+correct with five fingers each. The subject's eyes stay on the phone screen or on what they are
+doing in the scene, never on the camera; the phone is always somewhere in the frame, and the
+posture is relaxed and caught mid-moment rather than held for the camera.
 ```
 
 **Formato em palavras** — esses modelos ignoram `--ar`:

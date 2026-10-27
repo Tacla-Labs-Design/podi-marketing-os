@@ -1,13 +1,18 @@
 # Design System — Newsletter
 
-O sistema visual das newsletters e e-mails do Podi.
+O sistema visual das newsletters e e-mails das marcas do Marketing OS — Podi e Optimall.
+Os componentes são escritos com os valores do Podi; peça do Optimall é montada igual e
+recolorida no fim (`guidelines/marcas.md`).
 
 ```
 tokens.md        Cor, tipografia, espaçamento, dark mode, tamanhos de imagem
-components/      Os 18 blocos de HTML de e-mail + o botão VML
+components/      Os 23 blocos de HTML de e-mail + o botão VML
 guidelines/
   ├── email-compat.md   Regras técnicas de HTML de e-mail (não negociáveis)
   ├── layout-ritmo.md   Hierarquia, ritmo da peça, limites de CTA e de seções
+  ├── variaveis-envio.md As variáveis que cada sistema de envio aceita e por que não há descadastro
+  ├── marcas.md         Podi ou Optimall: que componente cada marca usa e como recolorir
+  ├── marca-empreendimento.md  Modo empreendimento: logo, cor e redes do shopping; sempre claro
   ├── qa-checklist.md   Checklist obrigatório antes de entregar
   └── refs/             Referências visuais de design (leitura humana)
 ```
@@ -15,7 +20,8 @@ guidelines/
 ## Autoridade
 
 Este design system **obedece** ao [`brand/`](../../brand/README.md) e não pode contradizê-lo.
-A regra de contraste do verde `#48DB84` nasce lá; aqui ela só é aplicada.
+A regra de contraste da cor de marca nasce lá (no Podi, o verde `#48DB84`: `brand/podi/README.md`);
+aqui ela só é aplicada.
 
 ## O que é específico de e-mail
 

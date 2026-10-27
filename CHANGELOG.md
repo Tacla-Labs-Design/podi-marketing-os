@@ -10,6 +10,321 @@ entra sozinho no próximo e-mail.
 
 ---
 
+## 2026-10-23 — Foto do Podi: a pessoa não precisa estar olhando o celular
+
+A regra de olhar do Style Lock do Podi dizia que o sujeito **sempre** olha para a tela do
+celular. Isso impedia cenas legítimas da marca — alguém lendo um livro na praça de
+alimentação, conversando, descansando — que mostram o shopping como lugar de bem-estar, não
+só de uso do app. O Optimall já tinha uma regra mais aberta (o olhar vai para o trabalho).
+
+### Mudado
+
+- **Regra de olhar** (`brand/podi/photography/STYLE-LOCK-PODI.md` §1.4): o invariável agora é
+  **nunca olhar para a câmera**. Por padrão o olhar vai para a tela; quando a cena é de outra
+  atividade, vai para ela. O **celular continua sempre no quadro** (na mão ou apoiado perto,
+  com o glow verde) — é ele que amarra a foto ao app.
+- **Bloco STYLE LOCK** (§4.A, §4.B e as cópias da §7) e **CLEAN-FRAME CLAUSE** (§2.9 e §7.2):
+  a frase do olhar foi reescrita nesse sentido. O resto do bloco não mudou.
+- §2.7 (linhas Sujeito e Celular) e checklist da §6 acompanham a regra nova.
+- `/foto-podi`: o slot "Ação no app" aceita um momento sem o app em uso, com o celular no
+  quadro.
+
+Fotos já geradas continuam válidas — quem olhava o celular segue dentro da regra.
+
+---
+
+## 2026-10-07 — Optimall aprovado: deck, post e e-mail B2B
+
+O Optimall saiu de "pendente" e passou a montar as três peças: **e-mail, deck e post**,
+sempre B2B, falando com quem decide no shopping. A identidade veio do site publicado
+(optimall.com.br, código do `lp-optimall`) e dos dois arquivos do Figma do time do Optimall:
+*Apresentação Comercial 2026* (12 slides) e *Social Media – Optimall* (7 posts aprovados).
+
+**A regra "um design system só" mudou.** O plano de 2026-09-28 era montar o deck do Optimall
+com os slides do Podi e recolorir. Os modelos do Figma mostraram que a linguagem do Optimall —
+degradê roxo, vidro, pattern de pontos, fonte Halyard, logo tricolor — não sai de pintar os
+slides do Podi de outra cor. Agora: **procedimento, canvas, QA e governança continuam comuns;
+deck e post do Optimall têm biblioteca própria** e já nascem na paleta dele; o **e-mail
+continua** nos mesmos blocos, recolorido pelo script.
+
+### Adicionado
+
+- **Marca Optimall aprovada** (`brand/optimall/`):
+  - `marca.json` com `"status": "aprovado"`: roxo `#9934FF`, **texto branco sobre o roxo**
+    (`#101010` não passa 4,5:1), roxo de texto `#9025F4`, lavandas e neutros do site, sem
+    secundária; `paleta_extra` com os degradês e lilases do Figma; `fonte`, `contato`, logo
+    positivo/negativo/símbolo; `links.termos: false` (o Optimall não tem Termos de Uso).
+  - `mensagens.md` (novo): público, posicionamento, os 4 módulos, complementares,
+    integrações, **números oficiais** (+260 campanhas · +3,8 mi compras · +470 eventos ·
+    +R$ 980 mi GMV — os do site, confirmados pelo maintainer; os do deck antigo não valem),
+    prova social, voz B2B e frases aprovadas.
+  - `README.md` e `links-oficiais.md` reescritos; `photography/STYLE-LOCK-OPTIMALL.md` (novo),
+    derivado do Podi: mesma luz e lente, roxo em três valores, cenas B2B.
+  - `assets/`: logos (SVG positivo, negativo, símbolo; PNG 2x do e-mail), ícones sociais
+    roxos, `icones-ui/` (HugeIcons bulk), `clientes/`, `parceiros/`, `produto/`, `fotos/`,
+    `grafismos/`.
+- **Deck do Optimall**: `design-system/apresentacao/optimall/` (`README.md`, `tokens.md`,
+  14 slides — os 12 do Figma e dois derivados das mesmas peças, `12-titulo-texto` e
+  `13-citacao`) e `templates/apresentacao/base-optimall.html`.
+- **Material novo: post** — `design-system/post/` (canvas 1080×1350, carrossel, legenda, QA),
+  `design-system/post/optimall/` (7 modelos do Figma) e `templates/post/base-optimall.html`.
+  Podi: modelos pendentes — o `/post-podi` avisa em vez de improvisar.
+- **Skills** `post-podi` (procedimento) e `post-optimall` (atalho).
+- **`scripts/exportar.py`** — PNG de post e PDF de deck pelo Chrome da máquina, conferindo
+  antes se a fonte da marca está instalada.
+
+### Mudado
+
+- `CLAUDE.md`, `brand/README.md`, `README.md`, `skills/README.md`, `docs/*`: a nova regra
+  (biblioteca de deck e post por marca), o Optimall aprovado, o material post.
+- `/apresentacao-podi` escolhe biblioteca, tokens e template pela marca; no Optimall **não
+  recolore** e gera o PDF pelo `exportar.py`. `/apresentacao-optimall` atualizado.
+- `/newsletter-podi` (parte Optimall) e `design-system/newsletter/guidelines/marcas.md`: texto
+  de `mensagens.md`, botão roxo com texto branco, rodapé sem Termos, sem Facebook.
+- `/foto-podi`: diferenças do Optimall (ação no trabalho, figurino, sem `--sref` das refs do
+  Podi, tela de produto nunca gerada).
+- `scripts/aplicar-marca.py`: aceita `termos: false`, `paleta_extra` no `conferir`, recusa
+  recolorir deck/post de marca com biblioteca própria, e chama de "campo não preenchido" o
+  `{{…}}` que sobra em deck e post.
+- `design-system/apresentacao/guidelines/`: canvas cita a fonte de cada marca e o export por
+  script; QA ganhou a seção do Optimall.
+
+### Decisões a confirmar
+
+- **Fonte dos posts.** O Figma dos posts foi desenhado em **DM Sans**; o padrão usa
+  **Halyard Text** (a fonte do site e do deck), com títulos em 400 e corpo em Book para
+  compensar o peso. Se o time preferir DM Sans nos posts, é trocar o `--font` do template.
+- **Ícones do slide de problema** (`02-problema`): no Figma são multicoloridos; no padrão
+  ficaram roxos, porque as outras cores não são da marca.
+- **Post 05:** um dos chips do Figma era o símbolo do Podi; virou o ícone de celular.
+
+**Ação necessária:** quem tem cópia local deixa a skill atualizar o padrão antes de montar
+peça do Optimall. Peça do Optimall montada antes desta versão não existia (a marca estava
+pendente).
+
+---
+
+## 2026-09-28 — Optimall como segunda marca
+
+O Optimall, a plataforma B2B que oferece o Podi aos shoppings, precisa de e-mails e decks com
+a mesma estrutura e o mesmo estilo do Podi. O plano antigo era duplicar o repositório e trocar
+a paleta — mas duas cópias divergem na primeira correção. Em vez disso, **o design system
+continua um só**: componentes e slides são escritos uma vez, com os valores do Podi, e a peça
+do Optimall é montada igual e recolorida no fim, papel por papel, por um script. É o mesmo
+mecanismo do modo empreendimento, com a paleta fixa e aprovada em vez de derivada na hora.
+
+A identidade do Optimall (cores, logo, links, textos fixos, regra de envio) **ainda não foi
+carregada**: `brand/optimall/marca.json` está com `"status": "pendente"`, e nenhuma peça do
+Optimall é montada até o maintainer aprovar.
+
+### Adicionado
+
+- **`brand/README.md`** (novo) — regras comuns às duas marcas, como saber de qual marca é a
+  peça (comando ou linha `Marca:` do briefing; sem nenhum, Podi) e como carregar uma marca.
+- **`brand/optimall/`** — `README.md` (marca B2B, masculina, 100% independente: não cita o
+  Podi nem a Tacla Labs), `links-oficiais.md` e `marca.json`, com os campos a preencher.
+- **`brand/podi/marca.json`** e **`brand/optimall/marca.json`** — os valores da marca para
+  máquina: cor por papel (grupo de marca, secundária, neutros, dark mode), logo, ícones, links,
+  rodapé, textos fixos do deck, regra de envio e o que a peça não pode conter.
+- **`scripts/aplicar-marca.py`** — `validar` (marca completa e contrastes), `derivar`
+  (maintainer: propõe o grupo de marca a partir da cor principal, grava e gera os ícones),
+  `aplicar` (recolore a peça montada: cores, texto do CTA, ícones, links, rodapé, `<symbol>` e
+  `viewBox` do logo do deck) e `conferir` (cor fora da paleta, sobra de outra marca, variável
+  não permitida).
+- **`scripts/_cor.py`** — a conta de cor (OKLab, contraste) e o PNG, tirados do
+  `paleta-empreendimento.py` para os dois scripts usarem a mesma.
+- **`design-system/newsletter/guidelines/marcas.md`** — peça do Optimall: blocos (`01b`,
+  `90b` B, `91`), recolorir, conferir, entrega.
+- **`.claude/skills/newsletter-optimall`**, **`apresentacao-optimall`**, **`foto-optimall`** —
+  atalhos: seguem a skill `-podi` do mesmo material com a marca fixada. O procedimento não é
+  copiado.
+
+### Alterado
+
+- **`brand/`** reorganizado: tudo que era do Podi foi para **`brand/podi/`** — `README.md`,
+  `links-oficiais.md`, `assets/`, `photography/STYLE-LOCK-PODI.md` e `refs/`.
+  `brand/photography/README.md` ficou comum às duas marcas. Nenhum valor do Podi mudou.
+- **Caminhos** `brand/assets/…`, `brand/links-oficiais.md`, `brand/README.md` e o Style Lock
+  atualizados em skills, componentes, templates, docs, exemplos e scripts.
+- **Deck:** o `<symbol id="logo-podi">` virou `logo-marca` e `.logo--verde` virou
+  `.logo--marca` (template e 14 slides). Os textos fixos do Podi nos slides viraram
+  placeholders preenchidos pelo `marca.json`: `{{TAGLINE}}` no `00-capa`; `{{CTA_URL}}`,
+  `{{CTA_TEXTO}}` e `{{REDE}}` no `15-encerramento` (que também trocou `color:#fff` por
+  `var(--ink-inverse)`); `{{SEM_MARCA}}`/`{{COM_MARCA}}` no `11-comparativo`.
+- **`tokens.md`** de newsletter e apresentação — tabela token × papel da marca, com a coluna
+  do Optimall pendente; saiu a nota de duplicação do repositório.
+- **`variaveis-envio.md`** — a regra das três variáveis passa a ser do servidor do Podi. O
+  Optimall sai por outro sistema, com regra pendente: até lá, nenhuma variável na peça.
+- **`/newsletter-podi`**, **`/apresentacao-podi`**, **`/foto-podi`** — ganharam o passo "Qual
+  marca" e leem tudo que é de marca de `brand/<marca>/`; os QA passaram a rodar
+  `aplicar-marca.py conferir`.
+- **`qa-checklist.md`** dos dois materiais, `uso-do-roxo.md`, `slides/README.md`, READMEs de
+  design system e de componentes, `CLAUDE.md`, `README.md`, `skills/README.md` e `docs/` —
+  descrevem as duas marcas. Contagens corrigidas (23 componentes de e-mail, 16 slides).
+- **`scripts/paleta-empreendimento.py`** — importa a conta de cor de `_cor.py` e lê os ícones
+  de `brand/podi/assets/icones/`. Saída idêntica à anterior (conferida no exemplo SAVE & WIN).
+
+**Ação necessária:** quem tem a pasta do padrão no computador precisa atualizá-la — os
+caminhos de `brand/` mudaram. As skills fazem isso sozinhas no passo 0. Peça já montada em
+`saida/` que aponte para `../../brand/assets/…` precisa passar a apontar para
+`../../brand/podi/assets/…` para as imagens do Podi voltarem a carregar no preview.
+
+**Pendência:** cores, logo (SVG monocromático + PNG), links, redes, textos do deck e regra de
+envio do Optimall; depois, `STYLE-LOCK-OPTIMALL.md` nascido do do Podi com a paleta nova.
+Deck com cor de marca escura (texto branco sobre ela) ainda não tem regra — o script trava e
+vira proposta se a cor do Optimall pedir isso.
+
+---
+
+## 2026-09-23 — exemplo curado do modo empreendimento
+
+O modo empreendimento nasceu sem um exemplo que mostrasse o resultado esperado. Os sete
+e-mails do SAVE & WIN foram montados à mão antes da regra e têm desvios dela, então não
+entraram como estão: dois foram remontados com os componentes oficiais.
+
+### Adicionado
+
+- **`examples/newsletter/2026-09-empreendimento-save-win/`** — `01-boas-vindas.html` (o
+  card único completo) e `07-balanco-final.html` (o extrato longo), com `brief.md` (o
+  briefing com remetente, disparo, cor base e redes) e um `README.md` que registra as
+  decisões: assuntos do cliente mantidos acima de 45 caracteres, preheaders refeitos para
+  60–90, rodapé sem o pedido de descadastro e na ordem do `91`.
+- **Pendência:** o hero só existe em 600 × 300, abaixo do mínimo de 1072. Troca o arquivo
+  quando chegar a arte em 2x; o HTML não muda.
+
+### Alterado
+
+- **`README.md`**, **`docs/estrutura.md`**, **`marca-empreendimento.md`** — apontam para o
+  exemplo.
+
+---
+
+## 2026-09-23 — e-mail com marca do empreendimento
+
+O SAVE & WIN do City Center Outlet Premium foi o primeiro e-mail em que o remetente é o
+empreendimento, não o Podi: sete e-mails de gatilho com o logo, a cor e as redes do outlet.
+Ele foi montado à mão, com decisões fora do padrão — header, paleta, ícones, modo claro,
+campos personalizados. Sem regra, o próximo sairia diferente, e todo e-mail desse tipo seria
+tratado como conflito de marca. As decisões do SAVE & WIN viraram o **modo empreendimento**.
+
+### Adicionado
+
+- **`design-system/newsletter/guidelines/marca-empreendimento.md`** — quando usar, o que
+  muda e o que não muda, a estrutura da peça, o algoritmo da paleta, os contrastes que
+  bloqueiam a montagem, a conferência de referência e a limitação do modo claro.
+- **`scripts/paleta-empreendimento.py`** — recebe a cor base em hex e imprime os tokens
+  derivados, os contrastes e a tabela de troca; sai com erro se algum contraste reprovar ou
+  se a cor for neutra; gera os ícones sociais recoloridos em `saida/<slug>/imagens/icones/`.
+  Com `--conferir`, confere peças montadas (só leitura). Só biblioteca padrão do Python.
+  Para `#173B2A` ele devolve exatamente a paleta usada no SAVE & WIN.
+- **`templates/newsletter/base-empreendimento.html`** — o shell sempre claro: `light only`,
+  sem bloco de dark mode e sem classes `dm-*`. Um arquivo à parte, e não uma instrução de
+  adaptação, porque a diferença está no `<head>` — é exatamente o que dá errado quando se
+  adapta à mão, e nada no e-mail montado denunciaria o erro.
+- **Componentes:** `01b-header-empreendimento` (logo centralizado na placa branca),
+  `13-card-conteudo` (card único e seus itens: texto, título de grupo, lista, nota, linha
+  fina, CTA), `13a-card-galeria-2col` (galeria 1:1 dentro do card) e `13b-card-extrato`
+  (rótulo à esquerda, valor à direita).
+- **`08-destaque-numeros`** — variante B, de uma coluna: rótulo 16px em cima, número 32px
+  embaixo. A de três colunas virou a variante A, sem mudança.
+
+### Alterado
+
+- **`brand/README.md`** — seção nova "Peças com marca do empreendimento": quando é
+  permitido (o remetente é o empreendimento), que o verde Podi sai só nesse caso, e o que
+  continua Podi (`© Podi App`, link do app, regras de texto). A assinatura Podi + Tacla Labs
+  no topo passa a ter essa única exceção.
+- **`brand/links-oficiais.md`** — os ícones recoloridos são exceção aos `-green` e nunca
+  são gravados em `brand/`.
+- **`variaveis-envio.md`** — a regra das três variáveis vale para o servidor do Podi. Se o
+  briefing disser que o disparo é por outro sistema, os campos dele ficam, escritos como o
+  briefing define, e a entrega avisa que a peça não pode sair pelo servidor do Podi. Na
+  dúvida, a skill pergunta.
+- **`email-compat.md`** — a seção de dark mode registra a exceção do modo empreendimento.
+- **`tokens.md`** — referência à paleta derivada e ao script; rótulo 16px na variante B do
+  `08`; tamanhos do logo do empreendimento e da galeria no card.
+- **`qa-checklist.md`** — seção do modo empreendimento, no lugar da de dark mode.
+- **`91-footer-legal`** — comentário marcando onde entra o texto legal da promoção (antes
+  do `©`). O bloco em si não mudou.
+- **`components/README.md`** — os blocos novos no catálogo e uma seção do modo.
+- **`/newsletter-podi`** — detecta o modo pelo remetente, pede só o que falta (logo, cor
+  base, redes, texto legal, imagens 1:1, por onde sai o disparo), roda o script antes de
+  montar e o `--conferir` no QA. Não pergunta cabeçalho, rodapé nem modo claro.
+- **`docs/como-enviar-conteudo.md`** — o que o time manda para um e-mail de empreendimento.
+- **`CLAUDE.md`** — as regras não negociáveis citam o modo e a exceção das variáveis.
+- **`design-system/newsletter/README.md`**, **`docs/estrutura.md`** — contagem de blocos
+  (23), a guideline, o template e o script novos.
+
+---
+
+## 2026-09-23 — rodapé social com logo à esquerda
+
+Campanhas em que o remetente é o empreendimento (a primeira foi o SAVE & WIN do City Center
+Outlet Premium) precisavam assinar o rodapé com o logo e as redes do próprio empreendimento.
+O `90-social` só tinha ícones centralizados, com as URLs fixas do Podi. Agora existe um
+segundo modelo, e o atual continua sendo o padrão.
+
+### Adicionado
+
+- **`design-system/newsletter/components/90b-social-logo.html`** — logo à esquerda, ícones à
+  direita, numa linha só também no mobile. Variante A com o logo Podi verde e as redes
+  oficiais do Podi; variante B com o logo do empreendimento e as redes dele, vindas do
+  briefing.
+
+### Alterado
+
+- **`components/README.md`** — o bloco novo no catálogo, a regra de obrigatórios aceita
+  `90-social` ou `90b-social-logo`, e uma seção nova explica quando usar cada modelo.
+- **`templates/newsletter/base.html`** — o comentário de montagem cita os dois modelos.
+- **`brand/links-oficiais.md`** — a variante B do `90b` é a única que troca as URLs das redes.
+- **`design-system/newsletter/README.md`**, **`docs/estrutura.md`** — contagem de blocos (19).
+
+---
+
+## 2026-09-04 — proibido JavaScript em newsletter
+
+`email-compat.md` já vetava `<script>`, mas não cobria JS disfarçado em atributo
+(`onclick`, `onload`) ou `href="javascript:..."`. Clientes de e-mail podem bloquear a
+mensagem inteira ao detectar isso, então a regra ficou explícita.
+
+### Alterado
+
+- **`design-system/newsletter/guidelines/email-compat.md`** — seção "Conteúdo e
+  entregabilidade" agora proíbe qualquer forma de JavaScript, não só a tag `<script>`.
+
+---
+
+## 2026-09-03 — só três variáveis em e-mail, e nada de descadastro
+
+O servidor de envio do Podi (AWS) resolve apenas `{{email}}`, `{{topicId}}` e
+`{{campaignId}}`. Qualquer outra variável no HTML **derruba o envio inteiro** — não é um
+campo vazio, é a campanha que não sai. Como não existe variável de descadastro, o link de
+descadastro sai das peças.
+
+### Adicionado
+
+- **`design-system/newsletter/guidelines/variaveis-envio.md`** — a tabela do que é
+  suportado, a distinção entre placeholder de montagem (`{{MAIUSCULA}}`, substituído antes
+  do envio) e variável de envio (minúscula, resolvida pelo servidor), e o `grep` de
+  conferência.
+
+### Alterado
+
+- **`91-footer-legal.html`** — sem link de descadastro. O motivo do recebimento continua,
+  e o e-mail do destinatário passa a vir de `{{email}}` em vez de
+  `{{EMAIL_DESTINATARIO}}`.
+- **`brand/README.md`** — a tabela das duas frentes não diferencia mais rodapé por
+  descadastro; a diferença passa a ser tom, motivo do recebimento e contato.
+- **`CLAUDE.md`**, **`/newsletter-podi`**, **`qa-checklist.md`**, **`docs/como-usar.md`**,
+  **`docs/como-enviar-conteudo.md`**, **`examples/briefing-demo/README.md`** — regra nova
+  no lugar da antiga; o QA ganhou o item de conferir as variáveis que sobraram no arquivo.
+- **Exemplos** em `examples/newsletter/` — rodapés refeitos sem descadastro.
+
+**Ação necessária:** e-mail montado antes desta data e ainda não enviado precisa ter o
+`{{URL_DESCADASTRO}}` removido do rodapé — se for enviado como está, a campanha não sai.
+
+---
+
 ## 2026-09-01 — briefing de demonstração no repositório
 
 Quem instalava o Marketing OS pela primeira vez não tinha o que montar: `projects/_inbox/`

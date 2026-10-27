@@ -1,7 +1,12 @@
 # O roxo `#9934FF` — onde entra e onde não entra
 
-A regra nasce em [`brand/README.md`](../../../brand/README.md). Aqui está o que ela
+A regra nasce em [`brand/README.md`](../../../brand/README.md) (cor secundária é detalhe) e em
+[`brand/podi/README.md`](../../../brand/podi/README.md) (o roxo do Podi). Aqui está o que ela
 significa na prática de um slide.
+
+**Em outra marca**, a secundária dela ocupa exatamente o mesmo papel — os tokens `accent-2*`
+recebem os valores do `marca.json` — e todas as regras abaixo valem igual. Os hex e o "verde"
+deste arquivo são os do Podi.
 
 **O verde é a marca. O roxo é tempero.** Um slide bem montado tem entre um e três detalhes
 roxos. Quatro já é um slide roxo, e slide roxo não parece Podi.
@@ -35,7 +40,7 @@ padrão (`docs/governanca.md`).
 ```bash
 f=saida/<slug>/index.html
 grep -o 'color:[^;"]*\(9934FF\|--accent-2\b\)' $f  # 0 — roxo nunca é hex em texto
-grep -n 'color:[^;"]*\(48DB84\|--accent)\)' $f     # só .logo--verde: logo é forma, não texto
+grep -n 'color:[^;"]*\(48DB84\|--accent)\)' $f     # só .logo--marca: logo é forma, não texto
 grep -c 'color:var(--accent-2)' $f                  # só chip de ícone e aspas do 10
 grep -c '9934FF' $f                                 # 1 — só no :root do template
 ```

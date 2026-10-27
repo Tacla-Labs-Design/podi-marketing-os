@@ -1,5 +1,5 @@
-<!-- 11-comparativo — duas colunas lado a lado (antes/depois, com Podi/sem Podi).
-     A coluna que o Podi defende leva o topo verde; a outra fica neutra.
+<!-- 11-comparativo — duas colunas lado a lado (antes/depois, com a marca/sem a marca).
+     A coluna que a peça defende leva o topo na cor de marca; a outra fica neutra.
      Não usar vermelho: a comparação é factual, não acusatória. -->
 <style>
 .comp{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:64px}
@@ -18,7 +18,7 @@
     <div class="regua" style="margin-top:24px"></div>
     <div class="comp">
       <div class="comp__col">
-        <div class="comp__topo"><span class="t-card-sm">{{SEM_PODI}}</span></div>
+        <div class="comp__topo"><span class="t-card-sm">{{SEM_MARCA}}</span></div>
         <div class="comp__lista">
           <div class="comp__item"><span class="comp__pt comp__pt--off"></span><span class="t-body">{{PONTO}}</span></div>
           <div class="comp__item"><span class="comp__pt comp__pt--off"></span><span class="t-body">{{PONTO}}</span></div>
@@ -26,7 +26,7 @@
         </div>
       </div>
       <div class="comp__col">
-        <div class="comp__topo comp__topo--on"><span class="t-card-sm">{{COM_PODI}}</span></div>
+        <div class="comp__topo comp__topo--on"><span class="t-card-sm">{{COM_MARCA}}</span></div>
         <div class="comp__lista">
           <div class="comp__item"><span class="comp__pt"></span><span class="t-body">{{PONTO}}</span></div>
           <div class="comp__item"><span class="comp__pt"></span><span class="t-body">{{PONTO}}</span></div>
@@ -34,6 +34,6 @@
         </div>
       </div>
     </div>
-    <div class="slide__foot"><svg class="logo logo--verde" viewBox="0 0 263 128" role="img" aria-label="Podi"><title>Podi</title><use href="#logo-podi"/></svg><span>{{NN}}</span></div>
+    <div class="slide__foot"><svg class="logo logo--marca" viewBox="0 0 263 128" role="img" aria-label="Podi"><title>Podi</title><use href="#logo-marca"/></svg><span>{{NN}}</span></div>
   </div>
 </section>

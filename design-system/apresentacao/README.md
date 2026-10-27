@@ -16,8 +16,21 @@ guidelines/
 ## Autoridade
 
 Este design system **obedece** ao [`brand/`](../../brand/README.md) e não pode contradizê-lo.
-A regra do verde `#48DB84` e a do roxo de detalhe `#9934FF` nascem lá; aqui elas só são
-aplicadas a um canvas de 1920 × 1080.
+A regra da cor de marca e a da secundária de detalhe nascem lá (no Podi, o verde `#48DB84` e o
+roxo `#9934FF`: `brand/podi/README.md`); aqui elas só são aplicadas a um canvas de 1920 × 1080.
+
+Serve às duas marcas, com **uma biblioteca de slides por marca** e as mesmas `guidelines/`
+(canvas, ritmo, QA):
+
+| Marca | Tokens | Slides | Template |
+|---|---|---|---|
+| Podi | `tokens.md` | `slides/` (16 tipos) | `templates/apresentacao/base.html` |
+| Optimall | [`optimall/tokens.md`](optimall/tokens.md) | [`optimall/slides/`](optimall/README.md) (14 tipos, dos modelos do Figma) | `templates/apresentacao/base-optimall.html` |
+
+O deck do Optimall **não** é o do Podi recolorido: ele nasce na biblioteca própria, com a
+paleta, a Halyard, o logo tricolor e os grafismos do Optimall. `uso-do-roxo.md` é regra do
+Podi (lá o roxo é secundária); no Optimall o roxo é a marca e a regra está em
+`optimall/tokens.md`.
 
 ## O que é específico de apresentação
 

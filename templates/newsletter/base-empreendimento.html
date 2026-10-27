@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="format-detection" content="telephone=no,address=no,email=no,date=no" />
+<meta name="color-scheme" content="light only" />
+<meta name="supported-color-schemes" content="light" />
+<title>{{TITULO_INTERNO}}</title>
+
+<!--[if mso]>
+<xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch><o:AllowPNG/></o:OfficeDocumentSettings></xml>
+<style>* { font-family: Arial, Helvetica, sans-serif !important; }</style>
+<![endif]-->
+
+<!--[if !mso]><!--><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet" /><!--<![endif]-->
+
+<style type="text/css">
+  /* ---------- sempre modo claro ----------
+     Modo empreendimento: os tokens de dark mode são derivados do verde Podi e ainda não
+     existe regra para derivá-los de outra cor. Por isso não há bloco de dark mode nem
+     classes dm-*. Limitação: o app do Gmail e parte das versões do Outlook podem inverter
+     as cores por conta própria, ignorando este aviso. */
+  :root { color-scheme:light only; supported-color-schemes:light; }
+
+  /* ---------- resets de client ---------- */
+  html, body { margin:0 !important; padding:0 !important; height:100% !important; width:100% !important; }
+  body { -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; }
+  table, td { mso-table-lspace:0pt; mso-table-rspace:0pt; border-collapse:collapse; }
+  img { -ms-interpolation-mode:bicubic; border:0; height:auto; line-height:100%; outline:none; text-decoration:none; }
+  a { text-decoration:none; }
+  #outlook a { padding:0; }
+  .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div { line-height:inherit; }
+  u + #body a, #MessageViewBody a { color:inherit; text-decoration:none; font-size:inherit; font-family:inherit; font-weight:inherit; line-height:inherit; }
+  .im { color:inherit !important; }
+
+  /* ---------- mobile ---------- */
+  @media only screen and (max-width:600px) {
+    .w-full      { width:100% !important; max-width:100% !important; }
+    .stack       { display:block !important; width:100% !important; max-width:100% !important; }
+    .stack img   { width:100% !important; max-width:100% !important; }
+    .p-mobile    { padding-left:20px !important; padding-right:20px !important; }
+    .card-mobile { padding:24px 20px !important; }
+    .full-bleed  { padding-left:0 !important; padding-right:0 !important; }
+    .full-bleed img { border-radius:0 !important; }
+    .center-mobile { text-align:center !important; }
+    .h-mobile    { height:24px !important; line-height:24px !important; }
+    .hide-mobile { display:none !important; }
+    .thumb-cell  { width:88px !important; }
+    .thumb       { width:88px !important; max-width:88px !important; height:88px !important; }
+    .thumb-gap   { width:16px !important; }
+    .t-hero      { font-size:26px !important; line-height:33px !important; }
+    .t-h2        { font-size:23px !important; line-height:29px !important; }
+    .t-h3        { font-size:19px !important; line-height:25px !important; }
+    .order-img   { display:table-header-group !important; }
+  }
+
+</style>
+</head>
+
+<body id="body" style="margin:0;padding:0;width:100%;background-color:#EDF7F1;">
+
+<!-- PREHEADER: 60-90 caracteres. Aparece na caixa de entrada, nunca no corpo. -->
+<div style="display:none;font-size:1px;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;mso-hide:all;">
+  {{PREHEADER}}
+  &#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;
+</div>
+
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#EDF7F1;">
+  <tr>
+    <td align="center" style="padding:0;">
+
+      <!--[if mso]><table role="presentation" cellpadding="0" cellspacing="0" border="0" width="600" align="center"><tr><td><![endif]-->
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" class="w-full" style="width:100%;max-width:600px;background-color:#EDF7F1;">
+
+        <!-- ============================================================
+             MODO EMPREENDIMENTO — shell sempre claro.
+             Regras: design-system/newsletter/guidelines/marca-empreendimento.md
+
+             ANTES DE MONTAR: python3 scripts/paleta-empreendimento.py "<cor base>" <slug>
+             Ele confere os contrastes, gera os ícones sociais e imprime a troca de cores.
+
+             COLE OS BLOCOS DE design-system/newsletter/components/ AQUI, NESTA ORDEM:
+               1. 01b-header-empreendimento.html   (obrigatório)
+               2. 03-hero-image.html               (imagem da campanha)
+               3. 08-destaque-numeros.html         (variante B · 1 coluna)
+               4. 13-card-conteudo.html            (um card só; itens do 13, 13a e 13b)
+               5. 90b-social-logo.html             (obrigatório · variante B)
+               6. 91-footer-legal.html             (obrigatório · texto legal da promoção antes do ©)
+             Entre blocos, usar o espaçador de 99-spacer.html: 32px depois do hero,
+             16px entre o destaque e o card, 40px antes do 90b.
+
+             DEPOIS DE COLAR:
+               - trocar as cores do grupo verde pela tabela que o script imprimiu
+                 (esta página já vem com #EDF7F1 no fundo: ele também troca);
+               - tirar todas as classes dm-* dos blocos colados;
+               - ícones sociais: imagens/icones/<rede>-campanha.png, nunca os -green de brand/;
+               - conferir: python3 scripts/paleta-empreendimento.py "<cor base>" --conferir <arquivo>
+
+             VARIÁVEIS: no envio pelo servidor do Podi só existem {{email}}, {{topicId}}
+             e {{campaignId}}. Campos do briefing ({{nome}} e afins) só ficam se o disparo
+             for por outro sistema — e aí a peça NÃO pode sair pelo servidor do Podi.
+             Todo {{PLACEHOLDER_EM_MAIUSCULA}} deste template é de montagem e precisa ser
+             substituído por texto antes de enviar.
+             Ver design-system/newsletter/guidelines/variaveis-envio.md.
+             ============================================================ -->
+
+      </table>
+      <!--[if mso]></td></tr></table><![endif]-->
+
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

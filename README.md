@@ -1,21 +1,29 @@
 # Podi Marketing OS
 
-O lugar onde ficam guardados os **padrões oficiais do Podi** para criação de materiais de
-Marketing, Design e Publicidade — cores, componentes, modelos e as instruções que a IA
-segue para montar tudo isso.
+O lugar onde ficam guardados os **padrões oficiais do Podi e do Optimall** para criação de
+materiais de Marketing, Design e Publicidade — cores, componentes, modelos e as instruções
+que a IA segue para montar tudo isso.
 
 A ideia é simples: você traz o conteúdo, a IA monta o material já dentro do padrão da
 marca. Ninguém precisa lembrar de cor, tamanho de fonte ou regra de rodapé.
 
-> **Marca única.** Hoje o repositório está configurado só para o Podi. Quando o design
-> estiver aprovado, ele será duplicado e a paleta trocada para Optimall — a estrutura e as
-> regras continuam idênticas.
+## Qual marca?
+
+| Marca | Para quem fala | Comandos |
+|---|---|---|
+| **Podi** — o app dos shoppings | Consumidor final e time | `/newsletter-podi`, `/apresentacao-podi`, `/foto-podi` |
+| **Optimall** — a plataforma B2B dos shoppings | Gestores de shopping (B2B), sempre | `/newsletter-optimall`, `/apresentacao-optimall`, `/post-optimall`, `/foto-optimall` |
+
+As duas seguem **o mesmo sistema** — mesmos passos, mesmas regras de qualidade. O e-mail usa
+os mesmos blocos nas duas marcas; o deck e o post do Optimall têm modelos próprios, tirados do
+Figma dele (roxo, vidro, fonte Halyard). Você escolhe a marca pelo comando, ou escrevendo
+`Marca: Optimall` no briefing; sem isso, é Podi.
 
 ---
 
 ## Para quem é
 
-Para o time de Marketing, Design e Publicidade do Podi.
+Para o time de Marketing, Design e Publicidade do Podi e do Optimall.
 
 **Não é preciso saber programar.** Você escreve o conteúdo e organiza as imagens; a IA faz
 o resto. Se em algum momento uma resposta pedir que você mexa no repositório, algo saiu do
@@ -27,7 +35,10 @@ lugar — avise quem cuida do padrão.
 
 | Material | Situação |
 |---|---|
-| **Newsletter / e-mail** | Completo — design system, 18 componentes, modelo, 3 exemplos e skill pronta |
+| **Newsletter / e-mail** | Completo — design system, 23 componentes, modelos, exemplos e skill pronta |
+| **Apresentação / deck** | Completo — Podi com 16 tipos de slide; Optimall com 14, dos modelos do Figma. Exporta PDF |
+| **Post / carrossel** | Completo no Optimall — 7 modelos 1080×1350, PNG e legenda prontos. Podi: modelos pendentes |
+| **Foto de marca** | Completo nas duas marcas — direção fotográfica (Style Lock) e skill que escreve o prompt |
 | Outros materiais | Ainda não. A estrutura já está preparada para receber |
 
 ---
@@ -74,7 +85,7 @@ teste pela própria ferramenta de envio.
 ## Como o projeto está organizado
 
 ```
-brand/               A identidade do Podi: logo, cores, tom de voz, links oficiais
+brand/               A identidade das marcas: podi/ e optimall/ — logo, cores, tom de voz, links
 design-system/       Como cada tipo de material se constrói: cores, componentes, regras
 templates/           Os modelos em branco
 examples/            Materiais prontos, para ver como fica
@@ -91,7 +102,7 @@ Mapa detalhado: [`docs/estrutura.md`](docs/estrutura.md).
 ## O que é oficial
 
 Tudo em **`brand/`, `design-system/`, `templates/`, `examples/`, `docs/` e as skills** é
-recurso oficial do Podi. É o padrão da marca.
+recurso oficial. É o padrão das marcas.
 
 **`projects/_inbox/` e `saida/` são seus.** Ficam no seu computador, não vão para lugar
 nenhum e não afetam ninguém.
@@ -133,7 +144,7 @@ Se for aprovado, o recurso entra no padrão e no
 
 ## Como adicionar um recurso novo (maintainer)
 
-1. Colocar o recurso na camada certa: identidade → `brand/`; regra visual ou componente →
+1. Colocar o recurso na camada certa: identidade → `brand/` (comum) ou `brand/<marca>/`; regra visual ou componente →
    `design-system/<material>/`; modelo em branco → `templates/<material>/`; procedimento
    que a IA segue → `.claude/skills/<skill>/SKILL.md`.
 2. Documentar no README da própria pasta.
@@ -155,7 +166,7 @@ aponte para o `CLAUDE.md` e para o `SKILL.md` do material.
 
 ## Referência rápida
 
-- **Identidade e cores:** [`brand/README.md`](brand/README.md)
+- **As marcas:** [`brand/README.md`](brand/README.md) · [Podi](brand/podi/README.md) · [Optimall](brand/optimall/README.md)
 - **Design system da newsletter:** [`design-system/newsletter/README.md`](design-system/newsletter/README.md)
 - **Componentes:** [`design-system/newsletter/components/README.md`](design-system/newsletter/components/README.md)
 - **Checklist de QA:** [`design-system/newsletter/guidelines/qa-checklist.md`](design-system/newsletter/guidelines/qa-checklist.md)
@@ -174,3 +185,4 @@ Briefing fictício, com textos e imagens: [`examples/briefing-demo/`](examples/b
 | Cliente final | [Atualizações do app](examples/newsletter/2026-08-podi-atualizacoes-app/index.html) |
 | Endomarketing | [Podi por dentro](examples/newsletter/2026-08-interno-podi-por-dentro/index.html) |
 | Podi News | [Eventos de julho](examples/newsletter/2026-08-podi-news-eventos-julho/index.html) |
+| Marca do empreendimento | [SAVE & WIN, City Center Outlet Premium](examples/newsletter/2026-09-empreendimento-save-win/01-boas-vindas.html) |

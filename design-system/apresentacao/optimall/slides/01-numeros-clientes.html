@@ -1,0 +1,80 @@
+<!-- 01-numeros-clientes — prova: os 4 números oficiais em pílulas sobre o roxo e a grade de
+     logos de clientes num grande disco claro à direita. Os números e legendas são SÓ os de
+     brand/optimall/mensagens.md — não se trocam por campanha. A grade leva até 15 logos
+     (assets/<shopping>-roxo.svg, 224×238 cada, já com respiro); a 1ª célula é o título.
+     Renumere o num-slide conforme a posição no roteiro. -->
+<style>
+.num{background:var(--roxo)}
+.num .num-slide{color:var(--apoio)}
+/* disco claro que entra pela direita */
+.num .num-disco{left:761.32px;top:-307.36px;width:1694.72px;height:1694.72px;border-radius:50%;z-index:0;
+  background:
+    radial-gradient(circle 800.26px at 1157.96px 304.4px,var(--lilas-200) 0%,var(--branco-0) 100%),
+    radial-gradient(circle 829.75px at 108.18px 1241.98px,var(--lilas-200) 0%,var(--branco-0) 100%),
+    var(--branco)}
+
+/* pílulas dos números */
+.num .num-lista{left:64px;top:64px;width:826px;height:952px;display:flex;flex-direction:column;z-index:1}
+.num .num-pilula{flex:1;display:flex;flex-direction:column;justify-content:center;gap:20px;padding-left:64px;
+  border-radius:var(--r-pill);background:linear-gradient(to right,var(--roxo-700) 0%,var(--roxo-0) 75.481%)}
+.num .num-pilula:nth-child(even){background:linear-gradient(to right,var(--roxo),var(--roxo-700))}
+.num .num-valor{display:flex;align-items:center;gap:16px;color:var(--branco);white-space:nowrap}
+.num .num-valor > *,.num .t-num-label{text-box:trim-both cap alphabetic}
+.num .t-num-label{white-space:nowrap}
+
+/* grade de clientes: 4 × 4 células de 224 × 238 */
+.num .num-grade{left:960px;top:64px;width:896px;height:952px;z-index:1;
+  display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(4,1fr)}
+.num .num-grade img{display:block;width:224px;height:238px}
+.num .num-titulo{position:relative;display:flex;align-items:center;
+  font-size:32px;line-height:1.2;font-weight:var(--w-medio);letter-spacing:.01em;color:var(--roxo)}
+/* borda lilás que some para cima e para a esquerda */
+.num .num-titulo::before{content:"";position:absolute;inset:0;border:2px solid var(--lilas-400);border-radius:0 0 96px 0;
+  -webkit-mask-image:linear-gradient(to bottom,var(--branco-0) 15%,var(--branco) 75%),linear-gradient(to right,var(--branco-0) 15%,var(--branco) 75%);
+  -webkit-mask-composite:source-in;
+          mask-image:linear-gradient(to bottom,var(--branco-0) 15%,var(--branco) 75%),linear-gradient(to right,var(--branco-0) 15%,var(--branco) 75%);
+          mask-composite:intersect}
+</style>
+<section class="slide slide--roxo num">
+  <div class="num-disco" aria-hidden="true"></div>
+
+  <div class="num-lista">
+    <div class="num-pilula">
+      <div class="num-valor"><span class="t-num-pre">+ de</span><span class="t-num">260</span></div>
+      <span class="t-num-label">campanhas realizadas</span>
+    </div>
+    <div class="num-pilula">
+      <div class="num-valor"><span class="t-num-pre">+ de</span><span class="t-num">3,8 milhões</span></div>
+      <span class="t-num-label">de compras registradas</span>
+    </div>
+    <div class="num-pilula">
+      <div class="num-valor"><span class="t-num-pre">+ de</span><span class="t-num">470</span></div>
+      <span class="t-num-label">eventos realizados</span>
+    </div>
+    <div class="num-pilula">
+      <div class="num-valor"><span class="t-num-pre">+ de</span><span class="t-num">R$ 980 milhões</span></div>
+      <span class="t-num-label">em GMV</span>
+    </div>
+  </div>
+
+  <div class="num-grade">
+    <h2 class="num-titulo">Clientes que confiam no Optimall</h2>
+    <img src="assets/acp-roxo.svg" alt="ACP — Associação Comercial do Paraná">
+    <img src="assets/jockey-plaza-roxo.svg" alt="Jockey Plaza Shopping Center">
+    <img src="assets/plaza-campos-gerais-roxo.svg" alt="Plaza Campos Gerais">
+    <img src="assets/shopping-estacao-roxo.svg" alt="Shopping Estação">
+    <img src="assets/colombo-park-we9-roxo.svg" alt="Colombo Park Shopping e WE9">
+    <img src="assets/palladium-curitiba-roxo.svg" alt="Palladium Curitiba">
+    <img src="assets/itajai-shopping-roxo.svg" alt="Itajaí Shopping">
+    <img src="assets/shopping-boulevard-roxo.svg" alt="Shopping Boulevard">
+    <img src="assets/porto-belo-outlet-roxo.svg" alt="Porto Belo Outlet Premium">
+    <img src="assets/catuai-palladium-roxo.svg" alt="Catuaí Palladium">
+    <img src="assets/shopping-cidade-sorocaba-roxo.svg" alt="Shopping Cidade Sorocaba">
+    <img src="assets/ventura-shopping-roxo.svg" alt="Ventura Shopping">
+    <img src="assets/palladium-umuarama-roxo.svg" alt="Palladium Umuarama">
+    <img src="assets/city-center-outlet-roxo.svg" alt="City Center Outlet Premium">
+    <img src="assets/palladium-ponta-grossa-roxo.svg" alt="Palladium Ponta Grossa">
+  </div>
+
+  <span class="num-slide">02</span>
+</section>

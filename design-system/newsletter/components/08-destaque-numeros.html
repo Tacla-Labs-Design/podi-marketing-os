@@ -1,4 +1,10 @@
-<!-- 08 · DESTAQUE DE NÚMEROS (3 colunas) — endomarketing / resultados. Empilha no mobile. -->
+<!-- ============================================================================
+     08 · DESTAQUE DE NÚMEROS — faixa accent-soft com números grandes. Duas variantes.
+     ============================================================================ -->
+
+
+<!-- VARIANTE A · 3 COLUNAS — endomarketing / resultados. Número em cima, label 14px embaixo.
+     Empilha no mobile. -->
 <tr>
   <td class="p-mobile" style="padding:0 32px;">
     <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#D4F0DF" class="dm-tag" style="width:100%;background-color:#D4F0DF;border-radius:20px;">
@@ -20,6 +26,25 @@
               </td>
             </tr>
           </table>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+
+
+<!-- VARIANTE B · 1 COLUNA — um número só, a informação principal da peça.
+     Rótulo em cima, em 16px (body), e número embaixo, em 32px. Aqui o rótulo é frase
+     ("Você economizou"), não legenda: por isso 16px e não os 14px da variante A.
+     Validado no SAVE & WIN (modo empreendimento, guidelines/marca-empreendimento.md),
+     mas vale em qualquer peça. -->
+<tr>
+  <td class="p-mobile" style="padding:0 32px;">
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#D4F0DF" class="dm-tag" style="width:100%;background-color:#D4F0DF;border-radius:20px;">
+      <tr>
+        <td align="center" class="card-mobile" style="padding:32px 24px;">
+          <p class="dm-body" style="margin:0 0 6px 0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:25px;font-weight:400;color:#4A4A4A;text-align:center;">{{LABEL}}</p>
+          <p class="dm-accent" style="margin:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:32px;line-height:38px;font-weight:600;color:#0C6E3B;text-align:center;letter-spacing:-0.5px;">{{NUM}}</p>
         </td>
       </tr>
     </table>

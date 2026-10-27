@@ -1,0 +1,36 @@
+<!-- 12-titulo-texto — derivado do slide 09 do Figma (tag, título em degradê, régua, texto, pattern
+     de pontos e arcos) e do fecho (símbolo gigante). Não há frame próprio no Figma.
+     Uma ideia sem apoio visual: tag + título de até 2 linhas + 1 ou 2 parágrafos (até ~60 palavras,
+     coluna de 1100px). Mais que isso vira outro slide.
+     Variante divisor de seção: troque "slide--claro-2" por "slide--roxo titulo-texto--roxo" na
+     <section> — fundo roxo, título, régua e texto brancos, símbolo gigante no canto. -->
+<style>
+.tt-arco{border-radius:160px;background:linear-gradient(214deg,var(--roxo-07) 0%,var(--roxo-0) 48%);z-index:0}
+.tt-marca{display:none;left:-346px;top:316px;width:1455px;height:auto}
+.tt-bloco{left:64px;top:0;bottom:0;width:1320px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;z-index:2}
+.tt-bloco .tag{margin-bottom:16px}
+.tt-bloco .regua{margin:40px 0}
+.tt-texto{width:1100px;display:flex;flex-direction:column;gap:24px}
+.titulo-texto--roxo .tt-arco{display:none}
+.titulo-texto--roxo .tt-marca{display:block}
+.titulo-texto--roxo .pontos{--pontos-cor:var(--lilas-400)}
+.titulo-texto--roxo .tag{background:var(--lilas-400);color:var(--branco)}
+</style>
+<section class="slide slide--claro-2 titulo-texto">
+  <div class="pontos pontos--200 pontos--baixo" style="left:-725px;top:-120px"></div>
+  <div class="tt-arco" style="left:1143px;top:212px;width:777px;height:866px"></div>
+  <div class="tt-arco" style="left:1103px;top:252px;width:777px;height:826px"></div>
+  <div class="tt-arco" style="left:1063px;top:292px;width:777px;height:796px"></div>
+  <img class="marca-dagua tt-marca" src="assets/simbolo-gigante-fecho.svg" alt="" aria-hidden="true">
+
+  <div class="tt-bloco">
+    <span class="tag">O desafio</span>
+    <h2 class="t-titulo">A maioria dos shoppings opera com sistemas que não conversam entre si.</h2>
+    <div class="regua"></div>
+    <div class="tt-texto">
+      <p class="t-corpo">Campanha num sistema, fidelidade em outro, dados num terceiro, relatório em planilha.</p>
+      <p class="t-corpo">O Optimall conecta essas bases numa única plataforma, dando à equipe o histórico real de cada cliente, do primeiro cadastro até a última compra.</p>
+    </div>
+  </div>
+  <span class="num-slide">12</span>
+</section>

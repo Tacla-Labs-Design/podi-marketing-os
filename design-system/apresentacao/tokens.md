@@ -1,9 +1,26 @@
-# Tokens — Apresentação Podi
+# Tokens — Apresentação
 
-> Este repositório está configurado **só para a marca Podi**.
-> Quando o design estiver fechado, ele será duplicado e a paleta trocada para Optimall.
-> Trocar cor: mexer **só neste arquivo e no `:root` de `templates/apresentacao/base.html`**.
+> Os valores abaixo são os do **Podi**, e é com eles que o `:root` de
+> `templates/apresentacao/base.html` está escrito. Cada marca tem os mesmos papéis com outros
+> valores, em `brand/<marca>/marca.json`: deck do Optimall é montado igual e
+> `scripts/aplicar-marca.py aplicar optimall` troca o `:root` e o `<symbol>` do logo.
 > A estrutura dos slides não muda.
+
+## Token × papel da marca
+
+| Token (deck) | Papel (`marca.json`) | Podi | Optimall |
+|---|---|---|---|
+| `accent`, `page` | `brand` | `#48DB84` | *pendente* |
+| `ink-on-accent` | `ink-on-brand` | `#101010` | *pendente* |
+| `accent-ink` | `accent-ink` | `#0C6E3B` | *pendente* |
+| `accent-on-dark` | `accent-on-dark` | `#6FE9A2` | *pendente* |
+| `accent-2`, `-mid`, `-soft`, `-line` | mesmo nome | roxo, abaixo | *pendente* |
+| `page-light`, `surface-alt`, `hairline` | mesmo nome | abaixo | *pendente* |
+| `ink`, `body`, `muted`, `surface`, `ink-field`, `ink-inverse` | `ink`, `body`, `muted`, `surface` | abaixo | iguais ao Podi |
+
+Se o texto em cima da cor de marca de uma marca for branco (cor principal escura), o deck não
+funciona como está — o slide inteiro é da cor de marca. Isso é **proposta de evolução** e o
+script trava o deck até o maintainer decidir.
 
 Os nomes de token são os mesmos de `design-system/newsletter/tokens.md` sempre que o papel
 é o mesmo — `ink`, `body`, `muted`, `surface`, `hairline`. Um token com nome igual e valor
@@ -27,8 +44,8 @@ de texto em nenhuma hipótese.
 
 ## Cor secundária
 
-**`#9934FF`** (roxo Tacla Labs). Só **detalhe gráfico** — ver
-[`brand/README.md`](../../brand/README.md) e [`guidelines/uso-do-roxo.md`](guidelines/uso-do-roxo.md).
+**`#9934FF`** (roxo Tacla Labs) no Podi; no Optimall, a secundária dele. Só **detalhe gráfico** — ver
+[`brand/podi/README.md`](../../brand/podi/README.md) e [`guidelines/uso-do-roxo.md`](guidelines/uso-do-roxo.md).
 
 | Token | Hex | Uso — e só este |
 |---|---|---|
@@ -122,7 +139,7 @@ Tudo exportado em **2x** do tamanho de exibição — o slide já é grande, e o
 | Logo de cliente na grade | 240 × 120 | 480 × 240 | Caixa fixa, logo centralizado |
 | Retrato de citação | 200 × 200 | 400 × 400 | 1:1 |
 
-O **logo Podi não entra nesta tabela**: ele é vetor (`<use href="#logo-podi">`), não tem
+O **logo da marca não entra nesta tabela**: ele é vetor (`<use href="#logo-marca">`), não tem
 exportação e não perde qualidade em nenhum tamanho. Ver `slides/README.md` → "O logo".
 
 Foto fora da proporção **não se distorce e não se corta por conta própria** — mesma regra do

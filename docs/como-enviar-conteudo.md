@@ -18,8 +18,9 @@ AAAA-MM-<frente>-<assunto>
 - **frente** é `cliente` (consumidor dos shoppings) ou `interno` (colaboradores)
 - exemplos: `2026-09-cliente-podi-news`, `2026-09-interno-case-shopping-norte`
 
-A frente não é detalhe: ela decide o rodapé. E-mail para cliente final **precisa** de link
-de descadastro; e-mail interno não leva.
+A frente não é detalhe: ela decide o tom e o texto do rodapé — o motivo do recebimento e o
+contato mudam entre cliente final e interno. **Link de descadastro nenhuma das duas leva:**
+o servidor de envio não suporta essa variável.
 
 Dentro dela:
 
@@ -38,12 +39,17 @@ Não precisa formatar bonito. O que o Claude precisa achar:
 **No começo, o cabeçalho do envio:**
 
 ```
+Marca: Podi                  ← ou: Optimall
 Frente: cliente
 Data de envio: 15/09/2026
 Objetivo: divulgar os eventos de setembro nos shoppings
 Chamada da edição: Setembro chegou com novidades
 Texto de apoio: Veja o que preparamos para você neste mês.
 ```
+
+A linha **`Marca:`** diz de quem é o e-mail. Sem ela, é **Podi**. Se você usar o comando do
+Optimall (`/newsletter-optimall`), ela nem é preciso. No Optimall a `Frente:` não se aplica: o
+público é sempre o gestor de shopping.
 
 **Depois, uma notícia por bloco, numerada na ordem em que deve aparecer:**
 
@@ -121,6 +127,82 @@ corte automático.
 
 **JPG ou PNG.** Não mande WebP, AVIF, HEIC nem SVG — Outlook e Gmail não abrem, e o
 leitor vê um quadrado vazio. Se saiu do iPhone em HEIC, exporte como JPG antes.
+
+---
+
+## E-mail com a marca do empreendimento
+
+*Só no Podi.* E-mail do Optimall é sempre assinado pelo Optimall.
+
+Quando **quem assina o e-mail é o shopping ou o outlet** — uma campanha dele, com o logo e as
+cores dele —, o e-mail sai com a marca do empreendimento no lugar da do Podi. O rodapé legal
+continua sendo do Podi.
+
+Diga isso logo no começo do documento:
+
+```
+Remetente: City Center Outlet Premium
+Disparo: pelo sistema da campanha        ← ou: pelo Podi
+```
+
+E mande, além dos textos:
+
+| O quê | Como |
+|---|---|
+| **Logo** | PNG **colorido, para fundo claro**, com fundo transparente. No mínimo 300 px de largura |
+| **Cor da campanha** | O código da cor, como `#173B2A`. Peça para o designer do empreendimento |
+| **Redes sociais** | O link de cada rede do empreendimento (Instagram, Facebook, LinkedIn) |
+| **Texto legal** | O regulamento curto da promoção, do jeito que o jurídico aprovou |
+| **Imagem da campanha** | A arte de abertura, horizontal, no mínimo 1072 px de largura |
+| **Imagens de produto ou benefício** | **Quadradas**, no mínimo 448 × 448 |
+
+**Não precisa decidir** cabeçalho, rodapé nem cores de fundo: isso já vem pronto no padrão.
+O Claude testa se a cor da campanha dá leitura no e-mail. Se não der, ele avisa e pede
+outra — não é implicância, é o texto ficar ilegível.
+
+**Campos como `{{nome}}` ou `{{economia_total}}`:** escreva exatamente como o sistema da
+campanha espera e diga por onde o e-mail vai sair. Esses campos só funcionam quando o disparo
+**não** é pelo Podi — pelo servidor do Podi, eles derrubam o envio inteiro. Se o documento
+não disser, o Claude pergunta antes de montar.
+
+**Link de descadastro não entra**, como em qualquer e-mail do padrão.
+
+**Sempre em modo claro.** Esse e-mail não tem versão escura. A maioria dos leitores respeita
+isso; o app do Gmail e algumas versões do Outlook podem escurecer por conta própria.
+
+---
+
+## Post ou carrossel (Optimall)
+
+Mesma pasta em `projects/_inbox/`, com um documento curto. Um bloco por card:
+
+```
+Marca: Optimall
+Onde sai: Instagram e LinkedIn
+Formato: carrossel
+Objetivo: gestor de marketing pedir uma conversa com o comercial
+
+## 01 — capa
+Sistema de gestão para ações promocionais
+
+## 02
+3 modalidades de campanha: Compre e Ganhe, Compre e Concorra, Roleta de Prêmios
+
+## 03 — fecho
+Seja cliente Optimall
+```
+
+- **Uma ideia por card.** O que não cabe vira outro card; o texto longo vai para a legenda,
+  que o Claude escreve.
+- **Número só se estiver no guia do Optimall** (`brand/optimall/mensagens.md`). Número novo:
+  mande a fonte e avise quem cuida do repositório.
+- **Imagem:** telas do painel e do app já estão no padrão; mande só foto nova ou print
+  específico, nomeado com o número do card (`02-painel-campanha.png`). Foto de pessoa em
+  proporção 4:5 (em pé) ou 1:1.
+- **Depoimento só real**, com nome, cargo e empreendimento, e com autorização.
+
+Você recebe de volta os PNGs de cada card (`saida/<slug>/png/`) e a legenda pronta para
+Instagram e LinkedIn (`saida/<slug>/legenda.txt`).
 
 ---
 

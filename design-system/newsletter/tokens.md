@@ -1,8 +1,25 @@
-# Tokens — Podi
+# Tokens — newsletter
 
-> Este repositório está configurado **só para a marca Podi**.
-> Quando o design estiver fechado, ele será duplicado e a paleta trocada para Optimall.
-> Trocar cor: mexer **só neste arquivo e nos `style`/`bgcolor`**. A estrutura HTML não muda.
+> Os valores abaixo são os do **Podi**, e é com eles que os componentes estão escritos.
+> Cada marca tem os mesmos papéis com outros valores, em `brand/<marca>/marca.json` — peça do
+> Optimall é montada com estes e recolorida no fim por `scripts/aplicar-marca.py`
+> ([`guidelines/marcas.md`](guidelines/marcas.md)). A estrutura HTML não muda.
+
+## Token × papel da marca
+
+O nome do token é o do e-mail; o papel é a chave em `cores` do `marca.json`.
+
+| Token (e-mail) | Papel (`marca.json`) | Podi | Optimall |
+|---|---|---|---|
+| cor de marca (CTA, régua) | `brand` | `#48DB84` | *pendente* |
+| texto em cima da cor de marca | `ink-on-brand` | `#101010` | *pendente* |
+| `accent-ink` | `accent-ink` | `#0C6E3B` | *pendente* |
+| `page` / `canvas` | `page-light` | `#EDF7F1` | *pendente* |
+| `accent-soft` | `accent-soft` | `#D4F0DF` | *pendente* |
+| `hairline` | `hairline` | `#D2E7DA` | *pendente* |
+| `accent-dark` | `accent-on-dark` | `#6FE9A2` | *pendente* |
+| `accent-soft-dark` | `accent-soft-dark` | `#16281E` | *pendente* |
+| `ink`, `body`, `muted`, `surface` e os neutros do dark mode | mesmo nome (`page-dark`, `surface-dark`…) | abaixo | iguais ao Podi |
 
 ## Cor de marca
 
@@ -18,7 +35,7 @@ Contraste sobre branco: **1,79:1** — reprova em qualquer texto. Isso governa t
 
 O `#48DB84` só entra como **fundo** — botão, tag, régua de destaque. Nunca como cor de texto.
 
-Os **ícones sociais do rodapé usam a variante verde** `#48DB84` (`brand/assets/icones/*-green.png`) —
+Os **ícones sociais do rodapé usam a variante verde** `#48DB84` (`brand/podi/assets/icones/*-green.png`) —
 decisão de marca. Vale saber o que ela custa: 1,63:1 sobre a página clara `#EDF7F1` e
 9,73:1 sobre o dark `#1A1A1A`. No modo claro o ícone é **decorativo**, não um alvo de leitura;
 quem sustenta o link ali é o `alt` com o nome da rede e a área de toque, não a forma.
@@ -65,6 +82,23 @@ e quem constrói a estrutura visual são os **cards brancos**.
 O **CTA verde não inverte** no dark — `#48DB84` já contrasta sobre `#1A1A1A`.
 Só o CTA neutro escuro (`#101010`) usa `.dm-btn` para virar branco.
 
+## Modo empreendimento — paleta derivada
+
+Quando o remetente é o empreendimento, **só o grupo verde muda**: `#48DB84`, `#0C6E3B`,
+`#EDF7F1`, `#D4F0DF` e `#D2E7DA` dão lugar a tons derivados da cor base da campanha.
+`ink`, `body`, `muted` e o branco ficam como estão, e não há tokens de dark mode — o modo é
+sempre claro.
+
+Os valores **nunca** se calculam à mão:
+
+```bash
+python3 scripts/paleta-empreendimento.py "<cor base>" <slug>
+```
+
+O script imprime os tokens, confere os contrastes obrigatórios (sai com erro se algum
+reprovar) e gera os ícones sociais recoloridos. Algoritmo, contrastes e a conferência de
+referência (SAVE & WIN, `#173B2A`): `guidelines/marca-empreendimento.md`.
+
 ## Tipografia
 
 Stack: `'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif`
@@ -84,7 +118,8 @@ Stack: `'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Ari
 | Legal | 12px / 18px / 400 |
 
 O **label de número** (14px) é a única exceção ao piso de 15px do corpo de texto: ele é
-legenda de um número grande, nunca texto corrido, e só aparece no `08-destaque-numeros`.
+legenda de um número grande, nunca texto corrido, e só aparece no `08-destaque-numeros`
+variante A (3 colunas). Na variante B (1 coluna), o rótulo é frase e usa o Body 16/25.
 
 ## Espaçamento e formas
 
@@ -103,4 +138,6 @@ Escala: `8 · 12 · 16 · 20 · 24 · 32 · 40 · 48`
 | Miniatura compacta (1:1) | 160 desktop / 88 mobile | 320 × 320 |
 | Artigo alternado | 248 × 248 | 496 × 496 |
 | Logo | 180 × 24 | 360 × 48 |
+| Logo do empreendimento (`01b`, `90b` B) | até 150 × 24 | até 300 × 48 |
+| Galeria dentro do card (`13a`, 1:1) | 224 × 224 | 448 × 448 |
 | Ícone social | 22 × 22 | 44 × 44 |

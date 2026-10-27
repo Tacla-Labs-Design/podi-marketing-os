@@ -1,20 +1,22 @@
 <!-- 15-encerramento — último slide. Um pedido só, e o jeito de responder a ele.
-     O link do app é fixo — ver brand/links-oficiais.md. Não existe outro endereço. -->
+     CTA, rótulo e @rede são fixos por marca — links.cta e textos.* de brand/<marca>/marca.json
+     (Podi: https://podi.podiapp.com.br/podi-e931a · "Baixar o app Podi" · @podibr).
+     Não existe outro endereço. -->
 <style>
 .fim{justify-content:center;align-items:center;text-align:center;gap:40px}
-.fim__cta{display:inline-flex;align-items:center;gap:16px;background:var(--ink);color:#fff;
+.fim__cta{display:inline-flex;align-items:center;gap:16px;background:var(--ink);color:var(--ink-inverse);
   border-radius:var(--r-pill);padding:28px 56px;font-size:28px;line-height:28px;
   font-weight:700;text-decoration:none}
 .fim__contatos{display:flex;gap:48px;color:var(--ink);opacity:.75;font-size:24px;line-height:32px}
 </style>
 <section class="slide">
   <div class="slide__pad fim">
-    <svg class="logo" style="width:360px" viewBox="0 0 263 128" role="img" aria-label="Podi"><title>Podi</title><use href="#logo-podi"/></svg>
+    <svg class="logo" style="width:360px" viewBox="0 0 263 128" role="img" aria-label="Podi"><title>Podi</title><use href="#logo-marca"/></svg>
     <h2 class="t-slide" style="max-width:1200px">{{FRASE_DE_FECHO}}</h2>
     <div class="regua"></div>
-    <a class="fim__cta" href="https://podi.podiapp.com.br/podi-e931a">Baixar o app Podi</a>
+    <a class="fim__cta" href="{{CTA_URL}}">{{CTA_TEXTO}}</a>
     <div class="fim__contatos">
-      <span>{{EMAIL}}</span><span>{{TELEFONE}}</span><span>@podibr</span>
+      <span>{{EMAIL}}</span><span>{{TELEFONE}}</span><span>{{REDE}}</span>
     </div>
   </div>
 </section>

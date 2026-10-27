@@ -24,7 +24,10 @@ node_modules/
 saida/*
 !saida/README.md
 
-# Briefings recebidos — material bruto do time, não versionado
+# Briefings recebidos e projetos de cliente — material bruto do time, não versionado
+projects/*
+!projects/README.md
+!projects/_inbox/
 projects/_inbox/*
 !projects/_inbox/.gitkeep
 *.zip

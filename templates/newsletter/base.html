@@ -96,9 +96,14 @@
              COLE OS BLOCOS DE design-system/newsletter/components/ AQUI, NESTA ORDEM:
                1. 01-header.html          (obrigatório)
                2. blocos de conteúdo      (máx. 4 seções)
-               3. 90-social.html          (obrigatório)
+               3. 90-social.html          (obrigatório — ou 90b-social-logo.html)
                4. 91-footer-legal.html    (obrigatório)
              Entre blocos, usar o espaçador de 99-spacer.html.
+
+             VARIÁVEIS: no envio só existem {{email}}, {{topicId}} e {{campaignId}}.
+             Qualquer outra derruba a campanha. Todo {{PLACEHOLDER_EM_MAIUSCULA}} deste
+             template é de montagem e precisa ser substituído por texto antes de enviar.
+             Ver design-system/newsletter/guidelines/variaveis-envio.md.
              ============================================================ -->
 
       </table>

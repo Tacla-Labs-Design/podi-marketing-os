@@ -1,0 +1,27 @@
+<!-- 07-depoimento-foto — depoimento de cliente: foto grande da pessoa no empreendimento e o
+     card roxo com a citação sobreposto à parte de baixo da foto. Só entra com depoimento real
+     e autorizado. Troca-se: a foto (assets/, retrato em pé, rosto no terço de cima — o card
+     cobre a parte de baixo), {{DEPOIMENTO}} (até 3 linhas, ~75 caracteres; destaque com <b>,
+     quebra com <br> para equilibrar as linhas), {{NOME}} (sai em caixa-alta) e
+     {{CARGO_E_EMPREENDIMENTO}}. O card cresce para cima se o texto for maior. -->
+<style>
+.dep-foto{left:30px;top:30px;width:1020px;height:935px;border-radius:var(--r-card-sm);object-fit:cover;object-position:center;display:block}
+.dep-card{left:30px;bottom:268px;width:1020px;padding:64px 48px 48px;border-radius:var(--r-card-sm);
+  background:var(--roxo);color:var(--branco);display:flex;flex-direction:column;gap:36px}
+.dep-aspas{position:absolute;left:48px;top:-29px;width:69px;height:56px;display:block;fill:currentColor}
+.dep-nome{font-size:28px;letter-spacing:-0.02em;text-transform:uppercase}
+.dep-cargo{letter-spacing:-0.02em}
+.dep-logo{left:377px;top:1231px}
+</style>
+<section class="post post--lavanda">
+  <img class="dep-foto" src="assets/post-superintendente.jpg" alt="Gestor de camisa branca e óculos, de braços cruzados, no corredor iluminado de um shopping">
+  <figure class="dep-card">
+    <svg class="dep-aspas" viewBox="0 0 69 56" aria-hidden="true"><path d="M30.0076 13.061C24.1381 13.7766 20.2448 15.6849 18.3281 18.7859C16.6867 21.4417 15.7488 24.8414 15.5131 28.9844H29.6484V56H0V35.9621C0 27.0164 2.45552 19.2036 7.36695 12.5242C12.2784 5.72547 19.8254 1.5506 30.0076 0V13.061Z"/><path d="M69 13.061C63.1304 13.7766 59.2373 15.6849 57.3205 18.7859C55.6791 21.4417 54.7412 24.8414 54.5055 28.9844H68.6409V56H38.9924V35.9621C38.9924 27.0164 41.4479 19.2036 46.3594 12.5242C51.2708 5.72546 58.8177 1.55058 69 0V13.061Z"/></svg>
+    <blockquote class="t-citacao-md">{{DEPOIMENTO}}</blockquote>
+    <figcaption>
+      <p class="t-autor dep-nome">{{NOME}}</p>
+      <p class="t-cargo dep-cargo">{{CARGO_E_EMPREENDIMENTO}}</p>
+    </figcaption>
+  </figure>
+  <svg class="logo dep-logo" style="width:326px" viewBox="0 0 238 40" role="img" aria-label="Optimall"><title>Optimall</title><use href="#logo-optimall"/></svg>
+</section>

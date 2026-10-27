@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Podi · Logo pack</title>
+<meta name="description" content="Logo pack e diretrizes da marca Podi: o logo em verde, branco e preto, as cores e a fonte.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<!--
+  Fonte da página do logo pack do Podi. scripts/logo-pack.py copia este arquivo para
+  saida/logo-pack/podi-logo-pack/index.html e põe a data na pill da capa.
+  Caminhos relativos ao pack (01-logo/...). Só cores de brand/marca.json.
+-->
+<style>
+  :root {
+    --brand: #48DB84;          /* verde de marca: só fundo */
+    --ink: #101010;            /* títulos e texto sobre o verde */
+    --body: #4A4A4A;
+    --muted: #6E6E6E;
+    --link: #0C6E3B;           /* link e destaque de marca sobre branco */
+    --page: #EDF7F1;
+    --soft: #D4F0DF;
+    --line: #D2E7DA;
+    --surface: #FFFFFF;
+    --dark: #1A1A1A;
+    --on-dark: #6FE9A2;
+    --detail: #9934FF;         /* roxo: só detalhe gráfico (bullet) */
+    --checker: repeating-conic-gradient(var(--page) 0 25%, var(--surface) 0 50%) 0 0 / 20px 20px;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--surface);
+    color: var(--body);
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.55;
+  }
+  img { max-width: 100%; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+  a { color: var(--link); }
+  b, strong { font-weight: 600; color: var(--ink); }
+
+  header.cover { padding: 72px 0 56px; border-bottom: 1px solid var(--line); }
+  .cover img { height: 56px; width: auto; display: block; }
+  .cover h1 { color: var(--ink); font-weight: 700; font-size: 44px; line-height: 1.1; margin: 40px 0 12px; letter-spacing: -0.02em; }
+  .cover p { margin: 0; font-size: 18px; max-width: 640px; }
+  .cover-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; margin-top: 28px; }
+  .pill { display: inline-block; font-size: 13px; font-weight: 600; padding: 4px 12px; border-radius: 99px; background: var(--page); color: var(--ink); }
+  .btn { display: inline-flex; align-items: center; gap: 10px; background: var(--brand); color: var(--ink); font-weight: 600; font-size: 16px; text-decoration: none; padding: 14px 24px; border-radius: 99px; transition: background-color .15s, color .15s; }
+  .btn svg { width: 18px; height: 18px; flex: 0 0 18px; }
+  .btn:hover { background: var(--ink); color: var(--surface); }
+  .btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+  .toc { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 32px; }
+  .toc a { font-size: 14px; text-decoration: none; padding: 6px 14px; border: 1px solid var(--line); border-radius: 99px; color: var(--ink); }
+  .toc a:hover { border-color: var(--link); }
+  .toc a:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+
+  section { padding: 64px 0; border-bottom: 1px solid var(--line); scroll-margin-top: 8px; }
+  .eyebrow { font-size: 13px; font-weight: 600; color: var(--link); letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 8px; }
+  h2 { color: var(--ink); font-size: 32px; font-weight: 700; margin: 0 0 8px; line-height: 1.2; letter-spacing: -0.01em; }
+  h2 .anchor { margin-left: 12px; color: var(--link); text-decoration: none; font-weight: 400; opacity: 0; transition: opacity .15s; }
+  h2:hover .anchor, h2 .anchor:focus-visible, section:target h2 .anchor { opacity: 1; }
+  h2 .anchor:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; border-radius: 4px; }
+  @media (hover: none) { h2 .anchor { opacity: .5; } }
+  h3 { color: var(--ink); font-size: 18px; font-weight: 600; margin: 40px 0 16px; }
+  .lead { margin: 0 0 32px; max-width: 720px; }
+
+  .grid { display: grid; gap: 20px; }
+  .g2 { grid-template-columns: repeat(2, 1fr); }
+  .g3 { grid-template-columns: repeat(3, 1fr); }
+  .g4 { grid-template-columns: repeat(4, 1fr); }
+
+  .card { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: var(--surface); min-width: 0; }
+  .stage { display: flex; align-items: center; justify-content: center; padding: 48px 32px; min-height: 220px; }
+  .stage img { max-width: 100%; height: auto; display: block; }
+  .stage.logo img { width: 52%; }
+  .on-white { background: var(--surface); }
+  .on-page { background: var(--page); }
+  .on-brand { background: var(--brand); }
+  .on-ink { background: var(--ink); }
+  .on-check { background: var(--checker); }
+  .meta { padding: 16px 20px; border-top: 1px solid var(--line); font-size: 14px; }
+  .meta b { display: block; margin-bottom: 4px; }
+  .meta .files { color: var(--muted); }
+  .meta .files a { text-decoration: none; border-bottom: 1px solid var(--line); color: var(--link); }
+  .meta .files a:hover { border-color: var(--link); }
+
+  pre { background: var(--ink); color: #F5F5F5; padding: 20px 24px; border-radius: 14px; overflow-x: auto; font: 13px/1.6 ui-monospace, "SF Mono", Menlo, monospace; margin: 0; }
+  .tree { background: var(--page); color: var(--ink); }
+  .tree .dim { color: var(--muted); }
+  code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 13px; color: var(--ink); background: var(--page); padding: 1px 6px; border-radius: 6px; }
+
+  /* Cores */
+  .swatch { height: 120px; }
+  .swatch.bordered { box-shadow: inset 0 0 0 1px var(--line); }
+  .hex { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 13px; color: var(--ink); }
+  .meta p { margin: 6px 0 0; color: var(--muted); }
+  .combo { display: flex; align-items: center; justify-content: center; min-height: 120px; padding: 24px; font-size: 20px; font-weight: 600; text-align: center; }
+  .combo.brand { background: var(--brand); color: var(--ink); }
+  .combo.light { background: var(--surface); color: var(--link); }
+  .combo.light span { text-decoration: underline; text-underline-offset: 3px; }
+  .combo.dark { background: var(--dark); color: var(--on-dark); }
+
+  /* Tipografia */
+  .specimen { padding: 32px; }
+  .specimen .big { color: var(--ink); font-size: 72px; font-weight: 700; line-height: 1; letter-spacing: -0.02em; margin: 0; }
+  .weights { display: grid; gap: 0; }
+  .weights div { display: grid; grid-template-columns: 160px 1fr; gap: 16px; align-items: baseline; padding: 16px 0; border-top: 1px solid var(--line); }
+  .weights span { font-size: 14px; color: var(--muted); }
+  .weights p { margin: 0; color: var(--ink); font-size: 24px; line-height: 1.3; }
+
+  /* Listas e tabela */
+  ul.list { margin: 0; padding-left: 18px; }
+  ul.list li { margin: 4px 0; }
+  ul.list li::marker { color: var(--detail); }
+  .where { width: 100%; border-collapse: collapse; font-size: 15px; }
+  .where th { text-align: left; font-weight: 600; font-size: 13px; color: var(--muted); padding: 0 16px 10px 0; border-bottom: 1px solid var(--line); }
+  .where td { padding: 14px 16px 14px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .where td:first-child { color: var(--ink); font-weight: 600; width: 34%; }
+  .where td:nth-child(2) { white-space: nowrap; }
+  .chip { display: inline-flex; align-items: center; gap: 8px; }
+  .dot { width: 14px; height: 14px; border-radius: 50%; flex: 0 0 14px; box-shadow: inset 0 0 0 1px var(--line); }
+  .dont { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .dont li { display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; }
+  .dont li::before { content: "×"; flex: 0 0 14px; font-weight: 700; color: var(--detail); line-height: 1.45; }
+
+  footer { padding: 40px 0 64px; color: var(--muted); font-size: 14px; }
+
+  @media (max-width: 960px) {
+    .g4 { grid-template-columns: repeat(2, 1fr); }
+    .g3 { grid-template-columns: repeat(2, 1fr); }
+    .dont { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .wrap { padding: 0 16px; }
+    header.cover { padding: 48px 0 40px; }
+    .cover h1 { font-size: 32px; }
+    .cover img { height: 40px; }
+    .cover p { font-size: 16px; }
+    section { padding: 48px 0; }
+    h2 { font-size: 26px; }
+    .g2, .g3, .g4 { grid-template-columns: 1fr; }
+    .grid.sw { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .sw .swatch { height: 72px; }
+    .sw .meta { padding: 12px 14px; }
+    .stage { min-height: 180px; padding: 40px 24px; }
+    .specimen { padding: 24px 20px; }
+    .specimen .big { font-size: 56px; }
+    .weights div { grid-template-columns: 1fr; gap: 4px; }
+    .weights p { font-size: 20px; }
+    pre { padding: 16px; font-size: 12px; }
+    .where, .where tbody, .where tr, .where td { display: block; width: auto; }
+    .where thead { display: none; }
+    .where tr { padding: 12px 0; border-bottom: 1px solid var(--line); }
+    .where td { border: 0; padding: 2px 0; }
+    .where td:first-child { width: auto; }
+    .where td:nth-child(2) { white-space: normal; }
+  }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="wrap">
+    <img src="01-logo/svg/podi-logo-verde.svg" alt="Podi" width="115" height="56">
+    <h1>Logo pack</h1>
+    <p>O logo do Podi em verde, branco e preto, com as cores e a fonte da marca. São os arquivos oficiais: baixe o pack inteiro ou só o que precisar.</p>
+    <div class="cover-actions">
+      <a class="btn" href="https://marcas.taclalabs.workers.dev/podi/podi-logo-pack.zip" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg>
+        Baixar o logo pack (.zip)
+      </a>
+      <span class="pill">Versão de VERSAO_DO_PACK</span>
+    </div>
+    <nav class="toc" aria-label="Seções"><a href="#estrutura">Estrutura</a><a href="#logo">Logo</a><a href="#cores">Cores</a><a href="#tipografia">Tipografia</a><a href="#onde-usar">Onde usar</a><a href="#nao-pode">Não pode</a></nav>
+  </div>
+</header>
+
+<section id="estrutura">
+  <div class="wrap">
+    <p class="eyebrow">Estrutura</p>
+    <h2>O que tem no pack<a class="anchor" href="#estrutura" aria-label="Link para a seção O que tem no pack">#</a></h2>
+    <p class="lead">SVG para tudo o que for digital e editável. PNG com fundo transparente para quem não abre SVG.</p>
+<pre class="tree">podi-logo-pack/
+├── index.html      <span class="dim">esta página</span>
+└── 01-logo/
+    ├── svg/        <span class="dim">verde, branco, preto</span>
+    └── png/        <span class="dim">as 3 versões em 512, 1024, 2048 e 4096 px de largura</span></pre>
+  </div>
+</section>
+
+<section id="logo">
+  <div class="wrap">
+    <p class="eyebrow">01 · Logo</p>
+    <h2>Uma forma, três cores<a class="anchor" href="#logo" aria-label="Link para a seção Uma forma, três cores">#</a></h2>
+    <p class="lead">O logo do Podi é uma forma só. Cada arquivo é o desenho oficial com a cor gravada. O fundo da prévia mostra onde a versão entra; o PNG é transparente.</p>
+    <div class="grid g3">
+      <div class="card">
+        <div class="stage logo on-white"><img src="01-logo/png/podi-logo-verde-1024.png" alt="Logo do Podi verde sobre branco"></div>
+        <div class="meta"><b>Verde · <span class="hex">#48DB84</span></b><span class="files">Fundo branco ou claro, em qualquer tamanho · <a href="01-logo/svg/podi-logo-verde.svg">SVG</a> · PNG <a href="01-logo/png/podi-logo-verde-512.png">512</a> · <a href="01-logo/png/podi-logo-verde-1024.png">1024</a> · <a href="01-logo/png/podi-logo-verde-2048.png">2048</a> · <a href="01-logo/png/podi-logo-verde-4096.png">4096</a></span></div>
+      </div>
+      <div class="card">
+        <div class="stage logo on-brand"><img src="01-logo/png/podi-logo-branco-1024.png" alt="Logo do Podi branco sobre o verde"></div>
+        <div class="meta"><b>Branco · <span class="hex">#FFFFFF</span></b><span class="files">Sobre o verde de marca e sobre o preto · <a href="01-logo/svg/podi-logo-branco.svg">SVG</a> · PNG <a href="01-logo/png/podi-logo-branco-512.png">512</a> · <a href="01-logo/png/podi-logo-branco-1024.png">1024</a> · <a href="01-logo/png/podi-logo-branco-2048.png">2048</a> · <a href="01-logo/png/podi-logo-branco-4096.png">4096</a></span></div>
+      </div>
+      <div class="card">
+        <div class="stage logo on-white"><img src="01-logo/png/podi-logo-preto-1024.png" alt="Logo do Podi preto sobre branco"></div>
+        <div class="meta"><b>Preto · <span class="hex">#101010</span></b><span class="files">Impressão a uma cor e assinatura pequena no rodapé de slide verde · <a href="01-logo/svg/podi-logo-preto.svg">SVG</a> · PNG <a href="01-logo/png/podi-logo-preto-512.png">512</a> · <a href="01-logo/png/podi-logo-preto-1024.png">1024</a> · <a href="01-logo/png/podi-logo-preto-2048.png">2048</a> · <a href="01-logo/png/podi-logo-preto-4096.png">4096</a></span></div>
+      </div>
+    </div>
+
+    <h3>Nos outros fundos</h3>
+    <div class="grid g3">
+      <div class="card">
+        <div class="stage logo on-page"><img src="01-logo/png/podi-logo-verde-1024.png" alt="Logo do Podi verde sobre o fundo claro"></div>
+        <div class="meta"><b>Verde sobre o claro</b><span class="files">Fundo de página <span class="hex">#EDF7F1</span>. Sobre o claro, sempre o verde original.</span></div>
+      </div>
+      <div class="card">
+        <div class="stage logo on-ink"><img src="01-logo/png/podi-logo-branco-1024.png" alt="Logo do Podi branco sobre o preto"></div>
+        <div class="meta"><b>Branco sobre o preto</b><span class="files">Fundo <span class="hex">#101010</span>.</span></div>
+      </div>
+      <div class="card">
+        <div class="stage logo on-brand"><img src="01-logo/png/podi-logo-preto-1024.png" alt="Logo do Podi preto sobre o verde"></div>
+        <div class="meta"><b>Preto no rodapé verde</b><span class="files">Só como assinatura pequena no rodapé de slide verde.</span></div>
+      </div>
+    </div>
+
+    <h3>Transparência</h3>
+    <div class="grid g2">
+      <div class="card"><div class="stage logo on-check"><img src="01-logo/png/podi-logo-verde-2048.png" alt="Logo do Podi verde sobre xadrez, mostrando o fundo transparente"></div></div>
+      <div class="card"><div class="stage logo on-check"><img src="01-logo/png/podi-logo-preto-2048.png" alt="Logo do Podi preto sobre xadrez, mostrando o fundo transparente"></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="cores">
+  <div class="wrap">
+    <p class="eyebrow">02 · Cores</p>
+    <h2>O verde é a marca<a class="anchor" href="#cores" aria-label="Link para a seção O verde é a marca">#</a></h2>
+    <p class="lead">O verde <code>#48DB84</code> entra só como fundo: botão, tag, régua, slide. Nunca como cor de texto. Texto em cima dele é <code>#101010</code>, nunca branco.</p>
+
+    <div class="grid g4 sw">
+      <div class="card"><div class="swatch" style="background:#48DB84"></div><div class="meta"><b>Marca</b><span class="hex">#48DB84</span><p>Só fundo. Nunca cor de texto: 1,79:1 sobre branco.</p></div></div>
+      <div class="card"><div class="swatch" style="background:#101010"></div><div class="meta"><b>Texto sobre o verde</b><span class="hex">#101010</span><p>10,6:1 sobre o verde. Nunca branco sobre o verde.</p></div></div>
+      <div class="card"><div class="swatch" style="background:#0C6E3B"></div><div class="meta"><b>Link e destaque sobre branco</b><span class="hex">#0C6E3B</span><p>6,4:1 sobre branco.</p></div></div>
+      <div class="card"><div class="swatch" style="background:#6FE9A2"></div><div class="meta"><b>Marca no modo escuro</b><span class="hex">#6FE9A2</span><p>Texto e link sobre <code>#1A1A1A</code>: 11,5:1.</p></div></div>
+    </div>
+
+    <h3>Combinações certas</h3>
+    <div class="grid g3">
+      <div class="card"><div class="combo brand">Texto sobre o verde</div><div class="meta"><span class="files"><span class="hex">#101010</span> sobre <span class="hex">#48DB84</span></span></div></div>
+      <div class="card"><div class="combo light"><span>Link sobre o branco</span></div><div class="meta"><span class="files"><span class="hex">#0C6E3B</span> sobre <span class="hex">#FFFFFF</span></span></div></div>
+      <div class="card"><div class="combo dark">Marca no escuro</div><div class="meta"><span class="files"><span class="hex">#6FE9A2</span> sobre <span class="hex">#1A1A1A</span></span></div></div>
+    </div>
+
+    <h3>Fundos e linhas</h3>
+    <div class="grid g3 sw">
+      <div class="card"><div class="swatch bordered" style="background:#EDF7F1"></div><div class="meta"><b>Fundo de página</b><span class="hex">#EDF7F1</span><p>E-mail e slide claro.</p></div></div>
+      <div class="card"><div class="swatch bordered" style="background:#D4F0DF"></div><div class="meta"><b>Tag e fundo de destaque</b><span class="hex">#D4F0DF</span></div></div>
+      <div class="card"><div class="swatch bordered" style="background:#D2E7DA"></div><div class="meta"><b>Linha fina</b><span class="hex">#D2E7DA</span></div></div>
+    </div>
+
+    <h3>Texto</h3>
+    <div class="grid g3 sw">
+      <div class="card"><div class="swatch" style="background:#101010"></div><div class="meta"><b>Títulos</b><span class="hex">#101010</span></div></div>
+      <div class="card"><div class="swatch" style="background:#4A4A4A"></div><div class="meta"><b>Corpo</b><span class="hex">#4A4A4A</span></div></div>
+      <div class="card"><div class="swatch" style="background:#6E6E6E"></div><div class="meta"><b>Legenda</b><span class="hex">#6E6E6E</span></div></div>
+    </div>
+
+    <h3>Roxo de detalhe</h3>
+    <div class="grid g2">
+      <div class="card"><div class="swatch" style="background:#9934FF"></div><div class="meta"><b>Roxo</b><span class="hex">#9934FF</span><p>Só detalhe gráfico: ícone, régua sob título, bullet, borda fina. O verde é a marca, o roxo é tempero.</p></div></div>
+      <div class="card" style="padding:20px 22px">
+        <ul class="list">
+          <li>Nunca texto, título, número, fundo de área grande nem nada em cima do verde.</li>
+          <li>No máximo 3 detalhes roxos por slide.</li>
+          <li>Um detalhe roxo acompanha um rótulo, não substitui um.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Sempre</h3>
+    <ul class="list">
+      <li>Nenhum texto abaixo de 4,5:1 de contraste.</li>
+      <li>Nenhuma cor fora desta paleta. Nada de cor nova “para combinar”.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="tipografia">
+  <div class="wrap">
+    <p class="eyebrow">03 · Tipografia</p>
+    <h2>Inter, dois pesos por peça<a class="anchor" href="#tipografia" aria-label="Link para a seção Inter, dois pesos por peça">#</a></h2>
+    <p class="lead">Uma família só: <a href="https://fonts.google.com/specimen/Inter">Inter</a>, do Google Fonts. Regular e semibold no e-mail, regular e bold no deck. Nenhuma outra família.</p>
+    <div class="card">
+      <div class="specimen">
+        <p class="big">Inter</p>
+        <div class="weights" style="margin-top:28px">
+          <div><span>Regular · 400</span><p style="font-weight:400">Pensou em Shopping ou Outlet? Pensou Podi!</p></div>
+          <div><span>Semibold · 600 · e-mail</span><p style="font-weight:600">Pensou em Shopping ou Outlet? Pensou Podi!</p></div>
+          <div><span>Bold · 700 · deck</span><p style="font-weight:700">Pensou em Shopping ou Outlet? Pensou Podi!</p></div>
+        </div>
+      </div>
+    </div>
+    <h3>Para usar</h3>
+<pre>&lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"&gt;
+
+/* No e-mail, a pilha é: */
+font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;</pre>
+  </div>
+</section>
+
+<section id="onde-usar">
+  <div class="wrap">
+    <p class="eyebrow">04 · Onde usar</p>
+    <h2>Cada fundo pede uma versão<a class="anchor" href="#onde-usar" aria-label="Link para a seção Cada fundo pede uma versão">#</a></h2>
+    <p class="lead">A cor do logo sai do fundo. Trocar a cor é trocar de arquivo, nunca aplicar filtro.</p>
+    <table class="where">
+      <thead><tr><th>Fundo ou peça</th><th>Versão</th><th>Observação</th></tr></thead>
+      <tbody>
+        <tr><td>Verde de marca <code>#48DB84</code></td><td><span class="chip"><span class="dot" style="background:#FFFFFF"></span>Branco</span></td><td>Branco sobre o verde é como o Podi assina. A regra de contraste vale para texto, não para o logo.</td></tr>
+        <tr><td>Preto <code>#101010</code></td><td><span class="chip"><span class="dot" style="background:#FFFFFF"></span>Branco</span></td><td></td></tr>
+        <tr><td>Branco ou claro</td><td><span class="chip"><span class="dot" style="background:#48DB84"></span>Verde</span></td><td>Sempre o verde original, em qualquer tamanho, inclusive pequeno no rodapé. É marca gráfica, não texto: o contraste baixo ali é aceito.</td></tr>
+        <tr><td>Impressão a uma cor</td><td><span class="chip"><span class="dot" style="background:#101010"></span>Preto</span></td><td></td></tr>
+        <tr><td>Rodapé de slide verde</td><td><span class="chip"><span class="dot" style="background:#101010"></span>Preto</span></td><td>Como assinatura pequena.</td></tr>
+        <tr><td>Topo do e-mail</td><td>Podi + Tacla Labs</td><td>Assinatura conjunta: Podi à esquerda, Tacla Labs à direita, numa placa branca. Já vem pronta no modelo de e-mail do hub.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="nao-pode">
+  <div class="wrap">
+    <p class="eyebrow">05 · Não pode</p>
+    <h2>O que não se faz com a marca<a class="anchor" href="#nao-pode" aria-label="Link para a seção O que não se faz com a marca">#</a></h2>
+    <p class="lead">Use sempre os arquivos do pack. Se faltar uma versão, peça ao time de marca.</p>
+    <ul class="dont">
+      <li><span>Redesenhar, gerar outro logo, recortar, distorcer, contornar ou aplicar sombra ou filtro.</span></li>
+      <li><span>Recolorir o logo por filtro ou efeito. Cada cor é um arquivo do pack.</span></li>
+      <li><span>Esticar o PNG. Use o SVG ou um PNG maior.</span></li>
+      <li><span>Escrever “podi” em texto no lugar do logo.</span></li>
+      <li><span>Usar o verde <code>#48DB84</code> como cor de texto.</span></li>
+      <li><span>Texto branco sobre o verde. Em cima dele, o texto é <code>#101010</code>.</span></li>
+      <li><span>Roxo em texto, título, número, fundo grande ou em cima do verde.</span></li>
+      <li><span>Cor fora da paleta ou fonte que não seja a Inter.</span></li>
+      <li><span>Escrever “a Podi”. A marca é masculina: o Podi, do Podi, no Podi.</span></li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Podi · o app dos shoppings · Regras completas da marca em <a href="https://marcas.taclalabs.workers.dev/podi/BRAND.md">BRAND.md</a>, no hub de marcas.</div>
+</footer>
+
+</body>
+</html>

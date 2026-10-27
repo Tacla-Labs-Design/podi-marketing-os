@@ -7,8 +7,10 @@ Tacla-Labs-Design/marcas, docs/formato.md.
 
 O que vai:
   hub/BRAND.md, hub/guias/*.md, hub/modelos/*.html   escritos à mão, neste repositório
+  podi/guia/      o logo pack inteiro (scripts/logo-pack.py); index.html é a página da marca,
+                  servida em podi/guia/. O zip do pack vai em podi/podi-logo-pack.zip
   podi/logos/     o logo monocromático (brand/assets/header/logo-podi.svg) pintado nas três
-                  cores oficiais — verde, branco, preto —, em SVG e PNG de 1024 px
+                  cores oficiais — verde, branco, preto —, em SVG e PNG de 1024 px, copiados do pack
   podi/email/     os PNGs e JPGs que os blocos de e-mail usam: logo PNG, Tacla Labs, ícones
                   sociais, imagem do fecho e arte do hero do Podi News
   podi/arquivos/  qualquer outra imagem que os modelos citem, por nome, de brand/assets/
@@ -35,24 +37,20 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import date
 from pathlib import Path
 
-RAIZ = Path(__file__).resolve().parent.parent
+# _logo.py mora ao lado; com `python3 -I` a pasta do script não entra sozinha no caminho.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _logo import LOGOS, RAIZ  # noqa: E402
+
 MARCA = "podi"
 HUB = "https://marcas.taclalabs.workers.dev"
 BUCKET = "tacla-labs-marcas"
 WRANGLER = "wrangler@4.152.0"
-CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+LOGO_PACK = RAIZ / "saida/logo-pack"      # gerado por scripts/logo-pack.py, fora do Git
 
 TIPOS = {".md": "text/markdown; charset=utf-8", ".json": "application/json; charset=utf-8",
          ".html": "text/html; charset=utf-8", ".svg": "image/svg+xml", ".png": "image/png",
          ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".zip": "application/zip"}
 
-# O logo do Podi é uma forma só, pintada por currentColor: cada versão é o mesmo SVG com a cor gravada.
-LOGO_FONTE = "brand/assets/header/logo-podi.svg"
-LOGOS = {
-    "podi-logo-verde": ("#48DB84", "Verde: fundo branco, claro ou preto"),
-    "podi-logo-branco": ("#FFFFFF", "Branco: sobre o verde de marca ou o preto"),
-    "podi-logo-preto": ("#101010", "Preto: uma cor, impressão"),
-}
 EMAIL = ["header/logo-podi-transparente.png", "header/logo-tacla-labs.png",
          "end-news-img.jpg", "hero-podi-news.png"]
 PECAS = {
@@ -63,24 +61,6 @@ PECAS = {
     "foto": ("Prompt de foto de marca: hero, banner, campanha, detalhe de app", []),
 }
 PROIBIDAS = ("photography/refs",)     # partes de caminho que nunca vão ao hub
-
-
-def svg_tamanho(svg):
-    m = re.search(r'viewBox="[\d.\-]+ [\d.\-]+ ([\d.]+) ([\d.]+)"', svg.read_text())
-    return float(m.group(1)), float(m.group(2))
-
-
-def png(svg, destino, largura):
-    """Rasteriza o SVG no Chrome, fundo transparente, na largura pedida."""
-    w, h = svg_tamanho(svg)
-    altura = round(largura * h / w)
-    with tempfile.TemporaryDirectory() as tmp:
-        pagina = Path(tmp) / "r.html"
-        pagina.write_text(f"<html><body style='margin:0'><img src='file://{svg}' "
-                          f"style='display:block;width:{largura}px;height:{altura}px'></body></html>")
-        subprocess.run([CHROME, "--headless", "--hide-scrollbars", "--default-background-color=00000000",
-                        "--force-device-scale-factor=1", f"--window-size={largura},{altura}",
-                        f"--screenshot={destino}", f"file://{pagina}"], capture_output=True, check=True)
 
 
 def montar(saida):
@@ -95,15 +75,21 @@ def montar(saida):
     for f in sorted((hub / "guias").glob("*.md")) + sorted((hub / "modelos").glob("*.html")):
         copiar(f, f"{MARCA}/{f.parent.name}/{f.name}")
 
-    fonte = (RAIZ / LOGO_FONTE).read_text()
-    if fonte.count('fill="currentColor"') != 1:
-        raise SystemExit(f"{LOGO_FONTE}: esperava um único fill=\"currentColor\" para pintar.")
+    # Logo pack: a página da marca e os arquivos dela em podi/guia/, o zip em podi/.
+    r = subprocess.run([sys.executable, "-I", str(RAIZ / "scripts/logo-pack.py")], capture_output=True, text=True)
+    if r.returncode:
+        raise SystemExit(f"scripts/logo-pack.py falhou:\n{r.stderr or r.stdout}")
+    pack = LOGO_PACK / f"{MARCA}-logo-pack"
+    for f in sorted(pack.rglob("*")):
+        if f.is_file() and f.name != ".DS_Store":
+            copiar(f, f"{MARCA}/guia/{f.relative_to(pack).as_posix()}")
+    logo_pack = copiar(LOGO_PACK / f"{pack.name}.zip", f"{MARCA}/{pack.name}.zip")
+
+    # podi/logos/: os mesmos arquivos do pack (SVG e PNG de 1024 px).
     logos = {}
-    (saida / f"{MARCA}/logos").mkdir(parents=True, exist_ok=True)
-    for nome, (cor, uso) in LOGOS.items():
-        svg = saida / f"{MARCA}/logos/{nome}.svg"
-        svg.write_text(fonte.replace('fill="currentColor"', f'fill="{cor}"'))
-        png(svg, saida / f"{MARCA}/logos/{nome}-1024.png", 1024)
+    for nome, (_, uso) in LOGOS.items():
+        copiar(pack / f"01-logo/svg/{nome}.svg", f"{MARCA}/logos/{nome}.svg")
+        copiar(pack / f"01-logo/png/{nome}-1024.png", f"{MARCA}/logos/{nome}-1024.png")
         logos[nome] = {"uso": uso, "svg": f"{MARCA}/logos/{nome}.svg", "png_1024": f"{MARCA}/logos/{nome}-1024.png"}
 
     for arquivo in EMAIL:
@@ -138,8 +124,9 @@ def montar(saida):
         "status": "ativa",
         "fonte": "podi-marketing-os (Tacla-Labs-Design/podi-marketing-os), scripts/publicar",
         "regras": f"{MARCA}/BRAND.md",
+        "guia_visual": f"{HUB}/{MARCA}/guia/",
         "pecas": pecas,
-        "arquivos": {"logos": logos},
+        "arquivos": {"logos": logos, "logo_pack": logo_pack},
     }
     (saida / MARCA / "manifest.json").write_text(json.dumps(manifesto, indent=2, ensure_ascii=False) + "\n")
 
@@ -151,6 +138,8 @@ def montar(saida):
         citados |= set(re.findall(rf"{re.escape(HUB)}/({MARCA}/[^\"')\s<>`]+)", conteudo))
         if p.name == "manifest.json":
             citados |= set(re.findall(rf'"({MARCA}/[^"]+\.\w+)"', conteudo))
+    # Endereço de pasta (podi/guia/) é servido pelo index.html dela.
+    citados = {c + "index.html" if c.endswith("/") else c for c in citados}
     for chave in sorted(citados - chaves):
         erros.append(f"endereço citado e ausente da publicação: {chave}")
     for chave in chaves:

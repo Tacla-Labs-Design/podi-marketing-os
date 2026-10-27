@@ -86,6 +86,9 @@ scripts/check-atualizacao.sh             Verifica/atualiza a cópia local do pad
 scripts/publicar                         Publica a marca no hub de marcas (só maintainer)
 
 hub/BRAND.md, hub/guias/, hub/modelos/   A marca no hub: regras curtas, um guia por peça, modelos com data-slot
+hub/guia/index.html                      Fonte da página do logo pack (logo, cores, fonte, onde usar, não pode)
+scripts/logo-pack.py                     Monta o logo pack em saida/logo-pack/ (pasta + zip); o publicar roda
+scripts/_logo.py                         As três cores do logo e o PNG pelo Chrome, usados pelo pack e pelo publicar
 scripts/conferir.py                      Confere a peça montada: paleta, verde como texto, variáveis, alt, e-mail
 scripts/exportar.py                      PDF do deck (e PNG de post) pelo Chrome; confere a fonte antes
 scripts/paleta-empreendimento.py         Paleta derivada da cor base, contrastes, ícones e conferência
@@ -147,5 +150,7 @@ clonar nada. O hub tem uma versão curta do padrão: `BRAND.md`, um guia por pe�
 `data-slot`, que puxam logos e imagens pelo endereço do hub. A fonte dessa versão é a pasta
 `hub/`; o `scripts/publicar` monta a pasta da marca, confere que todo endereço citado existe e
 envia ao bucket, com o manifesto por último. Mudou uma regra aqui que o hub repete? Mude também em
-`hub/` e publique de novo.
+`hub/` e publique de novo. O `publicar` também roda o `scripts/logo-pack.py`: o logo pack (logo em
+verde, branco e preto, SVG e PNG, e a página da marca) vai para `podi/guia/`, servido em
+`https://marcas.taclalabs.workers.dev/podi/guia/`, e o zip para `podi/podi-logo-pack.zip`.
 

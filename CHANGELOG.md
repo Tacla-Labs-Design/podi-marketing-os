@@ -23,6 +23,10 @@ qualquer ferramenta lê sem clonar o repositório.
 - **`scripts/publicar`**: monta a pasta da marca — com o logo em verde, branco e preto, gerados do
   SVG monocromático —, confere que todo endereço citado existe e envia ao bucket, com o manifesto
   por último.
+- **Logo pack** (`scripts/logo-pack.py`, página em `hub/guia/index.html`): o logo em verde, branco e
+  preto, em SVG e PNG de 512 a 4096 px, com a página da marca — logo, cores, fonte, onde usar e o
+  que não pode. O `publicar` gera o pack e envia a pasta para `podi/guia/` e o zip para
+  `podi/podi-logo-pack.zip`; os arquivos de `podi/logos/` passam a sair do pack.
 
 ### Mudado
 

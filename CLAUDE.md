@@ -59,6 +59,7 @@ projects/_inbox/<slug>/      ENTRADA: briefing + imagens do time. Local, fora do
 saida/<slug>/                SAÍDA: o material montado. Local, fora do Git.
 docs/                        Guias para humanos: governança, estrutura, como enviar conteúdo.
 hub/                         O que vai para o hub de marcas: BRAND.md, guias e modelos (scripts/publicar).
+hub/guia/index.html          Página do logo pack (scripts/logo-pack.py), publicada em podi/guia/ no hub.
 scripts/                     Utilitários: cópia desatualizada, conferência da peça, paleta, export.
 CHANGELOG.md                 Mudanças no padrão. Atualizar ao mexer em recurso oficial.
 ```

@@ -136,7 +136,7 @@ def montar(saida):
         "nome": "Podi",
         "versao": date.today().isoformat(),
         "status": "ativa",
-        "fonte": "podi-marketing-os (brunovpinheiro/podi-marketing-os), scripts/publicar",
+        "fonte": "podi-marketing-os (Tacla-Labs-Design/podi-marketing-os), scripts/publicar",
         "regras": f"{MARCA}/BRAND.md",
         "pecas": pecas,
         "arquivos": {"logos": logos},

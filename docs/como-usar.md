@@ -72,7 +72,7 @@ e não só com conversa.
 mesmo:
 
 ```
-https://github.com/brunovpinheiro/podi-marketing-os
+https://github.com/Tacla-Labs-Design/podi-marketing-os
 
 Instala esse repositório aqui, lê o docs/como-usar.md e deixa as skills prontas.
 ```

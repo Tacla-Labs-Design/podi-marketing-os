@@ -52,9 +52,10 @@ Arquivos: https://marcas.taclalabs.workers.dev/podi/manifest.json
 
 ## Ícones
 
-- O sistema de ícones do Podi é o **HugeIcons Bulk Rounded**. Pack:
-  `https://marcas.taclalabs.workers.dev/podi/icones/<nome>.svg`. A lista, com o uso de cada um,
-  está em `podi/icones/index.json`: escolha pelo assunto e baixe só o que a peça usa.
+- O sistema de ícones do Podi é o **HugeIcons Bulk Rounded**. Pack no hub: `podi/icones/<nome>.svg`.
+  A lista, com o uso de cada um, está em
+  `https://marcas.taclalabs.workers.dev/podi/icones/index.json`: escolha pelo assunto e baixe só o
+  que a peça usa.
 - Cole os `<path>` do SVG dentro do `<svg>` da peça. Eles pintam com `fill="currentColor"`: a
   cor é o roxo `#9934FF`. Ícone solto, sem chip nem círculo, sempre ao lado de um rótulo.
 - Sem ícone que sirva no pack, desenhe um novo na mesma estética:

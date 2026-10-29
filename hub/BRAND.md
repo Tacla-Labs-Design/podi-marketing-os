@@ -13,10 +13,11 @@ Arquivos: https://marcas.taclalabs.workers.dev/podi/manifest.json
 - Uma forma só, publicada em três cores. Use sempre os arquivos do hub; nunca redesenhe,
   gere, recorte, distorça, contorne nem aplique sombra ou filtro. Não escreva "podi" em texto no
   lugar do logo.
-- `podi-logo-branco`: sobre o verde de marca `#48DB84` e sobre o preto `#101010`.
+- `podi-logo-branco`: sobre o verde de marca `#31D06E`, sobre o preto `#101010` e sobre foto, numa
+  área calma, média ou escura.
 - `podi-logo-verde`: sobre fundo branco ou claro, em qualquer tamanho — inclusive pequeno, no
   rodapé. É marca gráfica, não texto: o contraste baixo ali é aceito.
-- `podi-logo-preto`: impressão a uma cor, e como assinatura pequena no rodapé de slide verde.
+- `podi-logo-preto`: impressão a uma cor.
 - **Assinatura conjunta com a Tacla Labs** (e-mail): logo do Podi à esquerda, Tacla Labs à
   direita, numa placa branca — o "Tacla" é preto e some em fundo escuro. Arquivos:
   `podi/email/logo-podi-transparente.png` e `podi/email/logo-tacla-labs.png`.
@@ -25,8 +26,9 @@ Arquivos: https://marcas.taclalabs.workers.dev/podi/manifest.json
 
 | Papel | Cor | Regra |
 |---|---|---|
-| Marca | `#48DB84` | **Só fundo**: botão, tag, régua, slide. **Nunca cor de texto** (1,79:1 sobre branco) |
+| Marca | `#31D06E` | **Só fundo**: botão, tag, régua, slide. **Nunca cor de texto** (2,02:1 sobre branco) |
 | Texto sobre o verde | `#101010` | **Nunca branco** sobre o verde |
+| Tagline sobre o verde | `#074A21` | Só a frase de marca da capa do deck (5,2:1) |
 | Link e destaque de marca sobre branco | `#0C6E3B` | 6,4:1 |
 | Marca no modo escuro | `#6FE9A2` | Texto e link sobre `#1A1A1A` |
 | Fundo de página | `#EDF7F1` | E-mail e slide claro |
@@ -37,14 +39,31 @@ Arquivos: https://marcas.taclalabs.workers.dev/podi/manifest.json
 
 - Nenhum texto abaixo de 4,5:1. Nenhuma cor fora desta tabela — nada de cor nova "para
   combinar".
-- O roxo é tempero: no máximo 3 detalhes roxos por slide.
+- O roxo é tempero: no máximo 3 tipos de detalhe roxo por slide. O que se repete numa grade (o
+  ícone de cada card, a régua de cada card) conta uma vez.
 
 ## Tipografia
 
-- **Inter** (Google Fonts), dois pesos por peça: regular e semibold (e-mail) ou regular e
-  bold (deck). Nenhuma outra família.
-  `<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">`
-- No e-mail, a pilha é `'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif`.
+- **DM Sans** (Google Fonts) em qualquer peça. Nenhuma outra família. Pesos com papel fixo:
+  **600** nos títulos e rótulos, **400** no texto, **700** só no destaque dentro do texto e em
+  números grandes. O e-mail usa só 400 e 600.
+  `<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet">`
+- No e-mail, a pilha é `'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif`.
+
+## Ícones
+
+- O sistema de ícones do Podi é o **HugeIcons Bulk Rounded**. Pack:
+  `https://marcas.taclalabs.workers.dev/podi/icones/<nome>.svg`. A lista, com o uso de cada um,
+  está em `podi/icones/index.json`: escolha pelo assunto e baixe só o que a peça usa.
+- Cole os `<path>` do SVG dentro do `<svg>` da peça. Eles pintam com `fill="currentColor"`: a
+  cor é o roxo `#9934FF`. Ícone solto, sem chip nem círculo, sempre ao lado de um rótulo.
+- Sem ícone que sirva no pack, desenhe um novo na mesma estética:
+  - `viewBox="0 0 24 24"`, área útil de 21px;
+  - a silhueta inteira, cheia, com `opacity="0.4"`;
+  - por cima, os detalhes cheios a 100%: traços de 1,5px desenhados como forma, pontas e cantos
+    arredondados;
+  - só `fill="currentColor"`: nada de cor gravada, `stroke`, gradiente ou sombra.
+  Compare com dois ícones do pack antes de usar, e diga na entrega que o ícone é novo.
 
 ## Voz
 

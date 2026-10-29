@@ -89,16 +89,19 @@ Respeite os limites de `guidelines/layout-ritmo.md` — 20 slides, ~60 palavras 
    `{{SEM_MARCA}}`/`{{COM_MARCA}}` do `11-comparativo` levam "Podi".
    Nunca gravar em `examples/` — aquilo é acervo curado.
 3. Criar `saida/<slug>/assets/` e colocar ali **todas** as imagens, inclusive as fixas
-   copiadas de `brand/assets/`. O deck precisa abrir sozinho se alguém mandar a pasta.
-4. Trocar os `<svg>` genéricos dos chips pelo glifo certo do assunto, mantendo
-   `fill="currentColor"`.
+   copiadas de `brand/assets/` — o `00` e o `07` pedem as quatro de `brand/assets/deck/`. O deck
+   precisa abrir sozinho se alguém mandar a pasta.
+4. Trocar os ícones de exemplo pelo do assunto. Escolha em
+   `brand/assets/icones-bulk/index.json` e cole os `<path>` do SVG dentro do `<svg class="ico">`
+   do slide (`slides/README.md` → "Os ícones"). Sem ícone que sirva, desenhe um novo pela regra
+   de `brand/README.md` → Ícones e relate no fim que ele é novo.
    O **logo Podi não é imagem**: é o `<symbol>` que já vem no template, usado por
    `<use href="#logo-marca">`. A cor sai do CSS — branco sobre o verde e sobre o preto,
    `logo--marca` sobre fundo claro. Nunca trocar por PNG, nunca recolorir por `filter`.
 5. **Nunca escrever cor solta.** Toda cor sai de `design-system/apresentacao/tokens.md`,
    por `var(--token)`.
-6. **O roxo é só detalhe** — `guidelines/uso-do-roxo.md`. No máximo 3 por slide, nunca em
-   texto, nunca sobre o verde.
+6. **O roxo é só detalhe** — `guidelines/uso-do-roxo.md`. No máximo 3 tipos por slide
+   (o que se repete numa grade conta uma vez), nunca em texto, nunca sobre o verde.
 7. Numerar os slides no rodapé e conferir se o link do app é o oficial (`links.cta`).
 
 Proporção de imagem fora do esperado: **não distorça e não corte por conta própria.**
@@ -113,8 +116,9 @@ O que não pode escapar: **o `/design` não decide nada de identidade.** Ele rec
 decisões prontas. Ao chamar, passe no briefing do canvas, explicitamente:
 
 - Os tokens de `design-system/apresentacao/tokens.md` — os hex, não os nomes.
-- Canvas 1920 × 1080, margem de segurança de 96px.
-- Inter, dois pesos, e a escala tipográfica inteira.
+- Canvas 1920 × 1080, margem de segurança de 64px.
+- DM Sans: 600 nos títulos, 400 no texto, 700 só no destaque; e a escala tipográfica inteira.
+- Ícones do pack HugeIcons Bulk (`brand/assets/icones-bulk/`), soltos, em `#9934FF`.
 - As duas regras de contraste: texto sobre o verde é `#101010`, **nunca branco**; o roxo
   `#9934FF` é **só detalhe gráfico**, nunca texto, nunca sobre o verde.
 - O logo do Podi, em SVG (`brand/assets/header/logo-podi.svg`).
@@ -153,7 +157,7 @@ está pronto. Os itens verificáveis por comando:
 ```bash
 f=saida/<slug>/index.html
 python3 -I scripts/conferir.py $f                   # saída 0, e "N slides" = o roteiro
-grep -c 'color:var(--accent-2)' $f                  # só chip de ícone e aspas do 10
+grep -c 'color:var(--accent-2)' $f                  # só o .ico do template e as aspas do 10
 grep -c 'podi.com.br/app' $f                        # 0 — endereço não existe
 ```
 
@@ -167,7 +171,7 @@ Gerar o PDF:
 python3 -I scripts/exportar.py pdf saida/<slug>/index.html   # → saida/<slug>/<slug>.pdf
 ```
 
-Se ele disser que a fonte não carregou, dizer em português comum: *"a fonte do deck (Inter)
+Se ele disser que a fonte não carregou, dizer em português comum: *"a fonte do deck (DM Sans)
 não carregou — ela vem da internet; confira a conexão e me avise para gerar de novo"*. Não
 gerar com outra fonte.
 

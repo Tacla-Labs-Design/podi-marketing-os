@@ -3,8 +3,11 @@
   "nome": "Podi",
   "artigo": "o",
   "cores": {
-    "brand": "#48DB84",
+    "brand": "#31D06E",
     "ink-on-brand": "#101010",
+    "accent-deep": "#074A21",
+    "accent-line": "#2E9054",
+    "accent-edge": "#28C463",
     "accent-ink": "#0C6E3B",
     "accent-on-dark": "#6FE9A2",
     "page-light": "#EDF7F1",
@@ -15,7 +18,7 @@
     "accent-2": "#9934FF",
     "accent-2-mid": "#C58CFF",
     "accent-2-soft": "#E9DBFF",
-    "accent-2-line": "#E0CCFA",
+    "accent-2-line": "#E6CCFF",
     "ink": "#101010",
     "body": "#4A4A4A",
     "muted": "#6E6E6E",
@@ -31,7 +34,18 @@
     "svg": "brand/assets/header/logo-podi.svg",
     "png": "brand/assets/header/logo-podi-transparente.png"
   },
+  "fonte": {
+    "familia": "DM Sans",
+    "google_fonts": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap",
+    "pesos": {"texto": 400, "titulo": 600, "destaque": 700}
+  },
   "icones": "brand/assets/icones/{rede}-green.png",
+  "icones_bulk": {
+    "estilo": "HugeIcons Bulk Rounded",
+    "pasta": "brand/assets/icones-bulk/",
+    "indice": "brand/assets/icones-bulk/index.json"
+  },
+  "deck": "brand/assets/deck/",
   "links": {
     "cta": "https://podi.podiapp.com.br/podi-e931a",
     "privacidade": "https://www.podiapp.com.br/politica-privacidade/",

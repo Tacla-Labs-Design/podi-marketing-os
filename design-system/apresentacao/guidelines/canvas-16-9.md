@@ -7,10 +7,11 @@ versão mobile. O que não cabe em 1080px de altura **vira outro slide** — nun
 nunca margem apertada.
 
 - Todo slide é um `<section class="slide">` com `overflow:hidden`.
-- **Margem de segurança de 96px** em todos os lados (`.slide__pad`). Projetor e TV cortam
-  borda; conteúdo colado no canto some na sala.
-- A única exceção à margem: imagem sangrada, que é sangria de propósito
-  (`04-split-foto-cards`, `07-mockup-app`, `09-foto-full`).
+- **Margem de segurança de 64px** em todos os lados para texto (`.slide__pad`). Projetor e TV
+  cortam borda; conteúdo colado no canto some na sala.
+- Card pode chegar a 24px da borda (`04-split-foto-cards`): o texto dentro dele continua a 64px.
+- Imagem sangrada é sangria de propósito: a foto do `04`, o painel verde, a mão e o ripple do
+  `00` e do `07`, a foto do `09`.
 
 ## Pode usar CSS moderno
 
@@ -25,7 +26,7 @@ Isto abre num navegador, não no Outlook. São permitidos e recomendados:
 O que continua proibido:
 
 - **Cor escrita direto** fora do `:root` do template. Toda cor sai de `../tokens.md`.
-- **Fonte externa que não seja a Inter** do Google Fonts.
+- **Fonte externa que não seja a DM Sans** do Google Fonts.
 - `<script>` que mude conteúdo. O único JS do template é o que escala o canvas na tela.
 - Imagem carregada de URL externa. Tudo em `assets/` da própria pasta.
 
@@ -40,7 +41,7 @@ open saida/<slug>/index.html
 
 ## Export em PDF
 
-O caminho padrão é o script, que usa o Chrome da máquina, confere antes se a Inter
+O caminho padrão é o script, que usa o Chrome da máquina, confere antes se a DM Sans
 carregou (ela vem do Google Fonts: precisa de internet) e confere depois se saiu uma página
 por slide:
 

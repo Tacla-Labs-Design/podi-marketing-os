@@ -6,7 +6,7 @@
 <title>{{TITULO_DA_APRESENTACAO}}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 /* ---------------------------------------------------------------------------
    TOKENS — design-system/apresentacao/tokens.md
@@ -14,7 +14,10 @@
    --------------------------------------------------------------------------- */
 :root{
   /* marca */
-  --accent:#48DB84;          /* só fundo — nunca color: */
+  --accent:#31D06E;          /* só fundo — nunca color: */
+  --accent-deep:#074A21;     /* texto de marca sobre o verde: a tagline da capa */
+  --accent-line:#2E9054;     /* linhas do ripple sobre o verde (vem pronto no SVG) */
+  --accent-edge:#28C463;     /* borda das telas do app sobre o verde */
   --accent-ink:#0C6E3B;      /* marca em texto, sobre fundo claro */
   --accent-on-dark:#6FE9A2;  /* marca em texto, sobre o fundo preto */
 
@@ -22,10 +25,10 @@
   --accent-2:#9934FF;
   --accent-2-mid:#C58CFF;
   --accent-2-soft:#E9DBFF;
-  --accent-2-line:#E0CCFA;
+  --accent-2-line:#E6CCFF;
 
   /* fundos */
-  --page:#48DB84;
+  --page:#31D06E;
   --page-light:#EDF7F1;
   --surface:#FFFFFF;
   --surface-alt:#F6FAF7;
@@ -41,12 +44,13 @@
   /* forma */
   --r-card:32px;
   --r-card-sm:24px;
+  --r-box:40px;
   --r-img:24px;
-  --r-chip:20px;
+  --r-tela:38px;
   --r-pill:100px;
-  --safe:96px;
+  --safe:64px;
 
-  --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --font:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -67,33 +71,56 @@ html,body{background:#2A2A2A;font-family:var(--font);-webkit-font-smoothing:anti
 .slide:last-child{margin-bottom:0}
 .slide__pad{flex:1;display:flex;flex-direction:column;padding:var(--safe)}
 
-/* --- tipografia ---------------------------------------------------------- */
-.t-capa{font-size:96px;line-height:104px;font-weight:700;letter-spacing:-2px}
-.t-slide{font-size:64px;line-height:72px;font-weight:700;letter-spacing:-1px}
+/* --- tipografia ----------------------------------------------------------
+   Três pesos com papel fixo: 600 nos títulos, 400 no texto, 700 só no destaque
+   dentro do texto (<strong>) e nos números. */
+.t-capa{font-size:96px;line-height:104px;font-weight:600;letter-spacing:-1.92px}
+.t-slide{font-size:64px;line-height:70px;font-weight:600;letter-spacing:-1.28px}
+.t-lead{font-size:52px;line-height:62px;font-weight:600;letter-spacing:-.52px}
 .t-sub{font-size:32px;line-height:44px;font-weight:400;color:var(--body)}
-.t-card{font-size:40px;line-height:48px;font-weight:700}
-.t-card-sm{font-size:32px;line-height:40px;font-weight:700}
-.t-body{font-size:28px;line-height:40px;font-weight:400;color:var(--body)}
-.t-body-sm{font-size:24px;line-height:34px;font-weight:400;color:var(--body)}
-.t-num{font-size:88px;line-height:96px;font-weight:700;letter-spacing:-2px}
+.t-tagline{font-size:40px;line-height:48px;font-weight:400;letter-spacing:-.8px}
+.t-card{font-size:48px;line-height:58px;font-weight:600}
+.t-card-sm{font-size:32px;line-height:40px;font-weight:600}
+.t-item{font-size:24px;line-height:29px;font-weight:600}
+.t-body{font-size:28px;line-height:42px;font-weight:400;color:var(--body)}
+.t-body-sm{font-size:24px;line-height:36px;font-weight:400;color:var(--body)}
+.t-num{font-size:88px;line-height:96px;font-weight:700;letter-spacing:-1.76px}
 .t-num-label{font-size:24px;line-height:32px;font-weight:400;color:var(--body)}
-.t-eyebrow{font-size:20px;line-height:26px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+.t-eyebrow{font-size:20px;line-height:26px;font-weight:600;letter-spacing:1px;text-transform:uppercase}
 .t-legenda{font-size:20px;line-height:28px;font-weight:400;color:var(--muted)}
+.slide strong{font-weight:700}
 
-/* --- detalhes roxos ------------------------------------------------------ */
-.regua{width:120px;height:6px;border-radius:3px;
-  background:linear-gradient(90deg,var(--accent-2) 0%,var(--accent-2-mid) 100%)}
-.chip{width:88px;height:88px;border-radius:var(--r-chip);background:var(--accent-2-soft);
-  display:flex;align-items:center;justify-content:center;color:var(--accent-2)}
-.chip svg{width:40px;height:40px;display:block}
+/* --- detalhes roxos ------------------------------------------------------
+   A régua some para a direita: começa no roxo e termina transparente. */
+.regua{width:200px;height:4px;border-radius:2px;flex:none;
+  background:linear-gradient(90deg,var(--accent-2) 0%,transparent 100%)}
+.regua--sm{width:56px}
+
+/* Ícone: HugeIcons Bulk Rounded (brand/assets/icones-bulk/), solto, sem chip.
+   O SVG pinta com currentColor; o roxo vem daqui. 80px em card, 32px em lista. */
+.ico{display:block;flex:none;width:32px;height:32px;color:var(--accent-2)}
+.ico--lg{width:80px;height:80px}
 
 /* --- superfícies --------------------------------------------------------- */
-.card{background:var(--surface);border-radius:var(--r-card);padding:48px}
+.card{background:var(--surface);border-radius:var(--r-card);padding:40px}
 .card--lg{padding:64px}
+
+/* Caixa de recursos (06 e 07): borda fina roxa, duas colunas, ícone de 32px por item. */
+.feat{border:2px solid var(--accent-2-line);border-radius:var(--r-box);padding:56px 40px;
+  display:grid;grid-template-columns:1fr 1fr;gap:32px 40px;align-content:start}
+.feat__item{display:flex;gap:24px;align-items:center}
+.feat__item .t-item{flex:1}
+
+/* Telas do app sobre o verde: borda do verde mais escuro, sombra longa. */
+.tela{position:absolute;overflow:hidden;border:3px solid var(--accent-edge);
+  border-radius:var(--r-tela);filter:drop-shadow(78px 78px 58px rgba(10,13,18,.12))}
+.tela img{display:block;width:100%;height:100%;object-fit:cover}
+/* Ripple: as linhas de contorno em volta do logo, sobre o verde. Ativo fixo. */
+.ripple{position:absolute;display:block;pointer-events:none}
 
 /* --- logo ----------------------------------------------------------------
    O logo vem de brand/assets/header/logo-podi.svg (monocromático): a cor sai do
-   CSS por `currentColor`. Sobre a cor de marca e sobre o preto ele vai branco;
+   CSS por `currentColor`. Sobre a cor de marca, o preto e foto ele vai branco;
    sobre fundo branco vai na cor de marca. Nunca recolorir o arquivo, nunca filter. */
 .logo{display:block;height:auto;fill:currentColor;color:var(--ink-inverse);flex:none}
 .logo--marca{color:var(--accent)}      /* qualquer fundo claro, em qualquer tamanho */
@@ -102,7 +129,7 @@ html,body{background:#2A2A2A;font-family:var(--font);-webkit-font-smoothing:anti
    A assinatura do rodapé é o logo, não o nome da marca escrito. A opacidade fica nos
    spans, nunca no container: logo apagado não assina nada. */
 .slide__foot{display:flex;justify-content:space-between;align-items:center;gap:32px;
-  font-size:20px;line-height:20px;color:var(--muted);padding-top:32px}
+  font-size:20px;line-height:20px;color:var(--muted);padding-top:32px;margin-top:auto}
 .slide__foot span{opacity:.75}
 .slide__foot .logo{width:72px}
 

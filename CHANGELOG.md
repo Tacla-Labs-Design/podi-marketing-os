@@ -10,6 +10,48 @@ entra sozinho no próximo e-mail.
 
 ---
 
+## 2026-10-29 — Verde #31D06E, DM Sans, ícones Bulk e o deck do Figma
+
+O DS de apresentação passa a seguir os três slides que o time usa nos decks (arquivo
+**[DECK] Simple Deck - Podi**, no Figma). Com eles mudam o verde e a fonte da marca inteira.
+
+### Mudado
+
+- **Verde de marca: `#48DB84` → `#31D06E`**, em todos os materiais: tokens, componentes, templates,
+  exemplos, `marca.json`, logo pack e hub. Os contrastes mudam pouco: `#101010` sobre o verde dá
+  9,4:1, o verde sobre branco dá 2,02:1. Recoloridos: `logo-podi.png`, `logo-podi-transparente.png`,
+  os ícones sociais `-green` e o `hero-podi-news.png`.
+- **Fonte: Inter → DM Sans**, em todos os materiais. Pesos com papel fixo: 600 nos títulos, 400 no
+  texto, 700 só no destaque. O e-mail usa 400 e 600.
+- **Deck**: `00-capa`, `04-split-foto-cards` e `07-mockup-app` refeitos medida por medida pelo Figma;
+  `05` e `06` herdam o card e a caixa de recursos deles. Margem de segurança de 96 para 64px; card
+  com padding 40; régua de 4px que some para a direita (200px sob título, 56px em card); título de
+  card 48px. `accent-2-line` vira `#E6CCFF`.
+- **Roxo**: o limite é de 3 *tipos* de detalhe por slide; o que se repete numa grade conta uma vez.
+- **Logo**: branco também sobre foto, numa área calma. O logo preto fica só para impressão a uma
+  cor — o modelo do hub assinava o rodapé de slide verde em preto, e o certo é branco.
+
+### Novo
+
+- **Ícones HugeIcons Bulk** (`brand/assets/icones-bulk/`, 93 ícones, com `index.json` de usos),
+  soltos e sem chip, por `currentColor`. Regra para desenhar ícone novo na mesma estética em
+  `brand/README.md` → Ícones. `scripts/icones.py` refaz o pack a partir do pacote Pro; o
+  `publicar` envia a pasta ao hub em `podi/icones/`.
+- **Ativos fixos do deck** (`brand/assets/deck/`): ripple, mão com o celular e duas telas do app.
+- Tokens `accent-deep` `#074A21` (tagline sobre o verde), `accent-line` `#2E9054` (ripple) e
+  `accent-edge` `#28C463` (borda das telas do app).
+- Modelo de deck do hub com 9 tipos: entram o split com foto e o slide da plataforma.
+
+### Removido
+
+- O chip de ícone do deck (`.chip`), trocado pelo ícone solto (`.ico`).
+- A linha de cliente e data da capa: a capa do Figma é só logo, tagline e o app.
+
+**Ação necessária:** deck ou e-mail montado antes desta versão sai no verde e na fonte antigos.
+Antes de reenviar, monte de novo pela versão atual do padrão.
+
+---
+
 ## 2026-10-27 — O Podi no hub de marcas
 
 O time passa a usar a marca também pelo hub (`https://marcas.taclalabs.workers.dev/podi/`), que

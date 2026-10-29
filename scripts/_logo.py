@@ -18,8 +18,8 @@ CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
 LOGO_FONTE = "brand/assets/header/logo-podi.svg"
 LOGOS = {
-    "podi-logo-verde": ("#48DB84", "Verde: fundo branco, claro ou preto"),
-    "podi-logo-branco": ("#FFFFFF", "Branco: sobre o verde de marca ou o preto"),
+    "podi-logo-verde": ("#31D06E", "Verde: fundo branco ou claro, em qualquer tamanho"),
+    "podi-logo-branco": ("#FFFFFF", "Branco: sobre o verde de marca, o preto ou foto"),
     "podi-logo-preto": ("#101010", "Preto: uma cor, impressão"),
 }
 

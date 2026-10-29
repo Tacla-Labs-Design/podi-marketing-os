@@ -90,12 +90,13 @@ O modelo se escolhe pelo **formato da informação** — o catálogo dos modelos
    Nunca gravar em `examples/`.
 3. Criar `saida/<slug>/assets/` e colocar ali **todas** as imagens — as do briefing e as fixas
    copiadas de `brand/assets/`. O post precisa abrir sozinho se alguém mandar a pasta.
-4. Trocar os ícones genéricos dos chips pelo glifo certo do assunto, mantendo
-   `fill="currentColor"` ou `stroke="currentColor"`.
+4. Trocar os ícones de exemplo pelo do assunto, do pack HugeIcons Bulk
+   (`brand/assets/icones-bulk/`, usos em `index.json`), mantendo `fill="currentColor"`. Sem ícone
+   que sirva, desenhar um na mesma estética (`brand/README.md` → Ícones).
 5. O **logo não é imagem**: é o `<symbol>` que vem no template, usado por `<use href="#…">`.
    A cor sai do CSS; nunca PNG, nunca `filter`.
 6. **Nunca escrever cor solta.** Toda cor sai de `design-system/post/tokens.md`, por
-   `var(--token)`. O verde `#48DB84` é só fundo — texto em cima dele é `#101010`, nunca branco.
+   `var(--token)`. O verde `#31D06E` é só fundo — texto em cima dele é `#101010`, nunca branco.
 7. **O que não cabe vira outro card** — nunca fonte menor que o mínimo do `tokens.md`.
 8. Escrever `saida/<slug>/legenda.txt` conforme `design-system/post/guidelines/legenda.md`
    (Instagram, LinkedIn e ALT de cada card).

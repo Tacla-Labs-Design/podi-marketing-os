@@ -115,7 +115,7 @@ def exigir_fontes(arquivo):
         return False
     if not ok:
         print(f"✗ A fonte {familia} não carregou. Sem ela a peça sai com outra letra.\n"
-              "  A Inter vem do Google Fonts (link no <head> do template): confira a internet e se "
+              "  A DM Sans vem do Google Fonts (link no <head> do template): confira a internet e se "
               "o link está na peça, e rode de novo.")
         return False
     print(f"✓ fonte {familia} carregada")

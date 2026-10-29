@@ -49,7 +49,7 @@ brand/                       Identidade. A camada mais alta — nada a contradiz
 brand/README.md              Identidade: cor, contraste, roxo de detalhe, frentes, empreendimento.
 brand/links-oficiais.md      Link do app, rodapé legal, redes, textos fixos do deck.
 brand/marca.json             Os mesmos valores, para máquina.
-brand/assets/                Logos, ícones sociais, imagens fixas.
+brand/assets/                Logos, ícones sociais, pack de ícones Bulk, ativos fixos do deck.
 brand/photography/           Style Lock do Podi e como lê-lo. Também é Brand.
 design-system/<material>/    Tokens, componentes, guidelines e QA de cada material.
 templates/<material>/        Shells canônicos. NUNCA editar por campanha.
@@ -101,7 +101,7 @@ Estão detalhadas nas camadas certas, mas ficam repetidas aqui porque errar nela
 - **O Podi é masculino** — "o Podi", "do Podi". Nunca "a Podi".
 - **Nunca escreva cor solta.** Toda cor sai dos tokens do material
   (`design-system/<material>/tokens.md`), e `scripts/conferir.py` acusa o que sobrar.
-- **Cor de marca `#48DB84` nunca é cor de texto.** Só fundo. Texto em cima dela é `#101010`
+- **Cor de marca `#31D06E` nunca é cor de texto.** Só fundo. Texto em cima dela é `#101010`
   — **nunca branco**. Link de marca sobre branco é `#0C6E3B`; no dark mode, `#6FE9A2`.
   (`brand/README.md`)
 - **Em e-mail do Podi, só existem três variáveis:** `{{email}}`, `{{topicId}}` e `{{campaignId}}`.
@@ -118,6 +118,10 @@ Estão detalhadas nas camadas certas, mas ficam repetidas aqui porque errar nela
   `scripts/paleta-empreendimento.py`, nunca de conta à mão; `© Podi App`, o link do app e as
   regras de texto continuam. (`brand/README.md`,
   `design-system/newsletter/guidelines/marca-empreendimento.md`)
+- **Fonte é DM Sans, em qualquer material.** 600 nos títulos, 400 no texto, 700 só no destaque.
+  (`brand/README.md`)
+- **Ícone é HugeIcons Bulk**, do pack `brand/assets/icones-bulk/`, solto e por `currentColor`.
+  Sem ícone que sirva, desenha-se um novo na mesma estética (`brand/README.md` → Ícones).
 - **O roxo `#9934FF` é, no Podi, só detalhe gráfico** — ícone, régua sob título, bullet,
   borda fina. Nunca texto, nunca título, nunca fundo de área grande, nunca sobre o verde.
   (`brand/README.md`, `design-system/apresentacao/guidelines/uso-do-roxo.md`)

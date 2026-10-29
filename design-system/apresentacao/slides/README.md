@@ -10,14 +10,14 @@ real vem do roteiro.
 | Arquivo | O que é |
 |---|---|
 | `_slide.html` | O shell de um slide. Todo tipo começa daqui |
-| `00-capa.html` | Abertura. Verde cheio, logo grande, tagline |
+| `00-capa.html` | Abertura. Verde com ripple, logo grande, tagline e o app na mão |
 | `01-agenda.html` | O que o deck vai cobrir. Bullet roxo |
 | `02-divisor-secao.html` | Virada de assunto. Fundo preto, número + nome da seção |
 | `03-titulo-texto.html` | Uma ideia só, sem apoio visual. Coluna única |
-| `04-split-foto-cards.html` | Foto sangrando à esquerda, grade 2×2 de cards à direita. `split--dir` espelha |
-| `05-cards-grid.html` | 3 ou 4 cards de peso igual, com chip de ícone |
-| `06-features-2col.html` | Lista longa de recursos em duas colunas, container de borda fina |
-| `07-mockup-app.html` | Mockup de celular à esquerda, conteúdo em faixa branca à direita |
+| `04-split-foto-cards.html` | Foto sangrando com o logo branco, grade 2×2 de cards por cima. `split--dir` espelha |
+| `05-cards-grid.html` | 3 ou 4 cards de peso igual sobre o verde, o mesmo card do `04` |
+| `06-features-2col.html` | Lista longa de recursos em duas colunas, na caixa de borda fina, sobre branco |
+| `07-mockup-app.html` | Painel verde com logo e o app na mão; frase, parágrafo e caixa de recursos no painel branco |
 | `08-numeros.html` | 2 a 4 números grandes com label e fonte do dado |
 | `09-foto-full.html` | Foto sangrada de slide inteiro com faixa de legenda |
 | `10-citacao.html` | Depoimento. Uma citação por slide |
@@ -54,9 +54,10 @@ Dois slides seguidos do mesmo tipo são aceitáveis. **Cinco não** — se o dec
 Todas as imagens do deck ficam em `saida/<slug>/assets/`, referenciadas relativamente:
 `src="assets/nome.jpg"`. Nunca caminho absoluto da máquina, nunca `../`.
 
-Os ativos fixos da marca — logo, imagem do fecho, ícones — **se copiam** de
-`brand/assets/` para `assets/` do deck no momento da montagem. O deck precisa abrir
-sozinho quando alguém mandar a pasta por e-mail.
+Os ativos fixos da marca **se copiam** de `brand/assets/` para `assets/` do deck no momento
+da montagem: o ripple, a mão com o celular e as duas telas do app (`brand/assets/deck/`, usados
+pelo `00` e pelo `07`) e a imagem do fecho. O deck precisa abrir sozinho quando alguém mandar a
+pasta por e-mail.
 
 Dimensões e proporção de cada slot: [`../tokens.md`](../tokens.md) → "Imagens".
 
@@ -69,9 +70,8 @@ O `04-split-foto-cards` nasce com a foto à esquerda. Para inverter, é só acre
 <section class="slide split split--dir">
 ```
 
-A classe troca a ordem **e** o lado do arredondamento de uma vez. O raio vai sempre no lado
-**de dentro** — o que encosta no conteúdo —, como no `07-mockup-app`. Alternar o lado entre
-dois splits do mesmo deck evita que os dois slides pareçam o mesmo slide repetido.
+A classe troca o lado da foto, dos cards e do logo de uma vez. Alternar o lado entre dois
+splits do mesmo deck evita que os dois slides pareçam o mesmo slide repetido.
 
 ## O logo
 
@@ -80,7 +80,7 @@ O logo da marca **não é imagem** nestes slides: ele é um `<symbol>` que o tem
 que precisa dele faz:
 
 ```html
-<svg class="logo" style="width:520px" viewBox="0 0 263 128" role="img" aria-label="Podi">
+<svg class="logo" style="width:425px" viewBox="0 0 263 128" role="img" aria-label="Podi">
   <title>Podi</title><use href="#logo-marca"/></svg>
 ```
 
@@ -88,8 +88,8 @@ A cor vem do CSS, não do arquivo:
 
 | Fundo | Classe |
 |---|---|
-| Cor de marca ou preto | `logo` — branco |
-| Claro | `logo logo--marca` — o verde de marca `#48DB84`, em qualquer tamanho |
+| Cor de marca, preto ou foto | `logo` — branco |
+| Claro | `logo logo--marca` — o verde de marca `#31D06E`, em qualquer tamanho |
 
 **O rodapé de todo slide é assinado pelo logo**, nunca pelo nome da marca escrito —
 `.slide__foot` já dimensiona em 72px. Em fundo claro ele é a cor de marca, discreto de propósito.
@@ -98,10 +98,24 @@ Nunca trocar por um PNG, nunca aplicar `filter` para mudar a cor, e nunca colar 
 de novo dentro de um slide: existe uma cópia só, e é a do template. Fonte do desenho:
 `brand/assets/header/logo-podi.svg`.
 
-Tamanhos em uso: **520px** na capa, **360px** no encerramento, **280px** no mockup.
+Tamanhos em uso: **425px** na capa, **360px** no encerramento, **263px** no split e no mockup.
 
 ## Os ícones
 
-Os `<svg>` dos chips são **marcadores de posição** com formas genéricas. Trocar pelo
-glifo certo do assunto na hora da montagem, mantendo `fill="currentColor"` — é o
-`currentColor` que faz o ícone herdar o roxo do chip. Nunca colar SVG com cor fixa dentro.
+O sistema de ícones é o **HugeIcons Bulk Rounded**: o pack fica em `brand/assets/icones-bulk/`,
+e o `index.json` de lá diz para que assunto serve cada um. Os ícones que vêm nos slides são
+**marcadores de posição**: trocar pelo do assunto na hora da montagem.
+
+Como colar: o miolo do SVG do pack vai dentro do `<svg>` do slide, que já tem a classe e o
+tamanho.
+
+```html
+<svg class="ico ico--lg" viewBox="0 0 24 24" aria-hidden="true"><!-- os <path> de gift.svg --></svg>
+```
+
+`ico ico--lg` é o de 80px do alto de card; `ico` sozinho é o de 32px da lista. Os `<path>` usam
+`fill="currentColor"` e o `.ico` dá o roxo. Nunca colar SVG com cor fixa, nunca pôr o ícone
+dentro de chip ou círculo.
+
+Quando o pack não tem o ícone do assunto, desenhe um novo pela regra de `brand/README.md` →
+Ícones (duas camadas, 24 × 24, cantos arredondados) e relate no fim que ele é novo.

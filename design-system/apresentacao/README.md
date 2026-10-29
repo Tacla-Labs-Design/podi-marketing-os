@@ -16,7 +16,7 @@ guidelines/
 ## Autoridade
 
 Este design system **obedece** ao [`brand/`](../../brand/README.md) e não pode contradizê-lo.
-A regra da cor de marca e a da secundária de detalhe nascem lá (o verde `#48DB84` e o roxo
+A regra da cor de marca e a da secundária de detalhe nascem lá (o verde `#31D06E` e o roxo
 `#9934FF`); aqui elas só são aplicadas a um canvas de 1920 × 1080.
 
 Shell de montagem: `templates/apresentacao/base.html`. Procedimento: `/apresentacao-podi`.
@@ -25,10 +25,10 @@ Shell de montagem: `templates/apresentacao/base.html`. Procedimento: `/apresenta
 
 - **O canvas é fixo.** Um slide tem exatamente 1920 × 1080 px. Não existe "rolar a página",
   não existe mobile: o que não cabe vira outro slide.
-- **A tipografia é de projeção**, não de leitura de perto. O corpo começa em 28px porque a
+- **A tipografia é de projeção**, não de leitura de perto. O texto começa em 24px porque a
   pessoa está a metros da tela — os 16px do e-mail seriam ilegíveis.
 - **O verde é o fundo do slide**, não a cor do botão. No e-mail o `page` é o `#EDF7F1`
-  discreto; aqui o `#48DB84` é campo de cor inteiro, e os cards brancos flutuam sobre ele.
+  discreto; aqui o `#31D06E` é campo de cor inteiro, e os cards brancos flutuam sobre ele.
 - **Pode usar CSS moderno.** Flex, grid, `var()`, gradiente — nada disso passa em cliente de
   e-mail, e tudo isso passa num navegador. As restrições de
   `design-system/newsletter/guidelines/email-compat.md` **não valem aqui**.

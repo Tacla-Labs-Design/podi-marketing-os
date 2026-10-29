@@ -10,7 +10,7 @@ O nome do token é o do e-mail; o papel é a chave em `cores` do `marca.json`.
 
 | Token (e-mail) | Papel (`marca.json`) | Valor |
 |---|---|---|
-| cor de marca (CTA, régua) | `brand` | `#48DB84` |
+| cor de marca (CTA, régua) | `brand` | `#31D06E` |
 | texto em cima da cor de marca | `ink-on-brand` | `#101010` |
 | `accent-ink` | `accent-ink` | `#0C6E3B` |
 | `page` / `canvas` | `page-light` | `#EDF7F1` |
@@ -22,20 +22,20 @@ O nome do token é o do e-mail; o papel é a chave em `cores` do `marca.json`.
 
 ## Cor de marca
 
-**`#48DB84`** (verde Podi).
+**`#31D06E`** (verde Podi).
 
-Contraste sobre branco: **1,79:1** — reprova em qualquer texto. Isso governa três regras:
+Contraste sobre branco: **2,02:1** — reprova em qualquer texto. Isso governa três regras:
 
 | Situação | Cor certa | Por quê |
 |---|---|---|
-| Texto **em cima** do verde | `#101010` | 10,6:1. Texto branco sobre o verde é **proibido** |
+| Texto **em cima** do verde | `#101010` | 9,4:1. Texto branco sobre o verde é **proibido** |
 | Texto/link de marca **sobre branco** | `#0C6E3B` | 6,4:1 — e 5,2:1 sobre a tag `#D4F0DF`, que é o piso real |
 | Texto/link de marca no **dark mode** | `#6FE9A2` | 11,5:1 sobre `#1A1A1A` |
 
-O `#48DB84` só entra como **fundo** — botão, tag, régua de destaque. Nunca como cor de texto.
+O `#31D06E` só entra como **fundo** — botão, tag, régua de destaque. Nunca como cor de texto.
 
-Os **ícones sociais do rodapé usam a variante verde** `#48DB84` (`brand/assets/icones/*-green.png`) —
-decisão de marca. Vale saber o que ela custa: 1,63:1 sobre a página clara `#EDF7F1` e
+Os **ícones sociais do rodapé usam a variante verde** `#31D06E` (`brand/assets/icones/*-green.png`) —
+decisão de marca. Vale saber o que ela custa: 1,85:1 sobre a página clara `#EDF7F1` e
 9,73:1 sobre o dark `#1A1A1A`. No modo claro o ícone é **decorativo**, não um alvo de leitura;
 quem sustenta o link ali é o `alt` com o nome da rede e a área de toque, não a forma.
 Nunca usar o verde para um ícone que precise carregar informação sozinho.
@@ -78,12 +78,12 @@ e quem constrói a estrutura visual são os **cards brancos**.
 | `muted-dark` | `#8F8F8F` |
 | `hairline-dark` | `#333333` |
 
-O **CTA verde não inverte** no dark — `#48DB84` já contrasta sobre `#1A1A1A`.
+O **CTA verde não inverte** no dark — `#31D06E` já contrasta sobre `#1A1A1A`.
 Só o CTA neutro escuro (`#101010`) usa `.dm-btn` para virar branco.
 
 ## Modo empreendimento — paleta derivada
 
-Quando o remetente é o empreendimento, **só o grupo verde muda**: `#48DB84`, `#0C6E3B`,
+Quando o remetente é o empreendimento, **só o grupo verde muda**: `#31D06E`, `#0C6E3B`,
 `#EDF7F1`, `#D4F0DF` e `#D2E7DA` dão lugar a tons derivados da cor base da campanha.
 `ink`, `body`, `muted` e o branco ficam como estão, e não há tokens de dark mode — o modo é
 sempre claro.
@@ -100,7 +100,7 @@ referência (SAVE & WIN, `#173B2A`): `guidelines/marca-empreendimento.md`.
 
 ## Tipografia
 
-Stack: `'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif`
+Stack: `'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif`
 
 | Papel | Tamanho / line-height / peso |
 |---|---|

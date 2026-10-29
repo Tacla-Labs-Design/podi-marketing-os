@@ -7,10 +7,10 @@ a identidade. Ver `docs/governanca.md`.
 
 | Arquivo | O que guarda |
 |---|---|
-| `README.md` | Este: voz, logo, cor de marca, roxo de detalhe, frentes, empreendimento |
+| `README.md` | Este: voz, logo, cor de marca, roxo de detalhe, tipografia, ícones, frentes, empreendimento |
 | [`links-oficiais.md`](links-oficiais.md) | Link do app, rodapé legal, redes, textos fixos do deck |
 | [`marca.json`](marca.json) | Os mesmos valores, para máquina — lido por `scripts/conferir.py` e pelas skills |
-| `assets/` | Logos (SVG e PNG para e-mail), ícones sociais, imagens fixas |
+| `assets/` | Logos (SVG e PNG para e-mail), ícones sociais, o pack de ícones Bulk (`icones-bulk/`), ativos fixos do deck (`deck/`) |
 | [`photography/`](photography/README.md) | Style Lock — a direção fotográfica |
 
 ---
@@ -35,12 +35,13 @@ sempre que o logo aparecer sem a Tacla Labs:
 
 | Fundo | Cor do logo |
 |---|---|
-| Verde de marca `#48DB84` | Branco `#FFFFFF` |
+| Verde de marca `#31D06E` | Branco `#FFFFFF` |
 | Preto `#101010` | Branco `#FFFFFF` |
-| Branco ou claro | Verde de marca `#48DB84` |
+| Foto, numa área calma, média ou escura | Branco `#FFFFFF` |
+| Branco ou claro | Verde de marca `#31D06E` |
 
-Sobre fundo claro é **sempre o verde original `#48DB84`**, em qualquer tamanho — inclusive
-na assinatura pequena do rodapé. Ele dá 1,63:1 ali, e é uma marca discreta de propósito:
+Sobre fundo claro é **sempre o verde original `#31D06E`**, em qualquer tamanho — inclusive
+na assinatura pequena do rodapé. Ele dá 1,85:1 ali, e é uma marca discreta de propósito:
 como o ícone social verde do rodapé do e-mail, é ornamento, não alvo de leitura. O que
 identifica a peça é a forma do logo, não o contraste dele.
 
@@ -50,15 +51,16 @@ gráfica, e branco sobre o verde é como o Podi assina desde sempre. O que conti
 
 ## Cor de marca — e a regra que ela impõe
 
-**`#48DB84`** (verde Podi). Contraste sobre branco: **1,79:1** — reprova em qualquer texto.
+**`#31D06E`** (verde Podi). Contraste sobre branco: **2,02:1** — reprova em qualquer texto.
 
 | Situação | Cor certa | Contraste |
 |---|---|---|
-| Texto **em cima** do verde | `#101010` | 10,6:1 — texto branco sobre o verde é **proibido** |
+| Texto **em cima** do verde | `#101010` | 9,4:1 — texto branco sobre o verde é **proibido** |
+| Tagline e frase de marca **em cima** do verde | `#074A21` | 5,2:1 — o verde-escuro da capa do deck |
 | Texto/link de marca **sobre branco** | `#0C6E3B` | 6,4:1 |
 | Texto/link de marca no **dark mode** | `#6FE9A2` | 11,5:1 sobre `#1A1A1A` |
 
-O `#48DB84` só entra como **fundo** — botão, tag, régua de destaque. **Nunca como cor
+O `#31D06E` só entra como **fundo** — botão, tag, régua de destaque. **Nunca como cor
 de texto.** Esta regra não é negociável em nenhum material, de e-mail a impresso.
 
 **Nenhum texto abaixo de 4,5:1**, em qualquer material. **Nunca escreva cor solta:** toda cor
@@ -74,7 +76,7 @@ Paleta completa e tokens derivados: `design-system/newsletter/tokens.md` (e-mail
 
 | Onde pode | Onde não pode |
 |---|---|
-| Ícone, glifo dentro de chip claro | Texto corrido |
+| Ícone Bulk solto, em fundo branco ou claro | Texto corrido |
 | Régua ou gradiente fino sob um título | Título, subtítulo, número de destaque |
 | Bullet de lista, ponto de linha do tempo | Fundo de área grande — esse papel é do verde |
 | Borda fina de container | Qualquer coisa **em cima do verde** (2,4:1) |
@@ -87,6 +89,41 @@ Como o ícone social verde, **um detalhe roxo nunca carrega informação sozinho
 acompanha um rótulo, não substitui um.
 
 Tokens derivados e as versões claras do roxo: `design-system/apresentacao/tokens.md`.
+
+## Tipografia
+
+**DM Sans** (Google Fonts), em qualquer material — e-mail, deck, post, impresso. Nenhuma
+outra família. É a fonte do app e dos decks que o time já usa.
+
+| Peso | Papel |
+|---|---|
+| 400 Regular | Texto corrido, legenda, tagline |
+| 600 SemiBold | Títulos, rótulos, botões |
+| 700 Bold | Só destaque dentro do texto (`<strong>`) e números grandes |
+
+O material pode usar menos pesos, nunca outros. Pilha em HTML:
+`'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif`.
+
+## Ícones
+
+O sistema de ícones do Podi é o **HugeIcons Bulk Rounded** (licença Pro da Tacla Labs). O pack
+oficial fica em [`assets/icones-bulk/`](assets/icones-bulk/), com `index.json` dizendo o uso de
+cada ícone, e vai ao hub de marcas em `podi/icones/`.
+
+- Cada ícone tem **duas camadas da mesma cor**: a forma de fundo a 40% de opacidade e os detalhes
+  a 100%. A cor vem de quem usa, por `currentColor` — no Podi, o roxo `#9934FF`.
+- O ícone vai **solto**, sem chip ou círculo de fundo, sempre ao lado de um rótulo.
+- Tamanhos no deck: **80px** no alto de card, **32px** em lista.
+
+**Quando o pack não tem o ícone do assunto**, desenhe um novo na mesma estética, e só nesse caso:
+
+1. `viewBox="0 0 24 24"`, área útil de 21px (1,5px de respiro em volta).
+2. A silhueta inteira do objeto, cheia, com `opacity="0.4"`.
+3. Por cima, os detalhes cheios a 100%: traços de 1,5px desenhados como forma, pontas e cantos
+   arredondados (raio de 1,5 a 3px). Nada de `stroke` solto, nada de ponta reta.
+4. Só `fill="currentColor"`. Nenhuma cor gravada, nenhum gradiente, nenhuma sombra.
+5. Compare lado a lado com dois ícones do pack antes de usar. Ícone novo é da peça: para entrar
+   no pack, passa pelo maintainer (`scripts/icones.py`).
 
 ## As duas frentes
 

@@ -48,9 +48,9 @@ pasta do envio.
 
 ## Ícones sociais
 
-Variante **verde** (`brand/assets/icones/*-green.png`, `#48DB84`), por decisão de marca.
+Variante **verde** (`brand/assets/icones/*-green.png`, `#31D06E`), por decisão de marca.
 
-No modo claro dá 1,63:1 sobre a página — é **ornamento, não alvo de leitura**. Por isso
+No modo claro dá 1,85:1 sobre a página — é **ornamento, não alvo de leitura**. Por isso
 o `alt` com o nome da rede é obrigatório em cada ícone, e a área de toque é o que
 sustenta o link. Nunca usar o verde para um ícone que precise carregar informação sozinho.
 

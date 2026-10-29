@@ -1,0 +1,177 @@
+#!/usr/bin/env -S python3 -I
+"""Monta o pack de ícones do Podi: HugeIcons Bulk Rounded, em SVG, com o índice de usos.
+
+O sistema de ícones do Podi é o estilo Bulk do HugeIcons (licença Pro da Tacla Labs). Este
+script tira do pacote `@hugeicons-pro/core-bulk-rounded` só os ícones da lista ICONES e grava
+um SVG por ícone em brand/assets/icones-bulk/, com `fill="currentColor"`: a cor vem de quem usa.
+Também grava index.json (nome → usos), que as skills leem para escolher o ícone pelo assunto.
+
+Quem roda é o maintainer, numa máquina com o pacote Pro instalado (precisa do token do
+HugeIcons no .npmrc). Para pôr um ícone novo no pack: acrescente à lista ICONES e rode de novo.
+scripts/publicar envia a pasta ao hub, em podi/icones/.
+
+Uso:
+  python3 -I scripts/icones.py <pasta do pacote @hugeicons-pro/core-bulk-rounded>
+"""
+
+import json
+import re
+import sys
+from pathlib import Path
+
+RAIZ = Path(__file__).resolve().parent.parent
+DESTINO = RAIZ / "brand" / "assets" / "icones-bulk"
+
+# nome do arquivo → usos. O nome é o do HugeIcons em kebab-case (SmartPhone01 → smart-phone-01).
+ICONES = {
+    # os slides de referência do deck
+    "happy-01": "satisfação, experiência, simplicidade",
+    "smart-phone-01": "app, celular, conveniência, Android e iOS",
+    "user-love-01": "fidelização, engajamento, cliente fiel",
+    "rocket-01": "inovação, lançamento, crescimento",
+    "workflow-square-05": "fluxo, jornada, processo intuitivo",
+    "ticket-star": "promoção, sorteio, participação",
+    "discount-tag-02": "cupom, desconto, oferta",
+    "film-roll-02": "cinema, filme",
+    "appointment-01": "evento, inscrição, agenda",
+    "car-02": "estacionamento, carro, pagamento do estacionamento",
+    "news-01": "novidades, notícias",
+    "notification-bubble": "notificação push, aviso",
+    "security-check": "segurança, proteção, confiança",
+    "chart-line-data-02": "dados em tempo real, resultados",
+    "image-03": "banner, imagem, mídia",
+    # varejo e shopping
+    "shopping-bag-01": "compra, loja, varejo",
+    "shopping-cart-01": "carrinho, compra",
+    "shopping-basket-01": "cesta, mercado",
+    "store-01": "loja, lojista",
+    "store-04": "shopping, outlet, centro comercial",
+    "gift": "brinde, presente",
+    "gift-card": "vale-presente, cartão-presente",
+    "coupon-01": "cupom",
+    "coupon-percent": "cupom de desconto",
+    "tag-01": "preço, etiqueta",
+    "percent-circle": "desconto percentual",
+    "discount": "desconto, liquidação",
+    "hanger": "moda, vestuário",
+    "tshirt": "roupa, camiseta",
+    "running-shoes": "calçados, esporte",
+    "diamond-01": "joias, premium",
+    "restaurant-01": "alimentação, praça de alimentação",
+    "coffee-01": "café, cafeteria",
+    "pizza-01": "lanche, fast food",
+    "ice-cream-01": "sobremesa, sorvete",
+    "popcorn": "cinema, lazer",
+    "game-controller-01": "games, entretenimento",
+    "music-note-01": "música, show",
+    "baby-01": "infantil, família",
+    "dumbbell-01": "academia, saúde",
+    "parking-area-circle": "estacionamento, vaga",
+    "delivery-truck-01": "entrega, frete",
+    "package-open": "pedido, retirada",
+    "ticket-01": "ingresso",
+    "party": "festa, celebração, aniversário",
+    # dinheiro e benefícios
+    "wallet-01": "carteira, cashback",
+    "credit-card": "pagamento, cartão",
+    "money-03": "dinheiro, valor",
+    "coins-01": "pontos, moedas, cashback",
+    "award-01": "prêmio, conquista",
+    "champion": "campeão, ranking, troféu",
+    "medal-01": "medalha, reconhecimento",
+    "crown": "VIP, exclusivo",
+    "star": "destaque, avaliação",
+    "favourite": "favorito, amor",
+    "sparkles": "novidade, especial",
+    "fire": "em alta, imperdível",
+    "flash": "relâmpago, oferta rápida",
+    # pessoas e comunicação
+    "user": "usuário, pessoa",
+    "user-group": "público, comunidade, time",
+    "handshake": "parceria, acordo",
+    "megaphone-01": "campanha, anúncio",
+    "notification-01": "notificação, lembrete",
+    "mail-01": "e-mail, newsletter",
+    "message-01": "mensagem",
+    "chatting-01": "conversa, atendimento",
+    "share-08": "compartilhar",
+    "thumbs-up": "aprovação, curtir",
+    # app, dados e lugar
+    "search-01": "busca",
+    "qr-code": "QR code, leitura",
+    "download-01": "baixar o app, download",
+    "settings-01": "configuração, ajuste",
+    "link-01": "link, integração",
+    "dashboard-square-01": "painel, gestão",
+    "analytics-01": "análise, relatório",
+    "pie-chart": "participação, fatia",
+    "chart-increase": "crescimento, alta",
+    "target-02": "meta, objetivo, público-alvo",
+    "idea-01": "ideia, dica",
+    "globe-02": "digital, alcance",
+    "home-01": "início, casa",
+    "building-03": "empresa, empreendimento",
+    "location-01": "localização, endereço",
+    "maps-location-01": "mapa do shopping, como chegar",
+    "calendar-03": "data, calendário",
+    "clock-01": "horário, funcionamento",
+    "video-01": "vídeo",
+    "checkmark-circle-02": "confirmado, concluído",
+    "alert-02": "atenção, alerta",
+    "information-circle": "informação",
+    "arrow-right-01": "próximo, seguir",
+    "leaf-01": "sustentabilidade",
+    "sun-01": "verão, dia",
+}
+
+ITEM = re.compile(r'\["(\w+)", \{(.*?)\}\]', re.S)
+ATRIB = re.compile(r'(\w+): "([^"]*)"')
+
+
+def kebab(nome):
+    return re.sub(r"(?<=[a-z])(?=[A-Z0-9])|(?<=[0-9])(?=[A-Z])", "-", nome).lower()
+
+
+def camel(nome):
+    return "".join(p.capitalize() for p in nome.split("-")) + "Icon"
+
+
+def svg(js):
+    partes = []
+    for tag, corpo in ITEM.findall(js):
+        attrs = [f'{kebab(k)}="{v}"' for k, v in ATRIB.findall(corpo) if k != "key"]
+        partes.append(f"<{tag} {' '.join(attrs)}/>")
+    if not partes:
+        raise ValueError("nenhuma forma no arquivo")
+    return ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" '
+            'fill="none">' + "".join(partes) + "</svg>\n")
+
+
+def main():
+    if len(sys.argv) != 2:
+        raise SystemExit(__doc__)
+    esm = Path(sys.argv[1]).expanduser() / "dist" / "esm"
+    if not esm.is_dir():
+        raise SystemExit(f"{esm}: não achei o pacote @hugeicons-pro/core-bulk-rounded.")
+
+    DESTINO.mkdir(parents=True, exist_ok=True)
+    for velho in DESTINO.glob("*.svg"):
+        velho.unlink()
+    faltam = []
+    for nome in ICONES:
+        fonte = esm / f"{camel(nome)}.js"
+        if not fonte.is_file():
+            faltam.append(nome)
+            continue
+        (DESTINO / f"{nome}.svg").write_text(svg(fonte.read_text()))
+    if faltam:
+        raise SystemExit("Não existem no pacote: " + ", ".join(faltam))
+
+    indice = {"estilo": "HugeIcons Bulk Rounded", "viewBox": "0 0 24 24",
+              "icones": {nome: uso for nome, uso in ICONES.items()}}
+    (DESTINO / "index.json").write_text(json.dumps(indice, ensure_ascii=False, indent=1) + "\n")
+    print(f"{len(ICONES)} ícones em {DESTINO.relative_to(RAIZ)}/")
+
+
+if __name__ == "__main__":
+    main()

@@ -61,7 +61,7 @@ No Windows, o Chrome fica em `C:\Program Files\Google\Chrome\Application\chrome.
 - [ ] Nenhum texto entre colchetes sobrou; nenhum `data-slot` de imagem com `src` vazio.
 - [ ] Só `{{email}}`, `{{topicId}}` e `{{campaignId}}` — nenhuma outra `{{...}}`.
 - [ ] Nenhum link de descadastro.
-- [ ] Nenhum texto em `#48DB84`; texto sobre o verde em `#101010`.
+- [ ] Nenhum texto em `#31D06E`; texto sobre o verde em `#101010`.
 - [ ] Toda imagem com `alt`; todo link `http` com `target="_blank"`.
 - [ ] Botão com o mesmo link no `v:roundrect` e no `<a>`.
 - [ ] Link do app `podi.podiapp.com.br/podi-e931a`; nunca `podi.com.br/app`.

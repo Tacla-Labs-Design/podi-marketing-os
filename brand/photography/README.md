@@ -27,7 +27,7 @@ diz como lê-lo.
 
 ## A cor da marca dentro da foto
 
-A cor de marca está resolvida dentro do Style Lock. O verde **`#48DB84`**
+A cor de marca está resolvida dentro do Style Lock. O verde **`#31D06E`**
 (`brand/README.md`) vira `vivid emerald green` / `deep pine green` / `soft mint green` —
 a tradução dele para o vocabulário que os geradores entendem. Não são hexadecimais
 alternativos e não se trocam por campanha.

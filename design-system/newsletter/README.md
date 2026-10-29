@@ -17,7 +17,7 @@ guidelines/
 ## Autoridade
 
 Este design system **obedece** ao [`brand/`](../../brand/README.md) e não pode contradizê-lo.
-A regra de contraste da cor de marca nasce lá (o verde `#48DB84`: `brand/README.md`); aqui ela
+A regra de contraste da cor de marca nasce lá (o verde `#31D06E`: `brand/README.md`); aqui ela
 só é aplicada.
 
 ## O que é específico de e-mail

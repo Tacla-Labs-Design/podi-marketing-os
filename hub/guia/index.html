@@ -7,7 +7,7 @@
 <meta name="description" content="Logo pack e diretrizes da marca Podi: o logo em verde, branco e preto, as cores e a fonte.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <!--
   Fonte da página do logo pack do Podi. scripts/logo-pack.py copia este arquivo para
   saida/logo-pack/podi-logo-pack/index.html e põe a data na pill da capa.
@@ -15,7 +15,7 @@
 -->
 <style>
   :root {
-    --brand: #48DB84;          /* verde de marca: só fundo */
+    --brand: #31D06E;          /* verde de marca: só fundo */
     --ink: #101010;            /* títulos e texto sobre o verde */
     --body: #4A4A4A;
     --muted: #6E6E6E;
@@ -36,7 +36,7 @@
     margin: 0;
     background: var(--surface);
     color: var(--body);
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     font-weight: 400;
     line-height: 1.55;
   }
@@ -73,6 +73,9 @@
 
   .grid { display: grid; gap: 20px; }
   .g2 { grid-template-columns: repeat(2, 1fr); }
+  .ico-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 16px; color: #9934FF; }
+  .ico-cell { display: grid; justify-items: center; gap: 8px; }
+  .ico-cell span { font-size: 12px; color: var(--muted); text-align: center; }
   .g3 { grid-template-columns: repeat(3, 1fr); }
   .g4 { grid-template-columns: repeat(4, 1fr); }
 
@@ -135,6 +138,7 @@
   @media (max-width: 960px) {
     .g4 { grid-template-columns: repeat(2, 1fr); }
     .g3 { grid-template-columns: repeat(2, 1fr); }
+    .ico-grid { grid-template-columns: repeat(4, 1fr); }
     .dont { grid-template-columns: 1fr; }
   }
   @media (max-width: 600px) {
@@ -178,7 +182,7 @@
       </a>
       <span class="pill">Versão de VERSAO_DO_PACK</span>
     </div>
-    <nav class="toc" aria-label="Seções"><a href="#estrutura">Estrutura</a><a href="#logo">Logo</a><a href="#cores">Cores</a><a href="#tipografia">Tipografia</a><a href="#onde-usar">Onde usar</a><a href="#nao-pode">Não pode</a></nav>
+    <nav class="toc" aria-label="Seções"><a href="#estrutura">Estrutura</a><a href="#logo">Logo</a><a href="#cores">Cores</a><a href="#tipografia">Tipografia</a><a href="#icones">Ícones</a><a href="#onde-usar">Onde usar</a><a href="#nao-pode">Não pode</a></nav>
   </div>
 </header>
 
@@ -203,7 +207,7 @@
     <div class="grid g3">
       <div class="card">
         <div class="stage logo on-white"><img src="01-logo/png/podi-logo-verde-1024.png" alt="Logo do Podi verde sobre branco"></div>
-        <div class="meta"><b>Verde · <span class="hex">#48DB84</span></b><span class="files">Fundo branco ou claro, em qualquer tamanho · <a href="01-logo/svg/podi-logo-verde.svg">SVG</a> · PNG <a href="01-logo/png/podi-logo-verde-512.png">512</a> · <a href="01-logo/png/podi-logo-verde-1024.png">1024</a> · <a href="01-logo/png/podi-logo-verde-2048.png">2048</a> · <a href="01-logo/png/podi-logo-verde-4096.png">4096</a></span></div>
+        <div class="meta"><b>Verde · <span class="hex">#31D06E</span></b><span class="files">Fundo branco ou claro, em qualquer tamanho · <a href="01-logo/svg/podi-logo-verde.svg">SVG</a> · PNG <a href="01-logo/png/podi-logo-verde-512.png">512</a> · <a href="01-logo/png/podi-logo-verde-1024.png">1024</a> · <a href="01-logo/png/podi-logo-verde-2048.png">2048</a> · <a href="01-logo/png/podi-logo-verde-4096.png">4096</a></span></div>
       </div>
       <div class="card">
         <div class="stage logo on-brand"><img src="01-logo/png/podi-logo-branco-1024.png" alt="Logo do Podi branco sobre o verde"></div>
@@ -211,12 +215,12 @@
       </div>
       <div class="card">
         <div class="stage logo on-white"><img src="01-logo/png/podi-logo-preto-1024.png" alt="Logo do Podi preto sobre branco"></div>
-        <div class="meta"><b>Preto · <span class="hex">#101010</span></b><span class="files">Impressão a uma cor e assinatura pequena no rodapé de slide verde · <a href="01-logo/svg/podi-logo-preto.svg">SVG</a> · PNG <a href="01-logo/png/podi-logo-preto-512.png">512</a> · <a href="01-logo/png/podi-logo-preto-1024.png">1024</a> · <a href="01-logo/png/podi-logo-preto-2048.png">2048</a> · <a href="01-logo/png/podi-logo-preto-4096.png">4096</a></span></div>
+        <div class="meta"><b>Preto · <span class="hex">#101010</span></b><span class="files">Impressão a uma cor · <a href="01-logo/svg/podi-logo-preto.svg">SVG</a> · PNG <a href="01-logo/png/podi-logo-preto-512.png">512</a> · <a href="01-logo/png/podi-logo-preto-1024.png">1024</a> · <a href="01-logo/png/podi-logo-preto-2048.png">2048</a> · <a href="01-logo/png/podi-logo-preto-4096.png">4096</a></span></div>
       </div>
     </div>
 
     <h3>Nos outros fundos</h3>
-    <div class="grid g3">
+    <div class="grid g2">
       <div class="card">
         <div class="stage logo on-page"><img src="01-logo/png/podi-logo-verde-1024.png" alt="Logo do Podi verde sobre o fundo claro"></div>
         <div class="meta"><b>Verde sobre o claro</b><span class="files">Fundo de página <span class="hex">#EDF7F1</span>. Sobre o claro, sempre o verde original.</span></div>
@@ -224,10 +228,6 @@
       <div class="card">
         <div class="stage logo on-ink"><img src="01-logo/png/podi-logo-branco-1024.png" alt="Logo do Podi branco sobre o preto"></div>
         <div class="meta"><b>Branco sobre o preto</b><span class="files">Fundo <span class="hex">#101010</span>.</span></div>
-      </div>
-      <div class="card">
-        <div class="stage logo on-brand"><img src="01-logo/png/podi-logo-preto-1024.png" alt="Logo do Podi preto sobre o verde"></div>
-        <div class="meta"><b>Preto no rodapé verde</b><span class="files">Só como assinatura pequena no rodapé de slide verde.</span></div>
       </div>
     </div>
 
@@ -243,18 +243,18 @@
   <div class="wrap">
     <p class="eyebrow">02 · Cores</p>
     <h2>O verde é a marca<a class="anchor" href="#cores" aria-label="Link para a seção O verde é a marca">#</a></h2>
-    <p class="lead">O verde <code>#48DB84</code> entra só como fundo: botão, tag, régua, slide. Nunca como cor de texto. Texto em cima dele é <code>#101010</code>, nunca branco.</p>
+    <p class="lead">O verde <code>#31D06E</code> entra só como fundo: botão, tag, régua, slide. Nunca como cor de texto. Texto em cima dele é <code>#101010</code>, nunca branco.</p>
 
     <div class="grid g4 sw">
-      <div class="card"><div class="swatch" style="background:#48DB84"></div><div class="meta"><b>Marca</b><span class="hex">#48DB84</span><p>Só fundo. Nunca cor de texto: 1,79:1 sobre branco.</p></div></div>
-      <div class="card"><div class="swatch" style="background:#101010"></div><div class="meta"><b>Texto sobre o verde</b><span class="hex">#101010</span><p>10,6:1 sobre o verde. Nunca branco sobre o verde.</p></div></div>
+      <div class="card"><div class="swatch" style="background:#31D06E"></div><div class="meta"><b>Marca</b><span class="hex">#31D06E</span><p>Só fundo. Nunca cor de texto: 2,02:1 sobre branco.</p></div></div>
+      <div class="card"><div class="swatch" style="background:#101010"></div><div class="meta"><b>Texto sobre o verde</b><span class="hex">#101010</span><p>9,4:1 sobre o verde. Nunca branco sobre o verde.</p></div></div>
       <div class="card"><div class="swatch" style="background:#0C6E3B"></div><div class="meta"><b>Link e destaque sobre branco</b><span class="hex">#0C6E3B</span><p>6,4:1 sobre branco.</p></div></div>
       <div class="card"><div class="swatch" style="background:#6FE9A2"></div><div class="meta"><b>Marca no modo escuro</b><span class="hex">#6FE9A2</span><p>Texto e link sobre <code>#1A1A1A</code>: 11,5:1.</p></div></div>
     </div>
 
     <h3>Combinações certas</h3>
     <div class="grid g3">
-      <div class="card"><div class="combo brand">Texto sobre o verde</div><div class="meta"><span class="files"><span class="hex">#101010</span> sobre <span class="hex">#48DB84</span></span></div></div>
+      <div class="card"><div class="combo brand">Texto sobre o verde</div><div class="meta"><span class="files"><span class="hex">#101010</span> sobre <span class="hex">#31D06E</span></span></div></div>
       <div class="card"><div class="combo light"><span>Link sobre o branco</span></div><div class="meta"><span class="files"><span class="hex">#0C6E3B</span> sobre <span class="hex">#FFFFFF</span></span></div></div>
       <div class="card"><div class="combo dark">Marca no escuro</div><div class="meta"><span class="files"><span class="hex">#6FE9A2</span> sobre <span class="hex">#1A1A1A</span></span></div></div>
     </div>
@@ -279,7 +279,7 @@
       <div class="card" style="padding:20px 22px">
         <ul class="list">
           <li>Nunca texto, título, número, fundo de área grande nem nada em cima do verde.</li>
-          <li>No máximo 3 detalhes roxos por slide.</li>
+          <li>No máximo 3 tipos de detalhe roxo por slide. O que se repete numa grade conta uma vez.</li>
           <li>Um detalhe roxo acompanha um rótulo, não substitui um.</li>
         </ul>
       </div>
@@ -296,39 +296,50 @@
 <section id="tipografia">
   <div class="wrap">
     <p class="eyebrow">03 · Tipografia</p>
-    <h2>Inter, dois pesos por peça<a class="anchor" href="#tipografia" aria-label="Link para a seção Inter, dois pesos por peça">#</a></h2>
-    <p class="lead">Uma família só: <a href="https://fonts.google.com/specimen/Inter">Inter</a>, do Google Fonts. Regular e semibold no e-mail, regular e bold no deck. Nenhuma outra família.</p>
+    <h2>DM Sans, um papel por peso<a class="anchor" href="#tipografia" aria-label="Link para a seção DM Sans, um papel por peso">#</a></h2>
+    <p class="lead">Uma família só: <a href="https://fonts.google.com/specimen/DM+Sans">DM Sans</a>, do Google Fonts, em qualquer peça. Semibold nos títulos, regular no texto, bold só no destaque. O e-mail usa regular e semibold. Nenhuma outra família.</p>
     <div class="card">
       <div class="specimen">
-        <p class="big">Inter</p>
+        <p class="big">DM Sans</p>
         <div class="weights" style="margin-top:28px">
           <div><span>Regular · 400</span><p style="font-weight:400">Pensou em Shopping ou Outlet? Pensou Podi!</p></div>
-          <div><span>Semibold · 600 · e-mail</span><p style="font-weight:600">Pensou em Shopping ou Outlet? Pensou Podi!</p></div>
-          <div><span>Bold · 700 · deck</span><p style="font-weight:700">Pensou em Shopping ou Outlet? Pensou Podi!</p></div>
+          <div><span>Semibold · 600 · títulos</span><p style="font-weight:600">Pensou em Shopping ou Outlet? Pensou Podi!</p></div>
+          <div><span>Bold · 700 · destaque</span><p style="font-weight:700">Pensou em Shopping ou Outlet? Pensou Podi!</p></div>
         </div>
       </div>
     </div>
     <h3>Para usar</h3>
-<pre>&lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"&gt;
+<pre>&lt;link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"&gt;
 
 /* No e-mail, a pilha é: */
-font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;</pre>
+font-family: 'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;</pre>
+  </div>
+</section>
+
+<section id="icones">
+  <div class="wrap">
+    <p class="eyebrow">04 · Ícones</p>
+    <h2>HugeIcons Bulk, em roxo<a class="anchor" href="#icones" aria-label="Link para a seção HugeIcons Bulk, em roxo">#</a></h2>
+    <p class="lead">O sistema de ícones do Podi é o HugeIcons Bulk Rounded: duas camadas da mesma cor, a de fundo a 40%. Ícone solto, sem chip, em roxo <span class="hex">#9934FF</span>, sempre ao lado de um rótulo.</p>
+    <div class="card"><div class="ico-grid"><div class="ico-cell"><svg viewBox="0 0 24 24" width="40" height="40" aria-hidden="true"><path opacity="0.4" d="M18.4063 2.99518C17.3703 2.22208 16.2726 2.25007 14.711 2.25007H9.28908C7.72748 2.25007 6.63068 2.22213 5.59475 2.99518C4.5677 3.76164 4.32024 4.66931 3.94143 5.94538C3.45384 7.58792 2.93327 9.88189 2.57815 12.9249L2.57193 12.9781C2.37124 14.6976 2.21016 16.0777 2.25881 17.1924C2.30969 18.3581 2.59172 19.321 3.33693 20.1583C4.09184 21.0064 5.06511 21.3918 6.28029 21.5743C7.45128 21.7501 8.94688 21.7501 10.8262 21.7501H10.8916H13.1084H13.1737C15.0531 21.7501 16.5487 21.7501 17.7197 21.5743C18.9349 21.3918 19.9082 21.0064 20.6631 20.1583C21.4083 19.321 21.6903 18.3581 21.7412 17.1924C21.7899 16.0777 21.6288 14.6976 21.4281 12.9781L21.4219 12.9249C21.0668 9.88188 20.5462 7.58792 20.0586 5.94538C19.6799 4.66954 19.4329 3.76155 18.4063 2.99518Z" fill="currentColor"/><path d="M8.00006 6.99994C8.00006 6.44765 8.44778 5.99994 9.00006 5.99994C9.55235 5.99994 10.0001 6.44765 10.0001 6.99994C10.0001 8.10451 10.8955 8.99994 12.0001 8.99994C13.1046 8.99994 14.0001 8.10451 14.0001 6.99994C14.0001 6.44765 14.4478 5.99994 15.0001 5.99994C15.5523 5.99994 16.0001 6.44765 16.0001 6.99994C16.0001 9.20908 14.2092 10.9999 12.0001 10.9999C9.79092 10.9999 8.00006 9.20908 8.00006 6.99994Z" fill="currentColor"/></svg><span>shopping-bag-01</span></div><div class="ico-cell"><svg viewBox="0 0 24 24" width="40" height="40" aria-hidden="true"><path opacity="0.4" d="M9.94713 2.75C8.34042 2.74999 7.07164 2.74998 6.06138 2.86271C5.02568 2.97828 4.17492 3.21963 3.44301 3.76216C2.93986 4.13512 2.50435 4.5968 2.15493 5.12508C1.50973 6.10053 1.31938 7.28307 1.25153 8.8459C1.21912 9.59249 1.84811 10.0938 2.46531 10.0938C3.3972 10.0938 4.22449 10.9064 4.22449 12C4.22449 13.0936 3.3972 13.9062 2.46531 13.9062C1.84811 13.9062 1.21912 14.4075 1.25153 15.1541C1.31938 16.7169 1.50973 17.8995 2.15493 18.8749C2.50435 19.4032 2.93986 19.8649 3.44301 20.2378C4.17492 20.7804 5.02568 21.0217 6.06138 21.1373C7.07163 21.25 8.34039 21.25 9.94709 21.25H9.94718H14.0536H14.0537C15.6604 21.25 16.9292 21.25 17.9394 21.1373C18.9751 21.0217 19.8259 20.7804 20.5578 20.2378C21.0609 19.8649 21.4965 19.4032 21.8459 18.8749C22.4911 17.8994 22.6815 16.7167 22.7493 15.1536C22.7498 15.1427 22.75 15.1319 22.75 15.1211V8.87895C22.75 8.86811 22.7498 8.85727 22.7493 8.84643C22.6815 7.28333 22.4911 6.10064 21.8459 5.12508C21.4965 4.5968 21.0609 4.13512 20.5578 3.76216C19.8259 3.21963 18.9751 2.97828 17.9394 2.86271C16.9292 2.74998 15.6604 2.74999 14.0537 2.75H14.0537H9.94714H9.94713Z" fill="currentColor"/><path d="M14.4985 8.25C15.1074 8.25 15.4946 8.70508 15.69 9.10053L15.6904 9.10145L16.1806 10.09L17.0529 10.2361C17.4911 10.3097 18.0158 10.5534 18.1955 11.1169C18.3748 11.6793 18.0894 12.1816 17.7753 12.4967L17.7743 12.4977L17.0943 13.1833L17.2878 14.0266C17.3858 14.4556 17.4161 15.1366 16.8737 15.5353C16.3282 15.9363 15.6861 15.6979 15.3084 15.4729L14.4989 14.9897L13.6898 15.4727C13.3098 15.6999 12.6694 15.9346 12.1249 15.5339C11.584 15.136 11.6111 14.4574 11.7101 14.026L11.9034 13.1833L11.2217 12.4959C10.9094 12.1811 10.6252 11.6795 10.803 11.1183C10.9816 10.5541 11.5062 10.3098 11.9452 10.236L12.8138 10.0905L13.305 9.10005L13.3057 9.09865C13.5024 8.7041 13.8905 8.25 14.4985 8.25Z" fill="currentColor"/><path d="M8.75 21.2498C8.20583 21.2469 7.70727 21.2397 7.25 21.2221V17.0019C7.25 16.5877 7.58579 16.2519 8 16.2519C8.41421 16.2519 8.75 16.5877 8.75 17.0019L8.75 21.2498Z" fill="currentColor"/><path d="M8.75 2.75391V7.00187C8.75 7.41609 8.41421 7.75187 8 7.75187C7.58579 7.75187 7.25 7.41609 7.25 7.00187V2.78167C7.70727 2.76405 8.20583 2.75685 8.75 2.75391Z" fill="currentColor"/></svg><span>ticket-star</span></div><div class="ico-cell"><svg viewBox="0 0 24 24" width="40" height="40" aria-hidden="true"><path opacity="0.4" d="M1.25009 5.94944V9.41916C1.25009 10.5685 1.23661 11.3525 1.53232 12.0666C1.82815 12.7808 2.39237 13.3261 3.20517 14.1389L8.63486 19.5686L8.66834 19.6021C9.62505 20.5588 10.3967 21.3305 11.0851 21.8557C11.7987 22.4002 12.5104 22.7501 13.3536 22.7502C14.197 22.7502 14.9094 22.4002 15.6231 21.8557C16.3116 21.3304 17.0835 20.5584 18.0404 19.6015L18.0733 19.5686L19.5685 18.0735L19.6014 18.0405C20.5583 17.0836 21.3302 16.3117 21.8556 15.6233C22.4001 14.9095 22.7501 14.1971 22.7501 13.3537C22.75 12.5106 22.4 11.7988 21.8556 11.0852C21.3303 10.3968 20.5587 9.62519 19.602 8.66849L19.5685 8.63498L14.1388 3.20529C13.326 2.39249 12.7807 1.82827 12.0665 1.53244C11.3524 1.23673 10.5684 1.25022 9.41904 1.25022H5.94931L5.90128 1.25022C5.01299 1.25019 4.27143 1.25017 3.68271 1.32932C3.06184 1.41279 2.49969 1.59632 2.04795 2.04807C1.5962 2.49982 1.41267 3.06196 1.3292 3.68283C1.25005 4.27155 1.25007 5.01311 1.25009 5.90141L1.25009 5.94944Z" fill="currentColor"/><path d="M12.25 9.50012C12.25 9.08591 12.5858 8.75012 13 8.75012C13.4142 8.75012 13.75 9.08591 13.75 9.50012L13.75 16.5001C13.75 16.9143 13.4142 17.2501 13 17.2501C12.5858 17.2501 12.25 16.9143 12.25 16.5001L12.25 9.50012Z" fill="currentColor"/><path d="M16.75 11.5001C17.3023 11.5001 17.75 11.9478 17.75 12.5001C17.75 13.0524 17.3023 13.5001 16.75 13.5001C16.1977 13.5001 15.75 13.0524 15.75 12.5001C15.75 11.9478 16.1977 11.5001 16.75 11.5001Z" fill="currentColor"/><path d="M9.25 11.5001C9.80228 11.5001 10.25 11.9478 10.25 12.5001C10.25 13.0524 9.80228 13.5001 9.25 13.5001C8.69772 13.5001 8.25 13.0524 8.25 12.5001C8.25 11.9478 8.69771 11.5001 9.25 11.5001Z" fill="currentColor"/><path d="M6.5 5.25012C7.19035 5.25012 7.75 5.80977 7.75 6.50012C7.75 7.19048 7.19035 7.75012 6.5 7.75012C5.80964 7.75012 5.25 7.19048 5.25 6.50012C5.25 5.80977 5.80964 5.25012 6.5 5.25012Z" fill="currentColor"/></svg><span>discount-tag-02</span></div><div class="ico-cell"><svg viewBox="0 0 24 24" width="40" height="40" aria-hidden="true"><path opacity="0.4" d="M3.32129 12.9115C3.39224 12.852 3.5242 12.8741 3.78711 12.9183C3.95579 12.9468 4.11546 12.9625 4.26074 12.973C4.61082 12.9984 5.02291 12.9984 5.43945 12.9984H10.5996C10.788 12.9984 10.8828 12.9987 10.9414 13.057C11 13.1156 11 13.2102 11 13.3988V22.6927C11 22.7235 10.975 22.7484 10.9443 22.7484C9.3417 22.7484 8.06266 22.7485 7.05957 22.6136C6.02348 22.4744 5.1702 22.1792 4.49512 21.5043C3.81998 20.8291 3.52409 19.9751 3.38477 18.9388C3.24995 17.9359 3.24998 16.6565 3.25 15.0541V13.3402C3.25 13.0945 3.25043 12.9714 3.32129 12.9115ZM20.2129 12.9183C20.4758 12.874 20.6078 12.852 20.6787 12.9115C20.7496 12.9714 20.75 13.0945 20.75 13.3402V15.0551C20.75 16.6573 20.75 17.936 20.6152 18.9388C20.4758 19.9751 20.18 20.8291 19.5049 21.5043C18.8298 22.1792 17.9766 22.4744 16.9404 22.6136C15.9373 22.7485 14.6583 22.7484 13.0557 22.7484C13.025 22.7484 13 22.7235 13 22.6927V13.3988C13 13.2103 13 13.1156 13.0586 13.057C13.1172 12.9987 13.212 12.9984 13.4004 12.9984H18.5605C18.9771 12.9984 19.3891 12.9984 19.7393 12.973C19.8845 12.9625 20.0442 12.9468 20.2129 12.9183Z" fill="currentColor"/><path d="M8.14258 1.25006C9.71435 1.25006 11.1122 1.99648 12 3.15436C12.8878 1.99648 14.2856 1.25006 15.8574 1.25006H16.2139C17.7524 1.25006 19 2.49769 19 4.03619C18.9999 4.84848 18.7693 5.60663 18.3711 6.25006H18.5273C18.9715 6.25005 19.345 6.25045 19.6494 6.27252C19.9653 6.29544 20.2722 6.34459 20.5645 6.47955C20.8956 6.63252 21.1916 6.86244 21.4072 7.16119C21.6108 7.4433 21.6866 7.74719 21.7197 8.03912C21.7497 8.30355 21.75 8.6211 21.75 8.96393V9.03619C21.75 9.37884 21.7496 9.69569 21.7197 9.96002C21.6866 10.2521 21.611 10.5566 21.4072 10.8389C21.1916 11.1377 20.8956 11.3676 20.5645 11.5206C20.2722 11.6555 19.9653 11.7047 19.6494 11.7276C19.345 11.7497 18.9715 11.7501 18.5273 11.7501H5.47266C5.02846 11.7501 4.65497 11.7497 4.35059 11.7276C4.03472 11.7047 3.72782 11.6555 3.43555 11.5206C3.10437 11.3676 2.80838 11.1377 2.59277 10.8389C2.38904 10.5566 2.31337 10.2521 2.28027 9.96002C2.25036 9.69569 2.24996 9.37884 2.25 9.03619V8.96393C2.24996 8.6211 2.25032 8.30355 2.28027 8.03912C2.3134 7.7472 2.38921 7.4433 2.59277 7.16119C2.80838 6.86244 3.10437 6.63252 3.43555 6.47955C3.72783 6.34458 4.03471 6.29544 4.35059 6.27252C4.65497 6.25045 5.02846 6.25005 5.47266 6.25006H5.62891C5.23068 5.60663 5.00008 4.84848 5 4.03619C5 2.49769 6.24763 1.25006 7.78613 1.25006H8.14258ZM7.78613 3.25006C7.35219 3.25006 7 3.60226 7 4.03619C7.00023 5.25878 7.99128 6.24983 9.21387 6.25006H11V6.10748C11 4.52953 9.72053 3.25006 8.14258 3.25006H7.78613ZM15.8574 3.25006C14.2795 3.25006 13 4.52953 13 6.10748V6.25006H14.7861C16.0087 6.24983 16.9998 5.25878 17 4.03619C17 3.60226 16.6478 3.25006 16.2139 3.25006H15.8574Z" fill="currentColor"/></svg><span>gift</span></div><div class="ico-cell"><svg viewBox="0 0 24 24" width="40" height="40" aria-hidden="true"><path opacity="0.4" d="M13.5537 1.25C14.6865 1.24998 15.6123 1.24996 16.3431 1.34822C17.1071 1.45093 17.7694 1.67321 18.2981 2.2019C18.8268 2.7306 19.0491 3.39294 19.1518 4.15689C19.25 4.88775 19.25 5.81348 19.25 6.94631V17.0537C19.25 18.1865 19.25 19.1123 19.1518 19.8431C19.0491 20.6071 18.8268 21.2694 18.2981 21.7981C17.7694 22.3268 17.1071 22.5491 16.3431 22.6518C15.6123 22.75 14.6865 22.75 13.5537 22.75H13.5537H10.4463H10.4463C9.31347 22.75 8.38774 22.75 7.65689 22.6518C6.89293 22.5491 6.2306 22.3268 5.7019 21.7981C5.17321 21.2694 4.95093 20.6071 4.84822 19.8431C4.74996 19.1123 4.74998 18.1865 4.75 17.0537V17.0537V6.94631V6.94629C4.74998 5.81346 4.74996 4.88774 4.84822 4.15689C4.95093 3.39294 5.17321 2.7306 5.7019 2.2019C6.2306 1.67321 6.89294 1.45093 7.65689 1.34822C8.38774 1.24996 9.31346 1.24998 10.4463 1.25H10.4463H13.5537H13.5537Z" fill="currentColor"/><path d="M12 18C12.5523 18 13 18.4477 13 19C13 19.5523 12.5523 20 12 20C11.4477 20 11 19.5523 11 19C11 18.4477 11.4477 18 12 18Z" fill="currentColor"/></svg><span>smart-phone-01</span></div><div class="ico-cell"><svg viewBox="0 0 24 24" width="40" height="40" aria-hidden="true"><path d="M15.5001 6.5C15.5001 9.12335 13.3734 11.25 10.7501 11.25C8.12671 11.25 6.00006 9.12335 6.00006 6.5C6.00006 3.87665 8.12671 1.75 10.7501 1.75C13.3734 1.75 15.5001 3.87665 15.5001 6.5Z" fill="currentColor"/><path d="M21.5 17.333C21.5 18.385 20.8505 19.3726 20.2168 20.1074C19.5561 20.8735 18.7738 21.5221 18.2578 21.9111C17.6583 22.3631 16.8417 22.3631 16.2422 21.9111C15.7262 21.5221 14.9439 20.8735 14.2832 20.1074C13.6495 19.3726 13 18.385 13 17.333C13.0002 15.9532 14.0275 14.75 15.5 14.75C16.0946 14.75 16.6524 14.925 17.25 15.3828C17.8476 14.925 18.4054 14.75 19 14.75C20.4725 14.75 21.4998 15.9532 21.5 17.333Z" fill="currentColor"/><path opacity="0.4" d="M10.7972 12.752L11.7914 12.8184C12.8375 12.8883 13.8294 13.1533 14.7328 13.5752C12.9188 13.9406 11.7496 15.5835 11.7494 17.333C11.7494 18.8616 12.6664 20.147 13.3363 20.9238L13.6185 21.2383C13.6222 21.2423 13.6265 21.246 13.6302 21.25H7.07263C6.10147 21.25 5.23781 21.2549 4.557 21.0908C4.19656 21.0039 3.85275 20.8629 3.54626 20.6289C3.23755 20.3931 3.00208 20.0903 2.82165 19.7285C2.47256 19.0284 2.40326 18.3922 2.63513 17.7334C2.8348 17.1662 3.25503 16.6201 3.67126 16.0654C5.07565 14.1942 7.24889 12.91 9.71325 12.7891C10.0306 12.7735 10.3668 12.7599 10.7269 12.75L10.7972 12.752Z" fill="currentColor"/></svg><span>user-love-01</span></div><div class="ico-cell"><svg viewBox="0 0 24 24" width="40" height="40" aria-hidden="true"><path d="M17.5002 16.1251C17.0672 19.0604 15.3773 20.8067 13.7883 21.588C12.6777 22.1337 11.6489 21.2584 11.5217 20.2842L11.4162 19.4796C11.9585 19.5952 12.5394 19.5114 13.0412 19.211C14.562 18.3007 16.167 17.2021 17.5002 16.1251Z" fill="currentColor"/><path d="M7.37425 6.00104C6.46068 7.13203 5.5329 8.45962 4.71702 9.76471L4.29124 10.461C3.99137 10.962 3.90597 11.5425 4.02073 12.084L3.218 11.9796C2.24367 11.8526 1.36746 10.8237 1.91331 9.71295C2.69439 8.12437 4.44032 6.43463 7.37425 6.00104Z" fill="currentColor"/><path opacity="0.4" d="M9.54332 5.79016C13.2465 1.87013 17.0845 0.95682 19.7015 1.32336C20.9898 1.50403 21.9984 2.51258 22.1791 3.8009C22.5574 6.50235 21.5723 10.5053 17.3236 14.3175L17.3187 14.3214C15.9511 15.5284 14.0611 16.8524 12.2709 17.924C11.9758 18.1005 11.598 18.0538 11.3548 17.8107L5.69175 12.1476C5.44861 11.9044 5.40188 11.5266 5.57847 11.2316C6.65007 9.44131 7.97401 7.55133 9.18101 6.18372L9.18492 6.17883L9.54332 5.79016Z" fill="currentColor"/><path d="M16.7533 7.99908C16.7533 7.30872 16.1936 6.74908 15.5033 6.74908C14.8129 6.74908 14.2533 7.30872 14.2533 7.99908C14.2533 8.68945 14.8129 9.24908 15.5033 9.24908C16.1936 9.24908 16.7533 8.68945 16.7533 7.99908ZM18.2533 7.99908C18.2533 9.51786 17.0221 10.7491 15.5033 10.7491C13.9844 10.7491 12.7533 9.51786 12.7533 7.99908C12.7533 6.48031 13.9844 5.24908 15.5033 5.24908C17.0221 5.24908 18.2533 6.48031 18.2533 7.99908Z" fill="currentColor"/><path d="M7.54625 17.042C7.93677 16.6515 8.56979 16.6515 8.96031 17.042C9.35084 17.4325 9.35084 18.0655 8.96031 18.4561L4.96031 22.4561C4.56979 22.8466 3.93677 22.8466 3.54625 22.4561C3.15573 22.0655 3.15573 21.4325 3.54625 21.042L7.54625 17.042ZM5.04625 14.542C5.43677 14.1515 6.06979 14.1515 6.46031 14.542C6.85084 14.9325 6.85084 15.5655 6.46031 15.9561L4.96031 17.4561C4.56979 17.8466 3.93677 17.8466 3.54625 17.4561C3.15573 17.0655 3.15573 16.4325 3.54625 16.042L5.04625 14.542Z" fill="currentColor"/></svg><span>rocket-01</span></div><div class="ico-cell"><svg viewBox="0 0 24 24" width="40" height="40" aria-hidden="true"><path opacity="0.4" d="M6.54514 1.46972C6.82003 1.34275 6.95776 1.27927 7.08811 1.34667C7.10301 1.35439 7.12075 1.36568 7.13401 1.37597C7.24981 1.46601 7.25022 1.62972 7.25022 1.95702V17.3125C7.25022 17.5016 7.25002 17.5961 7.20626 17.6679C7.16249 17.7398 7.07184 17.7864 6.89084 17.8798C6.65456 18.0019 6.40146 18.1492 6.11837 18.3134C5.4996 18.6724 4.92802 19.0039 4.50216 19.1963C4.0714 19.3907 3.60362 19.5391 3.11056 19.4511C2.5772 19.3559 2.09869 19.0688 1.759 18.6474C1.44746 18.2608 1.34396 17.7827 1.29709 17.3066C1.2507 16.8352 1.2502 16.2327 1.25021 15.5039V7.26464C1.2502 6.7135 1.24983 6.24672 1.28732 5.86035C1.32714 5.4501 1.41378 5.07155 1.62033 4.70898C1.82736 4.3456 2.10839 4.07978 2.44064 3.83984C2.75227 3.61481 3.15127 3.38381 3.61935 3.1123L4.90744 2.36523C5.55438 1.98991 6.08437 1.68255 6.54514 1.46972ZM8.88595 1.291C9.01471 1.20657 9.16051 1.26238 9.45236 1.37499C9.92558 1.55757 10.4738 1.83042 11.1428 2.16307L13.9172 3.54296C14.0791 3.62345 14.1603 3.66373 14.2053 3.73632C14.2501 3.80887 14.2502 3.8995 14.2502 4.08007V10.3369C14.2502 10.4517 14.2503 10.5095 14.2238 10.5557C14.1973 10.6018 14.1454 10.632 14.0422 10.6924C12.8431 11.3933 11.851 12.4595 11.2756 13.8047C10.6534 15.2593 10.6355 16.6004 10.9533 17.7851C11.0795 18.2555 11.1425 18.491 11.0432 18.5732C10.9432 18.655 10.7357 18.5531 10.3225 18.3476L10.0237 18.1982C9.64495 18.0099 9.364 17.8723 9.1428 17.7714C8.94462 17.6812 8.84575 17.6357 8.79807 17.5615C8.75045 17.4874 8.75022 17.386 8.75022 17.1836V1.89452C8.75022 1.55673 8.75022 1.38764 8.87522 1.29784L8.88595 1.291ZM18.0529 4.16894C18.9506 4.16891 19.7013 4.16811 20.2971 4.24999C20.9279 4.3367 21.4956 4.5284 21.9504 4.99316C22.4028 5.45563 22.5863 6.02925 22.6701 6.66601C22.7498 7.27175 22.7502 8.0361 22.7502 8.95605V11.0976C22.7502 11.5497 22.7502 11.7762 22.634 11.83C22.5173 11.8835 22.3361 11.7277 21.9748 11.416C20.7411 10.3517 19.1393 9.75009 17.5022 9.74998C17.0835 9.74998 16.6665 9.78889 16.258 9.86522C16.0162 9.91043 15.8948 9.93373 15.8225 9.87401C15.7503 9.81403 15.7502 9.69566 15.7502 9.45994V4.33984C15.7502 4.24531 15.8275 4.16894 15.9221 4.16894H18.0529Z" fill="currentColor"/><path d="M17.501 11.25C19.5553 11.2502 21.5205 12.4636 22.3467 14.3945C23.1187 16.1994 22.692 17.7491 21.8418 19.0371C21.1503 20.0847 20.1378 21.0162 19.2656 21.8193C19.1124 21.9604 18.9634 22.0974 18.8213 22.2305C18.4633 22.5657 17.9896 22.7499 17.501 22.75C17.0123 22.75 16.5379 22.5658 16.1797 22.2305L16.1777 22.2295C16.0279 22.0883 15.8704 21.9421 15.708 21.792L15.042 21.1709C14.3648 20.5262 13.6745 19.813 13.1611 19.0371C12.3098 17.7503 11.8813 16.2017 12.6543 14.3945C13.4806 12.4634 15.4465 11.25 17.501 11.25ZM17.4912 14.5C16.3916 14.5 15.5 15.3954 15.5 16.5C15.5 17.6046 16.3916 18.5 17.4912 18.5H17.5088C18.6084 18.5 19.5 17.6046 19.5 16.5C19.5 15.3954 18.6084 14.5 17.5088 14.5H17.4912Z" fill="currentColor"/></svg><span>maps-location-01</span></div></div></div>
+    <p>O pack inteiro, com o uso de cada ícone: <a href="https://marcas.taclalabs.workers.dev/podi/icones/index.json">podi/icones/index.json</a> no hub de marcas. Cada ícone em <code>podi/icones/&lt;nome&gt;.svg</code>, pintado por <code>currentColor</code>.</p>
+    <p>Sem ícone que sirva, desenhe um na mesma estética: grade de 24 px, a silhueta cheia a 40%, os detalhes cheios a 100% com traço de 1,5 px e cantos arredondados, só <code>currentColor</code>.</p>
   </div>
 </section>
 
 <section id="onde-usar">
   <div class="wrap">
-    <p class="eyebrow">04 · Onde usar</p>
+    <p class="eyebrow">05 · Onde usar</p>
     <h2>Cada fundo pede uma versão<a class="anchor" href="#onde-usar" aria-label="Link para a seção Cada fundo pede uma versão">#</a></h2>
     <p class="lead">A cor do logo sai do fundo. Trocar a cor é trocar de arquivo, nunca aplicar filtro.</p>
     <table class="where">
       <thead><tr><th>Fundo ou peça</th><th>Versão</th><th>Observação</th></tr></thead>
       <tbody>
-        <tr><td>Verde de marca <code>#48DB84</code></td><td><span class="chip"><span class="dot" style="background:#FFFFFF"></span>Branco</span></td><td>Branco sobre o verde é como o Podi assina. A regra de contraste vale para texto, não para o logo.</td></tr>
+        <tr><td>Verde de marca <code>#31D06E</code></td><td><span class="chip"><span class="dot" style="background:#FFFFFF"></span>Branco</span></td><td>Branco sobre o verde é como o Podi assina. A regra de contraste vale para texto, não para o logo.</td></tr>
         <tr><td>Preto <code>#101010</code></td><td><span class="chip"><span class="dot" style="background:#FFFFFF"></span>Branco</span></td><td></td></tr>
-        <tr><td>Branco ou claro</td><td><span class="chip"><span class="dot" style="background:#48DB84"></span>Verde</span></td><td>Sempre o verde original, em qualquer tamanho, inclusive pequeno no rodapé. É marca gráfica, não texto: o contraste baixo ali é aceito.</td></tr>
+        <tr><td>Branco ou claro</td><td><span class="chip"><span class="dot" style="background:#31D06E"></span>Verde</span></td><td>Sempre o verde original, em qualquer tamanho, inclusive pequeno no rodapé. É marca gráfica, não texto: o contraste baixo ali é aceito.</td></tr>
         <tr><td>Impressão a uma cor</td><td><span class="chip"><span class="dot" style="background:#101010"></span>Preto</span></td><td></td></tr>
-        <tr><td>Rodapé de slide verde</td><td><span class="chip"><span class="dot" style="background:#101010"></span>Preto</span></td><td>Como assinatura pequena.</td></tr>
+        <tr><td>Foto</td><td><span class="chip"><span class="dot" style="background:#FFFFFF"></span>Branco</span></td><td>Numa área calma da foto, média ou escura.</td></tr>
         <tr><td>Topo do e-mail</td><td>Podi + Tacla Labs</td><td>Assinatura conjunta: Podi à esquerda, Tacla Labs à direita, numa placa branca. Já vem pronta no modelo de e-mail do hub.</td></tr>
       </tbody>
     </table>
@@ -337,7 +348,7 @@ font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetic
 
 <section id="nao-pode">
   <div class="wrap">
-    <p class="eyebrow">05 · Não pode</p>
+    <p class="eyebrow">06 · Não pode</p>
     <h2>O que não se faz com a marca<a class="anchor" href="#nao-pode" aria-label="Link para a seção O que não se faz com a marca">#</a></h2>
     <p class="lead">Use sempre os arquivos do pack. Se faltar uma versão, peça ao time de marca.</p>
     <ul class="dont">
@@ -345,10 +356,10 @@ font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetic
       <li><span>Recolorir o logo por filtro ou efeito. Cada cor é um arquivo do pack.</span></li>
       <li><span>Esticar o PNG. Use o SVG ou um PNG maior.</span></li>
       <li><span>Escrever “podi” em texto no lugar do logo.</span></li>
-      <li><span>Usar o verde <code>#48DB84</code> como cor de texto.</span></li>
+      <li><span>Usar o verde <code>#31D06E</code> como cor de texto.</span></li>
       <li><span>Texto branco sobre o verde. Em cima dele, o texto é <code>#101010</code>.</span></li>
       <li><span>Roxo em texto, título, número, fundo grande ou em cima do verde.</span></li>
-      <li><span>Cor fora da paleta ou fonte que não seja a Inter.</span></li>
+      <li><span>Cor fora da paleta ou fonte que não seja a DM Sans.</span></li>
       <li><span>Escrever “a Podi”. A marca é masculina: o Podi, do Podi, no Podi.</span></li>
     </ul>
   </div>

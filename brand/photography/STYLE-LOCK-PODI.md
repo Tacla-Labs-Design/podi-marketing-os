@@ -121,7 +121,7 @@ Para peças de outlet. Usar o STYLE LOCK **§4.B**.
 
 ### 2.6 Paleta PODI
 
-O verde oficial do Podi é **`#48DB84`** (`brand/README.md`). Os nomes em inglês abaixo são a tradução
+O verde oficial do Podi é **`#31D06E`** (`brand/README.md`). Os nomes em inglês abaixo são a tradução
 desse verde para o vocabulário que os geradores entendem — **não** hexadecimais alternativos.
 
 ```
@@ -570,7 +570,7 @@ posture is relaxed and caught mid-moment rather than held for the camera.
 
 ## 8. Nota sobre o verde
 
-**Decidido:** o verde oficial do Podi é **`#48DB84`** — matiz ~145°, dentro da faixa emerald.
+**Decidido:** o verde oficial do Podi é **`#31D06E`** — matiz ~143°, dentro da faixa emerald.
 Os três valores padrão abaixo ficam **confirmados** como a tradução dele; as variantes lime e
 jade seguem documentadas apenas como registro do que foi descartado.
 

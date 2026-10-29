@@ -102,7 +102,7 @@ Só o grupo verde muda. `ink` `#101010`, `body` `#4A4A4A`, `muted` `#6E6E6E` e o
 
 | Token Podi | Papel | No modo empreendimento |
 |---|---|---|
-| `#48DB84` brand | fundo do CTA, ícones | a cor base |
+| `#31D06E` brand | fundo do CTA, ícones | a cor base |
 | `#0C6E3B` accent-ink | número de destaque, marcador, texto de etiqueta, link de marca | a cor base; se não passar 4,5:1, escurecida em OKLab até passar |
 | `#EDF7F1` page/canvas | fundo | derivado |
 | `#D4F0DF` accent-soft | faixa do destaque, fundo de etiqueta | derivado |
@@ -118,7 +118,7 @@ passar 4,5:1 sobre `page` **e** sobre `accent-soft` — os dois fundos em que el
 
 **Texto do CTA:** `#FFFFFF` se der ≥ 4,5:1 sobre a base; senão `#101010`. Aqui quem decide é
 o contraste medido. A regra "nunca texto branco sobre o verde" continua valendo para o
-`#48DB84` — ele simplesmente não está nesta peça.
+`#31D06E` — ele simplesmente não está nesta peça.
 
 ### Contrastes obrigatórios — bloqueiam a montagem
 

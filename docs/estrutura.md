@@ -14,6 +14,8 @@ brand/                                   IDENTIDADE — camada mais alta
 └── assets/
     ├── header/                          Logos Podi e Tacla Labs; logo-podi.svg é o vetor monocromático
     ├── icones/                          Ícones sociais — 4 redes × 3 variantes
+    ├── icones-bulk/                     Pack de ícones HugeIcons Bulk (scripts/icones.py) + index.json de usos
+    ├── deck/                            Ativos fixos do deck: ripple, mão com o celular, duas telas do app
     ├── end-news-img.jpg                 Imagem fixa do fecho "Podi e você"
     └── hero-podi-news.png               Arte do hero do Podi News
 
@@ -88,6 +90,7 @@ scripts/publicar                         Publica a marca no hub de marcas (só m
 hub/BRAND.md, hub/guias/, hub/modelos/   A marca no hub: regras curtas, um guia por peça, modelos com data-slot
 hub/guia/index.html                      Fonte da página do logo pack (logo, cores, fonte, onde usar, não pode)
 scripts/logo-pack.py                     Monta o logo pack em saida/logo-pack/ (pasta + zip); o publicar roda
+scripts/icones.py                        Tira do pacote HugeIcons Pro o pack de ícones Bulk (só maintainer)
 scripts/_logo.py                         As três cores do logo e o PNG pelo Chrome, usados pelo pack e pelo publicar
 scripts/conferir.py                      Confere a peça montada: paleta, verde como texto, variáveis, alt, e-mail
 scripts/exportar.py                      PDF do deck (e PNG de post) pelo Chrome; confere a fonte antes
@@ -112,7 +115,7 @@ Misturar as duas faria todo material novo herdar limitação de Outlook.
 **`design-system/<material>/`.** `apresentacao/` nasceu ao lado de `newsletter/`, sem herdar
 nada de e-mail. O que é comum aos dois — paleta, regras de contraste, papéis tipográficos —
 continua em `brand/` ou repetido em cada `tokens.md` com o valor certo para aquele suporte.
-`page` é o exemplo: `#EDF7F1` no e-mail, `#48DB84` no slide, mesmo nome porque é o mesmo papel.
+`page` é o exemplo: `#EDF7F1` no e-mail, `#31D06E` no slide, mesmo nome porque é o mesmo papel.
 
 **`design-system/post/` sem modelos.** O canvas, o carrossel, a legenda e o QA de post não
 dependem do layout e já estão escritos. Os modelos do Podi ainda não foram aprovados: até

@@ -1,58 +1,51 @@
-<!-- 04-split-foto-cards — foto sangrando à esquerda, grade 2x2 de cards à direita.
-     É o layout do slide "Simplicidade / Conveniência / Engajamento / Inovação".
-     A foto sangra: este slide não usa .slide__pad.
+<!-- 04-split-foto-cards — foto sangrando à esquerda, logo branco sobre ela, grade 2×2 de
+     cards brancos à direita, passando por cima da foto. É o slide "Simplicidade / Conveniência /
+     Engajamento / Inovação" do Figma. Não usa .slide__pad.
 
-     Os cantos arredondados vão sempre no lado de DENTRO — o que encosta no
-     conteúdo. Foto à esquerda: arredonda a direita. Para espelhar (foto à
-     direita, cards à esquerda), acrescentar a classe `split--dir` no <section>:
-     ela inverte a ordem e o lado do raio de uma vez. -->
+     A foto ocupa 1087 × 1080 (exportar 2174 × 2160) e precisa de uma área calma, média ou escura,
+     onde o logo branco pousa: o centro da faixa de 794px que fica à mostra.
+     Os ícones são marcadores de posição: trocar pelo do assunto (brand/assets/icones-bulk/).
+     Para espelhar (foto à direita, cards à esquerda), acrescentar `split--dir` no <section>. -->
 <style>
-.split{flex-direction:row;padding:0}
-.split__foto{width:960px;flex:none;position:relative;overflow:hidden;
-  border-radius:0 64px 64px 0}
-.split--dir{flex-direction:row-reverse}
-.split--dir .split__foto{border-radius:64px 0 0 64px}
-.split__foto img{width:100%;height:100%;object-fit:cover;display:block}
-.split__cards{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:32px;padding:64px}
-.split__card{background:var(--surface);border-radius:var(--r-card);padding:48px;
-  display:flex;flex-direction:column;justify-content:space-between}
+.split{display:block}
+.split__foto{position:absolute;left:0;top:0;width:1087px;height:1080px;object-fit:cover;display:block}
+.split__logo{position:absolute;left:266px;top:476px;width:263px}
+.split__cards{position:absolute;right:0;top:0;width:1126px;height:1080px;padding:24px;
+  display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:24px}
+.split__card{background:var(--surface);border-radius:var(--r-card);padding:40px;
+  display:flex;flex-direction:column;gap:24px}
+.split__card .t-card{margin-top:auto}
+.split--dir .split__foto{left:auto;right:0}
+.split--dir .split__cards{right:auto;left:0}
+.split--dir .split__logo{left:auto;right:266px}
 </style>
 <section class="slide split">
-  <div class="split__foto">
-    <img src="assets/foto-split.jpg" alt="{{DESCRICAO_DA_FOTO}}">
-  </div>
+  <img class="split__foto" src="assets/foto-split.jpg" alt="{{DESCRICAO_DA_FOTO}}">
+  <svg class="logo split__logo" viewBox="0 0 263 128" role="img" aria-label="Podi"><title>Podi</title><use href="#logo-marca"/></svg>
   <div class="split__cards">
     <div class="split__card">
-      <div class="chip"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg></div>
-      <div>
-        <h3 class="t-card">{{TITULO}}</h3>
-        <div class="regua" style="margin:24px 0"></div>
-        <p class="t-body-sm">{{TEXTO_CURTO}}</p>
-      </div>
+      <svg class="ico ico--lg" viewBox="0 0 24 24" aria-hidden="true"><path opacity="0.4" d="M12 22.75C17.9371 22.75 22.75 17.9371 22.75 12C22.75 6.06294 17.9371 1.25 12 1.25C6.06294 1.25 1.25 6.06294 1.25 12C1.25 17.9371 6.06294 22.75 12 22.75Z" fill="currentColor"/><path d="M15.4003 14.5497C15.649 14.2185 16.1189 14.1516 16.4501 14.4003C16.7812 14.649 16.8481 15.1189 16.5995 15.4501C15.5518 16.845 13.8814 17.7499 11.9999 17.7499C10.1183 17.7499 8.44793 16.845 7.40026 15.4501C7.15159 15.1189 7.2185 14.649 7.54967 14.4003C7.88087 14.1516 8.35075 14.2185 8.59948 14.5497C9.37606 15.5836 10.6101 16.2499 11.9999 16.2499C13.3896 16.2499 14.6237 15.5836 15.4003 14.5497Z" fill="currentColor"/><path d="M8.00002 7.25C8.95938 7.25 9.71995 7.86253 10.1533 8.63184C10.3566 8.99269 10.229 9.45 9.86818 9.65332C9.50732 9.85659 9.05002 9.72897 8.8467 9.36816C8.59598 8.92308 8.26736 8.75 8.00002 8.75C7.73268 8.75 7.40405 8.92308 7.15334 9.36816C6.95001 9.72897 6.49271 9.85659 6.13185 9.65332C5.77105 9.45 5.64343 8.99269 5.8467 8.63184C6.28009 7.86253 7.04066 7.25 8.00002 7.25ZM16 7.25C16.9594 7.25 17.7199 7.86253 18.1533 8.63184C18.3566 8.99269 18.229 9.45 17.8682 9.65332C17.5073 9.85659 17.05 9.72897 16.8467 9.36816C16.596 8.92308 16.2674 8.75 16 8.75C15.7327 8.75 15.4041 8.92308 15.1533 9.36816C14.95 9.72897 14.4927 9.85659 14.1319 9.65332C13.771 9.45 13.6434 8.99269 13.8467 8.63184C14.2801 7.86253 15.0407 7.25 16 7.25Z" fill="currentColor"/></svg>
+      <h3 class="t-card">{{TITULO}}</h3>
+      <div class="regua regua--sm"></div>
+      <p class="t-body-sm">{{TEXTO_CURTO}}</p>
     </div>
     <div class="split__card">
-      <div class="chip"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="2" width="12" height="20" rx="3"/></svg></div>
-      <div>
-        <h3 class="t-card">{{TITULO}}</h3>
-        <div class="regua" style="margin:24px 0"></div>
-        <p class="t-body-sm">{{TEXTO_CURTO}}</p>
-      </div>
+      <svg class="ico ico--lg" viewBox="0 0 24 24" aria-hidden="true"><path opacity="0.4" d="M13.5537 1.25C14.6865 1.24998 15.6123 1.24996 16.3431 1.34822C17.1071 1.45093 17.7694 1.67321 18.2981 2.2019C18.8268 2.7306 19.0491 3.39294 19.1518 4.15689C19.25 4.88775 19.25 5.81348 19.25 6.94631V17.0537C19.25 18.1865 19.25 19.1123 19.1518 19.8431C19.0491 20.6071 18.8268 21.2694 18.2981 21.7981C17.7694 22.3268 17.1071 22.5491 16.3431 22.6518C15.6123 22.75 14.6865 22.75 13.5537 22.75H13.5537H10.4463H10.4463C9.31347 22.75 8.38774 22.75 7.65689 22.6518C6.89293 22.5491 6.2306 22.3268 5.7019 21.7981C5.17321 21.2694 4.95093 20.6071 4.84822 19.8431C4.74996 19.1123 4.74998 18.1865 4.75 17.0537V17.0537V6.94631V6.94629C4.74998 5.81346 4.74996 4.88774 4.84822 4.15689C4.95093 3.39294 5.17321 2.7306 5.7019 2.2019C6.2306 1.67321 6.89294 1.45093 7.65689 1.34822C8.38774 1.24996 9.31346 1.24998 10.4463 1.25H10.4463H13.5537H13.5537Z" fill="currentColor"/><path d="M12 18C12.5523 18 13 18.4477 13 19C13 19.5523 12.5523 20 12 20C11.4477 20 11 19.5523 11 19C11 18.4477 11.4477 18 12 18Z" fill="currentColor"/></svg>
+      <h3 class="t-card">{{TITULO}}</h3>
+      <div class="regua regua--sm"></div>
+      <p class="t-body-sm">{{TEXTO_CURTO}}</p>
     </div>
     <div class="split__card">
-      <div class="chip"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="9" cy="8" r="4"/><path d="M2 21a7 7 0 0 1 14 0z"/></svg></div>
-      <div>
-        <h3 class="t-card">{{TITULO}}</h3>
-        <div class="regua" style="margin:24px 0"></div>
-        <p class="t-body-sm">{{TEXTO_CURTO}}</p>
-      </div>
+      <svg class="ico ico--lg" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5001 6.5C15.5001 9.12335 13.3734 11.25 10.7501 11.25C8.12671 11.25 6.00006 9.12335 6.00006 6.5C6.00006 3.87665 8.12671 1.75 10.7501 1.75C13.3734 1.75 15.5001 3.87665 15.5001 6.5Z" fill="currentColor"/><path d="M21.5 17.333C21.5 18.385 20.8505 19.3726 20.2168 20.1074C19.5561 20.8735 18.7738 21.5221 18.2578 21.9111C17.6583 22.3631 16.8417 22.3631 16.2422 21.9111C15.7262 21.5221 14.9439 20.8735 14.2832 20.1074C13.6495 19.3726 13 18.385 13 17.333C13.0002 15.9532 14.0275 14.75 15.5 14.75C16.0946 14.75 16.6524 14.925 17.25 15.3828C17.8476 14.925 18.4054 14.75 19 14.75C20.4725 14.75 21.4998 15.9532 21.5 17.333Z" fill="currentColor"/><path opacity="0.4" d="M10.7972 12.752L11.7914 12.8184C12.8375 12.8883 13.8294 13.1533 14.7328 13.5752C12.9188 13.9406 11.7496 15.5835 11.7494 17.333C11.7494 18.8616 12.6664 20.147 13.3363 20.9238L13.6185 21.2383C13.6222 21.2423 13.6265 21.246 13.6302 21.25H7.07263C6.10147 21.25 5.23781 21.2549 4.557 21.0908C4.19656 21.0039 3.85275 20.8629 3.54626 20.6289C3.23755 20.3931 3.00208 20.0903 2.82165 19.7285C2.47256 19.0284 2.40326 18.3922 2.63513 17.7334C2.8348 17.1662 3.25503 16.6201 3.67126 16.0654C5.07565 14.1942 7.24889 12.91 9.71325 12.7891C10.0306 12.7735 10.3668 12.7599 10.7269 12.75L10.7972 12.752Z" fill="currentColor"/></svg>
+      <h3 class="t-card">{{TITULO}}</h3>
+      <div class="regua regua--sm"></div>
+      <p class="t-body-sm">{{TEXTO_CURTO}}</p>
     </div>
     <div class="split__card">
-      <div class="chip"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 3l7 7-9 9-5 2 2-5z"/></svg></div>
-      <div>
-        <h3 class="t-card">{{TITULO}}</h3>
-        <div class="regua" style="margin:24px 0"></div>
-        <p class="t-body-sm">{{TEXTO_CURTO}}</p>
-      </div>
+      <svg class="ico ico--lg" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5002 16.1251C17.0672 19.0604 15.3773 20.8067 13.7883 21.588C12.6777 22.1337 11.6489 21.2584 11.5217 20.2842L11.4162 19.4796C11.9585 19.5952 12.5394 19.5114 13.0412 19.211C14.562 18.3007 16.167 17.2021 17.5002 16.1251Z" fill="currentColor"/><path d="M7.37425 6.00104C6.46068 7.13203 5.5329 8.45962 4.71702 9.76471L4.29124 10.461C3.99137 10.962 3.90597 11.5425 4.02073 12.084L3.218 11.9796C2.24367 11.8526 1.36746 10.8237 1.91331 9.71295C2.69439 8.12437 4.44032 6.43463 7.37425 6.00104Z" fill="currentColor"/><path opacity="0.4" d="M9.54332 5.79016C13.2465 1.87013 17.0845 0.95682 19.7015 1.32336C20.9898 1.50403 21.9984 2.51258 22.1791 3.8009C22.5574 6.50235 21.5723 10.5053 17.3236 14.3175L17.3187 14.3214C15.9511 15.5284 14.0611 16.8524 12.2709 17.924C11.9758 18.1005 11.598 18.0538 11.3548 17.8107L5.69175 12.1476C5.44861 11.9044 5.40188 11.5266 5.57847 11.2316C6.65007 9.44131 7.97401 7.55133 9.18101 6.18372L9.18492 6.17883L9.54332 5.79016Z" fill="currentColor"/><path d="M16.7533 7.99908C16.7533 7.30872 16.1936 6.74908 15.5033 6.74908C14.8129 6.74908 14.2533 7.30872 14.2533 7.99908C14.2533 8.68945 14.8129 9.24908 15.5033 9.24908C16.1936 9.24908 16.7533 8.68945 16.7533 7.99908ZM18.2533 7.99908C18.2533 9.51786 17.0221 10.7491 15.5033 10.7491C13.9844 10.7491 12.7533 9.51786 12.7533 7.99908C12.7533 6.48031 13.9844 5.24908 15.5033 5.24908C17.0221 5.24908 18.2533 6.48031 18.2533 7.99908Z" fill="currentColor"/><path d="M7.54625 17.042C7.93677 16.6515 8.56979 16.6515 8.96031 17.042C9.35084 17.4325 9.35084 18.0655 8.96031 18.4561L4.96031 22.4561C4.56979 22.8466 3.93677 22.8466 3.54625 22.4561C3.15573 22.0655 3.15573 21.4325 3.54625 21.042L7.54625 17.042ZM5.04625 14.542C5.43677 14.1515 6.06979 14.1515 6.46031 14.542C6.85084 14.9325 6.85084 15.5655 6.46031 15.9561L4.96031 17.4561C4.56979 17.8466 3.93677 17.8466 3.54625 17.4561C3.15573 17.0655 3.15573 16.4325 3.54625 16.042L5.04625 14.542Z" fill="currentColor"/></svg>
+      <h3 class="t-card">{{TITULO}}</h3>
+      <div class="regua regua--sm"></div>
+      <p class="t-body-sm">{{TEXTO_CURTO}}</p>
     </div>
   </div>
 </section>

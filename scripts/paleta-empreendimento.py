@@ -36,7 +36,7 @@ ICONES_BRAND = os.path.join(RAIZ, "brand", "podi", "assets", "icones")
 # ---------------------------------------------------------------------------
 # Tokens do Podi (design-system/newsletter/tokens.md). Só o grupo verde muda.
 # ---------------------------------------------------------------------------
-PODI_BRAND = "#48DB84"
+PODI_BRAND = "#31D06E"
 PODI_ACCENT_INK = "#0C6E3B"
 PODI_DERIVADOS = {           # token -> hex original do Podi
     "page": "#EDF7F1",       # page e canvas são a mesma cor
@@ -51,7 +51,7 @@ CROMA_MIN_BASE = 0.02        # abaixo disso a cor base não tem matiz confiável
 
 # Cores que só existem no Podi (grupo verde, dark mode, roxo) e não podem sobrar numa peça.
 PODI_PROIBIDAS = {
-    "#48DB84", "#0C6E3B", "#EDF7F1", "#D4F0DF", "#D2E7DA",               # grupo verde
+    "#31D06E", "#0C6E3B", "#EDF7F1", "#D4F0DF", "#D2E7DA",               # grupo verde
     "#6FE9A2", "#1A1A1A", "#242424", "#16281E", "#F5F5F5", "#C9C9C9",     # dark mode
     "#8F8F8F", "#333333",
     "#9934FF",                                                           # roxo Tacla Labs

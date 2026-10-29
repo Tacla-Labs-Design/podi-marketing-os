@@ -12,9 +12,9 @@ Quem lê está a metros da tela e tem 30 segundos por slide. Tudo aqui existe po
 ```
 eyebrow          o assunto, 20px uppercase       (opcional)
     ↓
-título           a ideia, 64px                   (obrigatório, exceto capa e foto full)
+título           a ideia, 64px semibold          (obrigatório, exceto capa e foto full)
     ↓
-régua roxa       120 × 6px                       (a pausa antes do conteúdo)
+régua roxa       200 × 4px, some para a direita  (a pausa antes do conteúdo)
     ↓
 conteúdo         cards, números, lista, foto
     ↓
@@ -43,7 +43,7 @@ mais 40px de espaço vertical.
 | Números num slide | 4 | Mais que isso e nenhum é lembrado |
 | Itens numa lista | 12 | É o que cabe em duas colunas sem apertar |
 | Linhas numa tabela | 6 | Tabela maior não se lê projetada |
-| Detalhes roxos num slide | 3 | Ver [`uso-do-roxo.md`](uso-do-roxo.md) |
+| Tipos de detalhe roxo num slide | 3 | Repetição numa grade conta uma vez. Ver [`uso-do-roxo.md`](uso-do-roxo.md) |
 
 Estourou um limite: o conteúdo vira dois slides. Nunca fonte menor, nunca margem menor.
 
@@ -58,7 +58,9 @@ para respirar, não para informar.
 
 ## De onde isto veio
 
-Este design system foi escrito a partir de três layouts que o time de marketing já vinha
-usando — a capa com o mockup, o split foto + cards de valores e o slide da plataforma com
-a lista de recursos. Eles viraram o `00-capa`, o `04-split-foto-cards`, o `06-features-2col`
-e o `07-mockup-app`. O padrão **descreve o que já existia**; não inventou direção nova.
+Este design system foi escrito a partir de três slides que o time de marketing usa nas
+apresentações — a capa com o app na mão, o split foto + cards de valores e o slide da
+plataforma com a lista de recursos (arquivo **[DECK] Simple Deck - Podi**, no Figma). Eles são o
+`00-capa`, o `04-split-foto-cards` e o `07-mockup-app`, medida por medida; o `05` e o `06`
+herdam o card e a caixa de recursos deles. O padrão **descreve o que já existia**; não inventou
+direção nova. Se o Figma mudar, o DS muda junto.

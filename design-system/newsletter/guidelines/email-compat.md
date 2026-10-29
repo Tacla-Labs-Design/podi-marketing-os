@@ -34,10 +34,10 @@ Superhuman, Hey.
 ## Tipografia
 
 - Stack obrigatório:
-  `font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;`
+  `font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;`
 - Webfont carregada só fora do MSO:
   ```html
-  <!--[if !mso]><!--><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><!--<![endif]-->
+  <!--[if !mso]><!--><link href="https://fonts.googleapis.com/css2?family=DM Sans:wght@400;500;600;700&display=swap" rel="stylesheet"><!--<![endif]-->
   ```
 - Sempre incluir
   `<!--[if mso]><style>* {font-family: Arial, Helvetica, sans-serif !important;}</style><![endif]-->`,

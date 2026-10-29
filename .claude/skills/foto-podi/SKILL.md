@@ -79,7 +79,7 @@ dele** e ajuste sujeito e cenário — não escreva do zero. Diga de qual varia�
 
 O prompt sai **em inglês** — os geradores respondem muito melhor. A conversa é em português.
 
-O verde do Podi é `#48DB84` e já está traduzido no Style Lock como `vivid emerald green` /
+O verde do Podi é `#31D06E` e já está traduzido no Style Lock como `vivid emerald green` /
 `deep pine green` / `soft mint green`. **Não invente outro termo de cor e não escreva o hex
 dentro do prompt** — gerador não entende hexadecimal.
 

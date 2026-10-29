@@ -3,7 +3,7 @@
 
 Monta a pasta da marca e envia cada arquivo ao bucket R2 `tacla-labs-marcas`, na chave
 `podi/<caminho>`, com o manifest.json por último. Formato do hub: repositório
-Tacla-Labs-Design/marcas, docs/formato.md.
+Tacla-Labs-Design/hub-marcas, docs/formato.md.
 
 O que vai:
   hub/BRAND.md, hub/guias/*.md, hub/modelos/*.html   escritos à mão, neste repositório
@@ -13,6 +13,8 @@ O que vai:
                   cores oficiais — verde, branco, preto —, em SVG e PNG de 1024 px, copiados do pack
   podi/email/     os PNGs e JPGs que os blocos de e-mail usam: logo PNG, Tacla Labs, ícones
                   sociais, imagem do fecho e arte do hero do Podi News
+  podi/icones/    o pack de ícones HugeIcons Bulk (brand/assets/icones-bulk/, scripts/icones.py):
+                  um SVG por ícone e o index.json com os usos de cada um
   podi/arquivos/  qualquer outra imagem que os modelos citem, por nome, de brand/assets/
 
 Nunca vão: brand/photography/refs/ (referências fotográficas, não são ativo de peça) e
@@ -97,6 +99,13 @@ def montar(saida):
     for f in sorted((RAIZ / "brand/assets/icones").glob("*.png")):
         copiar(f, f"{MARCA}/email/{f.name}")
 
+    # podi/icones/: o pack Bulk inteiro, para a skill baixar o ícone pelo nome.
+    bulk = RAIZ / "brand/assets/icones-bulk"
+    for f in sorted(bulk.glob("*.svg")) + [bulk / "index.json"]:
+        copiar(f, f"{MARCA}/icones/{f.name}")
+    icones = {"estilo": "HugeIcons Bulk Rounded", "indice": f"{MARCA}/icones/index.json",
+              "pasta": f"{MARCA}/icones/"}
+
     # Imagens que os modelos citam em podi/arquivos/<nome>: procuradas em brand/assets/.
     textos = [p for p in saida.rglob("*") if p.suffix in (".md", ".html")]
     pedidos = set()
@@ -126,7 +135,7 @@ def montar(saida):
         "regras": f"{MARCA}/BRAND.md",
         "guia_visual": f"{HUB}/{MARCA}/guia/",
         "pecas": pecas,
-        "arquivos": {"logos": logos, "logo_pack": logo_pack},
+        "arquivos": {"logos": logos, "logo_pack": logo_pack, "icones": icones},
     }
     (saida / MARCA / "manifest.json").write_text(json.dumps(manifesto, indent=2, ensure_ascii=False) + "\n")
 

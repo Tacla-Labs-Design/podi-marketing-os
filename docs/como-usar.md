@@ -183,7 +183,7 @@ impede o padrão de virar uma coleção de exceções.
 
 Duas delas valem a explicação: as **variáveis** não são preciosismo — o servidor de envio
 resolve só aquelas três, e qualquer outra derruba a campanha inteira (é por isso que não
-existe link de descadastro no HTML). E o **verde que nunca é texto** dá 1,79:1 de
+existe link de descadastro no HTML). E o **verde que nunca é texto** dá 2,02:1 de
 contraste — reprova em qualquer leitura.
 
 ---

@@ -41,6 +41,7 @@ HUB_PODI = "https://marcas.taclalabs.workers.dev/podi/"
 # Pares obrigatórios: (rótulo, texto, fundo, mínimo)
 PARES = [
     ("texto sobre a cor de marca", "ink-on-brand", "brand", CONTRASTE_MIN),
+    ("tagline sobre a cor de marca", "accent-deep", "brand", CONTRASTE_MIN),
     ("accent-ink sobre branco", "accent-ink", "surface", CONTRASTE_MIN),
     ("accent-ink sobre page-light", "accent-ink", "page-light", CONTRASTE_MIN),
     ("accent-ink sobre accent-soft", "accent-ink", "accent-soft", CONTRASTE_MIN),
@@ -49,7 +50,7 @@ PARES = [
     ("muted sobre page-light", "muted", "page-light", CONTRASTE_MIN),
     ("body sobre surface-alt", "body", "surface-alt", CONTRASTE_MIN),
     ("secundária sobre branco (detalhe)", "accent-2", "surface", CONTRASTE_GRAFICO),
-    ("secundária sobre o chip", "accent-2", "accent-2-soft", CONTRASTE_GRAFICO),
+    ("ícone roxo sobre page-light", "accent-2", "page-light", CONTRASTE_GRAFICO),
 ]
 
 
